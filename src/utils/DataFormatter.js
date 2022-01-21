@@ -1,12 +1,13 @@
-import Service from './Service';
-import Utils from './Utils';
 import {
   BY_INTERVIEWER_ONE_SURVEY,
-  BY_SURVEY,
   BY_SITE,
+  BY_SURVEY,
   BY_SURVEY_ONE_INTERVIEWER,
 } from './constants.json';
+
 import D from '../i18n';
+import Service from './Service';
+import Utils from './Utils';
 
 class DataFormatter {
   constructor(keycloak) {
@@ -496,12 +497,16 @@ class DataFormatter {
             cb(
               {
                 linesDetails: stateCounts
-                  .filter((line) => line.total)
-                  .map((x, index) => {
-                    const obj = Utils.formatForMonitoringTable(x);
-                    obj.survey = campaigns[index].label;
-                    return obj;
-                  }),
+                  .map((line, index) => {
+                    if (line !== undefined && line !== null && line.total) {
+                      const obj = Utils.formatForMonitoringTable(line);
+                      obj.survey = campaigns[index].label;
+                      return obj;
+                    }
+                    return line;
+                  })
+                  .filter((stateCount) => stateCount !== undefined && stateCount !== null)
+                ,
               },
             );
           });
@@ -601,6 +606,7 @@ class DataFormatter {
         }));
         Promise.all(promises).then((data) => {
           resolve(data
+            .filter((line) => line !== null && line[1] !== null && line[2] !== null)
             .filter((intElm) => intElm[2].total)
             .map((intElm) => Utils.formatForCollectionTable(...intElm)));
         });
@@ -688,6 +694,7 @@ class DataFormatter {
             cb(
               {
                 linesDetails: data
+                  .filter((line) => line !== null && line[1] !== null && line[2] !== null)
                   .filter((lineData) => lineData[2].total)
                   .map((lineData) => Utils.formatForCollectionTable(...lineData)),
               },
@@ -727,17 +734,17 @@ class DataFormatter {
           ),
         ];
         Promise.all(datas).then((data) => {
-          resolve(
-            Utils.formatForProvisionalStatusTable(
+          resolve(data[1] !== null
+            ? Utils.formatForProvisionalStatusTable(
               data[0],
               data[1],
-            ),
-          );
+            ) : null);
         });
       }));
       Promise.all(promises).then((data) => {
         cb({
           linesDetails: data
+            .filter((lineData) => lineData !== null)
             .filter((lineData) => lineData.allocated),
           total: data.reduce((acc, curr) => {
             acc.npiCount += curr.npiCount;
@@ -751,8 +758,6 @@ class DataFormatter {
         });
       });
     });
-
-
   }
 
   async getDataForProvisionalStatusTableBySurveyOneInterviewer(interviewer, date, cb) {
@@ -768,17 +773,17 @@ class DataFormatter {
             ),
           ];
           Promise.all(datas).then((data) => {
-            resolve(
-              Utils.formatForProvisionalStatusTable(
+            resolve(data[1] !== null
+              ? Utils.formatForProvisionalStatusTable(
                 data[0],
                 data[1],
-              ),
-            );
+              ) : null);
           });
         }));
         Promise.all(promises).then((data) => {
           cb({
             linesDetails: data
+              .filter((lineData) => lineData !== null)
               .filter((lineData) => lineData.allocated)
               .map((lineData) => lineData),
           });

@@ -1,7 +1,7 @@
 const val = {
   "linesDetails": [
     {
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "total": 104,
       "notStarted": 20,
       "onGoing": 84,
@@ -15,7 +15,7 @@ const val = {
       "site": "South region organizational unit"
     },
     {
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "total": 104,
       "notStarted": 22,
       "onGoing": 55,
@@ -29,7 +29,7 @@ const val = {
       "site": "North region organizational unit"
     },
     {
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "total": 104,
       "notStarted": 22,
       "onGoing": 55,
@@ -46,7 +46,7 @@ const val = {
   "total": {
     "dem": [
       {
-        "completionRate": 0.028846153846153848,
+        "completionRate": 0.057692307692307696,
         "total": 104,
         "notStarted": 20,
         "onGoing": 84,
@@ -60,7 +60,7 @@ const val = {
         "site": "South region organizational unit"
       },
       {
-        "completionRate": 0.028846153846153848,
+        "completionRate": 0.0576923076923076968,
         "total": 104,
         "notStarted": 22,
         "onGoing": 55,
@@ -74,7 +74,7 @@ const val = {
         "site": "North region organizational unit"
       },
       {
-        "completionRate": 0.028846153846153848,
+        "completionRate": 0.057692307692307696,
         "total": 104,
         "notStarted": 22,
         "onGoing": 55,
@@ -89,7 +89,7 @@ const val = {
       }
     ],
     "france": {
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "total": 104,
       "notStarted": 8,
       "onGoing": 74,

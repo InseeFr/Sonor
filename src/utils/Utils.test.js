@@ -43,8 +43,8 @@ it('Test function convertMsToHoursMinutes', async () => {
 it('Test function calculateCompletionRate', async () => {
   // Should equal 7/9
   expect(
-    Utils.calculateCompletionRate({ tbrCount: 4, finCount: 3, total: 9 }),
-  ).toEqual(7 / 9);
+    Utils.calculateCompletionRate({ tbrCount: 4, finCount: 3, cloCount: 2, total: 11 }),
+  ).toEqual(9 / 11);
 });
 
 it('Test isVisible', async () => {

@@ -1,7 +1,7 @@
 const val = {
   "linesDetails": [
     {
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "total": 104,
       "notStarted": 3,
       "onGoing": 50,
@@ -15,7 +15,7 @@ const val = {
       "survey": "Survey on the Simpsons tv show 2020"
     },
     {
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "total": 104,
       "notStarted": 3,
       "onGoing": 50,
@@ -29,7 +29,7 @@ const val = {
       "survey": "Everyday life and health survey 2021"
     },
     {
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "total": 104,
       "notStarted": 3,
       "onGoing": 50,

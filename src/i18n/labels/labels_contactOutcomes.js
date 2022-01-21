@@ -9,23 +9,35 @@ const labelsContactOutcomes = {
   },
   REF: {
     en: 'Refusal',
-    fr: 'Refusal',
-  },
-  INI: {
-    en: 'Interview impossible',
-    fr: 'Enquête impossible',
+    fr: 'Refus',
   },
   ALA: {
     en: 'Already answered (other mode)',
     fr: 'Déjà répondu (autre mode)',
   },
-  WAM: {
-    en: 'Wish to answer in another mode',
-    fr: 'Souhaite répondre dans un autre mode',
+  UCD: {
+    en: 'Unusable Contact Data',
+    fr: 'Données de contact inutilisables (tél, mail)',
   },
-  OOS: {
-    en: 'Out of scope',
-    fr: 'Hors champ',
+  UTR: {
+    en: 'Unable To Respond',
+    fr: 'Incapacité à répondre',
+  },
+  ACP: {
+    en: 'Absence during Colletion Period',
+    fr: 'Absence pendant toute la période de collecte',
+  },
+  DCD: {
+    en: 'Deceased',
+    fr: 'Enquêté décédé',
+  },
+  NUH: {
+    en: 'No longer Used for Habitation',
+    fr: 'Logement ayant perdu son usage d\'habitation',
+  },
+  NER: {
+    en: 'No interview for Exceptional Reasons',
+    fr: 'Non enquêté pour cause exceptionnelle',
   },
 };
 

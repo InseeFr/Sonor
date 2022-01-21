@@ -12,7 +12,6 @@ function CollectionTableDisplayLine({ data }) {
     surveysAccepted,
     refusal,
     unreachable,
-    otherWastes,
     outOfScope,
     totalProcessed,
     absInterviewer,
@@ -55,7 +54,6 @@ function CollectionTableDisplayLine({ data }) {
       <td className="ColSurveyAcepted">{surveysAccepted}</td>
       <td className="ColRefusal">{refusal}</td>
       <td className="ColUnreachable">{unreachable}</td>
-      <td className="ColOtherWastes">{otherWastes}</td>
       <td className="ColOOS">{outOfScope}</td>
       <td className="ColTotalProcessed">{totalProcessed}</td>
       <td className="ColumnSpacing" />

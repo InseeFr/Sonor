@@ -50,7 +50,7 @@ const val = {
     "count": 2
   },
   "total": {
-    "completionRate": 0.028846153846153848,
+    "completionRate": 0.057692307692307696,
     "total": 208,
     "notStarted": 42,
     "onGoing": 139,

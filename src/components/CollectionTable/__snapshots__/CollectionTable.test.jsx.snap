@@ -182,7 +182,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -303,21 +303,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -468,11 +453,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -553,11 +533,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -642,11 +617,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -727,11 +697,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -816,11 +781,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -903,11 +863,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -988,11 +943,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -1079,11 +1029,6 @@ Object {
                     5
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     8
@@ -1166,11 +1111,6 @@ Object {
                     10
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    54
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     16
@@ -1251,11 +1191,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </th>
-                  <th
-                    class="ColOtherWastes"
-                  >
-                    27
                   </th>
                   <th
                     class="ColOOS"
@@ -1502,7 +1437,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -1623,21 +1558,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -1788,11 +1708,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -1873,11 +1788,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -1962,11 +1872,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -2047,11 +1952,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -2136,11 +2036,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -2223,11 +2118,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -2308,11 +2198,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -2399,11 +2284,6 @@ Object {
                   5
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  27
-                </th>
-                <th
                   class="ColOOS"
                 >
                   8
@@ -2486,11 +2366,6 @@ Object {
                   10
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  54
-                </th>
-                <th
                   class="ColOOS"
                 >
                   16
@@ -2571,11 +2446,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </th>
-                <th
-                  class="ColOtherWastes"
-                >
-                  27
                 </th>
                 <th
                   class="ColOOS"
@@ -2879,7 +2749,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -3000,21 +2870,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -3165,11 +3020,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -3250,11 +3100,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -3339,11 +3184,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -3424,11 +3264,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -3513,11 +3348,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -3600,11 +3430,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -3685,11 +3510,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -3776,11 +3596,6 @@ Object {
                     5
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     8
@@ -3863,11 +3678,6 @@ Object {
                     10
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    54
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     16
@@ -3948,11 +3758,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </th>
-                  <th
-                    class="ColOtherWastes"
-                  >
-                    27
                   </th>
                   <th
                     class="ColOOS"
@@ -4199,7 +4004,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -4320,21 +4125,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -4485,11 +4275,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -4570,11 +4355,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -4659,11 +4439,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -4744,11 +4519,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -4833,11 +4603,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -4920,11 +4685,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -5005,11 +4765,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -5096,11 +4851,6 @@ Object {
                   5
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  27
-                </th>
-                <th
                   class="ColOOS"
                 >
                   8
@@ -5183,11 +4933,6 @@ Object {
                   10
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  54
-                </th>
-                <th
                   class="ColOOS"
                 >
                   16
@@ -5268,11 +5013,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </th>
-                <th
-                  class="ColOtherWastes"
-                >
-                  27
                 </th>
                 <th
                   class="ColOOS"
@@ -5576,7 +5316,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -5697,21 +5437,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -5862,11 +5587,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -5947,11 +5667,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -6036,11 +5751,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -6121,11 +5831,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -6210,11 +5915,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -6297,11 +5997,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -6382,11 +6077,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -6473,11 +6163,6 @@ Object {
                     5
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     8
@@ -6560,11 +6245,6 @@ Object {
                     10
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    54
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     16
@@ -6645,11 +6325,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </th>
-                  <th
-                    class="ColOtherWastes"
-                  >
-                    27
                   </th>
                   <th
                     class="ColOOS"
@@ -6896,7 +6571,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -7017,21 +6692,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -7182,11 +6842,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -7267,11 +6922,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -7356,11 +7006,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -7441,11 +7086,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -7530,11 +7170,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -7617,11 +7252,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -7702,11 +7332,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -7793,11 +7418,6 @@ Object {
                   5
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  27
-                </th>
-                <th
                   class="ColOOS"
                 >
                   8
@@ -7880,11 +7500,6 @@ Object {
                   10
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  54
-                </th>
-                <th
                   class="ColOOS"
                 >
                   16
@@ -7965,11 +7580,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </th>
-                <th
-                  class="ColOtherWastes"
-                >
-                  27
                 </th>
                 <th
                   class="ColOOS"
@@ -8273,7 +7883,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -8394,21 +8004,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -8559,11 +8154,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -8644,11 +8234,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -8733,11 +8318,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -8818,11 +8398,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -8907,11 +8482,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -8994,11 +8564,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -9079,11 +8644,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -9170,11 +8730,6 @@ Object {
                     5
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     8
@@ -9257,11 +8812,6 @@ Object {
                     10
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    54
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     16
@@ -9342,11 +8892,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </th>
-                  <th
-                    class="ColOtherWastes"
-                  >
-                    27
                   </th>
                   <th
                     class="ColOOS"
@@ -9597,7 +9142,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -9718,21 +9263,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -9883,11 +9413,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -9968,11 +9493,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -10057,11 +9577,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -10142,11 +9657,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -10231,11 +9741,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -10318,11 +9823,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -10403,11 +9903,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -10494,11 +9989,6 @@ Object {
                   5
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  27
-                </th>
-                <th
                   class="ColOOS"
                 >
                   8
@@ -10581,11 +10071,6 @@ Object {
                   10
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  54
-                </th>
-                <th
                   class="ColOOS"
                 >
                   16
@@ -10666,11 +10151,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </th>
-                <th
-                  class="ColOtherWastes"
-                >
-                  27
                 </th>
                 <th
                   class="ColOOS"
@@ -10974,7 +10454,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -11095,21 +10575,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -11260,11 +10725,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -11345,11 +10805,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -11434,11 +10889,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -11521,11 +10971,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </th>
-                  <th
-                    class="ColOtherWastes"
-                  >
-                    27
                   </th>
                   <th
                     class="ColOOS"
@@ -11776,7 +11221,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -11897,21 +11342,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -12062,11 +11492,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -12147,11 +11572,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -12236,11 +11656,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -12323,11 +11738,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </th>
-                <th
-                  class="ColOtherWastes"
-                >
-                  27
                 </th>
                 <th
                   class="ColOOS"
@@ -12599,7 +12009,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -12720,21 +12130,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -12885,11 +12280,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -12970,11 +12360,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -13059,11 +12444,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -13144,11 +12524,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -13233,11 +12608,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -13320,11 +12690,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -13405,11 +12770,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -13628,7 +12988,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -13749,21 +13109,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -13914,11 +13259,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -13999,11 +13339,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -14088,11 +13423,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -14173,11 +13503,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -14262,11 +13587,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -14349,11 +13669,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -14434,11 +13749,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -14766,7 +14076,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -14887,21 +14197,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -15052,11 +14347,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -15139,11 +14429,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -15224,11 +14509,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -15503,7 +14783,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -15624,21 +14904,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -15789,11 +15054,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -15876,11 +15136,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -15961,11 +15216,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -16237,7 +15487,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -16358,21 +15608,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -16523,11 +15758,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -16608,11 +15838,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -16697,11 +15922,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -16782,11 +16002,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -16871,11 +16086,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -16958,11 +16168,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -17043,11 +16248,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -17262,7 +16462,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -17383,21 +16583,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -17548,11 +16733,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -17633,11 +16813,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -17722,11 +16897,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -17807,11 +16977,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -17896,11 +17061,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -17983,11 +17143,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -18068,11 +17223,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -18376,7 +17526,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -18497,21 +17647,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -18662,11 +17797,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -18747,11 +17877,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -18836,11 +17961,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -18921,11 +18041,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -19010,11 +18125,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -19097,11 +18207,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -19182,11 +18287,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -19273,11 +18373,6 @@ Object {
                     5
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     8
@@ -19360,11 +18455,6 @@ Object {
                     10
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    54
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     16
@@ -19445,11 +18535,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </th>
-                  <th
-                    class="ColOtherWastes"
-                  >
-                    27
                   </th>
                   <th
                     class="ColOOS"
@@ -19696,7 +18781,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -19817,21 +18902,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -19982,11 +19052,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -20067,11 +19132,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -20156,11 +19216,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -20241,11 +19296,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -20330,11 +19380,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -20417,11 +19462,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -20502,11 +19542,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -20593,11 +19628,6 @@ Object {
                   5
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  27
-                </th>
-                <th
                   class="ColOOS"
                 >
                   8
@@ -20680,11 +19710,6 @@ Object {
                   10
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  54
-                </th>
-                <th
                   class="ColOOS"
                 >
                   16
@@ -20765,11 +19790,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </th>
-                <th
-                  class="ColOtherWastes"
-                >
-                  27
                 </th>
                 <th
                   class="ColOOS"
@@ -21089,7 +20109,7 @@ Object {
                   />
                   <th
                     class="CenteredText"
-                    colspan="6"
+                    colspan="5"
                   >
                     Survey units processed interviewer
                   </th>
@@ -21210,21 +20230,6 @@ Object {
                     class="Clickable ColUnreachable"
                   >
                     Unreachable
-                    <span
-                      class="sortIcon"
-                    >
-                      <i
-                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                      />
-                      <i
-                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    class="Clickable ColOtherWastes"
-                  >
-                    Other wastes
                     <span
                       class="sortIcon"
                     >
@@ -21375,11 +20380,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -21460,11 +20460,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -21549,11 +20544,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -21634,11 +20624,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -21723,11 +20708,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -21810,11 +20790,6 @@ Object {
                     5
                   </td>
                   <td
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </td>
-                  <td
                     class="ColOOS"
                   >
                     8
@@ -21895,11 +20870,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </td>
-                  <td
-                    class="ColOtherWastes"
-                  >
-                    27
                   </td>
                   <td
                     class="ColOOS"
@@ -21986,11 +20956,6 @@ Object {
                     5
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    27
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     8
@@ -22073,11 +21038,6 @@ Object {
                     10
                   </th>
                   <th
-                    class="ColOtherWastes"
-                  >
-                    54
-                  </th>
-                  <th
                     class="ColOOS"
                   >
                     16
@@ -22158,11 +21118,6 @@ Object {
                     class="ColUnreachable"
                   >
                     5
-                  </th>
-                  <th
-                    class="ColOtherWastes"
-                  >
-                    27
                   </th>
                   <th
                     class="ColOOS"
@@ -22409,7 +21364,7 @@ Object {
                 />
                 <th
                   class="CenteredText"
-                  colspan="6"
+                  colspan="5"
                 >
                   Survey units processed interviewer
                 </th>
@@ -22530,21 +21485,6 @@ Object {
                   class="Clickable ColUnreachable"
                 >
                   Unreachable
-                  <span
-                    class="sortIcon"
-                  >
-                    <i
-                      class="fa fa-fw fa-caret-down sortIconDown iconInactive"
-                    />
-                    <i
-                      class="fa fa-fw fa-caret-up sortIconUp iconInactive"
-                    />
-                  </span>
-                </th>
-                <th
-                  class="Clickable ColOtherWastes"
-                >
-                  Other wastes
                   <span
                     class="sortIcon"
                   >
@@ -22695,11 +21635,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -22780,11 +21715,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -22869,11 +21799,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -22954,11 +21879,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -23043,11 +21963,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -23130,11 +22045,6 @@ Object {
                   5
                 </td>
                 <td
-                  class="ColOtherWastes"
-                >
-                  27
-                </td>
-                <td
                   class="ColOOS"
                 >
                   8
@@ -23215,11 +22125,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </td>
-                <td
-                  class="ColOtherWastes"
-                >
-                  27
                 </td>
                 <td
                   class="ColOOS"
@@ -23306,11 +22211,6 @@ Object {
                   5
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  27
-                </th>
-                <th
                   class="ColOOS"
                 >
                   8
@@ -23393,11 +22293,6 @@ Object {
                   10
                 </th>
                 <th
-                  class="ColOtherWastes"
-                >
-                  54
-                </th>
-                <th
                   class="ColOOS"
                 >
                   16
@@ -23478,11 +22373,6 @@ Object {
                   class="ColUnreachable"
                 >
                   5
-                </th>
-                <th
-                  class="ColOtherWastes"
-                >
-                  27
                 </th>
                 <th
                   class="ColOOS"

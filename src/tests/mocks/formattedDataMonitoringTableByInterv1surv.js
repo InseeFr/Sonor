@@ -47,7 +47,7 @@ const val = {
     {
       "appointmentTaken": 8,
       "atLeastOneContact": 8,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,
@@ -63,7 +63,7 @@ const val = {
     {
       "appointmentTaken": 8,
       "atLeastOneContact": 8,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,
@@ -79,7 +79,7 @@ const val = {
     {
       "appointmentTaken": 8,
       "atLeastOneContact": 8,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,
@@ -95,7 +95,7 @@ const val = {
     {
       "appointmentTaken": 8,
       "atLeastOneContact": 8,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,
@@ -111,7 +111,7 @@ const val = {
     {
       "appointmentTaken": 8,
       "atLeastOneContact": 8,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,
@@ -127,7 +127,7 @@ const val = {
     {
       "appointmentTaken": 8,
       "atLeastOneContact": 8,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,
@@ -143,7 +143,7 @@ const val = {
     {
       "appointmentTaken": 8,
       "atLeastOneContact": 8,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,
@@ -206,7 +206,7 @@ const val = {
     "dem": {
       "appointmentTaken": 32,
       "atLeastOneContact": 60,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 8,
       "intValidated": 4,
       "interviewStarted": 10,
@@ -219,7 +219,7 @@ const val = {
     "france": {
       "appointmentTaken": 20,
       "atLeastOneContact": 20,
-      "completionRate": 0.028846153846153848,
+      "completionRate": 0.057692307692307696,
       "demValidated": 4,
       "intValidated": 2,
       "interviewStarted": 5,

@@ -3,7 +3,7 @@ name: Build
 on:
   pull_request:
     branches:
-      - '*'
+      - "*"
 
 jobs:
   install:
@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 14
       - run: yarn
+      - run: yarn run test
       - run: yarn build
       - name: Upload build
         uses: actions/upload-artifact@v2

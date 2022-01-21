@@ -1,9 +1,9 @@
-import React from 'react';
-import Table from 'react-bootstrap/Table';
-import SortIcon from '../SortIcon/SortIcon';
-import CollectionTableDisplayLine from './CollectionTableDisplayLine';
 import C from '../../utils/constants.json';
+import CollectionTableDisplayLine from './CollectionTableDisplayLine';
 import D from '../../i18n';
+import React from 'react';
+import SortIcon from '../SortIcon/SortIcon';
+import Table from 'react-bootstrap/Table';
 
 function CollectionTableDisplay({
   data, sort, displayedLines, pagination, mode, handleSort,
@@ -40,7 +40,6 @@ function CollectionTableDisplay({
       <th className="ColSurveyAcepted">{data.notAttributed.surveysAccepted}</th>
       <th className="ColRefusal">{data.notAttributed.refusal}</th>
       <th className="ColUnreachable">{data.notAttributed.unreachable}</th>
-      <th className="ColOtherWastes">{data.notAttributed.otherWastes}</th>
       <th className="ColOOS">{data.notAttributed.outOfScope}</th>
       <th className="ColTotalProcessed">{data.notAttributed.totalProcessed}</th>
       <th className="ColumnSpacing" />
@@ -84,7 +83,6 @@ function CollectionTableDisplay({
       <th className="ColSurveyAcepted">{data.total.dem.surveysAccepted}</th>
       <th className="ColRefusal">{data.total.dem.refusal}</th>
       <th className="ColUnreachable">{data.total.dem.unreachable}</th>
-      <th className="ColOtherWastes">{data.total.dem.otherWastes}</th>
       <th className="ColOOS">{data.total.dem.outOfScope}</th>
       <th className="ColTotalProcessed">{data.total.dem.totalProcessed}</th>
       <th className="ColumnSpacing" />
@@ -131,7 +129,6 @@ function CollectionTableDisplay({
         <th className="ColSurveyAcepted">{data.total.france.surveysAccepted}</th>
         <th className="ColRefusal">{data.total.france.refusal}</th>
         <th className="ColUnreachable">{data.total.france.unreachable}</th>
-        <th className="ColOtherWastes">{data.total.france.otherWastes}</th>
         <th className="ColOOS">{data.total.france.outOfScope}</th>
         <th className="ColTotalProcessed">{data.total.france.totalProcessed}</th>
         <th className="ColumnSpacing" />
@@ -167,7 +164,7 @@ function CollectionTableDisplay({
           <th className="EmptyHeader ColWasteRate" />
           <th className="EmptyHeader ColOOSRate" />
           <th rowSpan="2" className="ColumnSpacing" />
-          <th colSpan="6" className="CenteredText">{D.surveyUnitsProcessedInterviewer}</th>
+          <th colSpan="5" className="CenteredText">{D.surveyUnitsProcessedInterviewer}</th>
           <th rowSpan="2" className="ColumnSpacing" />
           <th colSpan="3" className="CenteredText">{D.surveyUnitsClosedManagement}</th>
           <th rowSpan="2" className="ColumnSpacing" />
@@ -224,13 +221,6 @@ function CollectionTableDisplay({
           >
             {D.unreachable}
             <SortIcon val="unreachable" sort={sort} />
-          </th>
-          <th
-            onClick={handleSortFunct('otherWastes')}
-            className="Clickable ColOtherWastes"
-          >
-            {D.otherWastes}
-            <SortIcon val="otherWastes" sort={sort} />
           </th>
           <th
             className="Clickable ColOOS"
