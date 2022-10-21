@@ -1325,10 +1325,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
     },
     {
       "campaign": {
@@ -1340,10 +1341,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
     },
     {
       "campaign": {
@@ -1355,10 +1357,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
     },
     {
       "campaign": {
@@ -1370,10 +1373,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
     },
     {
       "campaign": {
@@ -1385,10 +1389,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
     },
     {
       "campaign": {
@@ -1400,10 +1405,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
     },
     {
       "campaign": {
@@ -1415,10 +1421,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
     }
   ],
   "contactOutcomesNotAttributed": {
@@ -1427,10 +1434,11 @@ const val = {
     "ucdCount":11,
     "utrCount":9,
     "alaCount":7,
-    "acpCount":2,
+    "dukCount":2,
+"duuCount":0,
     "dcdCount":1,
     "nuhCount":1,
-    "nerCount":1,
+    "noaCount":1,
   },
   "contactOutcomesByInterviewer": {
     "refCount":2,
@@ -1438,10 +1446,11 @@ const val = {
     "ucdCount":11,
     "utrCount":9,
     "alaCount":7,
-    "acpCount":2,
+    "dukCount":2,
+"duuCount":0,
     "dcdCount":1,
     "nuhCount":1,
-    "nerCount":1,
+    "noaCount":1,
   },
   "contactOutcomesByCampaign": {
     "organizationUnits": [
@@ -1454,10 +1463,11 @@ const val = {
         "ucdCount":11,
         "utrCount":9,
         "alaCount":7,
-        "acpCount":2,
+        "dukCount":2,
+"duuCount":0,
         "dcdCount":1,
         "nuhCount":1,
-        "nerCount":1,
+        "noaCount":1,
         "total": 104
       },
       {
@@ -1469,10 +1479,11 @@ const val = {
         "ucdCount":11,
         "utrCount":9,
         "alaCount":7,
-        "acpCount":2,
+        "dukCount":2,
+"duuCount":0,
         "dcdCount":1,
         "nuhCount":1,
-        "nerCount":1,
+        "noaCount":1,
         "total": 104
       },
       {
@@ -1484,10 +1495,11 @@ const val = {
         "ucdCount":11,
         "utrCount":9,
         "alaCount":7,
-        "acpCount":2,
+        "dukCount":2,
+"duuCount":0,
         "dcdCount":1,
         "nuhCount":1,
-        "nerCount":1,
+        "noaCount":1,
         "total": 104
       }
     ],
@@ -1497,10 +1509,11 @@ const val = {
       "ucdCount":11,
       "utrCount":9,
       "alaCount":7,
-      "acpCount":2,
+      "dukCount":2,
+"duuCount":0,
       "dcdCount":1,
       "nuhCount":1,
-      "nerCount":1,
+      "noaCount":1,
       "total": 104
     }
   }

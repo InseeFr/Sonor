@@ -119,6 +119,10 @@ const header = {
     fr: 'Organisation des collectes',
     en: 'Collection organization',
   },
+  identificationState: {
+    fr: 'Informations logement',
+    en: 'Housing identification',
+  },
 };
 
 export default header;

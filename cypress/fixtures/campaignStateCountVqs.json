@@ -20,9 +20,10 @@
 
       "cloCount": 3,
       "npaCount": 3,
-        "npiCount": 1,
-        "rowCount": 1,
-        "nvaCount": 0,
+      "npiCount": 1,
+      "npxCount": 0,
+      "rowCount": 1,
+      "nvaCount": 0,
       "total": 104
     },
     {
@@ -45,9 +46,10 @@
 
       "cloCount": 3,
       "npaCount": 2,
-        "npiCount": 3,
-        "rowCount": 4,
-        "nvaCount": 0,
+      "npiCount": 3,
+      "npxCount": 0,
+      "rowCount": 4,
+      "nvaCount": 0,
       "total": 88
     },
     {
@@ -70,9 +72,10 @@
 
       "cloCount": 3,
       "npaCount": 2,
-        "npiCount": 3,
-        "rowCount": 4,
-        "nvaCount": 0,
+      "npiCount": 3,
+      "npxCount": 0,
+      "rowCount": 4,
+      "nvaCount": 0,
       "total": 104
     }
   ],
@@ -93,9 +96,10 @@
     
     "cloCount": 3,
     "npaCount": 2,
-        "npiCount": 3,
-        "rowCount": 4,
-        "nvaCount": 0,
+    "npiCount": 3,
+    "npxCount": 0,
+    "rowCount": 4,
+    "nvaCount": 0,
     "total": 104
   }
 }

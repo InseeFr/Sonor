@@ -72,7 +72,6 @@ class ProvisionalStatusTable extends React.Component {
       dataRetreiver.getDataForProvisionalStatusTable(
         surveyToUse, new Date(dateToUse).getTime(), paginationToUse, modeToUse,
         (res) => {
-          console.log(res)
           if (dateToUse === this.state.date) {
             const newData = {};
             Object.assign(newData, res);

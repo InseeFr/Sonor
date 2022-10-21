@@ -39,6 +39,18 @@ const labelsContactOutcomes = {
     en: 'No interview for Exceptional Reasons',
     fr: 'Non enquêté pour cause exceptionnelle',
   },
+  NOA: {
+    en: 'Not applicable',
+    fr: 'Sans objet',
+  },
+  DUK: {
+    en: 'Definitely unavailable for a known reason',
+    fr: 'Indisponibilité définitive pour motif connu',
+  },
+  DUU: {
+    en: 'Definitely unavailable for an unknown reason',
+    fr: 'Indisponibilité définitive pour motif inconnu',
+  },
 };
 
 export default labelsContactOutcomes;

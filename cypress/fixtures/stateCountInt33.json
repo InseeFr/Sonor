@@ -12,11 +12,12 @@
   "wfsCount": 0,
   "tbrCount": 2,
   "finCount": 1,
-  
+
   "cloCount": 3,
   "npaCount": 2,
-        "npiCount": 3,
-        "rowCount": 4,
-        "nvaCount": 0,
+  "npiCount": 3,
+  "npxCount": 0,
+  "rowCount": 4,
+  "nvaCount": 0,
   "total": 104
 }

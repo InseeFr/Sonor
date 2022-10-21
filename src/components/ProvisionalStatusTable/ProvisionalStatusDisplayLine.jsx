@@ -7,6 +7,8 @@ function ProvisionalStatusTableDisplayLine({ data }) {
     survey,
     npiCount,
     npaCount,
+    npxCount,
+    rowCount,
     total,
     allocated,
   } = data;
@@ -19,6 +21,8 @@ function ProvisionalStatusTableDisplayLine({ data }) {
       <td className="ColumnSpacing" />
       <td>{npaCount}</td>
       <td>{npiCount}</td>
+      <td>{npxCount}</td>
+      <td>{rowCount}</td>
       <td>{total}</td>
       <td className="ColumnSpacing" />
       <td>{allocated}</td>

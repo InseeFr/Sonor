@@ -23,9 +23,6 @@ function displayStateHistoryTable(stateData, stateId, hideStateHistoryTable, max
             <th rowSpan="2" style={{width:maxWidth()[0]}}>
               {D.stateSuDate}
             </th>
-            <th rowSpan="2" style={{width:maxWidth()[1]}}>
-              {D.stateSuHour}
-            </th>
             <th rowSpan="2" style={{width:maxWidth()[2]}}>
               {D.stateSuState}
             </th>
@@ -35,7 +32,6 @@ function displayStateHistoryTable(stateData, stateId, hideStateHistoryTable, max
           {stateData.map((data) => (
             <tr key={data.id}>
               <td data-testid="campaign-label">{Utils.convertToDateString(data.date)}</td>
-              <td>{Utils.convertMsToHoursMinutes(data.date)}</td>
               <td>{data.type ? D[data.type] : ''}</td>
             </tr>
           ))}
