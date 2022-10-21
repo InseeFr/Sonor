@@ -43,6 +43,10 @@ function Close({
       cc = 'NPA';
     } else if (closingCause === D.NPI) {
       cc = 'NPI';
+    } else if (closingCause === D.NPX) {
+      cc = 'NPX';
+    } else if (closingCause === D.ROW) {
+      cc = 'ROW';
     }
     dataRetreiver.closeSurveyUnits(lstSUChangingState, cc)
       .then((response) => {

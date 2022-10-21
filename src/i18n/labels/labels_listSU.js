@@ -52,7 +52,7 @@ const listSU = {
     en: 'Cancel',
   },
   contactOutcome: {
-    fr: 'Issue des contacts',
+    fr: 'Bilan des contacts',
     en: 'Contact outcome',
   },
   questionnaireState: {

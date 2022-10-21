@@ -4976,12 +4976,6 @@ Object {
                     rowspan="2"
                     style="width: 0px;"
                   >
-                    Hour
-                  </th>
-                  <th
-                    rowspan="2"
-                    style="width: 0px;"
-                  >
                     State
                   </th>
                 </tr>
@@ -4994,9 +4988,6 @@ Object {
                     7/31/2020
                   </td>
                   <td>
-                    09:35
-                  </td>
-                  <td>
                     Assigned not started
                   </td>
                 </tr>
@@ -5007,9 +4998,6 @@ Object {
                     7/30/2020
                   </td>
                   <td>
-                    14:45
-                  </td>
-                  <td>
                     Assigned not started
                   </td>
                 </tr>
@@ -5018,9 +5006,6 @@ Object {
                     data-testid="campaign-label"
                   >
                     7/25/2020
-                  </td>
-                  <td>
-                    06:12
                   </td>
                   <td>
                     At least one contact made
@@ -5798,12 +5783,6 @@ Object {
                   rowspan="2"
                   style="width: 0px;"
                 >
-                  Hour
-                </th>
-                <th
-                  rowspan="2"
-                  style="width: 0px;"
-                >
                   State
                 </th>
               </tr>
@@ -5816,9 +5795,6 @@ Object {
                   7/31/2020
                 </td>
                 <td>
-                  09:35
-                </td>
-                <td>
                   Assigned not started
                 </td>
               </tr>
@@ -5829,9 +5805,6 @@ Object {
                   7/30/2020
                 </td>
                 <td>
-                  14:45
-                </td>
-                <td>
                   Assigned not started
                 </td>
               </tr>
@@ -5840,9 +5813,6 @@ Object {
                   data-testid="campaign-label"
                 >
                   7/25/2020
-                </td>
-                <td>
-                  06:12
                 </td>
                 <td>
                   At least one contact made

@@ -25,26 +25,46 @@ class Utils {
   }
 
   static calculateCollectionRate(outcomes, stateCount) {
-    return outcomes.inaCount / (stateCount.total - stateCount.npaCount);
+    return outcomes.inaCount / stateCount.total;
   }
 
   static calculateWasteRate(outcomes, stateCount) {
     return (
       (outcomes.refCount + outcomes.impCount + stateCount.npiCount)
+      / stateCount.total
+    );
+  }
+
+  // Comming soon with business rule
+  static calculateOutOfScopeRateInterviewer(outcomes, stateCount) {
+    return (
+      (outcomes.ucdCount
+        + outcomes.utrCount
+        + outcomes.alaCount
+        + outcomes.dcdCount
+        + outcomes.nuhCount
+        + outcomes.dukCount
+        + outcomes.duuCount
+        + outcomes.noaCount
+        + stateCount.npxCount
+        + stateCount.rowCount)
       / (stateCount.total - stateCount.npaCount)
     );
   }
 
-  static calculateOutOfScopeRate(outcomes, stateCount) {
+  static calculateOutOfScopeRateManagement(outcomes, stateCount) {
     return (
       (outcomes.ucdCount
+        + outcomes.utrCount
         + outcomes.alaCount
         + outcomes.dcdCount
         + outcomes.nuhCount
-        + outcomes.utrCount
-        + outcomes.acpCount
-        + outcomes.nerCount)
-      / (stateCount.total - stateCount.npaCount)
+        + outcomes.dukCount
+        + outcomes.duuCount
+        + outcomes.noaCount
+        + stateCount.npxCount
+        + stateCount.rowCount)
+      / (stateCount.total)
     );
   }
 
@@ -74,21 +94,22 @@ class Utils {
 
     line.collectionRate = this.calculateCollectionRate(outcomes, stateCount);
     line.wasteRate = this.calculateWasteRate(outcomes, stateCount);
-    line.outOfScopeRate = this.calculateOutOfScopeRate(outcomes, stateCount);
+    line.outOfScopeRate = this.calculateOutOfScopeRateManagement(outcomes, stateCount);
     line.surveysAccepted = outcomes.inaCount;
     line.refusal = outcomes.refCount;
     line.unreachable = outcomes.impCount;
     line.outOfScope = outcomes.ucdCount
-      + outcomes.alaCount
-      + outcomes.nuhCount
       + outcomes.utrCount
-      + outcomes.acpCount
-      + outcomes.nerCount
-      + outcomes.dcdCount;
+      + outcomes.alaCount
+      + outcomes.dcdCount
+      + outcomes.nuhCount
+      + outcomes.dukCount
+      + outcomes.duuCount
+      + outcomes.noaCount;
     line.totalProcessed = stateCount.tbrCount + stateCount.finCount;
     line.absInterviewer = stateCount.npaCount;
-    line.otherReason = stateCount.npiCount + stateCount.rowCount;
-    line.totalClosed = stateCount.npaCount + stateCount.npiCount + stateCount.rowCount;
+    line.otherReason = stateCount.npiCount + stateCount.npxCount + stateCount.rowCount;
+    line.totalClosed = stateCount.npaCount + stateCount.npiCount + stateCount.npxCount + stateCount.rowCount;
     line.allocated = stateCount.total;
 
     return line;
@@ -105,6 +126,7 @@ class Utils {
       line.survey = initialObject.survey;
     }
     line.npiCount = closingCauses.npiCount;
+    line.npxCount = closingCauses.npxCount;
     line.npaCount = closingCauses.npaCount;
     line.rowCount = closingCauses.rowCount;
     line.total = closingCauses.npaCount + closingCauses.npiCount + closingCauses.rowCount;
@@ -160,6 +182,7 @@ class Utils {
       'campaign',
       'label',
       'id',
+      'identificationState',
       'survey',
       'site',
       'date',

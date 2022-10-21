@@ -1,9 +1,9 @@
-import React from 'react';
 import D from '../../i18n';
+import React from 'react';
 
 function CloseSurveyUnitLine({ lineData, isChecked, updateFunc }) {
   const {
-    campaign, id, ssech, contactOutcome, questionnaireState, interviewer, closingCause,
+    campaign, id, ssech, contactOutcome, questionnaireState, interviewer, closingCause, identificationState
   } = lineData;
   return (
     <tr>
@@ -14,6 +14,7 @@ function CloseSurveyUnitLine({ lineData, isChecked, updateFunc }) {
       <td className="ColId">{id}</td>
       <td className="ColInterviewer">{`${interviewer.interviewerLastName} ${interviewer.interviewerFirstName}`}</td>
       <td className="ColSsech">{ssech}</td>
+      <td className="ColIdentificationState">{identificationState ? D[identificationState] : ''}</td>
       <td className="ColLocation">{contactOutcome ? D[contactOutcome] : ''}</td>
       <td className="ColCity">{questionnaireState ? D[questionnaireState] : ''}</td>
       <td className="ColState">{closingCause ? D[closingCause] : ''}</td>

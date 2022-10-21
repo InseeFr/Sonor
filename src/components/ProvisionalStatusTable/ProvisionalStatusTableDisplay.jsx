@@ -28,6 +28,8 @@ function ProvisionalStatusTableDisplay({
       <td className="ColumnSpacing" />
       <th>{total.npaCount}</th>
       <th>{total.npiCount}</th>
+      <th>{total.npxCount}</th>
+      <th>{total.rowCount}</th>
       <th>{total.total}</th>
       <td className="ColumnSpacing" />
       <th>{total.allocated}</th>
@@ -47,7 +49,7 @@ function ProvisionalStatusTableDisplay({
             <SortIcon val={firstColumnSortAttribute} sort={sort} />
           </th>
           <th rowSpan="2" className="ColumnSpacing" />
-          <th colSpan="3">{D.unitsWithProvisionalStatus}</th>
+          <th colSpan="5">{D.unitsWithProvisionalStatus}</th>
           <th rowSpan="2" className="ColumnSpacing" />
           <th
             rowSpan="2"
@@ -63,15 +65,29 @@ function ProvisionalStatusTableDisplay({
             className="Clickable ColNpiCount"
             onClick={handleSortFunct('npiCount')}
           >
-            {D.interviewerAbsence}
+            {D.NPI}
             <SortIcon val="npiCount" sort={sort} />
           </th>
           <th
             className="Clickable ColNpaCount"
             onClick={handleSortFunct('npaCount')}
           >
-            {D.LackOfTimeInterviewer}
+            {D.NPA}
             <SortIcon val="npaCount" sort={sort} />
+          </th>
+          <th
+            className="Clickable ColNpxCount"
+            onClick={handleSortFunct('npxCount')}
+          >
+            {D.NPX}
+            <SortIcon val="npxCount" sort={sort} />
+          </th>
+          <th
+            className="Clickable ColRowCount"
+            onClick={handleSortFunct('rowCount')}
+          >
+            {D.ROW}
+            <SortIcon val="rowCount" sort={sort} />
           </th>
           <th
             className="Clickable ColTotal"

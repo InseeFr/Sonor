@@ -13,6 +13,7 @@ import notifications from './labels/labels_notifications';
 import labelsStates from './labels/labels_states';
 import labelsContactOutcomes from './labels/labels_contactOutcomes';
 import labelsStateDatas from './labels/labels_stateDatas';
+import labelsIdentification from './labels/labels_identification';
 import close from './labels/labels_close';
 
 const dictionary = {
@@ -31,6 +32,7 @@ const dictionary = {
   ...labelsStates,
   ...labelsContactOutcomes,
   ...labelsStateDatas,
+  ...labelsIdentification,
   ...close,
 };
 

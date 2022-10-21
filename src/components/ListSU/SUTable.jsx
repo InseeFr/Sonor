@@ -287,6 +287,8 @@ class SUTable extends React.Component {
                                 <option disabled value={-1} key={-1}>{D.modaleModifiedText}</option>
                                 <option>{D.NPA}</option>
                                 <option>{D.NPI}</option>
+                                <option>{D.NPX}</option>
+                                <option>{D.ROW}</option>
                               </Form.Control>
                             </Form.Group>
                           </Modal.Body>

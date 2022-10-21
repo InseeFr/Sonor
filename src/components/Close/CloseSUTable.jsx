@@ -220,6 +220,10 @@ class CloseSUTable extends React.Component {
                                 {D.ssech}
                                 <SortIcon val="ssech" sort={sort} />
                               </th>
+                              <th onClick={handleSortFunct('identificationState')} className="Clickable ColIdentificationState">
+                                {D.identificationState}
+                                <SortIcon val="identificationState" sort={sort} />
+                              </th>
                               <th onClick={handleSortFunct('contact_outcome')} className="Clickable ColLocation">
                                 {D.contactOutcome}
                                 <SortIcon val="contact_outcome" sort={sort} />
@@ -284,6 +288,8 @@ class CloseSUTable extends React.Component {
                                 <option disabled value={-1} key={-1}>{D.modaleModifiedText}</option>
                                 <option>{D.NPA}</option>
                                 <option>{D.NPI}</option>
+                                <option>{D.NPX}</option>
+                                <option>{D.ROW}</option>
                               </Form.Control>
                             </Form.Group>
                           </Modal.Body>

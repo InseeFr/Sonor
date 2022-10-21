@@ -11,7 +11,7 @@ const labelsStateDatas = {
     fr: 'Validé',
     en: 'Validated',
   },
-  TO_EXTRACT: {
+  TOEXTRACT: {
     fr: 'A extraire',
     en: 'To extract',
   },
