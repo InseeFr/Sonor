@@ -26,8 +26,8 @@ function ProvisionalStatusTableDisplay({
     <tr>
       <th>{D.totalDEM}</th>
       <td className="ColumnSpacing" />
-      <th>{total.npaCount}</th>
       <th>{total.npiCount}</th>
+      <th>{total.npaCount}</th>
       <th>{total.npxCount}</th>
       <th>{total.rowCount}</th>
       <th>{total.total}</th>
