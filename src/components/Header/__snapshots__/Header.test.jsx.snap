@@ -31,7 +31,7 @@ Object {
                 <div
                   id="appVersion"
                 >
-                  1.0.0
+                      1.0.0
                 </div>
               </a>
             </div>
@@ -233,7 +233,7 @@ Object {
               <div
                 id="appVersion"
               >
-                1.0.0
+                      1.0.0
               </div>
             </a>
           </div>
