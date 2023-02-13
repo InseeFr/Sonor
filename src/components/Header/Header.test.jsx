@@ -13,6 +13,14 @@ import mocks from '../../tests/mocks';
 import DataFormatter from '../../utils/DataFormatter';
 import C from '../../utils/constants.json';
 
+jest.mock(
+	"../../../package.json",
+	() => ({
+		version: "1.0.0",
+	})
+);
+
+
 const {
   mainScreenData,
   userData,

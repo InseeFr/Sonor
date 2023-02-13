@@ -10,6 +10,13 @@ import mocks from '../../tests/mocks';
 import C from '../../utils/constants.json';
 import D from '../../i18n';
 
+jest.mock(
+	"../../../package.json",
+	() => ({
+		version: "1.0.0",
+	})
+);
+
 const toLocaleDateString = Date.prototype.toLocaleString;
 Date.prototype.toLocaleDateString = function() {
   return toLocaleDateString.call(this, 'en-EN', { timeZone: 'UTC',year: "numeric", month: "numeric", day: "numeric" });
