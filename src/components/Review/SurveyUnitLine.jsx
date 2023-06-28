@@ -7,7 +7,7 @@ function SurveyUnitLine({
   lineData, isChecked, updateFunc, handleShow, view,
 }) {
   const {
-    campaignLabel, interviewer, id, viewed,
+    campaignLabel, interviewer, id, viewed, questionnaireId,
   } = lineData;
   const queenUrl = `${window.localStorage.getItem('QUEEN_URL_FRONT_END')}`;
   return (
@@ -30,7 +30,7 @@ function SurveyUnitLine({
           <i
             className="fa fa-calendar EditLink Clickable"
             aria-hidden="true"
-            onClick={() => { view(lineData); window.open(`${queenUrl}/queen/readonly/survey-unit/${lineData.id}`); }}
+            onClick={() => { view(lineData); window.open(`${queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${id}`); }}
           />
         </OverlayTrigger>
         <span />

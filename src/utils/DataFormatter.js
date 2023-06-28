@@ -193,30 +193,39 @@ class DataFormatter {
   getListSUToReview(surveyId) {
     return new Promise((resolve) => {
       this.service.getCampaigns((res) => {
-        const promises = res.filter((campaign) => (surveyId === null || campaign.id === surveyId))
-          .map((campaign) => (
-            new Promise((resolve2) => {
-              this.service.getQuestionnaireId(campaign.id, (queenRes) => {
+        const promises = res
+          .filter((campaign) => surveyId === null || campaign.id === surveyId)
+          .map((campaign) => this.service.getSurveyUnitsQuestionnaireIdByCampaign(
+            campaign.id,
+            (questionnaireIdResp) => {
+              const questionnaireIdMap = questionnaireIdResp.reduce(
+                (acc, surveyUnit) => ({
+                  ...acc,
+                  [surveyUnit.id]: surveyUnit.questionnaireId,
+                }),
+                {},
+              );
+
+              return new Promise((resolve2) => {
                 this.service.getSurveyUnits(campaign.id, 'TBR', (res2) => {
-                  const lstSU = res2.map((su) => ({
-                    campaignLabel: campaign.label,
-                    campaignId: campaign.id,
-                    questionnaireId: queenRes ? queenRes.questionnaireId : null,
-                    interviewer: su.interviewer
-                      ? `${su.interviewer.interviewerLastName} ${su.interviewer.interviewerFirstName}`
-                      : D.unaffected,
-                    idep: su.interviewer
-                      ? su.interviewer.id
-                      : '',
-                    id: su.id,
-                    viewed: su.viewed,
-                    comments: su.comments,
-                  }))
+                  const lstSU = res2
+                    .map((su) => ({
+                      campaignLabel: campaign.label,
+                      campaignId: campaign.id,
+                      questionnaireId: questionnaireIdMap[su.id],
+                      interviewer: su.interviewer
+                        ? `${su.interviewer.interviewerLastName} ${su.interviewer.interviewerFirstName}`
+                        : D.unaffected,
+                      idep: su.interviewer ? su.interviewer.id : '',
+                      id: su.id,
+                      viewed: su.viewed,
+                      comments: su.comments,
+                    }))
                     .sort((a, b) => (a.interviewer > b.interviewer ? 1 : -1));
                   resolve2(lstSU);
                 });
               });
-            })
+            },
           ));
         Promise.all(promises).then((data) => {
           resolve(data.flat());
