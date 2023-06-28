@@ -82,6 +82,8 @@ Service.mockImplementation(() => ({
     }
     return new Promise((resolve) => { resolve(pearlJamMocks.stateCountByInterv); });
   }),
+  getSurveyUnitsQuestionnaireIdByCampaign: jest.fn((campaignId, cb) => (
+    cb(pearlJamMocks.surveyUnitsQuestionnaireId))),
 }));
 
 const dataRetreiver = new DataFormatter();
