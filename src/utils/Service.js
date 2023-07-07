@@ -51,8 +51,7 @@ class Service {
       this.makeOptions()
     )
       .then((res) => {
-        const { status, ok } = res;
-        if (!ok) return [];
+        if (!res.ok) return [];
         return res.json();
       })
       .then((data) => cb(data))
