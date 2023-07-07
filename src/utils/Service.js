@@ -52,9 +52,7 @@ class Service {
     )
       .then((res) => {
         const { status, ok } = res;
-        if (!ok && status === 404) {
-          return [];
-        }
+        if (!ok) return [];
         return res.json();
       })
       .then((data) => cb(data))
