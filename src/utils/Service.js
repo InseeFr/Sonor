@@ -46,12 +46,25 @@ class Service {
   }
 
   async getSurveyUnitsQuestionnaireIdByCampaign(campaignId, cb) {
-    return fetch(`${baseUrlQueen}/api/campaign/${campaignId}/survey-units`, this.makeOptions())
-      .then((res) => res.json())
+    return fetch(
+      `${baseUrlQueen}/api/campaign/${campaignId}/survey-units`,
+      this.makeOptions()
+    )
+      .then((res) => {
+        const { status, ok } = res;
+        if (!ok && status === 404) {
+          return [];
+        }
+        return res.json();
+      })
       .then((data) => cb(data))
       .catch((e) => {
         console.log(e);
-        NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
+        NotificationManager.error(
+          `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+          D.error,
+          10000
+        );
       });
   }
 
