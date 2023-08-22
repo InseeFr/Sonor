@@ -39,10 +39,30 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
           NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
         });
     });
+  }
+
+  async getSurveyUnitsQuestionnaireIdByCampaign(campaignId, cb) {
+    return fetch(
+      `${baseUrlQueen}/api/campaign/${campaignId}/survey-units`,
+      this.makeOptions()
+    )
+      .then((res) => {
+        if (!res.ok) return [];
+        return res.json();
+      })
+      .then((data) => cb(data))
+      .catch((e) => {
+        console.error(e);
+        NotificationManager.error(
+          `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+          D.error,
+          10000
+        );
+      });
   }
 
   getSurveyUnitsClosable(cb) {
@@ -52,7 +72,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
       });
   }
@@ -65,7 +85,7 @@ class Service {
       })
       .catch((err) => {
         cb({ count: null });
-        console.log(err);
+        console.error(err);
       });
   }
 
@@ -77,7 +97,7 @@ class Service {
       })
       .catch((err) => {
         cb({ count: null });
-        console.log(err);
+        console.error(err);
       });
   }
 
@@ -88,7 +108,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
       });
   }
@@ -100,7 +120,7 @@ class Service {
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/state/FIN`, options)
       .then((res) => cb(res))
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb();
       });
   }
@@ -112,7 +132,7 @@ class Service {
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/state/${state}`, options)
       .then((res) => cb(res))
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb();
       });
   }
@@ -124,7 +144,7 @@ class Service {
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/close/${closingCause}`, options)
       .then((res) => cb(res))
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb();
       });
   }
@@ -136,7 +156,7 @@ class Service {
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/closing-cause/${closingCause}`, options)
       .then((res) => cb(res))
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb();
       });
   }
@@ -149,7 +169,7 @@ class Service {
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/comment`, options)
       .then((res) => cb(res))
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb();
       });
   }
@@ -161,7 +181,7 @@ class Service {
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/viewed`, options)
       .then((res) => cb(res))
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb();
       });
   }
@@ -179,7 +199,7 @@ class Service {
     options.body = JSON.stringify(preferences);
     fetch(`${baseUrlPearlJam}/api/preferences`, options)
       .then((res) => cb(res))
-      .catch(console.log);
+      .catch(console.error);
   }
   // ------------------------ //
   // Preferences service end //
@@ -219,7 +239,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
       });
   }
@@ -235,7 +255,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
           if (cb) {
             cb([]);
           }
@@ -261,7 +281,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
         });
     });
   }
@@ -277,7 +297,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
           if (cb) {
             cb(null);
           }
@@ -297,7 +317,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
           if (cb) {
             cb(null);
           }
@@ -317,7 +337,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
         });
     });
   }
@@ -329,7 +349,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
       });
   }
@@ -351,7 +371,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
         });
     });
   }
@@ -367,7 +387,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
           if (cb) {
             cb(null);
           }
@@ -387,7 +407,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
           if (cb) {
             cb(null);
           }
@@ -407,7 +427,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
         });
     });
   }
@@ -429,7 +449,7 @@ class Service {
           resolve(data);
         })
         .catch((e) => {
-          console.log(e);
+          console.error(e);
           if (cb) {
             cb(null);
           }
@@ -451,7 +471,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb([]);
       });
   }
@@ -466,7 +486,7 @@ class Service {
           }
           resolve(data);
         })
-        .catch(console.log);
+        .catch(console.error);
     });
   }
   // ------------------------- //
@@ -483,7 +503,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb();
       });
   }
@@ -518,7 +538,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb([]);
       });
   }
@@ -530,7 +550,7 @@ class Service {
         cb(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         cb([]);
       });
   }
