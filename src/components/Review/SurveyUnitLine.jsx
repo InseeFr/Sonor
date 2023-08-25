@@ -1,19 +1,29 @@
-import React from 'react';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import D from '../../i18n';
+import React from "react";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import D from "../../i18n";
 
 function SurveyUnitLine({
-  lineData, isChecked, updateFunc, handleShow, view,
+  lineData,
+  isChecked,
+  updateFunc,
+  handleShow,
+  view,
+  dataRetreiver,
 }) {
-  const {
-    campaignLabel, interviewer, id, viewed, questionnaireId,
-  } = lineData;
-  const queenUrl = `${window.localStorage.getItem('QUEEN_URL_FRONT_END')}`;
+  const { campaignLabel, interviewer, id, viewed, questionnaireId } = lineData;
+  const queenUrl = `${window.localStorage.getItem("QUEEN_URL_FRONT_END")}`;
   return (
-    <tr className={viewed ? '' : 'notViewed'}>
+    <tr className={viewed ? "" : "notViewed"}>
       <td className="CheckboxCol" onClick={() => updateFunc()}>
-        <input key={id} type="checkbox" readOnly checked={isChecked} name={id} value={id} />
+        <input
+          key={id}
+          type="checkbox"
+          readOnly
+          checked={isChecked}
+          name={id}
+          value={id}
+        />
       </td>
       <td className="ColCampaign">{campaignLabel}</td>
       <td className="ColId">{id}</td>
@@ -21,26 +31,29 @@ function SurveyUnitLine({
       <td className="ColAction">
         <OverlayTrigger
           placement="top"
-          overlay={(
-            <Tooltip>
-              {D.questionnaire}
-            </Tooltip>
-          )}
+          overlay={<Tooltip>{D.questionnaire}</Tooltip>}
         >
           <i
             className="fa fa-calendar EditLink Clickable"
             aria-hidden="true"
-            onClick={() => { view(lineData); window.open(`${queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${id}`); }}
+            onClick={() => {
+              view(lineData);
+              dataRetreiver.getQuestionnaireModelIdForReviewLink(
+                [id],
+                (qmIds) => {
+                  const { questionnaireId } = qmIds[0];
+                  window.open(
+                    `${queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${id}`
+                  );
+                }
+              );
+            }}
           />
         </OverlayTrigger>
         <span />
         <OverlayTrigger
           placement="top"
-          overlay={(
-            <Tooltip>
-              {D.comment}
-            </Tooltip>
-          )}
+          overlay={<Tooltip>{D.comment}</Tooltip>}
         >
           <i
             className="fa fa-pencil EditCommentSurveyIcon Clickable"
