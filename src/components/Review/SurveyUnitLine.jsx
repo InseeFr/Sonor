@@ -11,7 +11,7 @@ function SurveyUnitLine({
   view,
   dataRetreiver,
 }) {
-  const { campaignLabel, interviewer, id, viewed, questionnaireId } = lineData;
+  const { campaignLabel, interviewer, id, viewed } = lineData;
   const queenUrl = `${window.localStorage.getItem("QUEEN_URL_FRONT_END")}`;
   return (
     <tr className={viewed ? "" : "notViewed"}>
