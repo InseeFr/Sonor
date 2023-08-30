@@ -1,8 +1,8 @@
-import { NotificationManager } from 'react-notifications';
-import D from '../i18n';
+import { NotificationManager } from "react-notifications";
+import D from "../i18n";
 
-const baseUrlPearlJam = `${window.localStorage.getItem('PEARL_JAM_URL')}`;
-const baseUrlQueen = `${window.localStorage.getItem('QUEEN_URL_BACK_END')}`;
+const baseUrlPearlJam = `${window.localStorage.getItem("PEARL_JAM_URL")}`;
+const baseUrlQueen = `${window.localStorage.getItem("QUEEN_URL_BACK_END")}`;
 
 class Service {
   constructor(keycloak) {
@@ -13,14 +13,14 @@ class Service {
     if (this.keycloak) {
       return {
         headers: new Headers({
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${this.keycloak.token}`,
         }),
       };
     }
     return {
       headers: new Headers({
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       }),
     };
   }
@@ -30,7 +30,12 @@ class Service {
   // -------------------------- //
   getSurveyUnits(campaignId, state, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units?${state ? `state=${state}` : ''}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units?${
+          state ? `state=${state}` : ""
+        }`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -40,16 +45,21 @@ class Service {
         })
         .catch((e) => {
           console.error(e);
-          NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
+          NotificationManager.error(
+            `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+            D.error,
+            10000
+          );
         });
     });
   }
 
-  async getSurveyUnitsQuestionnaireIdByCampaign(campaignId, cb) {
-    return fetch(
-      `${baseUrlQueen}/api/campaign/${campaignId}/survey-units`,
-      this.makeOptions()
-    )
+  async getSurveyUnitsQuestionnaireId(listSurveyUnitIds, cb) {
+    return fetch(`${baseUrlQueen}/api/survey-units/questionnaire-model-id`, {
+      ...this.makeOptions(),
+      method: "POST",
+      body: JSON.stringify(listSurveyUnitIds),
+    })
       .then((res) => {
         if (!res.ok) return [];
         return res.json();
@@ -73,12 +83,19 @@ class Service {
       })
       .catch((e) => {
         console.error(e);
-        NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
+        NotificationManager.error(
+          `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+          D.error,
+          10000
+        );
       });
   }
 
   getSurveyUnitsNotAttributedByCampaign(campaignId, cb) {
-    fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed`, this.makeOptions())
+    fetch(
+      `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed`,
+      this.makeOptions()
+    )
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -90,7 +107,10 @@ class Service {
   }
 
   getSurveyUnitsAbandonedByCampaign(campaignId, cb) {
-    fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/abandoned`, this.makeOptions())
+    fetch(
+      `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/abandoned`,
+      this.makeOptions()
+    )
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -109,14 +129,18 @@ class Service {
       })
       .catch((e) => {
         console.error(e);
-        NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
+        NotificationManager.error(
+          `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+          D.error,
+          10000
+        );
       });
   }
 
   putSurveyUnitToValidate(su, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'PUT';
+    options.method = "PUT";
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/state/FIN`, options)
       .then((res) => cb(res))
       .catch((e) => {
@@ -128,7 +152,7 @@ class Service {
   putSurveyUnitStateToChange(su, state, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'PUT';
+    options.method = "PUT";
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/state/${state}`, options)
       .then((res) => cb(res))
       .catch((e) => {
@@ -140,8 +164,11 @@ class Service {
   putSurveyUnitClose(su, closingCause, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'PUT';
-    fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/close/${closingCause}`, options)
+    options.method = "PUT";
+    fetch(
+      `${baseUrlPearlJam}/api/survey-unit/${su}/close/${closingCause}`,
+      options
+    )
       .then((res) => cb(res))
       .catch((e) => {
         console.error(e);
@@ -152,8 +179,11 @@ class Service {
   putSurveyUnitClosingCause(su, closingCause, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'PUT';
-    fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/closing-cause/${closingCause}`, options)
+    options.method = "PUT";
+    fetch(
+      `${baseUrlPearlJam}/api/survey-unit/${su}/closing-cause/${closingCause}`,
+      options
+    )
       .then((res) => cb(res))
       .catch((e) => {
         console.error(e);
@@ -164,7 +194,7 @@ class Service {
   putSurveyUnitComment(su, comment, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'PUT';
+    options.method = "PUT";
     options.body = JSON.stringify(comment);
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/comment`, options)
       .then((res) => cb(res))
@@ -177,7 +207,7 @@ class Service {
   putSurveyUnitViewed(su, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'PUT';
+    options.method = "PUT";
     fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/viewed`, options)
       .then((res) => cb(res))
       .catch((e) => {
@@ -195,7 +225,7 @@ class Service {
   putPreferences(preferences, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'PUT';
+    options.method = "PUT";
     options.body = JSON.stringify(preferences);
     fetch(`${baseUrlPearlJam}/api/preferences`, options)
       .then((res) => cb(res))
@@ -213,7 +243,9 @@ class Service {
       fetch(`${baseUrlPearlJam}/api/user`, this.makeOptions())
         .then((res) => res.json())
         .then((data) => {
-          if (cb) { cb(data); }
+          if (cb) {
+            cb(data);
+          }
           resolve(data);
         })
         .catch((e) => {
@@ -221,7 +253,11 @@ class Service {
             cb({ error: true, message: e });
           }
           resolve({ error: true, message: e });
-          NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
+          NotificationManager.error(
+            `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+            D.error,
+            10000
+          );
         });
     });
   }
@@ -240,13 +276,20 @@ class Service {
       })
       .catch((e) => {
         console.error(e);
-        NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
+        NotificationManager.error(
+          `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+          D.error,
+          10000
+        );
       });
   }
 
   getCampaignsByInterviewer(idep, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/interviewer/${idep}/campaigns`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/interviewer/${idep}/campaigns`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -272,7 +315,10 @@ class Service {
   // -------------------------- //
   getStateCount(campaignId, date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -288,7 +334,10 @@ class Service {
 
   getStateCountNotAttributed(campaignId, date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/state-count?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/state-count?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -308,7 +357,10 @@ class Service {
 
   getStateCountByInterviewer(campaignId, idep, date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/state-count?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/state-count?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -328,7 +380,10 @@ class Service {
 
   getStateCountByCampaign(date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaigns/survey-units/state-count?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaigns/survey-units/state-count?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -343,14 +398,21 @@ class Service {
   }
 
   getStateCountTotalByCampaign(campaignId, cb) {
-    fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count`, this.makeOptions())
+    fetch(
+      `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count`,
+      this.makeOptions()
+    )
       .then((res) => res.json())
       .then((data) => {
         cb(data);
       })
       .catch((e) => {
         console.error(e);
-        NotificationManager.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`, D.error, 10000);
+        NotificationManager.error(
+          `${D.cannotRetreiveData} ${D.verifyInternetCo}`,
+          D.error,
+          10000
+        );
       });
   }
   // ------------------------ //
@@ -362,7 +424,10 @@ class Service {
   // ------------------------------- //
   getContactOutcomes(campaignId, date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/contact-outcomes?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/contact-outcomes?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -378,7 +443,10 @@ class Service {
 
   getContactOutcomesNotAttributed(campaignId, date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/contact-outcomes?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/contact-outcomes?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -398,7 +466,10 @@ class Service {
 
   getContactOutcomesByInterviewer(campaignId, idep, date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/contact-outcomes?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/contact-outcomes?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -418,7 +489,10 @@ class Service {
 
   getContactOutcomesByCampaign(date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaigns/survey-units/contact-outcomes?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaigns/survey-units/contact-outcomes?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -440,7 +514,10 @@ class Service {
   // ---------------------------- //
   getClosingCausesByInterviewer(campaignId, idep, date, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/closing-causes?date=${date}`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/closing-causes?date=${date}`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -478,7 +555,10 @@ class Service {
 
   getInterviewersByCampaign(campaignId, cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/campaign/${campaignId}/interviewers`, this.makeOptions())
+      fetch(
+        `${baseUrlPearlJam}/api/campaign/${campaignId}/interviewers`,
+        this.makeOptions()
+      )
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -497,7 +577,10 @@ class Service {
   // Questionnaires service begin //
   // ----------------------------- //
   getQuestionnaireId(campaignId, cb) {
-    fetch(`${baseUrlQueen}/api/campaign/${campaignId}/questionnaire-id`, this.makeOptions())
+    fetch(
+      `${baseUrlQueen}/api/campaign/${campaignId}/questionnaire-id`,
+      this.makeOptions()
+    )
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -517,19 +600,18 @@ class Service {
   postMessage(body, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'POST';
+    options.method = "POST";
     options.body = JSON.stringify(body);
 
-    fetch(`${baseUrlPearlJam}/api/message`, options)
-      .then((data) => {
-        cb(data);
-      });
+    fetch(`${baseUrlPearlJam}/api/message`, options).then((data) => {
+      cb(data);
+    });
   }
 
   verifyName(text, cb) {
     const options = {};
     Object.assign(options, this.makeOptions());
-    options.method = 'POST';
+    options.method = "POST";
     options.body = JSON.stringify({ text });
 
     fetch(`${baseUrlPearlJam}/api/verify-name`, options)

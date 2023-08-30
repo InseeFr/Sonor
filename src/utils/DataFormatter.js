@@ -3,11 +3,11 @@ import {
   BY_SITE,
   BY_SURVEY,
   BY_SURVEY_ONE_INTERVIEWER,
-} from './constants.json';
+} from "./constants.json";
 
-import D from '../i18n';
-import Service from './Service';
-import Utils from './Utils';
+import D from "../i18n";
+import Service from "./Service";
+import Utils from "./Utils";
 
 class DataFormatter {
   constructor(keycloak) {
@@ -15,7 +15,9 @@ class DataFormatter {
   }
 
   getInterviewers(cb) {
-    this.service.getInterviewers((data) => { cb(data); });
+    this.service.getInterviewers((data) => {
+      cb(data);
+    });
   }
 
   getUserInfo(cb) {
@@ -47,7 +49,9 @@ class DataFormatter {
   updatePreferences(preferences, cb) {
     return new Promise((resolve) => {
       this.service.putPreferences(preferences, (data) => {
-        if (cb) { cb(data); }
+        if (cb) {
+          cb(data);
+        }
         resolve(data);
       });
     });
@@ -56,7 +60,7 @@ class DataFormatter {
   getDataForCampaignPortal(campaignId, cb) {
     const p1 = new Promise((resolve) => {
       this.service.getInterviewersByCampaign(campaignId, (data) => {
-        resolve(Utils.sortData(data, 'CPinterviewer', true));
+        resolve(Utils.sortData(data, "CPinterviewer", true));
       });
     });
     const p2 = new Promise((resolve) => {
@@ -108,7 +112,7 @@ class DataFormatter {
             formattedSurvey.phase = Utils.getCampaignPhase(
               survey.collectionStartDate,
               survey.collectionEndDate,
-              survey.endDate,
+              survey.endDate
             );
             return formattedSurvey;
           });
@@ -142,13 +146,11 @@ class DataFormatter {
           interviewer: su.interviewer
             ? `${su.interviewer.interviewerLastName} ${su.interviewer.interviewerFirstName}`
             : D.unaffected,
-          idep: su.interviewer
-            ? su.interviewer.id
-            : '',
+          idep: su.interviewer ? su.interviewer.id : "",
           state: su.state,
           closingCause: su.closingCause,
         }));
-        resolve(Utils.sortData(processedData, 'id', true));
+        resolve(Utils.sortData(processedData, "id", true));
       });
     });
     Promise.all([p1, p2]).then((data) => {
@@ -166,15 +168,16 @@ class DataFormatter {
     let processedData = [];
     this.service.getQuestionnaireId(campaignId, (queenRes) => {
       Promise.all([
-        this.service.getSurveyUnits(campaignId, 'FIN'),
-        this.service.getSurveyUnits(campaignId, 'CLO'),
+        this.service.getSurveyUnits(campaignId, "FIN"),
+        this.service.getSurveyUnits(campaignId, "CLO"),
       ]).then((data) => {
         const flattenData = data.flat();
         processedData = flattenData.map((intData) => {
           const line = {};
           Object.assign(line, intData);
           if (intData.interviewer) {
-            line.interviewerFirstName = intData.interviewer.interviewerFirstName;
+            line.interviewerFirstName =
+              intData.interviewer.interviewerFirstName;
             line.interviewerLastName = intData.interviewer.interviewerLastName;
           } else {
             line.interviewerFirstName = D.unaffected;
@@ -184,49 +187,49 @@ class DataFormatter {
           }
           return line;
         });
-        if (cb) { cb(processedData); }
-        Utils.sortData(processedData, 'finalizationDate', true);
+        if (cb) {
+          cb(processedData);
+        }
+        Utils.sortData(processedData, "finalizationDate", true);
       });
     });
   }
 
   getListSUToReview(surveyId) {
     return new Promise((resolve) => {
-      this.service.getCampaigns((res) => {
-        const promises = res
+      this.service.getCampaigns((campaigns) => {
+        const promises = campaigns
           .filter((campaign) => surveyId === null || campaign.id === surveyId)
-          .map((campaign) => this.service.getSurveyUnitsQuestionnaireIdByCampaign(
-            campaign.id,
-            (questionnaireIdResp) => {
-              const questionnaireIdMap = questionnaireIdResp.reduce(
-                (acc, surveyUnit) => ({
-                  ...acc,
-                  [surveyUnit.id]: surveyUnit.questionnaireId,
-                }),
-                {},
-              );
 
-              return new Promise((resolve2) => {
-                this.service.getSurveyUnits(campaign.id, 'TBR', (res2) => {
-                  const lstSU = res2
-                    .map((su) => ({
-                      campaignLabel: campaign.label,
-                      campaignId: campaign.id,
-                      questionnaireId: questionnaireIdMap[su.id],
-                      interviewer: su.interviewer
-                        ? `${su.interviewer.interviewerLastName} ${su.interviewer.interviewerFirstName}`
-                        : D.unaffected,
-                      idep: su.interviewer ? su.interviewer.id : '',
-                      id: su.id,
-                      viewed: su.viewed,
-                      comments: su.comments,
-                    }))
-                    .sort((a, b) => (a.interviewer > b.interviewer ? 1 : -1));
-                  resolve2(lstSU);
-                });
-              });
-            },
-          ));
+          .map(
+            (campaign) =>
+              new Promise((resolveCampaign) => {
+                // get SU by campaignId with state = TBR
+                this.service.getSurveyUnits(
+                  campaign.id,
+                  "TBR",
+                  (surveyUnits) => {
+                    const lstSU = surveyUnits
+                      // format survey-unit data
+                      .map((su) => ({
+                        campaignLabel: campaign.label,
+                        campaignId: campaign.id,
+                        interviewer: su.interviewer
+                          ? `${su.interviewer.interviewerLastName} ${su.interviewer.interviewerFirstName}`
+                          : D.unaffected,
+                        idep: su.interviewer ? su.interviewer.id : "",
+                        id: su.id,
+                        viewed: su.viewed,
+                        comments: su.comments,
+                      }))
+                      // order by interviewer name
+                      .sort((a, b) => (a.interviewer > b.interviewer ? 1 : -1));
+                    resolveCampaign(lstSU);
+                  }
+                );
+              })
+          );
+
         Promise.all(promises).then((data) => {
           resolve(data.flat());
         });
@@ -234,23 +237,40 @@ class DataFormatter {
     });
   }
 
+  /**
+   * @param {string[]} suIds - array of survey-units ids.
+   * @param {function} cb what to do whith returned result
+   *
+   * internally processed type
+   *
+   * { "surveyUnitOK" : [ { "id" : "string", "questionnaireId" : "string" , {...} } ] ,
+   *
+   *  "surveyUnitNOK" : [ { ... currentlyUnused } ] }
+   */
+  getQuestionnaireModelIdForReviewLink(suIds, cb) {
+    this.service.getSurveyUnitsQuestionnaireId(suIds, (suOkNok) => {
+      cb(suOkNok.surveyUnitOK);
+    });
+  }
+
   getlinesDetails(survey, interviewers, date) {
     return new Promise((resolve) => {
-      const promises = interviewers.map((interv) => (
-        new Promise((resolve2) => {
-          this.service.getStateCountByInterviewer(
-            survey.id,
-            interv.id,
-            date,
-            (data) => {
-              const interviewer = {};
-              Object.assign(interviewer, interv);
-              interviewer.survey = survey.id;
-              resolve2({ interviewer, stateCount: data });
-            },
-          );
-        })
-      ));
+      const promises = interviewers.map(
+        (interv) =>
+          new Promise((resolve2) => {
+            this.service.getStateCountByInterviewer(
+              survey.id,
+              interv.id,
+              date,
+              (data) => {
+                const interviewer = {};
+                Object.assign(interviewer, interv);
+                interviewer.survey = survey.id;
+                resolve2({ interviewer, stateCount: data });
+              }
+            );
+          })
+      );
       Promise.all(promises).then((data) => {
         const processedData = data.map((intData) => {
           const line = {};
@@ -267,13 +287,14 @@ class DataFormatter {
 
   finalizeSurveyUnits(suToFinalize, cb) {
     return new Promise((resolve) => {
-      const promises = suToFinalize.map((su) => (
-        new Promise((resolve2) => {
-          this.service.putSurveyUnitToValidate(su, (data) => {
-            resolve2(data);
-          });
-        })
-      ));
+      const promises = suToFinalize.map(
+        (su) =>
+          new Promise((resolve2) => {
+            this.service.putSurveyUnitToValidate(su, (data) => {
+              resolve2(data);
+            });
+          })
+      );
 
       Promise.all(promises).then((data) => {
         if (cb) {
@@ -286,13 +307,14 @@ class DataFormatter {
 
   updateSurveyUnitsState(suToChangeState, state, cb) {
     return new Promise((resolve) => {
-      const promises = suToChangeState.map((su) => (
-        new Promise((resolve2) => {
-          this.service.putSurveyUnitStateToChange(su, state, (data) => {
-            resolve2(data);
-          });
-        })
-      ));
+      const promises = suToChangeState.map(
+        (su) =>
+          new Promise((resolve2) => {
+            this.service.putSurveyUnitStateToChange(su, state, (data) => {
+              resolve2(data);
+            });
+          })
+      );
 
       Promise.all(promises).then((data) => {
         if (cb) {
@@ -305,13 +327,14 @@ class DataFormatter {
 
   closeSurveyUnits(suToChangeState, closingCause, cb) {
     return new Promise((resolve) => {
-      const promises = suToChangeState.map((su) => (
-        new Promise((resolve2) => {
-          this.service.putSurveyUnitClose(su, closingCause, (data) => {
-            resolve2(data);
-          });
-        })
-      ));
+      const promises = suToChangeState.map(
+        (su) =>
+          new Promise((resolve2) => {
+            this.service.putSurveyUnitClose(su, closingCause, (data) => {
+              resolve2(data);
+            });
+          })
+      );
 
       Promise.all(promises).then((data) => {
         if (cb) {
@@ -324,13 +347,14 @@ class DataFormatter {
 
   tagWithClosingCauseSurveyUnits(suToChangeState, closingCause, cb) {
     return new Promise((resolve) => {
-      const promises = suToChangeState.map((su) => (
-        new Promise((resolve2) => {
-          this.service.putSurveyUnitClosingCause(su, closingCause, (data) => {
-            resolve2(data);
-          });
-        })
-      ));
+      const promises = suToChangeState.map(
+        (su) =>
+          new Promise((resolve2) => {
+            this.service.putSurveyUnitClosingCause(su, closingCause, (data) => {
+              resolve2(data);
+            });
+          })
+      );
 
       Promise.all(promises).then((data) => {
         if (cb) {
@@ -344,11 +368,13 @@ class DataFormatter {
   updateSurveyUnitsComment(suToChangeComment, comment, cb) {
     return new Promise((resolve) => {
       const body = {
-        type: 'MANAGEMENT',
+        type: "MANAGEMENT",
         value: comment,
       };
       this.service.putSurveyUnitComment(suToChangeComment, body, (data) => {
-        if (cb) { cb(data); }
+        if (cb) {
+          cb(data);
+        }
         resolve(data);
       });
     });
@@ -368,8 +394,10 @@ class DataFormatter {
   getStatesSurvey(surveyId, cb) {
     return new Promise((resolve) => {
       this.service.getStatesBySurveyUnit(surveyId, (data) => {
-        if (cb) { cb(data.states); }
-        resolve(Utils.sortData(data.states, 'date', true));
+        if (cb) {
+          cb(data.states);
+        }
+        resolve(Utils.sortData(data.states, "date", true));
       });
     });
   }
@@ -383,9 +411,13 @@ class DataFormatter {
     let site;
 
     if (mode === BY_SURVEY_ONE_INTERVIEWER) {
-      this.getSurveyByInterviewerDataForMonitoringTable(survey, date, (data) => {
-        cb(data);
-      });
+      this.getSurveyByInterviewerDataForMonitoringTable(
+        survey,
+        date,
+        (data) => {
+          cb(data);
+        }
+      );
     } else {
       if (mode !== BY_SITE) {
         let surveysToGetInterviewersFrom;
@@ -397,40 +429,43 @@ class DataFormatter {
         site = (await this.service.getUser()).organizationUnit.label;
         p1 = new Promise((resolve) => {
           if (mode === BY_INTERVIEWER_ONE_SURVEY) {
-            const promises = surveysToGetInterviewersFrom.map((surv) => (
-              new Promise((resolve2) => {
-                this.service.getInterviewersByCampaign(surv.id, (res) => {
-                  res.forEach((interviewer) => {
-                    Utils.addIfNotAlreadyPresent(interviewers, interviewer);
+            const promises = surveysToGetInterviewersFrom.map(
+              (surv) =>
+                new Promise((resolve2) => {
+                  this.service.getInterviewersByCampaign(surv.id, (res) => {
+                    res.forEach((interviewer) => {
+                      Utils.addIfNotAlreadyPresent(interviewers, interviewer);
+                    });
+                    this.getlinesDetails(surv, res, date).then((data) =>
+                      resolve2(data)
+                    );
                   });
-                  this.getlinesDetails(
-                    surv,
-                    res,
-                    date,
-                  ).then((data) => resolve2(data));
-                });
-              })
-            ));
+                })
+            );
             Promise.all(promises).then((data) => {
-              resolve(Utils.sumOn(data.flat(), 'interviewerId'));
+              resolve(Utils.sumOn(data.flat(), "interviewerId"));
             });
           } else if (mode === BY_SURVEY) {
             this.service.getStateCountByCampaign(date, (res) => {
-              resolve(res.map((x) => {
-                const obj = Utils.formatForMonitoringTable(x);
-                obj.survey = x.campaign.label;
-                return obj;
-              }));
+              resolve(
+                res.map((x) => {
+                  const obj = Utils.formatForMonitoringTable(x);
+                  obj.survey = x.campaign.label;
+                  return obj;
+                })
+              );
             });
           } else {
             this.service.getStateCountByInterviewer(date, (res) => {
-              resolve(res.map((x) => {
-                const obj = Utils.formatForMonitoringTable(x);
-                obj.interviewerFirstName = x.interviewer.interviewerFirstName;
-                obj.interviewerLastName = x.interviewer.interviewerLastName;
-                obj.interviewerId = x.interviewer.id;
-                return obj;
-              }));
+              resolve(
+                res.map((x) => {
+                  const obj = Utils.formatForMonitoringTable(x);
+                  obj.interviewerFirstName = x.interviewer.interviewerFirstName;
+                  obj.interviewerLastName = x.interviewer.interviewerLastName;
+                  obj.interviewerId = x.interviewer.id;
+                  return obj;
+                })
+              );
             });
           }
         });
@@ -441,7 +476,9 @@ class DataFormatter {
           this.service.getStateCount(survey.id, date, (data) => {
             if (mode === BY_INTERVIEWER_ONE_SURVEY) {
               this.service.getUser((userInfo) => {
-                const userOUs = userInfo.localOrganizationUnits.map((x) => x.id);
+                const userOUs = userInfo.localOrganizationUnits.map(
+                  (x) => x.id
+                );
                 const demStateCounts = data.organizationUnits
                   .filter((dem) => userOUs.includes(dem.idDem))
                   .map((dem) => ({ stateCount: dem }));
@@ -494,32 +531,27 @@ class DataFormatter {
   }
 
   async getSurveyByInterviewerDataForMonitoringTable(interviewer, date, cb) {
-    this.service.getCampaignsByInterviewer(interviewer.id)
-      .then((campaigns) => {
-        const stateCountProms = campaigns.map((c) => this.service.getStateCountByInterviewer(
-          c.id,
-          interviewer.id,
-          date,
-        ));
-        Promise.all(stateCountProms)
-          .then((stateCounts) => {
-            cb(
-              {
-                linesDetails: stateCounts
-                  .map((line, index) => {
-                    if (line !== undefined && line !== null && line.total) {
-                      const obj = Utils.formatForMonitoringTable(line);
-                      obj.survey = campaigns[index].label;
-                      return obj;
-                    }
-                    return line;
-                  })
-                  .filter((stateCount) => stateCount !== undefined && stateCount !== null)
-                ,
-              },
-            );
-          });
+    this.service.getCampaignsByInterviewer(interviewer.id).then((campaigns) => {
+      const stateCountProms = campaigns.map((c) =>
+        this.service.getStateCountByInterviewer(c.id, interviewer.id, date)
+      );
+      Promise.all(stateCountProms).then((stateCounts) => {
+        cb({
+          linesDetails: stateCounts
+            .map((line, index) => {
+              if (line !== undefined && line !== null && line.total) {
+                const obj = Utils.formatForMonitoringTable(line);
+                obj.survey = campaigns[index].label;
+                return obj;
+              }
+              return line;
+            })
+            .filter(
+              (stateCount) => stateCount !== undefined && stateCount !== null
+            ),
+        });
       });
+    });
   }
 
   async getDataForCollectionTable(chosenElm, givenDate, pagination, mode, cb) {
@@ -533,14 +565,22 @@ class DataFormatter {
         });
         break;
       case BY_INTERVIEWER_ONE_SURVEY:
-        this.getDataForCollectionTableByInterviewerOneSuvey(chosenElm, date, (data) => {
-          cb(data);
-        });
+        this.getDataForCollectionTableByInterviewerOneSuvey(
+          chosenElm,
+          date,
+          (data) => {
+            cb(data);
+          }
+        );
         break;
       case BY_SURVEY_ONE_INTERVIEWER:
-        this.getDataForCollectionTableBySurveyOneInterviewer(chosenElm, date, (data) => {
-          cb(data);
-        });
+        this.getDataForCollectionTableBySurveyOneInterviewer(
+          chosenElm,
+          date,
+          (data) => {
+            cb(data);
+          }
+        );
         break;
       case BY_SITE:
         this.getDataForCollectionTableBySite(chosenElm, date, (data) => {
@@ -559,15 +599,17 @@ class DataFormatter {
     ]).then((data) => {
       const lines = data[1].organizationUnits
         .filter((dem) => dem.total)
-        .map((dem) => Utils.formatForCollectionTable(
-          {
-            idDem: dem.idDem,
-            site: dem.labelDem,
-            isLocal: dem.isLocal,
-          },
-          data[0].organizationUnits.find((d) => d.idDem === dem.idDem),
-          dem,
-        ));
+        .map((dem) =>
+          Utils.formatForCollectionTable(
+            {
+              idDem: dem.idDem,
+              site: dem.labelDem,
+              isLocal: dem.isLocal,
+            },
+            data[0].organizationUnits.find((d) => d.idDem === dem.idDem),
+            dem
+          )
+        );
 
       cb({
         linesDetails: lines,
@@ -575,7 +617,7 @@ class DataFormatter {
           france: Utils.formatForCollectionTable(
             {},
             data[0].france,
-            data[1].france,
+            data[1].france
           ),
         },
       });
@@ -590,11 +632,13 @@ class DataFormatter {
     ]).then((data) => {
       const lines = data[1]
         .filter((camp) => camp.total)
-        .map((camp) => Utils.formatForCollectionTable(
-          { survey: camp.campaign.label },
-          data[0].find((c) => c.campaign.id === camp.campaign.id),
-          camp,
-        ));
+        .map((camp) =>
+          Utils.formatForCollectionTable(
+            { survey: camp.campaign.label },
+            data[0].find((c) => c.campaign.id === camp.campaign.id),
+            camp
+          )
+        );
 
       cb({
         site: data[2].organizationUnit.label,
@@ -606,18 +650,33 @@ class DataFormatter {
   async getDataForCollectionTableByInterviewerOneSuvey(survey, date, cb) {
     this.service.getInterviewersByCampaign(survey.id, (interviewers) => {
       const p1 = new Promise((resolve) => {
-        const promises = interviewers.map((interviewer) => new Promise((resolve2) => {
-          Promise.all([
-            interviewer,
-            this.service.getContactOutcomesByInterviewer(survey.id, interviewer.id, date),
-            this.service.getStateCountByInterviewer(survey.id, interviewer.id, date),
-          ]).then(resolve2);
-        }));
+        const promises = interviewers.map(
+          (interviewer) =>
+            new Promise((resolve2) => {
+              Promise.all([
+                interviewer,
+                this.service.getContactOutcomesByInterviewer(
+                  survey.id,
+                  interviewer.id,
+                  date
+                ),
+                this.service.getStateCountByInterviewer(
+                  survey.id,
+                  interviewer.id,
+                  date
+                ),
+              ]).then(resolve2);
+            })
+        );
         Promise.all(promises).then((data) => {
-          resolve(data
-            .filter((line) => line !== null && line[1] !== null && line[2] !== null)
-            .filter((intElm) => intElm[2].total)
-            .map((intElm) => Utils.formatForCollectionTable(...intElm)));
+          resolve(
+            data
+              .filter(
+                (line) => line !== null && line[1] !== null && line[2] !== null
+              )
+              .filter((intElm) => intElm[2].total)
+              .map((intElm) => Utils.formatForCollectionTable(...intElm))
+          );
         });
       });
 
@@ -629,23 +688,26 @@ class DataFormatter {
         ];
         Promise.all(promises2).then((data) => {
           const userOUs = data[0].localOrganizationUnits.map((x) => x.id);
-          const demContactOutcomes = data[1].organizationUnits
-            .filter((dem) => userOUs.includes(dem.idDem));
-          const demStateCounts = data[2].organizationUnits
-            .filter((dem) => userOUs.includes(dem.idDem));
+          const demContactOutcomes = data[1].organizationUnits.filter((dem) =>
+            userOUs.includes(dem.idDem)
+          );
+          const demStateCounts = data[2].organizationUnits.filter((dem) =>
+            userOUs.includes(dem.idDem)
+          );
           const totalDem = Utils.formatForCollectionTable(
             {},
             Utils.sumElms(demContactOutcomes),
-            Utils.sumElms(demStateCounts),
+            Utils.sumElms(demStateCounts)
           );
           const totalFrance = Utils.formatForCollectionTable(
             {},
             data[1].france,
-            data[2].france,
+            data[2].france
           );
           resolve({
             total: {
-              dem: totalDem, france: totalFrance,
+              dem: totalDem,
+              france: totalFrance,
             },
             site: data[0].organizationUnit.label,
           });
@@ -658,13 +720,7 @@ class DataFormatter {
           this.service.getStateCountNotAttributed(survey.id, date),
         ];
         Promise.all(promises).then((data) => {
-          resolve(
-            Utils.formatForCollectionTable(
-              {},
-              data[0],
-              data[1],
-            ),
-          );
+          resolve(Utils.formatForCollectionTable({}, data[0], data[1]));
         });
       });
 
@@ -680,126 +736,162 @@ class DataFormatter {
   }
 
   async getDataForCollectionTableBySurveyOneInterviewer(interviewer, date, cb) {
-    this.service.getCampaignsByInterviewer(interviewer.id)
-      .then((campaigns) => {
-        const promises = campaigns.map((c) => new Promise((resolve) => {
-          const datas = [
-            { survey: c.label },
-            this.service.getContactOutcomesByInterviewer(
-              c.id,
-              interviewer.id,
-              date,
-            ),
-            this.service.getStateCountByInterviewer(
-              c.id,
-              interviewer.id,
-              date,
-            ),
-          ];
-          Promise.all(datas).then(resolve);
-        }));
-        Promise.all(promises)
-          .then((data) => {
-            cb(
-              {
-                linesDetails: data
-                  .filter((line) => line !== null && line[1] !== null && line[2] !== null)
-                  .filter((lineData) => lineData[2].total)
-                  .map((lineData) => Utils.formatForCollectionTable(...lineData)),
-              },
-            );
-          });
+    this.service.getCampaignsByInterviewer(interviewer.id).then((campaigns) => {
+      const promises = campaigns.map(
+        (c) =>
+          new Promise((resolve) => {
+            const datas = [
+              { survey: c.label },
+              this.service.getContactOutcomesByInterviewer(
+                c.id,
+                interviewer.id,
+                date
+              ),
+              this.service.getStateCountByInterviewer(
+                c.id,
+                interviewer.id,
+                date
+              ),
+            ];
+            Promise.all(datas).then(resolve);
+          })
+      );
+      Promise.all(promises).then((data) => {
+        cb({
+          linesDetails: data
+            .filter(
+              (line) => line !== null && line[1] !== null && line[2] !== null
+            )
+            .filter((lineData) => lineData[2].total)
+            .map((lineData) => Utils.formatForCollectionTable(...lineData)),
+        });
       });
+    });
   }
 
-  async getDataForProvisionalStatusTable(chosenElm, givenDate, pagination, mode, cb) {
+  async getDataForProvisionalStatusTable(
+    chosenElm,
+    givenDate,
+    pagination,
+    mode,
+    cb
+  ) {
     // Adding 24h to take all states added before the next day into account
     const date = givenDate + 86400000;
     switch (mode) {
       case BY_INTERVIEWER_ONE_SURVEY:
-        this.getDataForProvisionalStatusTableByInterviewerOneSuvey(chosenElm, date, (data) => {
-          cb(data);
-        });
+        this.getDataForProvisionalStatusTableByInterviewerOneSuvey(
+          chosenElm,
+          date,
+          (data) => {
+            cb(data);
+          }
+        );
         break;
       case BY_SURVEY_ONE_INTERVIEWER:
-        this.getDataForProvisionalStatusTableBySurveyOneInterviewer(chosenElm, date, (data) => {
-          cb(data);
-        });
+        this.getDataForProvisionalStatusTableBySurveyOneInterviewer(
+          chosenElm,
+          date,
+          (data) => {
+            cb(data);
+          }
+        );
         break;
       default:
         cb();
     }
   }
 
-  async getDataForProvisionalStatusTableByInterviewerOneSuvey(survey, date, cb) {
+  async getDataForProvisionalStatusTableByInterviewerOneSuvey(
+    survey,
+    date,
+    cb
+  ) {
     this.service.getInterviewersByCampaign(survey.id).then((interviewers) => {
-      const promises = interviewers.map((interviewer) => new Promise((resolve) => {
-        const datas = [
-          { interviewer },
-          this.service.getClosingCausesByInterviewer(
-            survey.id,
-            interviewer.id,
-            date,
-          ),
-        ];
-        Promise.all(datas).then((data) => {
-          resolve(data[1] !== null
-            ? Utils.formatForProvisionalStatusTable(
-              data[0],
-              data[1],
-            ) : null);
-        });
-      }));
+      const promises = interviewers.map(
+        (interviewer) =>
+          new Promise((resolve) => {
+            const datas = [
+              { interviewer },
+              this.service.getClosingCausesByInterviewer(
+                survey.id,
+                interviewer.id,
+                date
+              ),
+            ];
+            Promise.all(datas).then((data) => {
+              resolve(
+                data[1] !== null
+                  ? Utils.formatForProvisionalStatusTable(data[0], data[1])
+                  : null
+              );
+            });
+          })
+      );
       Promise.all(promises).then((data) => {
         cb({
           linesDetails: data
             .filter((lineData) => lineData !== null)
             .filter((lineData) => lineData.allocated),
-          total: data.reduce((acc, curr) => {
-            acc.npiCount += curr.npiCount;
-            acc.npaCount += curr.npaCount;
-            acc.npxCount += curr.npxCount;
-            acc.rowCount += curr.rowCount;
-            acc.total += curr.total;
-            acc.allocated += curr.allocated;
-            return acc;
-          }, {
-            allocated: 0, npiCount: 0, npaCount: 0, npxCount: 0, rowCount: 0, total: 0,
-          }),
+          total: data.reduce(
+            (acc, curr) => {
+              acc.npiCount += curr.npiCount;
+              acc.npaCount += curr.npaCount;
+              acc.npxCount += curr.npxCount;
+              acc.rowCount += curr.rowCount;
+              acc.total += curr.total;
+              acc.allocated += curr.allocated;
+              return acc;
+            },
+            {
+              allocated: 0,
+              npiCount: 0,
+              npaCount: 0,
+              npxCount: 0,
+              rowCount: 0,
+              total: 0,
+            }
+          ),
         });
       });
     });
   }
 
-  async getDataForProvisionalStatusTableBySurveyOneInterviewer(interviewer, date, cb) {
-    this.service.getCampaignsByInterviewer(interviewer.id)
-      .then((campaigns) => {
-        const promises = campaigns.map((c) => new Promise((resolve) => {
-          const datas = [
-            { survey: c.label },
-            this.service.getClosingCausesByInterviewer(
-              c.id,
-              interviewer.id,
-              date,
-            ),
-          ];
-          Promise.all(datas).then((data) => {
-            resolve(data[1] !== null
-              ? Utils.formatForProvisionalStatusTable(
-                data[0],
-                data[1],
-              ) : null);
-          });
-        }));
-        Promise.all(promises).then((data) => {
-          cb({
-            linesDetails: data
-              .filter((lineData) => lineData !== null)
-              .filter((lineData) => lineData.allocated)
-              .map((lineData) => lineData),
-          });
+  async getDataForProvisionalStatusTableBySurveyOneInterviewer(
+    interviewer,
+    date,
+    cb
+  ) {
+    this.service.getCampaignsByInterviewer(interviewer.id).then((campaigns) => {
+      const promises = campaigns.map(
+        (c) =>
+          new Promise((resolve) => {
+            const datas = [
+              { survey: c.label },
+              this.service.getClosingCausesByInterviewer(
+                c.id,
+                interviewer.id,
+                date
+              ),
+            ];
+            Promise.all(datas).then((data) => {
+              resolve(
+                data[1] !== null
+                  ? Utils.formatForProvisionalStatusTable(data[0], data[1])
+                  : null
+              );
+            });
+          })
+      );
+      Promise.all(promises).then((data) => {
+        cb({
+          linesDetails: data
+            .filter((lineData) => lineData !== null)
+            .filter((lineData) => lineData.allocated)
+            .map((lineData) => lineData),
         });
       });
+    });
   }
 
   postMessage(body, cb) {
