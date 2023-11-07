@@ -13,6 +13,7 @@ import SearchField from '../SearchField/SearchField';
 import SortIcon from '../SortIcon/SortIcon';
 import Utils from '../../utils/Utils';
 import D from '../../i18n';
+import labelsContactOutcomes from '../../i18n/labels/labels_contactOutcomes';
 import './Terminated.css';
 
 class TerminatedTable extends React.Component {
@@ -100,6 +101,7 @@ class TerminatedTable extends React.Component {
         <td className="ColId" data-testid="campaign-label">{data.id}</td>
         <td className="ColInterviewer">{`${data.interviewer.interviewerLastName} ${data.interviewer.interviewerFirstName}`}</td>
         <td className="ColFinalizationDate">{`${Utils.convertToDateString(data.finalizationDate)}`}</td>
+        <td className="ColContactOutcome">{labelsContactOutcomes[data.contactOutcome].fr}</td>
         <td className="ColReading">{data.reading ? D.yes : D.no}</td>
         <td className="ColAction">
           <OverlayTrigger
@@ -214,6 +216,12 @@ class TerminatedTable extends React.Component {
                 >
                   <SortIcon val="finalizationDate" sort={sort} />
                   {D.finalizedDate}
+                </th>
+                <th
+                  rowSpan="2"
+                  className="Clickable ColContactOutcome"
+                >
+                  {D.contact}
                 </th>
                 <th
                   rowSpan="2"
