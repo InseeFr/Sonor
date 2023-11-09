@@ -213,6 +213,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact output
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -258,6 +264,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -306,6 +317,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -350,6 +366,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -398,6 +419,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -444,6 +470,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -488,6 +519,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -763,6 +799,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact output
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -808,6 +850,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -856,6 +903,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -900,6 +952,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -948,6 +1005,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -994,6 +1056,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -1038,6 +1105,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -1370,6 +1442,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact output
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -1415,6 +1493,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -1463,6 +1546,11 @@ Object {
                     6/30/2019
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1507,6 +1595,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     2/14/2021
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -1555,6 +1648,11 @@ Object {
                     6/10/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1599,6 +1697,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -1647,6 +1750,11 @@ Object {
                     8/31/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1691,6 +1799,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     5/7/2022
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -1739,6 +1852,11 @@ Object {
                     10/21/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1785,6 +1903,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1829,6 +1952,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -2104,6 +2232,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact output
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -2149,6 +2283,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -2197,6 +2336,11 @@ Object {
                   6/30/2019
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2241,6 +2385,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   2/14/2021
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -2289,6 +2438,11 @@ Object {
                   6/10/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2333,6 +2487,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -2381,6 +2540,11 @@ Object {
                   8/31/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2425,6 +2589,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   5/7/2022
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -2473,6 +2642,11 @@ Object {
                   10/21/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2519,6 +2693,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2563,6 +2742,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -2895,6 +3079,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact output
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -2940,6 +3130,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -2988,6 +3183,11 @@ Object {
                     6/30/2019
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3032,6 +3232,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     2/14/2021
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -3080,6 +3285,11 @@ Object {
                     6/10/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3124,6 +3334,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -3172,6 +3387,11 @@ Object {
                     8/31/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3216,6 +3436,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     5/7/2022
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -3264,6 +3489,11 @@ Object {
                     10/21/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3310,6 +3540,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3354,6 +3589,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -3629,6 +3869,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact output
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -3674,6 +3920,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -3722,6 +3973,11 @@ Object {
                   6/30/2019
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -3766,6 +4022,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   2/14/2021
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -3814,6 +4075,11 @@ Object {
                   6/10/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -3858,6 +4124,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -3906,6 +4177,11 @@ Object {
                   8/31/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -3950,6 +4226,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   5/7/2022
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -3998,6 +4279,11 @@ Object {
                   10/21/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -4044,6 +4330,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -4088,6 +4379,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -4420,6 +4716,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact output
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -4465,6 +4767,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -4513,6 +4820,11 @@ Object {
                     6/30/2019
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4557,6 +4869,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     2/14/2021
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -4605,6 +4922,11 @@ Object {
                     6/10/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4649,6 +4971,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -4697,6 +5024,11 @@ Object {
                     8/31/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4741,6 +5073,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     5/7/2022
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -4789,6 +5126,11 @@ Object {
                     10/21/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4835,6 +5177,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4879,6 +5226,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -5227,6 +5579,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact output
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -5272,6 +5630,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -5320,6 +5683,11 @@ Object {
                   6/30/2019
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5364,6 +5732,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   2/14/2021
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -5412,6 +5785,11 @@ Object {
                   6/10/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5456,6 +5834,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -5504,6 +5887,11 @@ Object {
                   8/31/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5548,6 +5936,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   5/7/2022
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -5596,6 +5989,11 @@ Object {
                   10/21/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5642,6 +6040,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5686,6 +6089,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -6099,6 +6507,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact output
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -6144,6 +6558,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -6192,6 +6611,11 @@ Object {
                     2/14/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6236,6 +6660,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -6284,6 +6713,11 @@ Object {
                     5/7/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6328,6 +6762,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -6376,6 +6815,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6420,6 +6864,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -6468,6 +6917,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6514,6 +6968,11 @@ Object {
                     6/30/2019
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6558,6 +7017,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/10/2021
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Enquête acceptée
                   </td>
                   <td
                     class="ColReading"
@@ -6833,6 +7297,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact output
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -6878,6 +7348,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -6926,6 +7401,11 @@ Object {
                   2/14/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -6970,6 +7450,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -7018,6 +7503,11 @@ Object {
                   5/7/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -7062,6 +7552,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -7110,6 +7605,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -7154,6 +7654,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
@@ -7202,6 +7707,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -7248,6 +7758,11 @@ Object {
                   6/30/2019
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -7292,6 +7807,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/10/2021
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Enquête acceptée
                 </td>
                 <td
                   class="ColReading"
