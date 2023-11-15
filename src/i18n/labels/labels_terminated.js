@@ -13,7 +13,7 @@ const terminated = {
   },
   contact: {
     fr: 'Issue de contact',
-    en: 'Contact output',
+    en: 'Contact outcome',
   },
   listSuActions: {
     fr: 'Actions',

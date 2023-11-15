@@ -101,7 +101,7 @@ class TerminatedTable extends React.Component {
         <td className="ColId" data-testid="campaign-label">{data.id}</td>
         <td className="ColInterviewer">{`${data.interviewer.interviewerLastName} ${data.interviewer.interviewerFirstName}`}</td>
         <td className="ColFinalizationDate">{`${Utils.convertToDateString(data.finalizationDate)}`}</td>
-        <td className="ColContactOutcome">{labelsContactOutcomes[data.contactOutcome].fr}</td>
+        <td className="ColContactOutcome">{D[data.contactOutcome]}</td>
         <td className="ColReading">{data.reading ? D.yes : D.no}</td>
         <td className="ColAction">
           <OverlayTrigger
