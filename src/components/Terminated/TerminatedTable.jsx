@@ -13,7 +13,6 @@ import SearchField from '../SearchField/SearchField';
 import SortIcon from '../SortIcon/SortIcon';
 import Utils from '../../utils/Utils';
 import D from '../../i18n';
-import labelsContactOutcomes from '../../i18n/labels/labels_contactOutcomes';
 import './Terminated.css';
 
 class TerminatedTable extends React.Component {
