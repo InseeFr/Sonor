@@ -1,19 +1,19 @@
 /* Column sizes */
 
 #TerminatedTableContainer .ColCampaign {
-  width: 22%;
+  width: 21%;
 }
 #TerminatedTableContainer .ColId {
   width: 16%;
 }
 #TerminatedTableContainer .ColInterviewer {
-  width: 22%;
+  width: 21%;
 }
 #TerminatedTableContainer .ColFinalizationDate {
   width: 14%;
 }
 #TerminatedTableContainer .ColContactOutcome {
-  width: 8%;
+  width: 10%;
 }
 #TerminatedTableContainer .ColReading {
   width: 8%;
