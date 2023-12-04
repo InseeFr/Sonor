@@ -1,21 +1,23 @@
-
 /* Column sizes */
 
-#TerminatedTableContainer .ColCampaign{
-  width: 28%;
+#TerminatedTableContainer .ColCampaign {
+  width: 21%;
 }
-#TerminatedTableContainer .ColId{
+#TerminatedTableContainer .ColId {
   width: 16%;
 }
-#TerminatedTableContainer .ColInterviewer{
-  width: 22%;
+#TerminatedTableContainer .ColInterviewer {
+  width: 21%;
 }
-#TerminatedTableContainer .ColFinalizationDate{
+#TerminatedTableContainer .ColFinalizationDate {
   width: 14%;
 }
-#TerminatedTableContainer .ColReading{
+#TerminatedTableContainer .ColContactOutcome {
   width: 10%;
 }
-#TerminatedTableContainer .ColAction{
+#TerminatedTableContainer .ColReading {
+  width: 8%;
+}
+#TerminatedTableContainer .ColAction {
   width: 10%;
 }
