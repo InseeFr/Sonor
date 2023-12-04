@@ -216,7 +216,7 @@ Object {
                     class="Clickable ColContactOutcome"
                     rowspan="2"
                   >
-                    Contact output
+                    Contact outcome
                   </th>
                   <th
                     class="Clickable ColReading"
@@ -268,7 +268,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -319,7 +319,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -370,7 +370,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -421,7 +421,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -472,7 +472,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -523,7 +523,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -802,7 +802,7 @@ Object {
                   class="Clickable ColContactOutcome"
                   rowspan="2"
                 >
-                  Contact output
+                  Contact outcome
                 </th>
                 <th
                   class="Clickable ColReading"
@@ -854,7 +854,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -905,7 +905,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -956,7 +956,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -1007,7 +1007,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -1058,7 +1058,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -1109,7 +1109,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -1445,7 +1445,7 @@ Object {
                     class="Clickable ColContactOutcome"
                     rowspan="2"
                   >
-                    Contact output
+                    Contact outcome
                   </th>
                   <th
                     class="Clickable ColReading"
@@ -1497,7 +1497,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1548,7 +1548,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1599,7 +1599,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1650,7 +1650,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1701,7 +1701,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1752,7 +1752,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1803,7 +1803,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1854,7 +1854,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1905,7 +1905,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1956,7 +1956,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -2235,7 +2235,7 @@ Object {
                   class="Clickable ColContactOutcome"
                   rowspan="2"
                 >
-                  Contact output
+                  Contact outcome
                 </th>
                 <th
                   class="Clickable ColReading"
@@ -2287,7 +2287,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2338,7 +2338,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2389,7 +2389,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2440,7 +2440,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2491,7 +2491,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2542,7 +2542,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2593,7 +2593,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2644,7 +2644,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2695,7 +2695,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2746,7 +2746,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -3082,7 +3082,7 @@ Object {
                     class="Clickable ColContactOutcome"
                     rowspan="2"
                   >
-                    Contact output
+                    Contact outcome
                   </th>
                   <th
                     class="Clickable ColReading"
@@ -3134,7 +3134,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3185,7 +3185,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3236,7 +3236,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3287,7 +3287,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3338,7 +3338,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3389,7 +3389,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3440,7 +3440,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3491,7 +3491,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3542,7 +3542,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3593,7 +3593,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3872,7 +3872,7 @@ Object {
                   class="Clickable ColContactOutcome"
                   rowspan="2"
                 >
-                  Contact output
+                  Contact outcome
                 </th>
                 <th
                   class="Clickable ColReading"
@@ -3924,7 +3924,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -3975,7 +3975,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4026,7 +4026,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4077,7 +4077,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4128,7 +4128,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4179,7 +4179,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4230,7 +4230,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4281,7 +4281,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4332,7 +4332,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4383,7 +4383,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4719,7 +4719,7 @@ Object {
                     class="Clickable ColContactOutcome"
                     rowspan="2"
                   >
-                    Contact output
+                    Contact outcome
                   </th>
                   <th
                     class="Clickable ColReading"
@@ -4771,7 +4771,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -4822,7 +4822,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -4873,7 +4873,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -4924,7 +4924,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -4975,7 +4975,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -5026,7 +5026,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -5077,7 +5077,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -5128,7 +5128,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -5179,7 +5179,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -5230,7 +5230,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -5582,7 +5582,7 @@ Object {
                   class="Clickable ColContactOutcome"
                   rowspan="2"
                 >
-                  Contact output
+                  Contact outcome
                 </th>
                 <th
                   class="Clickable ColReading"
@@ -5634,7 +5634,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5685,7 +5685,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5736,7 +5736,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5787,7 +5787,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5838,7 +5838,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5889,7 +5889,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5940,7 +5940,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5991,7 +5991,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -6042,7 +6042,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -6093,7 +6093,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -6510,7 +6510,7 @@ Object {
                     class="Clickable ColContactOutcome"
                     rowspan="2"
                   >
-                    Contact output
+                    Contact outcome
                   </th>
                   <th
                     class="Clickable ColReading"
@@ -6562,7 +6562,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6613,7 +6613,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6664,7 +6664,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6715,7 +6715,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6766,7 +6766,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6817,7 +6817,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6868,7 +6868,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6919,7 +6919,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6970,7 +6970,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -7021,7 +7021,7 @@ Object {
                   <td
                     class="ColContactOutcome"
                   >
-                    Enquête acceptée
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -7300,7 +7300,7 @@ Object {
                   class="Clickable ColContactOutcome"
                   rowspan="2"
                 >
-                  Contact output
+                  Contact outcome
                 </th>
                 <th
                   class="Clickable ColReading"
@@ -7352,7 +7352,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7403,7 +7403,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7454,7 +7454,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7505,7 +7505,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7556,7 +7556,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7607,7 +7607,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7658,7 +7658,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7709,7 +7709,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7760,7 +7760,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7811,7 +7811,7 @@ Object {
                 <td
                   class="ColContactOutcome"
                 >
-                  Enquête acceptée
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
