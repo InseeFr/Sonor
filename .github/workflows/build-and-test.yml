@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 14
+      - name: install
+        run: yarn --frozen-lockfile
+      - name: test & coverage
+        run: yarn run test
+      - name: fix code coverage paths
+        working-directory: ./coverage
+        run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' lcov.info
+      - name: SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

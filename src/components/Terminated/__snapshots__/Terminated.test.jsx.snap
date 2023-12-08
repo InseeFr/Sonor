@@ -74,7 +74,7 @@ Object {
           class="PageTitle card-title h5"
         >
           Survey units terminated : 
-          16
+          19
         </div>
         <div
           class="row"
@@ -213,6 +213,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -247,6 +253,159 @@ Object {
                     class="ColId"
                     data-testid="campaign-label"
                   >
+                    4814
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Boulanger Jacques
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    10/21/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1028
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    4816
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Boulanger Jacques
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
                     1029
                   </td>
                   <td
@@ -258,6 +417,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -306,6 +470,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -350,6 +519,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -398,6 +572,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -444,6 +623,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -488,6 +672,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -624,7 +813,7 @@ Object {
         class="PageTitle card-title h5"
       >
         Survey units terminated : 
-        16
+        19
       </div>
       <div
         class="row"
@@ -763,6 +952,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact outcome
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -797,6 +992,159 @@ Object {
                   class="ColId"
                   data-testid="campaign-label"
                 >
+                  4814
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Boulanger Jacques
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  10/21/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1028
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  4816
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Boulanger Jacques
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
                   1029
                 </td>
                 <td
@@ -808,6 +1156,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -856,6 +1209,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -900,6 +1258,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -948,6 +1311,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -994,6 +1362,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -1038,6 +1411,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -1231,7 +1609,7 @@ Object {
           class="PageTitle card-title h5"
         >
           Survey units terminated : 
-          16
+          19
         </div>
         <div
           class="row"
@@ -1370,6 +1748,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -1415,6 +1799,164 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023b
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023c
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023d
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1463,6 +2005,11 @@ Object {
                     6/30/2019
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1507,6 +2054,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     2/14/2021
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1555,6 +2107,11 @@ Object {
                     6/10/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1599,6 +2156,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1647,6 +2209,11 @@ Object {
                     8/31/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -1693,142 +2260,9 @@ Object {
                     5/7/2022
                   </td>
                   <td
-                    class="ColReading"
+                    class="ColContactOutcome"
                   >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4814
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    10/21/2020
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    1028
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Dupont Chloé
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    8/20/2020
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4816
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    8/20/2020
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -1965,7 +2399,7 @@ Object {
         class="PageTitle card-title h5"
       >
         Survey units terminated : 
-        16
+        19
       </div>
       <div
         class="row"
@@ -2104,6 +2538,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact outcome
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -2149,6 +2589,164 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023b
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023c
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023d
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2197,6 +2795,11 @@ Object {
                   6/30/2019
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2241,6 +2844,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   2/14/2021
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2289,6 +2897,11 @@ Object {
                   6/10/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2333,6 +2946,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2381,6 +2999,11 @@ Object {
                   8/31/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -2427,142 +3050,9 @@ Object {
                   5/7/2022
                 </td>
                 <td
-                  class="ColReading"
+                  class="ColContactOutcome"
                 >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4814
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  10/21/2020
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  1028
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Dupont Chloé
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  8/20/2020
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4816
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  8/20/2020
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -2756,7 +3246,7 @@ Object {
           class="PageTitle card-title h5"
         >
           Survey units terminated : 
-          16
+          19
         </div>
         <div
           class="row"
@@ -2895,6 +3385,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -2940,6 +3436,164 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023b
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023c
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023d
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -2988,6 +3642,11 @@ Object {
                     6/30/2019
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3032,6 +3691,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     2/14/2021
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3080,6 +3744,11 @@ Object {
                     6/10/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3124,6 +3793,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3172,6 +3846,11 @@ Object {
                     8/31/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -3218,142 +3897,9 @@ Object {
                     5/7/2022
                   </td>
                   <td
-                    class="ColReading"
+                    class="ColContactOutcome"
                   >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4814
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    10/21/2020
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    1028
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Dupont Chloé
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    8/20/2020
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4816
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    8/20/2020
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -3490,7 +4036,7 @@ Object {
         class="PageTitle card-title h5"
       >
         Survey units terminated : 
-        16
+        19
       </div>
       <div
         class="row"
@@ -3629,6 +4175,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact outcome
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -3674,6 +4226,164 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023b
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023c
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023d
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -3722,6 +4432,11 @@ Object {
                   6/30/2019
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -3766,6 +4481,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   2/14/2021
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -3814,6 +4534,11 @@ Object {
                   6/10/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -3858,6 +4583,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -3906,6 +4636,11 @@ Object {
                   8/31/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -3952,142 +4687,9 @@ Object {
                   5/7/2022
                 </td>
                 <td
-                  class="ColReading"
+                  class="ColContactOutcome"
                 >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4814
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  10/21/2020
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  1028
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Dupont Chloé
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  8/20/2020
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4816
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  8/20/2020
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -4281,7 +4883,7 @@ Object {
           class="PageTitle card-title h5"
         >
           Survey units terminated : 
-          16
+          19
         </div>
         <div
           class="row"
@@ -4420,6 +5022,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -4465,6 +5073,164 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023b
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023c
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023d
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -4513,6 +5279,11 @@ Object {
                     6/30/2019
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4557,6 +5328,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     2/14/2021
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -4605,6 +5381,11 @@ Object {
                     6/10/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4649,6 +5430,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -4697,6 +5483,11 @@ Object {
                     8/31/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -4743,142 +5534,9 @@ Object {
                     5/7/2022
                   </td>
                   <td
-                    class="ColReading"
+                    class="ColContactOutcome"
                   >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4814
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    10/21/2020
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    1028
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Dupont Chloé
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    8/20/2020
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4816
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    8/20/2020
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -5088,7 +5746,7 @@ Object {
         class="PageTitle card-title h5"
       >
         Survey units terminated : 
-        16
+        19
       </div>
       <div
         class="row"
@@ -5227,6 +5885,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact outcome
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -5272,6 +5936,164 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023b
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023c
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023d
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5320,6 +6142,11 @@ Object {
                   6/30/2019
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5364,6 +6191,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   2/14/2021
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5412,6 +6244,11 @@ Object {
                   6/10/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5456,6 +6293,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5504,6 +6346,11 @@ Object {
                   8/31/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -5550,142 +6397,9 @@ Object {
                   5/7/2022
                 </td>
                 <td
-                  class="ColReading"
+                  class="ColContactOutcome"
                 >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4814
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  10/21/2020
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  1028
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Dupont Chloé
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  8/20/2020
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4816
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  8/20/2020
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -5960,7 +6674,7 @@ Object {
           class="PageTitle card-title h5"
         >
           Survey units terminated : 
-          16
+          19
         </div>
         <div
           class="row"
@@ -6099,6 +6813,12 @@ Object {
                     Finalization date
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                    rowspan="2"
+                  >
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColReading"
                     rowspan="2"
                   >
@@ -6144,6 +6864,164 @@ Object {
                     class="ColFinalizationDate"
                   >
                     6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023b
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023c
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
+                    class="ColReading"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="ColAction"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-calendar EditLink Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                    />
+                    <span />
+                    <i
+                      aria-hidden="true"
+                      class="fa fa-history HistoryDisplayIcon Clickable"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="ColCampaign"
+                  >
+                    Everyday life and health survey 2021
+                  </td>
+                  <td
+                    class="ColId"
+                    data-testid="campaign-label"
+                  >
+                    1023d
+                  </td>
+                  <td
+                    class="ColInterviewer"
+                  >
+                    Dupont Chloé
+                  </td>
+                  <td
+                    class="ColFinalizationDate"
+                  >
+                    6/30/2019
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6192,6 +7070,11 @@ Object {
                     2/14/2021
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6236,6 +7119,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     10/31/2025
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6284,6 +7172,11 @@ Object {
                     5/7/2022
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6328,6 +7221,11 @@ Object {
                     class="ColFinalizationDate"
                   >
                     8/20/2020
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6376,6 +7274,11 @@ Object {
                     8/20/2020
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColReading"
                   >
                     No
@@ -6422,142 +7325,9 @@ Object {
                     8/20/2020
                   </td>
                   <td
-                    class="ColReading"
+                    class="ColContactOutcome"
                   >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    1032
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Dupont Chloé
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    8/20/2020
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4811
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    6/30/2019
-                  </td>
-                  <td
-                    class="ColReading"
-                  >
-                    No
-                  </td>
-                  <td
-                    class="ColAction"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-calendar EditLink Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                    />
-                    <span />
-                    <i
-                      aria-hidden="true"
-                      class="fa fa-history HistoryDisplayIcon Clickable"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="ColCampaign"
-                  >
-                    Everyday life and health survey 2021
-                  </td>
-                  <td
-                    class="ColId"
-                    data-testid="campaign-label"
-                  >
-                    4812
-                  </td>
-                  <td
-                    class="ColInterviewer"
-                  >
-                    Boulanger Jacques
-                  </td>
-                  <td
-                    class="ColFinalizationDate"
-                  >
-                    6/10/2021
+                    Interview accepted
                   </td>
                   <td
                     class="ColReading"
@@ -6694,7 +7464,7 @@ Object {
         class="PageTitle card-title h5"
       >
         Survey units terminated : 
-        16
+        19
       </div>
       <div
         class="row"
@@ -6833,6 +7603,12 @@ Object {
                   Finalization date
                 </th>
                 <th
+                  class="Clickable ColContactOutcome"
+                  rowspan="2"
+                >
+                  Contact outcome
+                </th>
+                <th
                   class="Clickable ColReading"
                   rowspan="2"
                 >
@@ -6878,6 +7654,164 @@ Object {
                   class="ColFinalizationDate"
                 >
                   6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023b
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023c
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
+                  class="ColReading"
+                >
+                  No
+                </td>
+                <td
+                  class="ColAction"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-calendar EditLink Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
+                  />
+                  <span />
+                  <i
+                    aria-hidden="true"
+                    class="fa fa-history HistoryDisplayIcon Clickable"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="ColCampaign"
+                >
+                  Everyday life and health survey 2021
+                </td>
+                <td
+                  class="ColId"
+                  data-testid="campaign-label"
+                >
+                  1023d
+                </td>
+                <td
+                  class="ColInterviewer"
+                >
+                  Dupont Chloé
+                </td>
+                <td
+                  class="ColFinalizationDate"
+                >
+                  6/30/2019
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -6926,6 +7860,11 @@ Object {
                   2/14/2021
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -6970,6 +7909,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   10/31/2025
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7018,6 +7962,11 @@ Object {
                   5/7/2022
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -7062,6 +8011,11 @@ Object {
                   class="ColFinalizationDate"
                 >
                   8/20/2020
+                </td>
+                <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"
@@ -7110,6 +8064,11 @@ Object {
                   8/20/2020
                 </td>
                 <td
+                  class="ColContactOutcome"
+                >
+                  Interview accepted
+                </td>
+                <td
                   class="ColReading"
                 >
                   No
@@ -7156,142 +8115,9 @@ Object {
                   8/20/2020
                 </td>
                 <td
-                  class="ColReading"
+                  class="ColContactOutcome"
                 >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  1032
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Dupont Chloé
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  8/20/2020
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4811
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  6/30/2019
-                </td>
-                <td
-                  class="ColReading"
-                >
-                  No
-                </td>
-                <td
-                  class="ColAction"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-calendar EditLink Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-pencil EditCommentSurveyIcon Clickable"
-                  />
-                  <span />
-                  <i
-                    aria-hidden="true"
-                    class="fa fa-history HistoryDisplayIcon Clickable"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="ColCampaign"
-                >
-                  Everyday life and health survey 2021
-                </td>
-                <td
-                  class="ColId"
-                  data-testid="campaign-label"
-                >
-                  4812
-                </td>
-                <td
-                  class="ColInterviewer"
-                >
-                  Boulanger Jacques
-                </td>
-                <td
-                  class="ColFinalizationDate"
-                >
-                  6/10/2021
+                  Interview accepted
                 </td>
                 <td
                   class="ColReading"

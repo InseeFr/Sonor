@@ -11,6 +11,10 @@ const terminated = {
     fr: 'Lecture',
     en: 'Reading',
   },
+  contact: {
+    fr: 'Issue de contact',
+    en: 'Contact outcome',
+  },
   listSuActions: {
     fr: 'Actions',
     en: 'Actions',

@@ -102,9 +102,8 @@ class TerminatedTable extends React.Component {
           {data.id}
         </td>
         <td className="ColInterviewer">{`${data.interviewer.interviewerLastName} ${data.interviewer.interviewerFirstName}`}</td>
-        <td className="ColFinalizationDate">{`${Utils.convertToDateString(
-          data.finalizationDate
-        )}`}</td>
+        <td className="ColFinalizationDate">{`${Utils.convertToDateString(data.finalizationDate)}`}</td>
+        <td className="ColContactOutcome">{D[data.contactOutcome]}</td>
         <td className="ColReading">{data.reading ? D.yes : D.no}</td>
         <td className="ColAction">
           <OverlayTrigger
@@ -253,7 +252,13 @@ class TerminatedTable extends React.Component {
                 </th>
                 <th
                   rowSpan="2"
-                  onClick={handleSortFunct("reading")}
+                  className="Clickable ColContactOutcome"
+                >
+                  {D.contact}
+                </th>
+                <th
+                  rowSpan="2"
+                  onClick={handleSortFunct('reading')}
                   className="Clickable ColReading"
                 >
                   <SortIcon val="reading" sort={sort} />
