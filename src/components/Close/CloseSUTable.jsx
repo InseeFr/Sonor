@@ -40,7 +40,7 @@ class CloseSUTable extends React.Component {
     this.state = {
       pagination: { size: 10, page: 1 },
       displayedLines: props.data,
-      checkboxArray: props.data.reduce((acc, curr) => { acc[curr.id] = false; return acc; }, {}),
+      checkboxArray: props.data ? props.data.map((element) => {return  {id: element.id, isChecked: false}}) : [],
       checkAll: false,
       show: false,
       stateModified: '',
@@ -51,37 +51,78 @@ class CloseSUTable extends React.Component {
     const { data } = this.props;
     if (prevProps.data !== data) {
       this.setState({ displayedLines: data });
-      const newCheckboxArray = Array.isArray(data)
-        ? data.reduce(
-          (acc, curr) => { acc[curr.id] = false; return acc; }, {},
-        )
-        : [];
+      const newCheckboxArray = data !== undefined ? data.map((element) => {return  {id: element.id, isChecked: false}}) : []
       this.setState({ checkboxArray: newCheckboxArray, checkAll: false });
     }
   }
 
+  getCheckAllValue(checkboxArray, pagination){
+    const lastIndexOnPage = pagination.size * pagination.page > checkboxArray.length ? 
+    checkboxArray.length : 
+    pagination.size * pagination.page;
+
+    for (let i = pagination.size * (pagination.page - 1); i < lastIndexOnPage; i++ ){
+      if(checkboxArray[i].isChecked === false){
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   handlePageChange(pagination) {
-    this.setState({ pagination });
+    const checkAll = this.getCheckAllValue(this.state.checkboxArray, pagination);
+    this.setState({ pagination, checkAll });
   }
 
   handleCheckAll(e) {
-    const { checkboxArray } = this.state;
-    const newCheckboxArray = Object.keys(checkboxArray).reduce(
-      (acc, curr) => { acc[curr] = e.target.checked; return acc; }, {},
-    );
+    const { checkboxArray, displayedLines} = this.state;
+    let newCheckboxArray = []
+    displayedLines.map((data, index) => {
+      if(index >= this.state.pagination.size *  (this.state.pagination.page - 1) && index <  this.state.pagination.size *  this.state.pagination.page) {
+        return newCheckboxArray.push({id : data.id, isChecked: e.target.checked});
+      }
+      else {
+        const checkboxData = checkboxArray.find((element) => element.id === data.id);
+        return newCheckboxArray.push({id : data.id, isChecked: checkboxData ? checkboxData.isChecked : false});
+      }
+    })
+
+    checkboxArray.map((element) => {
+      if(displayedLines.find((line) => line.id === element.id) === undefined){
+        return newCheckboxArray.push(element);
+      }
+    })
     this.setState({
       checkboxArray: newCheckboxArray,
       checkAll: e.target.checked,
     });
   }
 
-  toggleCheckBox(i) {
-    const { checkboxArray } = this.state;
-    const newCheckboxArray = { ...checkboxArray };
-    newCheckboxArray[i] = !newCheckboxArray[i];
+  toggleCheckBox(id) {
+    const { checkboxArray, displayedLines, pagination } = this.state;
+    let newCheckboxArray = [];
+
+    displayedLines.map((element) =>{ 
+      const checkboxArrayData = checkboxArray.find((data) => data.id === element.id);
+      if(element.id !== id) { 
+        return newCheckboxArray.push(checkboxArrayData);
+      } 
+      else {
+        return newCheckboxArray.push({id: element.id, isChecked: !checkboxArrayData.isChecked});
+      }
+    })
+    
+    const newCheckAll = this.getCheckAllValue(newCheckboxArray, pagination);
+    checkboxArray.map((element) => {
+      if(displayedLines.find((line) => line.id === element.id) === undefined){
+        return newCheckboxArray.push(element);
+      }
+    })
+
     this.setState({
       checkboxArray: newCheckboxArray,
-      checkAll: !Object.values(newCheckboxArray).some((elm) => !elm),
+      checkAll: newCheckAll,
     });
   }
 
@@ -95,15 +136,15 @@ class CloseSUTable extends React.Component {
 
   isDisabled() {
     const { checkboxArray } = this.state;
-    return !Object.values(checkboxArray).some((elm) => elm);
+    return !checkboxArray.filter((element) => element.isChecked === true).length > 0;
   }
 
   validate() {
     const { validateChangingState } = this.props;
     const { checkboxArray, stateModified } = this.state;
-    const lstSUChangingState = Object.entries(checkboxArray)
-      .filter((su) => (su[1]))
-      .map((su) => (su[0]));
+    const lstSUChangingState = checkboxArray
+      .filter((su) => (su.isChecked))
+      .map((su) => (su.id));
     validateChangingState(lstSUChangingState, stateModified);
   }
 
@@ -124,9 +165,7 @@ class CloseSUTable extends React.Component {
 
   updateLines(matchingLines) {
     const { pagination, checkboxArray } = this.state;
-    const newCheckboxArray = Object.keys(checkboxArray).reduce(
-      (acc, curr) => { acc[curr] = false; return acc; }, {},
-    );
+    const newCheckboxArray = checkboxArray.map((element) => {return  {id :element.id, isChecked: false}})
     this.setState({
       checkboxArray: newCheckboxArray,
       checkAll: false,
@@ -144,7 +183,7 @@ class CloseSUTable extends React.Component {
       pagination, displayedLines, checkboxArray, checkAll, show, stateModified,
     } = this.state;
     const toggleCheckBox = (i) => { this.toggleCheckBox(i); };
-    function handleSortFunct(property) { return () => { handleSort(property); }; }
+        function handleSortFunct(property) { return () => { handleSort(property); }; }
     return (
       <Card className="ViewCard">
         <Card.Title className="PageTitle">
@@ -244,14 +283,16 @@ class CloseSUTable extends React.Component {
                                 (pagination.page - 1) * pagination.size,
                                 Math.min(pagination.page * pagination.size, displayedLines.length),
                               )
-                              .map((line) => (
-                                <CloseSurveyUnitLine
-                                  key={line.id}
-                                  lineData={line}
-                                  isChecked={checkboxArray[line.id]}
-                                  updateFunc={() => toggleCheckBox(line.id)}
-                                />
-                              ))}
+                              .map((line) => {
+                                const element = checkboxArray.filter((element) => element.id === line.id)[0]
+                                return (
+                                  <CloseSurveyUnitLine
+                                    key={line.id}
+                                    lineData={line}
+                                    isChecked={ element !== undefined ? element.isChecked : false}
+                                    updateFunc={() => toggleCheckBox(line.id)}
+                                  />
+                              )})}
                           </tbody>
                         </Table>
                         <div className="tableOptionsWrapper">
