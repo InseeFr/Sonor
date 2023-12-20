@@ -16,10 +16,7 @@ class ReviewTable extends React.Component {
     super(props);
     this.state = {
       pagination: { size: 10, page: 1 },
-      checkboxArray: props.data.reduce((acc, curr) => {
-        acc[curr.id] = false;
-        return acc;
-      }, {}),
+      checkboxArray: props.data ? props.data.map((element) => {return  {id: element.id, isChecked: false}}) : [],
       checkAll: false,
       show: false,
       displayedLines: props.data,
@@ -30,27 +27,28 @@ class ReviewTable extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    const { survey, data } = this.props;
-    if (prevProps.survey !== survey) {
-      const newCheckboxArray = data.reduce((acc, curr) => {
-        acc[curr.id] = false;
-        return acc;
-      }, {});
-      this.setState({ checkboxArray: newCheckboxArray, checkAll: false });
+  getCheckAllValue(checkboxArray, pagination){
+    const lastIndexOnPage = pagination.size * pagination.page > checkboxArray.length ? 
+    checkboxArray.length : 
+    pagination.size *  pagination.page;
+
+    for (let i = pagination.size * (pagination.page - 1); i < lastIndexOnPage; i++ ){
+      if(checkboxArray[i].isChecked === false){
+        return false;
+      }
     }
+
+    return true;
   }
 
   handlePageChange(pagination) {
-    this.setState({ pagination });
+    const checkAll = this.getCheckAllValue(this.state.checkboxArray, pagination)
+    this.setState({ pagination , checkAll});
   }
 
   updateLines(matchingLines) {
     const { pagination, checkboxArray } = this.state;
-    const newCheckboxArray = Object.keys(checkboxArray).reduce((acc, curr) => {
-      acc[curr] = false;
-      return acc;
-    }, {});
+    const newCheckboxArray = checkboxArray.map((element) => {return  {id :element.id, isChecked: false}})
     this.setState({
       checkboxArray: newCheckboxArray,
       checkAll: false,
@@ -101,18 +99,36 @@ class ReviewTable extends React.Component {
   validateSU() {
     const { validateSU } = this.props;
     const { checkboxArray } = this.state;
-    const ids = Object.entries(checkboxArray)
-      .filter((su) => su[1])
-      .map((su) => su[0]);
+    const ids = checkboxArray
+      .filter((su) => su.isChecked)
+      .map((su) => su.id);
     validateSU(ids);
   }
 
   handleCheckAll() {
-    const { checkboxArray, checkAll } = this.state;
-    const newCheckboxArray = Object.keys(checkboxArray).reduce((acc, curr) => {
-      acc[curr] = !checkAll;
-      return acc;
-    }, {});
+    const { checkboxArray, checkAll, displayedLines} = this.state;
+    let newCheckboxArray = []
+    displayedLines.map((data, index) => {
+      if(index >= this.state.pagination.size *  (this.state.pagination.page - 1) && index <  this.state.pagination.size *  this.state.pagination.page) {
+        if(!checkAll ){
+          return newCheckboxArray.push({id : data.id, isChecked: true})
+        }
+        if (checkAll ) {
+          return newCheckboxArray.push({id : data.id, isChecked: false})
+        }
+      }
+      else {
+        const checkboxData = checkboxArray.find((element) => element.id === data.id)
+        return newCheckboxArray.push({id : data.id, isChecked: checkboxData ? checkboxData.isChecked : false})
+      }
+    })
+
+    checkboxArray.map((element) => {
+      if(displayedLines.find((line) => line.id === element.id) === undefined){
+        return newCheckboxArray.push(element)
+      }
+    })
+   
     this.setState({
       checkboxArray: newCheckboxArray,
       checkAll: !checkAll,
@@ -121,16 +137,33 @@ class ReviewTable extends React.Component {
 
   isDisabled() {
     const { checkboxArray } = this.state;
-    return !Object.values(checkboxArray).some((elm) => elm);
+    return !checkboxArray.filter((element) => element.isChecked === true).length > 0;
   }
 
-  toggleCheckBox(i) {
-    const { checkboxArray } = this.state;
-    const newCheckboxArray = { ...checkboxArray };
-    newCheckboxArray[i] = !newCheckboxArray[i];
+  toggleCheckBox(id) {
+    const { checkboxArray, pagination, displayedLines } = this.state;
+    let newCheckboxArray = [];
+
+    displayedLines.map((element) =>{ 
+      const checkboxArrayData = checkboxArray.find((data) => data.id === element.id);
+      if(element.id !== id) { 
+        return newCheckboxArray.push(checkboxArrayData);
+      } 
+      else {
+        return newCheckboxArray.push({id: element.id, isChecked: !checkboxArrayData.isChecked});
+      }
+    })
+    
+    const newCheckAll = this.getCheckAllValue(newCheckboxArray, pagination);
+    checkboxArray.map((element) => {
+      if(displayedLines.find((line) => line.id === element.id) === undefined){
+        return newCheckboxArray.push(element);
+      }
+    })
+
     this.setState({
       checkboxArray: newCheckboxArray,
-      checkAll: !Object.values(newCheckboxArray).some((elm) => !elm),
+      checkAll: newCheckAll,
     });
   }
 
@@ -232,17 +265,18 @@ class ReviewTable extends React.Component {
                   displayedLines.length
                 )
               )
-              .map((line) => (
-                <SurveyUnitLine
+              .map((line) => {
+                const element = checkboxArray.filter((element) => element.id === line.id)[0]
+                return <SurveyUnitLine
                   key={line.id}
                   lineData={line}
                   dataRetreiver={dataRetreiver}
-                  isChecked={checkboxArray[line.id]}
+                  isChecked={element !== undefined ? element.isChecked : false}
                   view={() => view(line)}
                   updateFunc={() => toggleCheckBox(line.id)}
                   handleShow={() => handleShowComment(line)}
                 />
-              ))}
+              })}
             <Modal show={showComment} onHide={() => handleCloseComment()}>
               <Modal.Header closeButton>
                 <Modal.Title>
@@ -311,7 +345,7 @@ class ReviewTable extends React.Component {
           <Modal.Header closeButton />
           <Modal.Body>
             {D.reviewValidatePopupBodyPart1}
-            {Object.values(checkboxArray).filter((elm) => elm).length}
+            {checkboxArray.filter((element) => element.isChecked).length}
             {D.reviewValidatePopupBodyPart2}
           </Modal.Body>
           <Modal.Footer>
