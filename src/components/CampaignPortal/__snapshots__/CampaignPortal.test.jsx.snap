@@ -241,6 +241,67 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            7/7/2020
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div
                 class="col"
@@ -799,6 +860,67 @@ Object {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+              <div
+                class="ViewCard card"
+              >
+                <div
+                  class="Title card-title h5"
+                >
+                  Dates
+                </div>
+                <div
+                  class="table-responsive"
+                >
+                  <table
+                    class="CustomTable table table-sm table-striped table-bordered"
+                  >
+                    <tbody>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Start of identification phase
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection start date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        >
+                          7/7/2020
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Processing end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -1418,6 +1540,67 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            7/7/2020
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div
                 class="col"
@@ -1976,6 +2159,67 @@ Object {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+              <div
+                class="ViewCard card"
+              >
+                <div
+                  class="Title card-title h5"
+                >
+                  Dates
+                </div>
+                <div
+                  class="table-responsive"
+                >
+                  <table
+                    class="CustomTable table table-sm table-striped table-bordered"
+                  >
+                    <tbody>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Start of identification phase
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection start date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        >
+                          7/7/2020
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Processing end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -2595,6 +2839,67 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            7/7/2020
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div
                 class="col"
@@ -3153,6 +3458,67 @@ Object {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+              <div
+                class="ViewCard card"
+              >
+                <div
+                  class="Title card-title h5"
+                >
+                  Dates
+                </div>
+                <div
+                  class="table-responsive"
+                >
+                  <table
+                    class="CustomTable table table-sm table-striped table-bordered"
+                  >
+                    <tbody>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Start of identification phase
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection start date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        >
+                          7/7/2020
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Processing end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -3772,6 +4138,67 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            7/7/2020
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div
                 class="col"
@@ -4334,6 +4761,67 @@ Object {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+              <div
+                class="ViewCard card"
+              >
+                <div
+                  class="Title card-title h5"
+                >
+                  Dates
+                </div>
+                <div
+                  class="table-responsive"
+                >
+                  <table
+                    class="CustomTable table table-sm table-striped table-bordered"
+                  >
+                    <tbody>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Start of identification phase
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection start date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        >
+                          7/7/2020
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Processing end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -4961,6 +5449,67 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            7/7/2020
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div
                 class="col"
@@ -5519,6 +6068,67 @@ Object {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+              <div
+                class="ViewCard card"
+              >
+                <div
+                  class="Title card-title h5"
+                >
+                  Dates
+                </div>
+                <div
+                  class="table-responsive"
+                >
+                  <table
+                    class="CustomTable table table-sm table-striped table-bordered"
+                  >
+                    <tbody>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Start of identification phase
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection start date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        >
+                          7/7/2020
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Processing end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -6138,6 +6748,67 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            1/13/2022
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div
                 class="col"
@@ -6696,6 +7367,67 @@ Object {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+              <div
+                class="ViewCard card"
+              >
+                <div
+                  class="Title card-title h5"
+                >
+                  Dates
+                </div>
+                <div
+                  class="table-responsive"
+                >
+                  <table
+                    class="CustomTable table table-sm table-striped table-bordered"
+                  >
+                    <tbody>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Start of identification phase
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection start date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        >
+                          1/13/2022
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Processing end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -7315,6 +8047,67 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            5/26/2021
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <div
                 class="col"
@@ -7873,6 +8666,67 @@ Object {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+              <div
+                class="ViewCard card"
+              >
+                <div
+                  class="Title card-title h5"
+                >
+                  Dates
+                </div>
+                <div
+                  class="table-responsive"
+                >
+                  <table
+                    class="CustomTable table table-sm table-striped table-bordered"
+                  >
+                    <tbody>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Start of identification phase
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection start date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Collection end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        >
+                          5/26/2021
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          class="DatesLeftHeader"
+                        >
+                          Processing end date
+                        </th>
+                        <td
+                          class="LightGreyLine VerticallyCentered"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
