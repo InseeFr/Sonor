@@ -1,6 +1,7 @@
 import React from 'react';
 import { DatesTable } from "./Dates";
 import { render, screen } from '@testing-library/react';
+import Utils from '../../utils/Utils';
 
 describe("dates component", () => {
     it("should display all labels", () => {
@@ -33,9 +34,9 @@ describe("dates component", () => {
             
           );
 
-        expect(screen.getByText("13/01/2020")).toBeInTheDocument();
-        expect(screen.getByText("01/01/2021")).toBeInTheDocument();
-        expect(screen.getByText("31/10/2023")).toBeInTheDocument();
-        expect(screen.getByText("31/01/2024")).toBeInTheDocument();
+        expect(screen.getByText(Utils.convertToDateString(1578907245000))).toBeInTheDocument();
+        expect(screen.getByText(Utils.convertToDateString(1609492845000))).toBeInTheDocument();
+        expect(screen.getByText(Utils.convertToDateString(1698706800000))).toBeInTheDocument();
+        expect(screen.getByText(Utils.convertToDateString(1706655600000))).toBeInTheDocument();
     })
 })
