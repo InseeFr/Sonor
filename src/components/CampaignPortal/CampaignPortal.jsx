@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Utils from '../../utils/Utils';
 import TimeLine from './TimeLine';
+import { DatesTable } from './Dates'
 import Contacts from './Contacts';
 import SurveyUnits from './SurveyUnits';
 import SurveySelector from '../SurveySelector/SurveySelector';
@@ -106,6 +107,12 @@ function CampaignPortal({
               <Row>
                 <Col>
                   <Contacts />
+                  <DatesTable
+                    identificationPhaseStartDate={surveyInfo.identificationPhaseStartDate}
+                    collectionstartDate={surveyInfo.collectionstartDate}
+                    collectionEndDate={surveyInfo.collectionEndDate}
+                    endDate={surveyInfo.endDate}
+                  />
                 </Col>
                 <Col>
                   <SurveyUnits
