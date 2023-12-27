@@ -1,6 +1,7 @@
 const val = {
   "id": "simpsosfqns2020x00",
   "label": "Survey on something 2020",
+  "email": "survey@mail.com",
   "collectionStartDate": 1621035845000,
   "collectionEndDate": 1642035845000,
   "visibilityStartDate": 1590504561350,

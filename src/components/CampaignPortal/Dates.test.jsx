@@ -8,7 +8,7 @@ describe("dates component", () => {
         render(
             <DatesTable
                 identificationPhaseStartDate={1578907245000}
-                collectionstartDate={1609492845000}
+                collectionStartDate={1609492845000}
                 collectionEndDate={1698706800000}
                 endDate={1706655600000}
               />
@@ -27,7 +27,7 @@ describe("dates component", () => {
         render(
             <DatesTable
                 identificationPhaseStartDate={1578907245000}
-                collectionstartDate={1609492845000}
+                collectionStartDate={1609492845000}
                 collectionEndDate={1698706800000}
                 endDate={1706655600000}
               />

@@ -103,10 +103,10 @@ function CampaignPortal({
               </Row>
               <Row>
                 <Col>
-                  <Contacts />
+                  <Contacts email = {surveyInfo.email} />
                   <DatesTable
                     identificationPhaseStartDate={surveyInfo.identificationPhaseStartDate}
-                    collectionstartDate={surveyInfo.collectionstartDate}
+                    collectionStartDate={surveyInfo.collectionStartDate}
                     collectionEndDate={surveyInfo.collectionEndDate}
                     endDate={surveyInfo.endDate}
                   />

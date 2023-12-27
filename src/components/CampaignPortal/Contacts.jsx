@@ -5,7 +5,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import D from '../../i18n';
 
-function Contacts() {
+function Contacts({email}) {
   const renderTooltip = (
     <Popover id="popover-basic">
       <Popover.Content>
@@ -24,10 +24,10 @@ function Contacts() {
               <tr
                 className="Clickable"
                 data-testid="mail-button"
-                onClick={() => { window.location.assign('mailto:survey@mail.com'); }}
+                onClick={() => { window.location.assign(`mailto:${email}`); }}
               >
                 <th className="ContactsLeftHeader">{D.functionalBox}</th>
-                <td className=" LightGreyLine MailLink">survey@mail.com</td>
+                <td className=" LightGreyLine MailLink">{email}</td>
               </tr>
             </OverlayTrigger>
             <tr>
