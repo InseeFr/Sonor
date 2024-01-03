@@ -409,6 +409,53 @@ class Utils {
 
     return [sortedData, { sortOn, asc: newOrder }];
   }
+
+  static getCheckAllValue(checkboxArray, pagination){ 
+    const startIndex = pagination.size * (pagination.page - 1);
+    const endIndex = Math.min(pagination.size * pagination.page, checkboxArray.length);
+
+    return checkboxArray.slice(startIndex, endIndex).every(checkbox => checkbox.isChecked);
+  }
+
+  static getOnToggleChanges(id, checkboxArray, displayedLines, pagination ) {
+    const newCheckboxArray = displayedLines.map((element) =>{ 
+      const checkboxArrayData = checkboxArray.find((data) => data.id === element.id);
+      
+      return element.id !== id
+        ? checkboxArrayData
+        : { id: element.id, isChecked: !checkboxArrayData?.isChecked };
+
+    })
+    const newCheckAll = Utils.getCheckAllValue(newCheckboxArray, pagination);
+
+    checkboxArray.forEach((element) => {
+      if (!displayedLines.some((line) => line.id === element.id)) {
+        newCheckboxArray.push(element);
+      }
+    })
+
+    return {newCheckboxArray, newCheckAll};
+  }
+
+  static handleCheckAll(checkAllValue, checkboxArray, displayedLines, pagination) {
+    const newCheckboxArray = displayedLines.map((data, index) => {
+      const isWithinRange = index >= pagination.size * (pagination.page - 1) &&
+                            index < pagination.size * pagination.page;
+
+      const checkboxData = checkboxArray.find((element) => element.id === data.id);
+      const isChecked = isWithinRange ? checkAllValue : checkboxData?.isChecked || false;
+
+      return { id: data.id, isChecked };
+    })
+
+    checkboxArray.forEach((element) => {
+      if (!displayedLines.some((line) => line.id === element.id)) {
+        newCheckboxArray.push(element);
+      }
+    })
+
+    return newCheckboxArray;
+  }
 }
 
 export default Utils;

@@ -10,6 +10,7 @@ import SearchField from "../SearchField/SearchField";
 import SurveyUnitLine from "./SurveyUnitLine";
 import PaginationNav from "../PaginationNav/PaginationNav";
 import D from "../../i18n";
+import Utils from "../../utils/Utils";
 
 class ReviewTable extends React.Component {
   constructor(props) {
@@ -27,22 +28,8 @@ class ReviewTable extends React.Component {
     };
   }
 
-  getCheckAllValue(checkboxArray, pagination){
-    const lastIndexOnPage = pagination.size * pagination.page > checkboxArray.length ? 
-    checkboxArray.length : 
-    pagination.size *  pagination.page;
-
-    for (let i = pagination.size * (pagination.page - 1); i < lastIndexOnPage; i++ ){
-      if(checkboxArray[i].isChecked === false){
-        return false;
-      }
-    }
-
-    return true;
-  }
-
   handlePageChange(pagination) {
-    const checkAll = this.getCheckAllValue(this.state.checkboxArray, pagination)
+    const checkAll = Utils.getCheckAllValue(this.state.checkboxArray, pagination)
     this.setState({ pagination , checkAll});
   }
 
@@ -105,33 +92,14 @@ class ReviewTable extends React.Component {
     validateSU(ids);
   }
 
-  handleCheckAll() {
-    const { checkboxArray, checkAll, displayedLines} = this.state;
-    let newCheckboxArray = []
-    displayedLines.map((data, index) => {
-      if(index >= this.state.pagination.size *  (this.state.pagination.page - 1) && index <  this.state.pagination.size *  this.state.pagination.page) {
-        if(!checkAll ){
-          return newCheckboxArray.push({id : data.id, isChecked: true})
-        }
-        if (checkAll ) {
-          return newCheckboxArray.push({id : data.id, isChecked: false})
-        }
-      }
-      else {
-        const checkboxData = checkboxArray.find((element) => element.id === data.id)
-        return newCheckboxArray.push({id : data.id, isChecked: checkboxData ? checkboxData.isChecked : false})
-      }
-    })
+  handleCheckAll(e) {
+    const { checkboxArray, displayedLines, pagination} = this.state;
+    
+    const newCheckboxArray = Utils.handleCheckAll(e.target.checked, checkboxArray, displayedLines, pagination);
 
-    checkboxArray.map((element) => {
-      if(displayedLines.find((line) => line.id === element.id) === undefined){
-        return newCheckboxArray.push(element)
-      }
-    })
-   
     this.setState({
       checkboxArray: newCheckboxArray,
-      checkAll: !checkAll,
+      checkAll: e.target.checked,
     });
   }
 
@@ -142,24 +110,8 @@ class ReviewTable extends React.Component {
 
   toggleCheckBox(id) {
     const { checkboxArray, pagination, displayedLines } = this.state;
-    let newCheckboxArray = [];
-
-    displayedLines.map((element) =>{ 
-      const checkboxArrayData = checkboxArray.find((data) => data.id === element.id);
-      if(element.id !== id) { 
-        return newCheckboxArray.push(checkboxArrayData);
-      } 
-      else {
-        return newCheckboxArray.push({id: element.id, isChecked: !checkboxArrayData.isChecked});
-      }
-    })
-    
-    const newCheckAll = this.getCheckAllValue(newCheckboxArray, pagination);
-    checkboxArray.map((element) => {
-      if(displayedLines.find((line) => line.id === element.id) === undefined){
-        return newCheckboxArray.push(element);
-      }
-    })
+   
+    const {newCheckboxArray, newCheckAll} = Utils.getOnToggleChanges(id, checkboxArray, displayedLines, pagination);
 
     this.setState({
       checkboxArray: newCheckboxArray,
@@ -226,7 +178,7 @@ class ReviewTable extends React.Component {
         >
           <thead>
             <tr>
-              <th className="CheckboxCol" onClick={() => this.handleCheckAll()}>
+              <th className="CheckboxCol" onClick={(e) => this.handleCheckAll(e)}>
                 <input
                   type="checkbox"
                   name="checkAll"
@@ -271,7 +223,7 @@ class ReviewTable extends React.Component {
                   key={line.id}
                   lineData={line}
                   dataRetreiver={dataRetreiver}
-                  isChecked={element !== undefined ? element.isChecked : false}
+                  isChecked={element?.isChecked ?? false}
                   view={() => view(line)}
                   updateFunc={() => toggleCheckBox(line.id)}
                   handleShow={() => handleShowComment(line)}

@@ -12,7 +12,7 @@ function CloseSurveyUnitLine({ lineData, isChecked, updateFunc }) {
       </td>
       <td className="ColCampaign">{campaign}</td>
       <td className="ColId">{id}</td>
-      <td className="ColInterviewer">{`${interviewer.interviewerLastName} ${interviewer.interviewerFirstName}`}</td>
+      <td className="ColInterviewer">{interviewer &&  `${interviewer.interviewerLastName} ${interviewer.interviewerFirstName}`}</td>
       <td className="ColSsech">{ssech}</td>
       <td className="ColIdentificationState">{identificationState ? D[identificationState] : ''}</td>
       <td className="ColLocation">{contactOutcome ? D[contactOutcome] : ''}</td>

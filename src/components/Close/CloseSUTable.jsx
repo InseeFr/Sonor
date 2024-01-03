@@ -11,6 +11,7 @@ import SearchField from '../SearchField/SearchField';
 import PaginationNav from '../PaginationNav/PaginationNav';
 import CloseSurveyUnitLine from './CloseSurveyUnitLine';
 import D from '../../i18n';
+import Utils from '../../utils/Utils';
 
 function makeTableForExport(data) {
   const header = [[
@@ -40,7 +41,7 @@ class CloseSUTable extends React.Component {
     this.state = {
       pagination: { size: 10, page: 1 },
       displayedLines: props.data,
-      checkboxArray: props.data ? props.data.map((element) => {return  {id: element.id, isChecked: false}}) : [],
+      checkboxArray: props.data?.map((element) => {return  {id: element.id, isChecked: false}}) ?? [],
       checkAll: false,
       show: false,
       stateModified: '',
@@ -51,48 +52,21 @@ class CloseSUTable extends React.Component {
     const { data } = this.props;
     if (prevProps.data !== data) {
       this.setState({ displayedLines: data });
-      const newCheckboxArray = data !== undefined ? data.map((element) => {return  {id: element.id, isChecked: false}}) : []
+      const newCheckboxArray =  data?.map((element) => {return  {id: element.id, isChecked: false}}) ?? []
       this.setState({ checkboxArray: newCheckboxArray, checkAll: false });
     }
   }
 
-  getCheckAllValue(checkboxArray, pagination){
-    const lastIndexOnPage = pagination.size * pagination.page > checkboxArray.length ? 
-    checkboxArray.length : 
-    pagination.size * pagination.page;
-
-    for (let i = pagination.size * (pagination.page - 1); i < lastIndexOnPage; i++ ){
-      if(checkboxArray[i].isChecked === false){
-        return false;
-      }
-    }
-
-    return true;
-  }
-
   handlePageChange(pagination) {
-    const checkAll = this.getCheckAllValue(this.state.checkboxArray, pagination);
+    const checkAll = Utils.getCheckAllValue(this.state.checkboxArray, pagination);
     this.setState({ pagination, checkAll });
   }
 
   handleCheckAll(e) {
-    const { checkboxArray, displayedLines} = this.state;
-    let newCheckboxArray = []
-    displayedLines.map((data, index) => {
-      if(index >= this.state.pagination.size *  (this.state.pagination.page - 1) && index <  this.state.pagination.size *  this.state.pagination.page) {
-        return newCheckboxArray.push({id : data.id, isChecked: e.target.checked});
-      }
-      else {
-        const checkboxData = checkboxArray.find((element) => element.id === data.id);
-        return newCheckboxArray.push({id : data.id, isChecked: checkboxData ? checkboxData.isChecked : false});
-      }
-    })
-
-    checkboxArray.map((element) => {
-      if(displayedLines.find((line) => line.id === element.id) === undefined){
-        return newCheckboxArray.push(element);
-      }
-    })
+    const { checkboxArray, displayedLines, pagination} = this.state;
+    
+    const newCheckboxArray = Utils.handleCheckAll(e.target.checked, checkboxArray, displayedLines, pagination);
+    
     this.setState({
       checkboxArray: newCheckboxArray,
       checkAll: e.target.checked,
@@ -101,24 +75,8 @@ class CloseSUTable extends React.Component {
 
   toggleCheckBox(id) {
     const { checkboxArray, displayedLines, pagination } = this.state;
-    let newCheckboxArray = [];
 
-    displayedLines.map((element) =>{ 
-      const checkboxArrayData = checkboxArray.find((data) => data.id === element.id);
-      if(element.id !== id) { 
-        return newCheckboxArray.push(checkboxArrayData);
-      } 
-      else {
-        return newCheckboxArray.push({id: element.id, isChecked: !checkboxArrayData.isChecked});
-      }
-    })
-    
-    const newCheckAll = this.getCheckAllValue(newCheckboxArray, pagination);
-    checkboxArray.map((element) => {
-      if(displayedLines.find((line) => line.id === element.id) === undefined){
-        return newCheckboxArray.push(element);
-      }
-    })
+    const {newCheckboxArray, newCheckAll} = Utils.getOnToggleChanges(id, checkboxArray, displayedLines, pagination);
 
     this.setState({
       checkboxArray: newCheckboxArray,
@@ -284,12 +242,12 @@ class CloseSUTable extends React.Component {
                                 Math.min(pagination.page * pagination.size, displayedLines.length),
                               )
                               .map((line) => {
-                                const element = checkboxArray.filter((element) => element.id === line.id)[0]
+                                const element = checkboxArray.find((checkbox) => checkbox.id === line.id)
                                 return (
                                   <CloseSurveyUnitLine
                                     key={line.id}
                                     lineData={line}
-                                    isChecked={ element !== undefined ? element.isChecked : false}
+                                    isChecked={ element?.isChecked ?? false}
                                     updateFunc={() => toggleCheckBox(line.id)}
                                   />
                               )})}
