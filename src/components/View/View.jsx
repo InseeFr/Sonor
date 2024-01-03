@@ -27,20 +27,27 @@ class View extends React.Component {
       preferences: {},
       redirect: null,
       loadingPreferences: true,
+      campaigns: []
     };
     this.dataRetreiver = new DataFormatter(props.keycloak);
   }
 
   componentDidMount() {
     this.componentIsMounted = true;
-    this.loadPreferences();
+    this.getAllCampaignsData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.campaigns.length !== prevState.campaigns.length ){
+      this.loadPreferences();
+    }
   }
 
   loadPreferences() {
     this.setState({ loadingPreferences: true });
     this.dataRetreiver.getPreferences((preferences) => {
       this.setState({ preferences, loadingPreferences: false, redirect: <Redirect to="/" /> });
-    });
+    }, this.state.campaigns);
   }
 
   updatePreferences(newPreferences) {
@@ -62,9 +69,15 @@ class View extends React.Component {
     this.setState({ showPreferences: false });
   }
 
+  getAllCampaignsData() {
+    this.dataRetreiver.getAllCampaigns((data) => {
+      data ? this.setState({campaigns: data}) : this.setState({campaigns: []}) 
+    })
+  }
+
   render() {
     const {
-      showPreferences, preferences, redirect, loadingPreferences,
+      showPreferences, preferences, redirect, loadingPreferences, campaigns
     } = this.state;
     const { userData } = this.props;
     return (
@@ -78,19 +91,21 @@ class View extends React.Component {
               showPreferences={() => {
                 this.showPreferences();
               }}
+              campaigns={campaigns}
+              preferences={preferences}
             />
             <Switch>
-              <Route path="/review/:id?" component={(routeProps) => <Review dataRetreiver={this.dataRetreiver} {...routeProps} />} />
+              <Route path="/review/:id?" component={(routeProps) => <Review dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns} />} />
               <Route path="/followUp" component={(routeProps) => <Remind dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/follow" component={(routeProps) => <MonitoringTable dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/collection" component={(routeProps) => <CollectionTable dataRetreiver={this.dataRetreiver} {...routeProps} />} />
+              <Route path="/follow" component={(routeProps) => <MonitoringTable dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns} />} />
+              <Route path="/collection" component={(routeProps) => <CollectionTable dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns} />} />
               <Route path="/provisionalstatus" component={(routeProps) => <ProvisionalStatusTable dataRetreiver={this.dataRetreiver} {...routeProps} />} />
               <Route path="/terminated/:id" component={(routeProps) => <Terminated dataRetreiver={this.dataRetreiver} {...routeProps} />} />
               <Route path="/listSU/:id" component={(routeProps) => <ListSU dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/portal/:id" component={(routeProps) => <CampaignPortal dataRetreiver={this.dataRetreiver} {...routeProps} />} />
+              <Route path="/portal/:id" component={(routeProps) => <CampaignPortal dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns}/>} />
               <Route path="/notifications" component={(routeProps) => <Notifications dataRetreiver={this.dataRetreiver} {...routeProps} user={userData} />} />
               <Route path="/close" component={(routeProps) => <Close dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/" component={() => <MainScreen preferences={preferences} loadingPreferences={loadingPreferences} dataRetreiver={this.dataRetreiver} />} />
+              <Route path="/" component={() => <MainScreen preferences={preferences} loadingPreferences={loadingPreferences} dataRetreiver={this.dataRetreiver} campaigns={campaigns} />} />
             </Switch>
           </div>
         </Router>

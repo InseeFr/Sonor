@@ -17,7 +17,7 @@ import { version } from '../../../package.json';
 import './Header.css';
 
 function Header({
-  user, showPreferences, dataRetreiver,
+  user, showPreferences, dataRetreiver, campaigns, preferences
 }) {
   const [showFollowDropdown, setShowFollowDropdown] = useState(false);
   const [showReviewDropdown, setShowReviewDropdown] = useState(false);
@@ -160,6 +160,8 @@ function Header({
         title={modalTitle}
         linkTo={modalLink}
         interviewerMode={modalInterviewerMode}
+        campaigns={campaigns}
+        preferences={preferences}
       />
     </header>
   );

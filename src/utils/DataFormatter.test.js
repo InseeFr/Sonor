@@ -154,7 +154,23 @@ it('Test getDataForListSU', async () => {
 
 it('Test getDataForReview', async () => {
   const callBack = jest.fn();
-  dataRetreiver.getDataForReview(null, callBack);
+  dataRetreiver.getDataForReview(null, callBack, [...mainScreenData, {
+    "id": "simpsons2020x00",
+    "label": "Survey on the Simpsons tv show 2020",
+    "managementStartDate": 1576801000000,
+    "interviewerStartDate": 1575937000000,
+    "identificationPhaseStartDate": 1577233000000,
+    "collectionStartDate": 1577837800000,
+    "collectionEndDate": 1640996200000,
+    "endDate": 1641514600000,
+    "allocated": 4,
+    "toProcessInterviewer": 0,
+    "toAffect": 0,
+    "toFollowUp": 0,
+    "toReview": 16,
+    "finalized": 0,
+    "preference": true
+  },]);
   await wait(() => expect(callBack).toHaveBeenCalled());
   // Should return properly formatted data
   expect(callBack.mock.calls[0][0].map((a) => a.id).sort())
@@ -188,7 +204,7 @@ it('Test getDataForMonitoringTable (by survey 1 Interviewer)', async () => {
 it('Test getDataForMonitoringTable (by survey)', async () => {
   const callBack2 = jest.fn();
   const dataRet = new DataFormatter();
-  dataRet.getDataForMonitoringTable(mainScreenData1Survey, new Date('2020-08-20T11:01:58.135Z'), null, C.BY_SURVEY, callBack2);
+  dataRet.getDataForMonitoringTable(mainScreenData1Survey, new Date('2020-08-20T11:01:58.135Z'), null, C.BY_SURVEY, callBack2, mainScreenData);
   await wait(() => expect(callBack2).toHaveBeenCalled());
   // Should return properly formatted data
   expect(callBack2).toHaveBeenCalledWith(formattedDataMonitoringTableBysurvey);
@@ -225,7 +241,7 @@ it('Test finalizeSurveyUnits', async () => {
 });
 
 it('Test getListSUToReview', async () => {
-  const res = await dataRetreiver.getListSUToReview('simpsons2020x00');
+  const res = await dataRetreiver.getListSUToReview('simpsons2020x00', mainScreenData);
   // Should return properly formatted data
   expect(res.map((a) => a.id).sort())
     .toEqual(formattedLisSuToReviewSimpsons.map((a) => a.id).sort());
