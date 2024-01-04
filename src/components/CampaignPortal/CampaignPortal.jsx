@@ -103,7 +103,44 @@ function CampaignPortal({
               </Row>
               <Row>
                 <Col>
-                  <Contacts email = {surveyInfo.email} />
+                  <Contacts 
+                    email={surveyInfo.email}
+                    // TODO: remove mock 
+                    referents={[
+                      {
+                        "firstName":"Bob",
+                        "lastName":"Lennon",
+                        "phoneNumber":"0123456789",
+                        "role":"PRIMARY"
+                      },
+                      {
+                        "firstName":"Bob",
+                        "lastName":"Lennon",
+                        "phoneNumber":"0123456789",
+                        "role":"PRIMARY"
+                      },
+                      {
+                        "firstName":"Bob",
+                        "lastName":"Lennon",
+                        "phoneNumber":"0123456789",
+                        "role":"PRIMARY"
+                      },
+                      {
+                        "firstName":"Bob",
+                        "lastName":"Lennon",
+                        "phoneNumber":"0123456789",
+                        "role":"PRIMARY"
+                      },
+                      
+                      {
+                        // "firstName":"John",
+                         "lastName":"Doe",
+                        "phoneNumber":"9876543210",
+                        "role":"SECONDARY"
+                      },
+
+                    ]}
+                  />
                   <DatesTable
                     identificationPhaseStartDate={surveyInfo.identificationPhaseStartDate}
                     collectionStartDate={surveyInfo.collectionStartDate}

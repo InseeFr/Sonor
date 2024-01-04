@@ -2,6 +2,14 @@
   width: 30%;
 }
 
+.MailRow{
+  background-color: white;
+}
+
+.ContactRow{
+ width: 100%;
+}
+
 .DatesLeftHeader{
   width: 30%;
 }
