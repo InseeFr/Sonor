@@ -38,7 +38,9 @@ class View extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(this.state.campaigns.length !== prevState.campaigns.length ){
+    if( !this.state.campaigns.every((element) => prevState.campaigns.includes(element)) 
+        || !prevState.campaigns.every((element) => this.state.campaigns.includes(element)) 
+      ){
       this.loadPreferences();
     }
   }
@@ -71,7 +73,7 @@ class View extends React.Component {
 
   getAllCampaignsData() {
     this.dataRetreiver.getAllCampaigns((data) => {
-      data ? this.setState({campaigns: data}) : this.setState({campaigns: []}) 
+      this.setState({campaigns: data ?? []});
     })
   }
 

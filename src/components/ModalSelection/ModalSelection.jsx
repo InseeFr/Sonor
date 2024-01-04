@@ -6,12 +6,12 @@ import SurveySelector from '../SurveySelector/SurveySelector';
 import InterviewerSelector from '../InterviewerSelector/InterviewerSelector';
 
 function ModalSelection({
-  linkTo, title, show, setShow, dataRetreiver, interviewerMode, campaigns, preferences
+  linkTo, title, show, setShow, dataRetreiver, interviewerMode, campaigns = [], preferences
 }) {
   const [redirect, setRedirect] = useState(null);
   const [surveys, setSurveys] = useState(null);
   const [interviewers, setInterviewers] = useState(null);
-  const [newCampaigns, setNewCampaigns] = useState(campaigns ?? []);
+  const [campaignsWithUpdatedPreferences, setCampaignsWithUpdatedPreferences] = useState(campaigns);
   
   const updateCampaignsWithPreferences = () => {
     return campaigns.map((campaign) => {
@@ -32,18 +32,18 @@ function ModalSelection({
           (survey) => survey.preference,
         ),
       });
-    }, newCampaigns);
-  }, [dataRetreiver, newCampaigns]);
+    }, campaignsWithUpdatedPreferences);
+  }, [dataRetreiver, campaignsWithUpdatedPreferences]);
 
  useEffect(() => {
-   setNewCampaigns(updateCampaignsWithPreferences())
+   setCampaignsWithUpdatedPreferences(updateCampaignsWithPreferences())
   }, [preferences]);
           
   const updateInterviewers = useCallback(() => {
     dataRetreiver.getInterviewers((data) => {
       setInterviewers({ allInterviewers: data });
     });
-  }, [dataRetreiver, newCampaigns]);
+  }, [dataRetreiver, campaignsWithUpdatedPreferences]);
   useEffect(() => {
     if (interviewerMode) {
       updateInterviewers();

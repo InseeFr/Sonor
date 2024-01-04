@@ -41,9 +41,8 @@ function CampaignPortal({
     if (!survey && location.survey) {
       dataRetreiver.getFormattedCampaignsForMainScreen(null, (campaignsData) => {
         const newSurvey = campaignsData.find((s) => s.id === location.survey.id);
-        newSurvey.allSurveys = campaignsData;
-        setSurvey(newSurvey);
-        setSurveyInfo(campaignsData.find((s) => s.id === location.survey.id));
+        setSurvey({...newSurvey, allSurveys : campaignsData});
+        setSurveyInfo(newSurvey);
         setRedirect(null);
       }, campaigns);
     }
