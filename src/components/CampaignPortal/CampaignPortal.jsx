@@ -56,7 +56,7 @@ function CampaignPortal({
         setIsLoading(false);
       });
     }
-  }, [redirect, dataRetreiver, location, survey]);
+  }, [survey]);
 
   function handleSort(property, asc) {
     const [sortedData, newSort] = Utils.handleSort(property, data, sort, 'campaignPortal', asc);
