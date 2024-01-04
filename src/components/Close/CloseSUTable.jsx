@@ -94,7 +94,7 @@ class CloseSUTable extends React.Component {
 
   isDisabled() {
     const { checkboxArray } = this.state;
-    return !checkboxArray.filter((element) => element.isChecked === true).length > 0;
+    return !checkboxArray.some((element) => element.isChecked );
   }
 
   validate() {

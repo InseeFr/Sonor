@@ -17,7 +17,7 @@ class ReviewTable extends React.Component {
     super(props);
     this.state = {
       pagination: { size: 10, page: 1 },
-      checkboxArray: props.data ? props.data.map((element) => {return  {id: element.id, isChecked: false}}) : [],
+      checkboxArray: props.data?.map((element) => {return  {id: element.id, isChecked: false}}) ?? [],
       checkAll: false,
       show: false,
       displayedLines: props.data,
@@ -105,7 +105,7 @@ class ReviewTable extends React.Component {
 
   isDisabled() {
     const { checkboxArray } = this.state;
-    return !checkboxArray.filter((element) => element.isChecked === true).length > 0;
+    return !checkboxArray.some((element) => element.isChecked );
   }
 
   toggleCheckBox(id) {
