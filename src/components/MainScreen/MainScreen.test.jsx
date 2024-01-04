@@ -42,7 +42,7 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
           <div>
             <div data-testid="Redirect-url">{JSON.stringify(routeProps.history.location.pathname)}</div>
             <div data-testid="Redirect-survey">{!routeProps.history.location || !routeProps.history.location.survey || JSON.stringify(routeProps.history.location.survey)}</div>
-            <div data-testid="Redirect-surveyInfos">{!routeProps.history.location || !routeProps.history.location.survey || JSON.stringify(routeProps.history.location.surveyInfos)}</div>
+            <div data-testid="Redirect-surveyInfos">{!routeProps.history.location || !routeProps.history.location.surveyInfos || JSON.stringify(routeProps.history.location.surveyInfos)}</div>
           </div>
         )}
       />
@@ -141,8 +141,8 @@ it('Go to portal', async () => {
   expect(screen.getByTestId('Redirect-url').innerHTML).toEqual(`\"${redirectUrl}\"`);
 
   // Location should contain survey object
-  expect(screen.getByTestId('Redirect-survey').innerHTML).not.toEqual('');
-  expect(screen.getByTestId('Redirect-survey')).toMatchSnapshot();
+  expect(screen.getByTestId('Redirect-surveyInfos').innerHTML).not.toEqual('');
+  expect(screen.getByTestId('Redirect-surveyInfos')).toMatchSnapshot();
 
   // Location should contain surveyInfi object
   expect(screen.getByTestId('Redirect-surveyInfos').innerHTML).not.toEqual('');

@@ -72,7 +72,7 @@ Object {
                           aria-hidden="true"
                           class="rbt-input-hint"
                           readonly=""
-                          style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
+                          style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
                           tabindex="-1"
                           value=""
                         />
@@ -256,7 +256,7 @@ Object {
                         aria-hidden="true"
                         class="rbt-input-hint"
                         readonly=""
-                        style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
+                        style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
                         tabindex="-1"
                         value=""
                       />
@@ -497,7 +497,7 @@ Object {
                           aria-hidden="true"
                           class="rbt-input-hint"
                           readonly=""
-                          style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
+                          style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
                           tabindex="-1"
                           value=""
                         />
@@ -861,7 +861,7 @@ Object {
                         aria-hidden="true"
                         class="rbt-input-hint"
                         readonly=""
-                        style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
+                        style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 0px 0px 0px 0px; line-height: normal; padding: 0px 0px 0px 0px;"
                         tabindex="-1"
                         value=""
                       />
