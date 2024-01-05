@@ -6,6 +6,20 @@ const val = {
   "collectionEndDate": 1642035845000,
   "visibilityStartDate": 1590504561350,
   "treatmentEndDate": 1672025045000,
+  "referents": [
+    {
+      "firstName":"Chloé",
+      "lastName":"Dupont",
+      "phoneNumber":"01 01 01 01 01",
+      "role":"PRIMARY"
+    },
+    {
+      "firstName":"Thierry",
+      "lastName":"Fabres",
+      "phoneNumber":"02 01 01 01 01",
+      "role":"SECONDARY"
+    }
+  ],
   "allocated": 4,
   "toProcessInterviewer": 0,
   "toAffect": 0,

@@ -55,7 +55,7 @@ function CampaignPortal({
         setIsLoading(false);
       });
     }
-  }, [survey]);
+  }, [survey, campaigns, dataRetreiver, location.survey]);
 
   function handleSort(property, asc) {
     const [sortedData, newSort] = Utils.handleSort(property, data, sort, 'campaignPortal', asc);
@@ -104,42 +104,8 @@ function CampaignPortal({
               <Row>
                 <Col>
                   <Contacts 
-                    email={surveyInfo.email}
-                    // TODO: remove mock 
-                    referents={[
-                      {
-                        "firstName":"Bob",
-                        "lastName":"Lennon",
-                        "phoneNumber":"0123456789",
-                        "role":"PRIMARY"
-                      },
-                      {
-                        "firstName":"Bob",
-                        "lastName":"Lennon",
-                        "phoneNumber":"0123456789",
-                        "role":"PRIMARY"
-                      },
-                      {
-                        "firstName":"Bob",
-                        "lastName":"Lennon",
-                        "phoneNumber":"0123456789",
-                        "role":"PRIMARY"
-                      },
-                      {
-                        "firstName":"Bob",
-                        "lastName":"Lennon",
-                        "phoneNumber":"0123456789",
-                        "role":"PRIMARY"
-                      },
-                      
-                      {
-                        // "firstName":"John",
-                         "lastName":"Doe",
-                        "phoneNumber":"9876543210",
-                        "role":"SECONDARY"
-                      },
-
-                    ]}
+                    email={surveyInfo.email} 
+                    referents={surveyInfo.referents}
                   />
                   <DatesTable
                     identificationPhaseStartDate={surveyInfo.identificationPhaseStartDate}

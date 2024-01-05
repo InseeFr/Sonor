@@ -2,12 +2,9 @@
   width: 30%;
 }
 
-.MailRow{
-  background-color: white;
-}
-
 .ContactRow{
- width: 100%;
+ display: flex;
+ flex-direction: column;
 }
 
 .DatesLeftHeader{

@@ -8237,41 +8237,23 @@ Object {
                             <tr>
                               <th
                                 class="VerticallyCentered ContactsLeftHeader"
-                                rowspan="2"
                               >
                                 CPOS
                               </th>
                               <td
-                                class="LightGreyLine"
+                                class=""
                               >
-                                Chloé Dupont
-                              </td>
-                            </tr>
-                            <tr>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                01 01 01 01 01
+                                -
                               </td>
                             </tr>
                             <tr>
                               <th
                                 class="VerticallyCentered ContactsLeftHeader"
-                                rowspan="2"
                               >
                                 Deputy CPOS
                               </th>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                Thierry Fabres
-                              </td>
-                            </tr>
-                            <tr>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                02 01 01 01 01
+                              <td>
+                                -
                               </td>
                             </tr>
                           </tbody>
@@ -8780,41 +8762,23 @@ Object {
                           <tr>
                             <th
                               class="VerticallyCentered ContactsLeftHeader"
-                              rowspan="2"
                             >
                               CPOS
                             </th>
                             <td
-                              class="LightGreyLine"
+                              class=""
                             >
-                              Chloé Dupont
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              01 01 01 01 01
+                              -
                             </td>
                           </tr>
                           <tr>
                             <th
                               class="VerticallyCentered ContactsLeftHeader"
-                              rowspan="2"
                             >
                               Deputy CPOS
                             </th>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              Thierry Fabres
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              02 01 01 01 01
+                            <td>
+                              -
                             </td>
                           </tr>
                         </tbody>

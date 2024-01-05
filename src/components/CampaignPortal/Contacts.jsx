@@ -17,7 +17,6 @@ function Contacts({email, referents}) {
   const primaryReferents = referents?.filter((referent) => referent.role === "PRIMARY");
   const secondaryReferents = referents?.filter((referent) => referent.role === "SECONDARY");
 
-  console.log(primaryReferents)
   return (
     <Card className="ViewCard">
       <div>
@@ -32,41 +31,61 @@ function Contacts({email, referents}) {
                 onClick={() => { window.location.assign(`mailto:${email}`); }}
               >
                 <th className="ContactsLeftHeader">{D.functionalBox}</th>
-                <td className="MailLink MailRow" >{email}</td>
+                <td className=" LightGreyLine MailLink" >{email}</td>
               </tr>
             </OverlayTrigger>
-            <tr>
-              <th rowSpan="2" className="VerticallyCentered ContactsLeftHeader">{D.cpos}</th>
-              {primaryReferents.map((primaryReferent) => {
-                return (
-                  <tr key={primaryReferent.phoneNumber}  className="LightGreyLine">
-                    <td >
-                      <div className='ContactRow' >
+            
+            {(referents === undefined || primaryReferents?.length === 0) && 
+              <tr>
+                <th className="VerticallyCentered ContactsLeftHeader">{D.cpos}</th>
+                <td className={""}>{"-"}</td>
+              </tr>
+            }
+             
+            {primaryReferents?.map((primaryReferent) => {
+              return (
+                <tr  key={primaryReferent.phoneNumber}>
+                  <th className="VerticallyCentered ContactsLeftHeader">{D.cpos}</th>
+                  <td className="ContactRow">
+                    <span>
                       {primaryReferent.firstName || primaryReferent.lastName ? 
                         `${primaryReferent.firstName ?? ""} ${primaryReferent.lastName ?? ""}` 
                         : "-"
                       }
-                      </div>
-                      <div >
+                    </span>
+                    <span >
                       {primaryReferent.phoneNumber ?? "-"}
-                      </div>
-                    </td>
-                    </tr>
-                  )
-                })}
-            </tr>
-            {/* <tr>
-              <th rowSpan="2" className="VerticallyCentered ContactsLeftHeader">{D.deputyCpos}</th>
-              <td className="LightGreyLine">
-                {secondaryReferent.firstName || secondaryReferent.lastName ? 
-                  `${secondaryReferent.firstName ?? ""} ${secondaryReferent.lastName ?? ""}` 
-                  : "-"
-                }
-              </td>
-            </tr>
-            <tr>
-              <td className="LightGreyLine">{secondaryReferent && secondaryReferent.phoneNumber }</td>
-            </tr> */}
+                    </span>
+                  </td>
+                </tr>
+              )
+            })}
+            
+            {(referents === undefined || secondaryReferents?.length === 0) && 
+              <tr>
+                <th className="VerticallyCentered ContactsLeftHeader">{D.deputyCpos}</th>
+                <td>{"-"}</td>
+              </tr>
+            }
+
+            {secondaryReferents?.map((secondaryReferent) => {
+              return (
+                <tr key={secondaryReferent.phoneNumber}>
+                  <th className="VerticallyCentered ContactsLeftHeader">{D.deputyCpos}</th>
+                  <td className="ContactRow">
+                    <span>                        
+                      {secondaryReferent.firstName || secondaryReferent.lastName ? 
+                        `${secondaryReferent.firstName ?? ""} ${secondaryReferent.lastName ?? ""}` 
+                        : "-"
+                      }
+                    </span>
+                    <span >
+                      {secondaryReferent.phoneNumber ?? "-"}
+                    </span>
+                  </td>
+                </tr>             
+              )
+            })} 
           </tbody>
         </Table>
       </div>

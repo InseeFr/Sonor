@@ -30,7 +30,7 @@ function Review({ location, dataRetreiver, match, campaigns }) {
       setRedirect(null);
       setIsLoading(false);
     }, campaigns);
-  }, [dataRetreiver, survey]);
+  }, [dataRetreiver, survey, campaigns]);
 
   useEffect(() => {
     fetchData();
