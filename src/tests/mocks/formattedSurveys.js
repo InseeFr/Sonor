@@ -2,6 +2,7 @@ const val = [
   {
     "id": "simpsons2020x00",
     "label": "Survey on the Simpsons tv show 2020",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,
@@ -20,6 +21,7 @@ const val = [
   {
     "id": "vqs2021x00",
     "label": "Everyday life and health survey 2021",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,
@@ -38,6 +40,7 @@ const val = [
   {
     "id": "simpsosfqns2020x00",
     "label": "Survey on something 2020",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,
@@ -56,6 +59,7 @@ const val = [
   {
     "id": "vqs2fsqe021x00",
     "label": "Everyday life and health survey 2022",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,
@@ -74,6 +78,7 @@ const val = [
   {
     "id": "simpsonqsdfsqes2020x00",
     "label": "Survey on something else 2020",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,
@@ -92,6 +97,7 @@ const val = [
   {
     "id": "vqs2qfsdfsqe021x00",
     "label": "Everyday life and health survey 2026",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,
@@ -110,6 +116,7 @@ const val = [
   {
     "id": "simpsonkgs2020x00",
     "label": "Survey on the Simpsons tv show 2021",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,
@@ -128,6 +135,7 @@ const val = [
   {
     "id": "vqs202fgd1x00",
     "label": "Everyday life and health survey 2018",
+    "email": "survey@mail.com",
     "managementStartDate": 1576801000000,
     "interviewerStartDate": 1575937000000,
     "identificationPhaseStartDate": 1577233000000,

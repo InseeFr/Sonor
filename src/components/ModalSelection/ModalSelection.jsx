@@ -13,6 +13,19 @@ function ModalSelection({
   const [interviewers, setInterviewers] = useState(null);
   const [campaignsWithUpdatedPreferences, setCampaignsWithUpdatedPreferences] = useState(campaigns);
   
+  
+  const updateSurveys = useCallback(() => {
+    dataRetreiver.getFormattedCampaignsForMainScreen(null, (data) => {
+      setSurveys({
+        allSurveys: data.filter(
+          (survey) => survey.preference,
+        ),
+      });
+    }, campaignsWithUpdatedPreferences);
+  }, [dataRetreiver, campaignsWithUpdatedPreferences]);
+
+ useEffect(() => {
+
   const updateCampaignsWithPreferences = () => {
     return campaigns.map((campaign) => {
       const associatedPreference = Object.entries(preferences).find((preference) => preference[0] === campaign.id)
@@ -25,25 +38,15 @@ function ModalSelection({
     }) 
   }
 
-  const updateSurveys = useCallback(() => {
-    dataRetreiver.getFormattedCampaignsForMainScreen(null, (data) => {
-      setSurveys({
-        allSurveys: data.filter(
-          (survey) => survey.preference,
-        ),
-      });
-    }, campaignsWithUpdatedPreferences);
-  }, [dataRetreiver, campaignsWithUpdatedPreferences]);
-
- useEffect(() => {
    setCampaignsWithUpdatedPreferences(updateCampaignsWithPreferences())
-  }, [preferences]);
+  }, [preferences, campaigns]);
           
   const updateInterviewers = useCallback(() => {
     dataRetreiver.getInterviewers((data) => {
       setInterviewers({ allInterviewers: data });
     });
-  }, [dataRetreiver, campaignsWithUpdatedPreferences]);
+  }, [dataRetreiver]);
+
   useEffect(() => {
     if (interviewerMode) {
       updateInterviewers();

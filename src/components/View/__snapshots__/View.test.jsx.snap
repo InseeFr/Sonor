@@ -8237,41 +8237,21 @@ Object {
                             <tr>
                               <th
                                 class="VerticallyCentered ContactsLeftHeader"
-                                rowspan="2"
                               >
                                 CPOS
                               </th>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                Chloé Dupont
-                              </td>
-                            </tr>
-                            <tr>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                01 01 01 01 01
+                              <td>
+                                -
                               </td>
                             </tr>
                             <tr>
                               <th
                                 class="VerticallyCentered ContactsLeftHeader"
-                                rowspan="2"
                               >
                                 Deputy CPOS
                               </th>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                Thierry Fabres
-                              </td>
-                            </tr>
-                            <tr>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                02 01 01 01 01
+                              <td>
+                                -
                               </td>
                             </tr>
                           </tbody>
@@ -8314,7 +8294,9 @@ Object {
                             </th>
                             <td
                               class="LightGreyLine VerticallyCentered"
-                            />
+                            >
+                              1/1/2020
+                            </td>
                           </tr>
                           <tr>
                             <th
@@ -8778,41 +8760,21 @@ Object {
                           <tr>
                             <th
                               class="VerticallyCentered ContactsLeftHeader"
-                              rowspan="2"
                             >
                               CPOS
                             </th>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              Chloé Dupont
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              01 01 01 01 01
+                            <td>
+                              -
                             </td>
                           </tr>
                           <tr>
                             <th
                               class="VerticallyCentered ContactsLeftHeader"
-                              rowspan="2"
                             >
                               Deputy CPOS
                             </th>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              Thierry Fabres
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              02 01 01 01 01
+                            <td>
+                              -
                             </td>
                           </tr>
                         </tbody>
@@ -8855,7 +8817,9 @@ Object {
                           </th>
                           <td
                             class="LightGreyLine VerticallyCentered"
-                          />
+                          >
+                            1/1/2020
+                          </td>
                         </tr>
                         <tr>
                           <th

@@ -1,6 +1,21 @@
 const val = {
   "id": "vqs2021x00",
   "label": "Everyday life and health survey 2021",
+  "email": "survey@mail.com",
+  "referents": [
+    {
+      "firstName":"Chloé",
+      "lastName":"Dupont",
+      "phoneNumber":"01 01 01 01 01",
+      "role":"PRIMARY"
+    },
+    {
+      "firstName":"Thierry",
+      "lastName":"Fabres",
+      "phoneNumber":"02 01 01 01 01",
+      "role":"SECONDARY"
+    }
+  ],
   "collectionStartDate": 1590504561350,
   "collectionEndDate": 1594111035000,
   "visibilityStartDate": 1577836800000,

@@ -55,7 +55,7 @@ function CampaignPortal({
         setIsLoading(false);
       });
     }
-  }, [survey]);
+  }, [survey, campaigns, dataRetreiver, location.survey]);
 
   function handleSort(property, asc) {
     const [sortedData, newSort] = Utils.handleSort(property, data, sort, 'campaignPortal', asc);
@@ -103,10 +103,13 @@ function CampaignPortal({
               </Row>
               <Row>
                 <Col>
-                  <Contacts />
+                  <Contacts 
+                    email={surveyInfo.email} 
+                    referents={surveyInfo.referents}
+                  />
                   <DatesTable
                     identificationPhaseStartDate={surveyInfo.identificationPhaseStartDate}
-                    collectionstartDate={surveyInfo.collectionstartDate}
+                    collectionStartDate={surveyInfo.collectionStartDate}
                     collectionEndDate={surveyInfo.collectionEndDate}
                     endDate={surveyInfo.endDate}
                   />

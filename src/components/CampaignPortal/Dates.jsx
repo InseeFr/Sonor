@@ -4,7 +4,7 @@ import D from '../../i18n';
 import Utils from '../../utils/Utils';
 import Table from 'react-bootstrap/Table';
 
-export const DatesTable = ({identificationPhaseStartDate, collectionstartDate, collectionEndDate, endDate }) => {
+export const DatesTable = ({identificationPhaseStartDate, collectionStartDate, collectionEndDate, endDate }) => {
     return (
         <Card className="ViewCard">
             <Card.Title className="Title">{D.dates}</Card.Title>
@@ -16,7 +16,7 @@ export const DatesTable = ({identificationPhaseStartDate, collectionstartDate, c
                     </tr>
                     <tr>
                         <th className="DatesLeftHeader">{D.collectionStartDate}</th>
-                        <td className="LightGreyLine VerticallyCentered">{collectionstartDate && Utils.convertToDateString(collectionstartDate)}</td>
+                        <td className="LightGreyLine VerticallyCentered">{collectionStartDate && Utils.convertToDateString(collectionStartDate)}</td>
                     </tr>
                     <tr>
                         <th className="DatesLeftHeader">{D.collectionEndDate}</th>
