@@ -8240,9 +8240,7 @@ Object {
                               >
                                 CPOS
                               </th>
-                              <td
-                                class=""
-                              >
+                              <td>
                                 -
                               </td>
                             </tr>
@@ -8765,9 +8763,7 @@ Object {
                             >
                               CPOS
                             </th>
-                            <td
-                              class=""
-                            >
+                            <td>
                               -
                             </td>
                           </tr>

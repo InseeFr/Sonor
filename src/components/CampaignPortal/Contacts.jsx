@@ -14,8 +14,8 @@ function Contacts({email, referents}) {
     </Popover>
   );
 
-  const primaryReferents = referents?.filter((referent) => referent.role === "PRIMARY");
-  const secondaryReferents = referents?.filter((referent) => referent.role === "SECONDARY");
+  const primaryReferents = referents?.filter((referent) => referent.role === "PRIMARY") ?? [];
+  const secondaryReferents = referents?.filter((referent) => referent.role === "SECONDARY") ?? [];
 
   return (
     <Card className="ViewCard">
@@ -35,14 +35,14 @@ function Contacts({email, referents}) {
               </tr>
             </OverlayTrigger>
             
-            {(referents === undefined || primaryReferents?.length === 0) && 
+            {(referents === undefined || primaryReferents.length === 0) && 
               <tr>
                 <th className="VerticallyCentered ContactsLeftHeader">{D.cpos}</th>
-                <td className={""}>{"-"}</td>
+                <td>{"-"}</td>
               </tr>
             }
              
-            {primaryReferents?.map((primaryReferent) => {
+            {primaryReferents.map((primaryReferent) => {
               return (
                 <tr  key={primaryReferent.phoneNumber}>
                   <th className="VerticallyCentered ContactsLeftHeader">{D.cpos}</th>
@@ -61,14 +61,14 @@ function Contacts({email, referents}) {
               )
             })}
             
-            {(referents === undefined || secondaryReferents?.length === 0) && 
+            {(referents === undefined || secondaryReferents.length === 0) && 
               <tr>
                 <th className="VerticallyCentered ContactsLeftHeader">{D.deputyCpos}</th>
                 <td>{"-"}</td>
               </tr>
             }
 
-            {secondaryReferents?.map((secondaryReferent) => {
+            {secondaryReferents.map((secondaryReferent) => {
               return (
                 <tr key={secondaryReferent.phoneNumber}>
                   <th className="VerticallyCentered ContactsLeftHeader">{D.deputyCpos}</th>
