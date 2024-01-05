@@ -53,7 +53,7 @@ class MonitoringTable extends React.Component {
 
   async refreshData() {
     this.setState({ loading: true });
-    const { dataRetreiver, location } = this.props;
+    const { dataRetreiver, location, campaigns } = this.props;
     const { survey, interviewer } = location;
     const { date } = this.state;
     const dateToUse = date || new Date().toISOString().slice(0, 10);
@@ -63,7 +63,7 @@ class MonitoringTable extends React.Component {
     if (interviewer) {
       surveyToUse = interviewer;
     } else if (modeToUse !== C.BY_INTERVIEWER_ONE_SURVEY && modeToUse !== C.BY_SITE) {
-      surveyToUse = await dataRetreiver.getDataForMainScreen();
+      surveyToUse = await dataRetreiver.getFormattedCampaignsForMainScreen(null,null, campaigns);
     } else {
       surveyToUse = survey;
     }
@@ -99,7 +99,7 @@ class MonitoringTable extends React.Component {
               this.handleSort(firstColumnSortAttribute, true);
             });
           }
-        },
+        }, campaigns
       );
     } else {
       this.setState({ redirect: '/' });

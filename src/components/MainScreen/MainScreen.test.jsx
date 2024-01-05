@@ -51,7 +51,7 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
 );
 
 DataFormatter.mockImplementation(() => ({
-  getDataForMainScreen: (a, c) => (c(data)),
+  getFormattedCampaignsForMainScreen: (a, c) => (c(data)),
 }));
 
 const mockDataRetreiver = new DataFormatter();

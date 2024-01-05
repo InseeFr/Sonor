@@ -15,7 +15,7 @@ import D from '../../i18n';
 import './CampaignPortal.css';
 
 function CampaignPortal({
-  location, dataRetreiver,
+  location, dataRetreiver, campaigns
 }) {
   const initialData = {};
   initialData.interviewers = [];
@@ -39,17 +39,14 @@ function CampaignPortal({
 
   useEffect(() => {
     if (!survey && location.survey) {
-      dataRetreiver.getDataForMainScreen(null, (campaignsData) => {
+      dataRetreiver.getFormattedCampaignsForMainScreen(null, (campaignsData) => {
         const newSurvey = campaignsData.find((s) => s.id === location.survey.id);
-        newSurvey.allSurveys = campaignsData;
-        setSurvey(newSurvey);
-        setSurveyInfo(campaignsData.find((s) => s.id === location.survey.id));
+        setSurvey({...newSurvey, allSurveys : campaignsData});
+        setSurveyInfo(newSurvey);
         setRedirect(null);
-      });
+      }, campaigns);
     }
-  }, [redirect, dataRetreiver, location, survey]);
 
-  useEffect(() => {
     if (survey) {
       setIsLoading(true);
       dataRetreiver.getDataForCampaignPortal(!survey || survey.id, (res) => {
@@ -58,7 +55,7 @@ function CampaignPortal({
         setIsLoading(false);
       });
     }
-  }, [redirect, dataRetreiver, location, survey]);
+  }, [survey]);
 
   function handleSort(property, asc) {
     const [sortedData, newSort] = Utils.handleSort(property, data, sort, 'campaignPortal', asc);

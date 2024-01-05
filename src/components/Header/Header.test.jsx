@@ -53,7 +53,7 @@ DataFormatter.mockImplementation(() => ({
   getPreferences: (c) => (c(preferences)),
   getInterviewers: (c) => (c(interviewers)),
   getQuestionnaireId: (id, c) => (c({ questionnaireId: 'QXT55' })),
-  getDataForMainScreen: (a, c) => {
+  getFormattedCampaignsForMainScreen: (a, c, mainScreenData) => {
     if (c) { c(mainScreenData); }
     return Promise.resolve(mainScreenData);
   },
@@ -97,7 +97,7 @@ jest.mock('react-router-dom', () => ({
 
 const TestingRouter = () => (
   <Router history={history}>
-    <Header user={userData} showPreferences={() => { mockShowPreferences(); }} dataRetreiver={dataRetreiver} />
+    <Header user={userData} showPreferences={() => { mockShowPreferences(); }} dataRetreiver={dataRetreiver} campaigns={mainScreenData} preferences={preferences}/>
     <Switch>
       <Route
         path="*"

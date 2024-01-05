@@ -27,7 +27,7 @@ function makeTableForExport(data) {
   return header.concat(data.map((line) => ([
     line.campaign,
     line.id,
-    `${line.interviewer.interviewerLastName} ${line.interviewer.interviewerFirstName}`,
+    `${line.interviewer?.interviewerLastName ?? ""} ${line.interviewer?.interviewerFirstName ?? ""}`,
     line.ssech,
     line.location ? line.location.substring(0, 2) : null,
     line.city,

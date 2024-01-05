@@ -72,8 +72,9 @@ const updatePreferences = jest.fn((newPrefs, cb) => {
 
 DataFormatter.mockImplementation(() => ({
   getPreferences: (c) => (c(preferences)),
+  getAllCampaigns: (c) => (c(mainScreenData)),
   getQuestionnaireId: (id, c) => (c({ questionnaireId: 'QXT55' })),
-  getDataForMainScreen: (a, c) => {
+  getFormattedCampaignsForMainScreen: (a, c) => {
     if (c) { c(mainScreenData); }
     return Promise.resolve(mainScreenData);
   },

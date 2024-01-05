@@ -58,7 +58,7 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
   </Router>
 );
 
-const mockGetDataForMainScreen = jest.fn(() => (Promise.resolve(mainScreenData)));
+const mockGetFormattedCampaignsForMainScreen = jest.fn(() => (mainScreenData));
 
 const mockGetDataForCollectionTable = jest.fn(
   (survey, date, pagination, mode, cb) => {
@@ -82,7 +82,7 @@ const mockGetDataForCollectionTable = jest.fn(
 
 const mockDataFormatter = DataFormatter.mockImplementation(() => ({
   getDataForCollectionTable: mockGetDataForCollectionTable,
-  getDataForMainScreen: mockGetDataForMainScreen,
+  getFormattedCampaignsForMainScreen: mockGetFormattedCampaignsForMainScreen
 }));
 
 const mockDataRetreiver = new DataFormatter();
@@ -314,7 +314,7 @@ it('Reloading the page with no survey set (F5) by survey (Site > Progress)', asy
   await waitForElement(() => screen.getByTestId('pagination-nav'));
 
   // Should call getDataForMainScreen and display the page anyway
-  expect(mockGetDataForMainScreen).toHaveBeenCalled();
+  expect(mockGetFormattedCampaignsForMainScreen).toHaveBeenCalled();
   expect(component).toMatchSnapshot();
 });
 
