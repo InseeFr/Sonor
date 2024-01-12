@@ -229,7 +229,6 @@ class Utils {
         if (dateA !== dateB) {
           return 1 * mult;
         }
-
         return mainSort ? mainSortFunc(a, b) : 0;
       };
     }

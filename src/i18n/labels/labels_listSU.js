@@ -87,22 +87,6 @@ const listSU = {
     fr: "Avant avant avant dernière relance (relance enquêteur)",
     en: "Fourth latest reminder (interviewer reminder)",
   },
-  emailAndRefusalReminder: {
-    fr: "M Ref",
-    en: "E Ref",
-  },
-  mailAndRefusalReminder: {
-    fr: "C Ref",
-    en: "M Ref",
-  },
-  emailAndUnreachableReminder: {
-    fr: "M IAJ",
-    en: "E ITJ",
-  },
-  mailAndUnreachableReminder: {
-    fr: "C IAJ",
-    en: "M ITJ",
-  },
   reminderEmailMedium: {
     fr: "M",
     en: "E"
@@ -151,7 +135,6 @@ const listSU = {
     fr: "Courrier",
     en: "Mail",
   },
-
 };
 
 export default listSU;
