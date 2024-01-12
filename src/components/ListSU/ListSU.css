@@ -5,24 +5,41 @@
 }
 
 #SUTable .ColId {
-  width: 15%;
+  width: 6%;
 }
 #SUTable .ColInterviewer {
-  width: 20%;
+  width: 15%;
 }
 
 #SUTable .ColSsech {
-  width: 11%;
+  width: 4%;
 }
 
 #SUTable .ColDepartement {
-  width: 13%;
+  width: 6%;
 }
 
 #SUTable .ColCity {
-  width: 20%;
+  width: 15%;
 }
 
 #SUTable .ColState {
   width: 13%;
+}
+
+#SUTable .ColTotalReminders {
+  width: 3%;
+  min-width: 3rem;
+}
+
+#SUTable .ColLatestReminder {
+  width: 7%;
+}
+
+#SUTable .ColContactOutcomeType {
+  width: 10%;
+}
+
+#SUTable .ColContactOutcomeDate {
+  width: 5%;
 }

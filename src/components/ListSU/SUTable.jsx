@@ -10,10 +10,31 @@ import SortIcon from "../SortIcon/SortIcon";
 import SearchField from "../SearchField/SearchField";
 import PaginationNav from "../PaginationNav/PaginationNav";
 import SurveyUnitLine from "./SurveyUnitLine";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import D from "../../i18n";
+import Utils from '../../utils/Utils';
 
-function makeTableForExport(data) {
-  const header = [
+const getLatestReminder = (requests) => {
+  let latestStatus;
+
+  requests.forEach(request => {
+      const initiatedStatus = request.status.find((status) => status.status === "INITIATED");
+      if(initiatedStatus !== undefined){
+        const maxDate = latestStatus ? Math.max(initiatedStatus.date, latestStatus.date) : initiatedStatus.date;
+        latestStatus = latestStatus?.date === maxDate ? latestStatus : initiatedStatus;
+      }
+  });
+
+  const latestReminder = requests.find((request) => request.status.includes(latestStatus));
+  const initiatedDate = latestStatus.date && Utils.convertToDateString(new Date( latestStatus.date * 1000));
+  requests = requests.filter((request) => request.id !== latestReminder.id);
+
+  return {latestReminder : {...latestReminder, initiatedDate}, requests };
+}
+
+function makeTableForExport(data, communicationRequestConfiguration ) {
+  const headerTitle = [
     [
       D.identifier,
       D.interviewer,
@@ -23,19 +44,85 @@ function makeTableForExport(data) {
       D.town,
       D.state,
     ],
-  ];
+  ]
+  
+  if(communicationRequestConfiguration){
+    let maxReminders = 0;
+    headerTitle[0].splice(headerTitle[0].length -1, 0, D.totalReminders )
+    
+    data.forEach((survey) => {
+      const length = survey.communicationRequests?.filter((request) => request.emiter === "INTERVIEWER" && request.type === "REMINDER")?.length ?? 0 ;
+      length > maxReminders && (maxReminders = length);
+    })
+    
+    for(let i = 0; i < maxReminders; i++){
+      headerTitle[0].splice(headerTitle[0].length -1, 0, D.reminderMediumExportLabel, D.reminderReasonExportLabel, D.reminderDateExportLabel);
+    }
+  
+    headerTitle[0].splice(headerTitle[0].length -1, 0, D.contactOutcomeLabel, D.contactOutcomeDateLabel);
+  }
 
-  return header.concat(
-    data.map((line) => [
-      line.id,
-      line.interviewer,
-      line.idep,
-      line.ssech,
-      line.departement?.substring(0, 2),
-      line.city,
-      line.state,
-    ])
-  );
+  const header = headerTitle;
+
+  return communicationRequestConfiguration ? header.concat(
+    data.map((line) => {
+      let reminderInformationsToExport = [];
+
+      const reminders = line.communicationRequests?.filter((request) => request.emiter === "INTERVIEWER" && request.type === "REMINDER") ?? []; 
+      
+      let remindersFiltered = reminders;
+
+      for(let i = 0; i < reminders.length; i++){
+        const {latestReminder, requests} = getLatestReminder(remindersFiltered);
+        remindersFiltered = requests;
+        reminderInformationsToExport = [
+          ...reminderInformationsToExport,
+          D[latestReminder.medium?.toLowerCase()] ?? "",
+          D[latestReminder.reason?.toLowerCase()] ?? "",
+          latestReminder.initiatedDate ?? "",
+        ]
+      }
+      
+      return reminders.length !== 0 ? [
+        line.id,
+        line.interviewer,
+        line.idep,
+        line.ssech,
+        line.departement?.substring(0, 2),
+        line.city,
+        reminders.length,
+        [...reminderInformationsToExport],
+        line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
+        line.contactOutcome?.date ? Utils.convertToDateString(new Date( line.contactOutcome.date * 1000)): "",
+        line.state,
+      ] : [
+        line.id,
+        line.interviewer,
+        line.idep,
+        line.ssech,
+        line.departement?.substring(0, 2),
+        line.city,
+        reminders.length,
+        line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
+        line.contactOutcome?.date ? Utils.convertToDateString(new Date( line.contactOutcome.date * 1000)): "",
+        line.state,
+      ];
+    })
+  )
+  :
+  header.concat(
+    data.map((line) => {
+      return [
+        line.id,
+        line.interviewer,
+        line.idep,
+        line.ssech,
+        line.departement?.substring(0, 2),
+        line.city,
+        line.state,
+      ];
+    })
+  )
 }
 
 class SUTable extends React.Component {
@@ -132,7 +219,7 @@ class SUTable extends React.Component {
     const title = `${fileLabel}_${new Date()
       .toLocaleDateString()
       .replace(/\//g, "")}.csv`.replace(/ /g, "_");
-    const table = makeTableForExport(data);
+    const table = makeTableForExport(data, survey.communicationRequestConfiguration);
     const csvContent = `data:text/csv;charset=utf-8,\ufeff${table
       .map((e) => e.join(";"))
       .join("\n")}`;
@@ -160,7 +247,7 @@ class SUTable extends React.Component {
   }
 
   render() {
-    const { data, sort, handleSort, isLoading } = this.props;
+    const { data, sort, handleSort, isLoading, survey } = this.props;
     const fieldsToSearch = ["city", "interviewer", "id", "state"];
     const {
       pagination,
@@ -284,6 +371,65 @@ class SUTable extends React.Component {
                         {D.town}
                         <SortIcon val="city" sort={sort} />
                       </th>
+                      { survey.communicationRequestConfiguration &&
+                        <>
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>{D.totalReminders}</Tooltip>}
+                          >
+                            <th className="ColTotalReminders">
+                              {D.totalRemindersLabel}
+                            </th>
+                          </OverlayTrigger>
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>{D.latestReminder}</Tooltip>}
+                          >
+                            <th className="ColLatestReminder">
+                              {D.latestReminderLabel}
+                            </th>
+                          </OverlayTrigger>
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>{D.secondLatestReminder}</Tooltip>}
+                          >
+                            <th className="ColLatestReminder">
+                              {`${D.latestReminderLabel}-1`}
+                            </th>
+                          </OverlayTrigger>
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>{D.thirdLatestReminder}</Tooltip>}
+                          >
+                            <th className="ColLatestReminder">
+                              {`${D.latestReminderLabel}-2`}
+                            </th>
+                          </OverlayTrigger>
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>{D.fourthLatestReminder}</Tooltip>}
+                          >
+                            <th className="ColLatestReminder">
+                              {`${D.latestReminderLabel}-3`}
+                            </th>
+                          </OverlayTrigger>
+                          <th className="ColContactOutcomeType">
+                            {D.contactOutcomeLabel}
+                          </th>
+                          <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>{D.contactOutcomeDate}</Tooltip>}
+                          >
+                            <th 
+                              onClick={handleSortFunct("contactOutcomeDate")} 
+                              className="Clickable ColContactOutcomeDate"
+                            >
+                              {D.contactOutcomeDateLabel}
+                              <SortIcon val="contactOutcomeDate" sort={sort} />
+                            </th>
+                          </OverlayTrigger>                          
+                        </>
+                      }
                       <th
                         onClick={handleSortFunct("state")}
                         className="Clickable ColState"
@@ -302,14 +448,29 @@ class SUTable extends React.Component {
                           displayedLines.length
                         )
                       )
-                      .map((line) => (
-                        <SurveyUnitLine
+                      .map((line) => {
+                        const reminders = line.communicationRequests?.filter((request) => request.emiter === "INTERVIEWER" && request.type === "REMINDER") ?? [];
+                        let remindersFiltered = reminders ?? [];
+                        let remindersByOrder = [];
+                        
+                        for(let i = 0; i < reminders.length; i++){
+                          const {latestReminder, requests} = getLatestReminder(remindersFiltered);
+                          remindersFiltered = requests;
+                          remindersByOrder = [...remindersByOrder, latestReminder]
+                        }
+
+                        return <SurveyUnitLine
                           key={line.id}
-                          lineData={line}
+                          lineData={
+                            {...line, 
+                              remindersByOrder,
+                            }
+                          }
                           isChecked={checkboxArray[line.id]}
                           updateFunc={() => toggleCheckBox(line.id)}
+                          communicationRequestConfiguration = {survey.communicationRequestConfiguration}
                         />
-                      ))}
+                        })}
                   </tbody>
                 </Table>
                 <div className="tableOptionsWrapper">

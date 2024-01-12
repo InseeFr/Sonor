@@ -17,6 +17,7 @@ function switchCurrent(surveyObj, idToSwitch) {
   switched.label = newSurvey.label;
   switched.collectionStartDate = newSurvey.collectionStartDate;
   switched.endDate = newSurvey.endDate;
+  switched.communicationRequestConfiguration = newSurvey.communicationRequestConfiguration ?? false;
   return switched;
 }
 
