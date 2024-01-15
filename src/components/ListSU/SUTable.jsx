@@ -13,27 +13,16 @@ import SurveyUnitLine from "./SurveyUnitLine";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import D from "../../i18n";
-import Utils from '../../utils/Utils';
+import Utils from "../../utils/Utils";
 
-const getLatestReminder = (requests) => {
-  let latestStatus;
+const getInitiatedDate = (reminder) =>
+  reminder.status.find((status) => status.status === "INITIATED")?.date ?? 0;
 
-  requests.forEach(request => {
-      const initiatedStatus = request.status.find((status) => status.status === "INITIATED");
-      if(initiatedStatus !== undefined){
-        const maxDate = latestStatus ? Math.max(initiatedStatus.date, latestStatus.date) : initiatedStatus.date;
-        latestStatus = latestStatus?.date === maxDate ? latestStatus : initiatedStatus;
-      }
-  });
+const orderReminders = (reminders) => {
+  reminders.sort((a, b) => getInitiatedDate(b) - getInitiatedDate(a));
+};
 
-  const latestReminder = requests.find((request) => request.status.includes(latestStatus));
-  const initiatedDate = latestStatus.date && Utils.convertToDateString(new Date( latestStatus.date * 1000));
-  requests = requests.filter((request) => request.id !== latestReminder.id);
-
-  return {latestReminder : {...latestReminder, initiatedDate}, requests };
-}
-
-function makeTableForExport(data, communicationRequestConfiguration ) {
+function makeTableForExport(data, communicationRequestConfiguration) {
   const headerTitle = [
     [
       D.identifier,
@@ -44,85 +33,120 @@ function makeTableForExport(data, communicationRequestConfiguration ) {
       D.town,
       D.state,
     ],
-  ]
-  
-  if(communicationRequestConfiguration){
+  ];
+
+  if (communicationRequestConfiguration) {
     let maxReminders = 0;
-    headerTitle[0].splice(headerTitle[0].length -1, 0, D.totalReminders )
-    
+
+    headerTitle[0].splice(headerTitle[0].length - 1, 0, D.totalReminders);
+
     data.forEach((survey) => {
-      const length = survey.communicationRequests?.filter((request) => request.emiter === "INTERVIEWER" && request.type === "REMINDER")?.length ?? 0 ;
+      const length =
+        survey.communicationRequests?.filter(
+          (request) =>
+            request.emiter === "INTERVIEWER" && request.type === "REMINDER"
+        )?.length ?? 0;
       length > maxReminders && (maxReminders = length);
-    })
-    
-    for(let i = 0; i < maxReminders; i++){
-      headerTitle[0].splice(headerTitle[0].length -1, 0, D.reminderMediumExportLabel, D.reminderReasonExportLabel, D.reminderDateExportLabel);
-    }
-  
-    headerTitle[0].splice(headerTitle[0].length -1, 0, D.contactOutcomeLabel, D.contactOutcomeDateLabel);
+    });
+
+    maxReminders !== 0 &&
+      headerTitle[0].splice(
+        headerTitle[0].length - 1,
+        0,
+        Array.from(new Array(maxReminders)).reduce((previous) => {
+          return [
+            ...previous,
+            D.reminderMediumExportLabel,
+            D.reminderReasonExportLabel,
+            D.reminderDateExportLabel,
+          ];
+        }, [])
+      );
+
+    headerTitle[0].splice(
+      headerTitle[0].length - 1,
+      0,
+      D.contactOutcomeLabel,
+      D.contactOutcomeDateLabel
+    );
   }
 
   const header = headerTitle;
 
-  return communicationRequestConfiguration ? header.concat(
-    data.map((line) => {
-      let reminderInformationsToExport = [];
+  return communicationRequestConfiguration
+    ? header.concat(
+        data.map((line) => {
+          const reminders =
+            line.communicationRequests?.filter(
+              (request) =>
+                request.emiter === "INTERVIEWER" && request.type === "REMINDER"
+            ) ?? [];
+          orderReminders(reminders);
 
-      const reminders = line.communicationRequests?.filter((request) => request.emiter === "INTERVIEWER" && request.type === "REMINDER") ?? []; 
-      
-      let remindersFiltered = reminders;
+          const reminderInformationsToExport = reminders.reduce(
+            (previous, current) => {
+              const initiatedStatus = current.status.find(
+                (status) => status.status === "INITIATED"
+              );
+              return [
+                ...previous,
+                D[current.medium?.toLowerCase()] ?? "",
+                D[current.reason?.toLowerCase()] ?? "",
+                Utils.convertToDateString(new Date(initiatedStatus.date)),
+              ];
+            },
+            []
+          );
 
-      for(let i = 0; i < reminders.length; i++){
-        const {latestReminder, requests} = getLatestReminder(remindersFiltered);
-        remindersFiltered = requests;
-        reminderInformationsToExport = [
-          ...reminderInformationsToExport,
-          D[latestReminder.medium?.toLowerCase()] ?? "",
-          D[latestReminder.reason?.toLowerCase()] ?? "",
-          latestReminder.initiatedDate ?? "",
-        ]
-      }
-      
-      return reminders.length !== 0 ? [
-        line.id,
-        line.interviewer,
-        line.idep,
-        line.ssech,
-        line.departement?.substring(0, 2),
-        line.city,
-        reminders.length,
-        [...reminderInformationsToExport],
-        line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
-        line.contactOutcome?.date ? Utils.convertToDateString(new Date( line.contactOutcome.date * 1000)): "",
-        line.state,
-      ] : [
-        line.id,
-        line.interviewer,
-        line.idep,
-        line.ssech,
-        line.departement?.substring(0, 2),
-        line.city,
-        reminders.length,
-        line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
-        line.contactOutcome?.date ? Utils.convertToDateString(new Date( line.contactOutcome.date * 1000)): "",
-        line.state,
-      ];
-    })
-  )
-  :
-  header.concat(
-    data.map((line) => {
-      return [
-        line.id,
-        line.interviewer,
-        line.idep,
-        line.ssech,
-        line.departement?.substring(0, 2),
-        line.city,
-        line.state,
-      ];
-    })
-  )
+          return reminders.length !== 0
+            ? [
+                line.id,
+                line.interviewer,
+                line.idep,
+                line.ssech,
+                line.departement?.substring(0, 2),
+                line.city,
+                reminders.length,
+                [...reminderInformationsToExport],
+                line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
+                line.contactOutcome?.date
+                  ? Utils.convertToDateString(
+                      new Date(line.contactOutcome.date)
+                    )
+                  : "",
+                line.state,
+              ]
+            : [
+                line.id,
+                line.interviewer,
+                line.idep,
+                line.ssech,
+                line.departement?.substring(0, 2),
+                line.city,
+                reminders.length,
+                line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
+                line.contactOutcome?.date
+                  ? Utils.convertToDateString(
+                      new Date(line.contactOutcome.date)
+                    )
+                  : "",
+                line.state,
+              ];
+        })
+      )
+    : header.concat(
+        data.map((line) => {
+          return [
+            line.id,
+            line.interviewer,
+            line.idep,
+            line.ssech,
+            line.departement?.substring(0, 2),
+            line.city,
+            line.state,
+          ];
+        })
+      );
 }
 
 class SUTable extends React.Component {
@@ -219,7 +243,10 @@ class SUTable extends React.Component {
     const title = `${fileLabel}_${new Date()
       .toLocaleDateString()
       .replace(/\//g, "")}.csv`.replace(/ /g, "_");
-    const table = makeTableForExport(data, survey.communicationRequestConfiguration);
+    const table = makeTableForExport(
+      data,
+      survey.communicationRequestConfiguration
+    );
     const csvContent = `data:text/csv;charset=utf-8,\ufeff${table
       .map((e) => e.join(";"))
       .join("\n")}`;
@@ -371,7 +398,7 @@ class SUTable extends React.Component {
                         {D.town}
                         <SortIcon val="city" sort={sort} />
                       </th>
-                      { survey.communicationRequestConfiguration &&
+                      {survey.communicationRequestConfiguration && (
                         <>
                           <OverlayTrigger
                             placement="top"
@@ -391,7 +418,9 @@ class SUTable extends React.Component {
                           </OverlayTrigger>
                           <OverlayTrigger
                             placement="top"
-                            overlay={<Tooltip>{D.secondLatestReminder}</Tooltip>}
+                            overlay={
+                              <Tooltip>{D.secondLatestReminder}</Tooltip>
+                            }
                           >
                             <th className="ColLatestReminder">
                               {`${D.latestReminderLabel}-1`}
@@ -407,7 +436,9 @@ class SUTable extends React.Component {
                           </OverlayTrigger>
                           <OverlayTrigger
                             placement="top"
-                            overlay={<Tooltip>{D.fourthLatestReminder}</Tooltip>}
+                            overlay={
+                              <Tooltip>{D.fourthLatestReminder}</Tooltip>
+                            }
                           >
                             <th className="ColLatestReminder">
                               {`${D.latestReminderLabel}-3`}
@@ -420,16 +451,16 @@ class SUTable extends React.Component {
                             placement="top"
                             overlay={<Tooltip>{D.contactOutcomeDate}</Tooltip>}
                           >
-                            <th 
-                              onClick={handleSortFunct("contactOutcomeDate")} 
+                            <th
+                              onClick={handleSortFunct("contactOutcomeDate")}
                               className="Clickable ColContactOutcomeDate"
                             >
                               {D.contactOutcomeDateLabel}
                               <SortIcon val="contactOutcomeDate" sort={sort} />
                             </th>
-                          </OverlayTrigger>                          
+                          </OverlayTrigger>
                         </>
-                      }
+                      )}
                       <th
                         onClick={handleSortFunct("state")}
                         className="Clickable ColState"
@@ -449,28 +480,27 @@ class SUTable extends React.Component {
                         )
                       )
                       .map((line) => {
-                        const reminders = line.communicationRequests?.filter((request) => request.emiter === "INTERVIEWER" && request.type === "REMINDER") ?? [];
-                        let remindersFiltered = reminders ?? [];
-                        let remindersByOrder = [];
-                        
-                        for(let i = 0; i < reminders.length; i++){
-                          const {latestReminder, requests} = getLatestReminder(remindersFiltered);
-                          remindersFiltered = requests;
-                          remindersByOrder = [...remindersByOrder, latestReminder]
-                        }
+                        const reminders =
+                          line.communicationRequests?.filter(
+                            (request) =>
+                              request.emiter === "INTERVIEWER" &&
+                              request.type === "REMINDER"
+                          ) ?? [];
 
-                        return <SurveyUnitLine
-                          key={line.id}
-                          lineData={
-                            {...line, 
-                              remindersByOrder,
+                        orderReminders(reminders);
+
+                        return (
+                          <SurveyUnitLine
+                            key={line.id}
+                            lineData={{ ...line, remindersByOrder: reminders }}
+                            isChecked={checkboxArray[line.id]}
+                            updateFunc={() => toggleCheckBox(line.id)}
+                            communicationRequestConfiguration={
+                              survey.communicationRequestConfiguration
                             }
-                          }
-                          isChecked={checkboxArray[line.id]}
-                          updateFunc={() => toggleCheckBox(line.id)}
-                          communicationRequestConfiguration = {survey.communicationRequestConfiguration}
-                        />
-                        })}
+                          />
+                        );
+                      })}
                   </tbody>
                 </Table>
                 <div className="tableOptionsWrapper">
