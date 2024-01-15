@@ -6,14 +6,13 @@ import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import SortIcon from "../SortIcon/SortIcon";
 import SearchField from "../SearchField/SearchField";
 import PaginationNav from "../PaginationNav/PaginationNav";
 import SurveyUnitLine from "./SurveyUnitLine";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import D from "../../i18n";
 import Utils from "../../utils/Utils";
+import { SUTableHeader } from "./SUTableHeader";
+import { SUTableHeaderParameters } from "./SUTableHeaderParameters";
 
 const getInitiatedDate = (reminder) =>
   reminder.status.find((status) => status.status === "INITIATED")?.date ?? 0;
@@ -292,6 +291,7 @@ class SUTable extends React.Component {
         handleSort(property);
       };
     }
+
     return (
       <Card className="ViewCard">
         <Card.Title className="PageTitle">
@@ -362,112 +362,26 @@ class SUTable extends React.Component {
                           onChange={(e) => this.handleCheckAll(e)}
                         />
                       </th>
-                      <th
-                        onClick={handleSortFunct("id")}
-                        className="Clickable ColId"
-                      >
-                        {D.identifier}
-                        <SortIcon val="id" sort={sort} />
-                      </th>
-                      <th
-                        data-testid="TableHeader_interviewer_name"
-                        onClick={handleSortFunct("interviewer")}
-                        className="Clickable ColInterviewer"
-                      >
-                        {D.interviewer}
-                        <SortIcon val="interviewer" sort={sort} />
-                      </th>
-                      <th
-                        onClick={handleSortFunct("ssech")}
-                        className="Clickable ColSsech"
-                      >
-                        {D.ssech}
-                        <SortIcon val="ssech" sort={sort} />
-                      </th>
-                      <th
-                        onClick={handleSortFunct("departement")}
-                        className="Clickable ColDepartement"
-                      >
-                        {D.department}
-                        <SortIcon val="departement" sort={sort} />
-                      </th>
-                      <th
-                        onClick={handleSortFunct("city")}
-                        className="Clickable ColCity"
-                      >
-                        {D.town}
-                        <SortIcon val="city" sort={sort} />
-                      </th>
-                      {survey.communicationRequestConfiguration && (
-                        <>
-                          <OverlayTrigger
-                            placement="top"
-                            overlay={<Tooltip>{D.totalReminders}</Tooltip>}
-                          >
-                            <th className="ColTotalReminders">
-                              {D.totalRemindersLabel}
-                            </th>
-                          </OverlayTrigger>
-                          <OverlayTrigger
-                            placement="top"
-                            overlay={<Tooltip>{D.latestReminder}</Tooltip>}
-                          >
-                            <th className="ColLatestReminder">
-                              {D.latestReminderLabel}
-                            </th>
-                          </OverlayTrigger>
-                          <OverlayTrigger
-                            placement="top"
-                            overlay={
-                              <Tooltip>{D.secondLatestReminder}</Tooltip>
-                            }
-                          >
-                            <th className="ColLatestReminder">
-                              {`${D.latestReminderLabel}-1`}
-                            </th>
-                          </OverlayTrigger>
-                          <OverlayTrigger
-                            placement="top"
-                            overlay={<Tooltip>{D.thirdLatestReminder}</Tooltip>}
-                          >
-                            <th className="ColLatestReminder">
-                              {`${D.latestReminderLabel}-2`}
-                            </th>
-                          </OverlayTrigger>
-                          <OverlayTrigger
-                            placement="top"
-                            overlay={
-                              <Tooltip>{D.fourthLatestReminder}</Tooltip>
-                            }
-                          >
-                            <th className="ColLatestReminder">
-                              {`${D.latestReminderLabel}-3`}
-                            </th>
-                          </OverlayTrigger>
-                          <th className="ColContactOutcomeType">
-                            {D.contactOutcomeLabel}
-                          </th>
-                          <OverlayTrigger
-                            placement="top"
-                            overlay={<Tooltip>{D.contactOutcomeDate}</Tooltip>}
-                          >
-                            <th
-                              onClick={handleSortFunct("contactOutcomeDate")}
-                              className="Clickable ColContactOutcomeDate"
-                            >
-                              {D.contactOutcomeDateLabel}
-                              <SortIcon val="contactOutcomeDate" sort={sort} />
-                            </th>
-                          </OverlayTrigger>
-                        </>
+                      {SUTableHeaderParameters.map(
+                        (parameters) =>
+                          (parameters.isVisibleWithoutActivatedConfiguration ||
+                            survey.communicationRequestConfiguration) &&
+                          (parameters.sortValue ? (
+                            <SUTableHeader
+                              {...parameters}
+                              handleSortFunction={handleSortFunct(
+                                parameters.sortValue
+                              )}
+                              sort={sort}
+                              key={parameters.label}
+                            />
+                          ) : (
+                            <SUTableHeader
+                              {...parameters}
+                              key={parameters.label}
+                            />
+                          ))
                       )}
-                      <th
-                        onClick={handleSortFunct("state")}
-                        className="Clickable ColState"
-                      >
-                        {D.state}
-                        <SortIcon val="state" sort={sort} />
-                      </th>
                     </tr>
                   </thead>
                   <tbody>
