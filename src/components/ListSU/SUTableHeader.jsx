@@ -3,6 +3,26 @@ import SortIcon from "../SortIcon/SortIcon";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+const HeaderContent = ({
+  label,
+  className,
+  sortValue,
+  sort,
+  handleSortFunction,
+  dataTestId,
+  ...props
+}) => (
+  <th
+    {...props}
+    data-testid={dataTestId}
+    onClick={sortValue ? handleSortFunction(sortValue) : undefined}
+    className={className}
+  >
+    {label}
+    {sortValue && <SortIcon val={sortValue} sort={sort} />}
+  </th>
+);
+
 export const SUTableHeader = ({
   label,
   tooltipLabel,
@@ -14,23 +34,23 @@ export const SUTableHeader = ({
 }) => {
   return tooltipLabel ? (
     <OverlayTrigger placement="top" overlay={<Tooltip>{tooltipLabel}</Tooltip>}>
-      <th
-        data-testid={dataTestId}
-        onClick={handleSortFunction}
+      <HeaderContent
+        label={label}
         className={className}
-      >
-        {label}
-        {sortValue && <SortIcon val={sortValue} sort={sort} />}
-      </th>
+        sortValue={sortValue}
+        sort={sort}
+        handleSortFunction={handleSortFunction}
+        dataTestId={dataTestId}
+      />
     </OverlayTrigger>
   ) : (
-    <th
-      data-testid={dataTestId}
-      onClick={handleSortFunction}
+    <HeaderContent
+      label={label}
       className={className}
-    >
-      {label}
-      {sortValue && <SortIcon val={sortValue} sort={sort} />}
-    </th>
+      sortValue={sortValue}
+      sort={sort}
+      handleSortFunction={handleSortFunction}
+      dataTestId={dataTestId}
+    />
   );
 };

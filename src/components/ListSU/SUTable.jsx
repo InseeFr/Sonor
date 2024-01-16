@@ -292,6 +292,11 @@ class SUTable extends React.Component {
       };
     }
 
+    const parameters = SUTableHeaderParameters.filter(
+      (parameter) =>
+        parameter.isAlwaysVisible || survey.communicationRequestConfiguration
+    );
+
     return (
       <Card className="ViewCard">
         <Card.Title className="PageTitle">
@@ -362,26 +367,14 @@ class SUTable extends React.Component {
                           onChange={(e) => this.handleCheckAll(e)}
                         />
                       </th>
-                      {SUTableHeaderParameters.map(
-                        (parameters) =>
-                          (parameters.isVisibleWithoutActivatedConfiguration ||
-                            survey.communicationRequestConfiguration) &&
-                          (parameters.sortValue ? (
-                            <SUTableHeader
-                              {...parameters}
-                              handleSortFunction={handleSortFunct(
-                                parameters.sortValue
-                              )}
-                              sort={sort}
-                              key={parameters.label}
-                            />
-                          ) : (
-                            <SUTableHeader
-                              {...parameters}
-                              key={parameters.label}
-                            />
-                          ))
-                      )}
+                      {parameters.map((parameters) => (
+                        <SUTableHeader
+                          {...parameters}
+                          handleSortFunction={handleSortFunct}
+                          sort={sort}
+                          key={parameters.label}
+                        />
+                      ))}
                     </tr>
                   </thead>
                   <tbody>
