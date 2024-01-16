@@ -213,6 +213,19 @@ class Utils {
         return mainSort ? mainSortFunc(a, b) : 0;
       };
     }
+    if (sortOn === 'contactOutcomeDate') {
+      return (a, b) => {
+        const dateA = a.contactOutcome.date;
+        const dateB = b.contactOutcome.date;
+        if(!dateA || !dateB){
+          return dateA ? 1 * mult : -1 * mult;
+        }
+        if (dateA !== dateB) {
+          return (dateA < dateB ? -1 : 1) * mult;
+        }
+        return mainSort ? mainSortFunc(a, b) : 0;
+      };
+    }
     if (sortOn === 'contact_outcome') {
       return (a, b) => {
         if (!a.contactOutcome && !!b.contactOutcome) {

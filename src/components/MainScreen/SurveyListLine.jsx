@@ -9,6 +9,7 @@ function SurveyListLine({ lineData, allData }) {
     label: data.label,
     collectionStartDate: data.collectionStartDate,
     endDate: data.endDate,
+    communicationRequestConfiguration: data.communicationRequestConfiguration ?? false,
     allSurveys: allData,
   };
 
