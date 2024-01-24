@@ -11,7 +11,7 @@ function SurveyUnitLine({
   view,
   dataRetreiver,
 }) {
-  const { campaignLabel, interviewer, id, viewed } = lineData;
+  const { campaignLabel, interviewer, id, viewed, contactOutcome } = lineData;
   const queenUrl = `${window.localStorage.getItem("QUEEN_URL_FRONT_END")}`;
   return (
     <tr className={viewed ? "" : "notViewed"}>
@@ -27,6 +27,9 @@ function SurveyUnitLine({
       </td>
       <td className="ColCampaign">{campaignLabel}</td>
       <td className="ColId">{id}</td>
+      <td className="ColContactOutcome">
+        {contactOutcome && D[contactOutcome]}
+      </td>
       <td className="ColInterviewer">{interviewer}</td>
       <td className="ColAction">
         <OverlayTrigger

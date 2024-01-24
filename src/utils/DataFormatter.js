@@ -261,6 +261,7 @@ class DataFormatter {
                         id: su.id,
                         viewed: su.viewed,
                         comments: su.comments,
+                        contactOutcome: su.contactOutcome
                       }))
                       // order by interviewer name
                       .sort((a, b) => (a.interviewer > b.interviewer ? 1 : -1));
