@@ -4,7 +4,7 @@ const labelsContactOutcomes = {
     fr: 'Enquête acceptée',
   },
   IMP: {
-    en: 'Imposssible to reach',
+    en: 'Impossible to reach',
     fr: 'Impossible à joindre',
   },
   REF: {

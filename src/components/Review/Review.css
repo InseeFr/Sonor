@@ -22,6 +22,9 @@
 #Review .ColInterviewer{
   width: 35%;
 }
+#Review .ColContactOutcome{
+  width: 15%;
+}
 #Review .ColAction{
   width: 1%;
 }

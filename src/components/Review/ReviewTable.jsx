@@ -197,6 +197,7 @@ class ReviewTable extends React.Component {
                 <SortIcon val="id" sort={sort} />
                 {D.identifier}
               </th>
+              <th className="ColContactOutcome">{D.contact}</th>
               <th
                 onClick={handleSortFunct("interviewer")}
                 data-testid="TableHeader_interviewer_name_review"
@@ -218,16 +219,20 @@ class ReviewTable extends React.Component {
                 )
               )
               .map((line) => {
-                const element = checkboxArray.filter((element) => element.id === line.id)[0]
-                return <SurveyUnitLine
-                  key={line.id}
-                  lineData={line}
-                  dataRetreiver={dataRetreiver}
-                  isChecked={element?.isChecked ?? false}
-                  view={() => view(line)}
-                  updateFunc={() => toggleCheckBox(line.id)}
-                  handleShow={() => handleShowComment(line)}
-                />
+                const element = checkboxArray.filter(
+                  (element) => element.id === line.id
+                )[0];
+                return (
+                  <SurveyUnitLine
+                    key={line.id}
+                    lineData={line}
+                    dataRetreiver={dataRetreiver}
+                    isChecked={element?.isChecked ?? false}
+                    view={() => view(line)}
+                    updateFunc={() => toggleCheckBox(line.id)}
+                    handleShow={() => handleShowComment(line)}
+                  />
+                );
               })}
             <Modal show={showComment} onHide={() => handleCloseComment()}>
               <Modal.Header closeButton>
