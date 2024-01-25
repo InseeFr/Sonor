@@ -28,7 +28,7 @@ function SurveyUnitLine({
       <td className="ColCampaign">{campaignLabel}</td>
       <td className="ColId">{id}</td>
       <td className="ColContactOutcome">
-        {contactOutcome && D[contactOutcome]}
+        {contactOutcome?.type && D[contactOutcome.type]}
       </td>
       <td className="ColInterviewer">{interviewer}</td>
       <td className="ColAction">
