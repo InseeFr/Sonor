@@ -244,8 +244,8 @@ class Utils {
       }
       
       return (a, b) => {  
-        const typeAOrder = a?.contactOutcome !== undefined ? contactOutcomeTypeOrder[a.contactOutcome?.type] : 14;
-        const typeBOrder = b?.contactOutcome !==undefined ? contactOutcomeTypeOrder[b.contactOutcome?.type] : 14;
+        const typeAOrder = a?.contactOutcome !== undefined && a?.contactOutcome?.type !== undefined ? contactOutcomeTypeOrder[a.contactOutcome?.type] : 14;
+        const typeBOrder = b?.contactOutcome !==undefined && b?.contactOutcome?.type !== undefined  ? contactOutcomeTypeOrder[b.contactOutcome?.type] : 14;
 
         if(!typeAOrder || !typeBOrder){
           return typeAOrder ? -1 * mult : 1 * mult;
