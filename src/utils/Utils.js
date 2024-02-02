@@ -226,6 +226,37 @@ class Utils {
         return mainSort ? mainSortFunc(a, b) : 0;
       };
     }
+    if (sortOn === 'contactOutcomeType') {
+      const contactOutcomeTypeOrder = {
+        INA: 1,
+        REF: 2,
+        IMP: 3,
+        UTR: 4,
+        DCD: 5,
+        NUH: 6,
+        ALA: 7,
+        UCD: 8,
+        DUK: 9,
+        DUU: 10,
+        NOA: 11,
+        ACP: 12,
+        NER: 13,
+      }
+      
+      return (a, b) => {  
+        const typeAOrder = contactOutcomeTypeOrder[a.contactOutcome.type];
+        const typeBOrder = contactOutcomeTypeOrder[b.contactOutcome.type];
+
+        if(!typeAOrder || !typeBOrder){
+          return typeAOrder ? -1 * mult : 1 * mult;
+        }
+        if (typeAOrder !== typeBOrder) {
+          return (typeAOrder < typeBOrder ? -1 : 1) * mult;
+        }
+       
+        return mainSort ? mainSortFunc(a, b) : 0;
+      };
+    }
     if (sortOn === 'contact_outcome') {
       return (a, b) => {
         if (!a.contactOutcome && !!b.contactOutcome) {

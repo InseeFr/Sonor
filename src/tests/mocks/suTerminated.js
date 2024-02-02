@@ -4,7 +4,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1561932000000,
     interviewer: {
       id: 'INTW5',
@@ -17,7 +17,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type : 'INA'},
     finalizationDate: 1561932000000,
     interviewer: {
       id: 'INTW5',
@@ -30,7 +30,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1561932000000,
     interviewer: {
       id: 'INTW5',
@@ -43,7 +43,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1561932000000,
     interviewer: {
       id: 'INTW5',
@@ -56,7 +56,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1561932100001,
     interviewer: {
       id: 'INTW6',
@@ -69,7 +69,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1613304314269,
     interviewer: {
       id: 'INTW5',
@@ -82,7 +82,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1623314314268,
     interviewer: {
       id: 'INTW6',
@@ -95,7 +95,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1761932000000,
     interviewer: {
       id: 'INTW5',
@@ -108,7 +108,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1661932000000,
     interviewer: {
       id: 'INTW6',
@@ -121,7 +121,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1651932000069,
     interviewer: {
       id: 'INTW5',
@@ -134,7 +134,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     finalizationDate: 1603304314268,
     interviewer: {
       id: 'INTW6',
@@ -147,7 +147,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW5',
       interviewerFirstName: 'Chloé',
@@ -159,7 +159,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW6',
       interviewerFirstName: 'Jacques',
@@ -171,7 +171,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW7',
       interviewerFirstName: 'Thierry',
@@ -183,7 +183,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW6',
       interviewerFirstName: 'Jacques',
@@ -195,7 +195,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW5',
       interviewerFirstName: 'Chloé',
@@ -207,7 +207,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW6',
       interviewerFirstName: 'Jacques',
@@ -219,7 +219,7 @@ const val = [
     ssech: 'hgSkR29',
     location: '95160',
     city: 'MONTMORENCY',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW5',
       interviewerFirstName: 'Chloé',
@@ -231,7 +231,7 @@ const val = [
     ssech: 'dlcB55jdf',
     location: '90000',
     city: 'BELFORT',
-    contactOutcome: 'INA',
+    contactOutcome: {type :'INA'},
     interviewer: {
       id: 'INTW6',
       interviewerFirstName: 'Jacques',

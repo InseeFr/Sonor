@@ -153,8 +153,18 @@ Object {
                       Identifier
                     </th>
                     <th
-                      class="ColContactOutcome"
+                      class="Clickable ColContactOutcome"
                     >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
                       Contact outcome
                     </th>
                     <th
@@ -791,8 +801,18 @@ Object {
                     Identifier
                   </th>
                   <th
-                    class="ColContactOutcome"
+                    class="Clickable ColContactOutcome"
                   >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
                     Contact outcome
                   </th>
                   <th
@@ -1486,8 +1506,18 @@ Object {
                       Identifier
                     </th>
                     <th
-                      class="ColContactOutcome"
+                      class="Clickable ColContactOutcome"
                     >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
                       Contact outcome
                     </th>
                     <th
@@ -2124,8 +2154,18 @@ Object {
                     Identifier
                   </th>
                   <th
-                    class="ColContactOutcome"
+                    class="Clickable ColContactOutcome"
                   >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
                     Contact outcome
                   </th>
                   <th
@@ -2819,8 +2859,18 @@ Object {
                       Identifier
                     </th>
                     <th
-                      class="ColContactOutcome"
+                      class="Clickable ColContactOutcome"
                     >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
                       Contact outcome
                     </th>
                     <th
@@ -3457,8 +3507,18 @@ Object {
                     Identifier
                   </th>
                   <th
-                    class="ColContactOutcome"
+                    class="Clickable ColContactOutcome"
                   >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
                     Contact outcome
                   </th>
                   <th
@@ -4184,8 +4244,18 @@ Object {
                       Identifier
                     </th>
                     <th
-                      class="ColContactOutcome"
+                      class="Clickable ColContactOutcome"
                     >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
                       Contact outcome
                     </th>
                     <th
@@ -4523,8 +4593,18 @@ Object {
                     Identifier
                   </th>
                   <th
-                    class="ColContactOutcome"
+                    class="Clickable ColContactOutcome"
                   >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
                     Contact outcome
                   </th>
                   <th
@@ -4927,8 +5007,18 @@ Object {
                       Identifier
                     </th>
                     <th
-                      class="ColContactOutcome"
+                      class="Clickable ColContactOutcome"
                     >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
                       Contact outcome
                     </th>
                     <th
@@ -5266,8 +5356,18 @@ Object {
                     Identifier
                   </th>
                   <th
-                    class="ColContactOutcome"
+                    class="Clickable ColContactOutcome"
                   >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
                     Contact outcome
                   </th>
                   <th

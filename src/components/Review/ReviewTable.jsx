@@ -197,7 +197,13 @@ class ReviewTable extends React.Component {
                 <SortIcon val="id" sort={sort} />
                 {D.identifier}
               </th>
-              <th className="ColContactOutcome">{D.contact}</th>
+              <th
+                onClick={handleSortFunct("contactOutcomeType")}
+                className="Clickable ColContactOutcome"
+              >
+                <SortIcon val="contactOutcomeType" sort={sort} />
+                {D.contact}
+              </th>
               <th
                 onClick={handleSortFunct("interviewer")}
                 data-testid="TableHeader_interviewer_name_review"
