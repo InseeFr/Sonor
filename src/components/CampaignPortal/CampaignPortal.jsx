@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Utils from '../../utils/Utils';
 import TimeLine from './TimeLine';
+import { DatesTable } from './Dates'
 import Contacts from './Contacts';
 import SurveyUnits from './SurveyUnits';
 import SurveySelector from '../SurveySelector/SurveySelector';
@@ -14,7 +15,7 @@ import D from '../../i18n';
 import './CampaignPortal.css';
 
 function CampaignPortal({
-  location, dataRetreiver,
+  location, dataRetreiver, campaigns
 }) {
   const initialData = {};
   initialData.interviewers = [];
@@ -38,17 +39,14 @@ function CampaignPortal({
 
   useEffect(() => {
     if (!survey && location.survey) {
-      dataRetreiver.getDataForMainScreen(null, (campaignsData) => {
+      dataRetreiver.getFormattedCampaignsForMainScreen(null, (campaignsData) => {
         const newSurvey = campaignsData.find((s) => s.id === location.survey.id);
-        newSurvey.allSurveys = campaignsData;
-        setSurvey(newSurvey);
-        setSurveyInfo(campaignsData.find((s) => s.id === location.survey.id));
+        setSurvey({...newSurvey, allSurveys : campaignsData});
+        setSurveyInfo(newSurvey);
         setRedirect(null);
-      });
+      }, campaigns);
     }
-  }, [redirect, dataRetreiver, location, survey]);
 
-  useEffect(() => {
     if (survey) {
       setIsLoading(true);
       dataRetreiver.getDataForCampaignPortal(!survey || survey.id, (res) => {
@@ -57,7 +55,7 @@ function CampaignPortal({
         setIsLoading(false);
       });
     }
-  }, [redirect, dataRetreiver, location, survey]);
+  }, [survey, campaigns, dataRetreiver, location.survey]);
 
   function handleSort(property, asc) {
     const [sortedData, newSort] = Utils.handleSort(property, data, sort, 'campaignPortal', asc);
@@ -105,7 +103,16 @@ function CampaignPortal({
               </Row>
               <Row>
                 <Col>
-                  <Contacts />
+                  <Contacts 
+                    email={surveyInfo.email} 
+                    referents={surveyInfo.referents}
+                  />
+                  <DatesTable
+                    identificationPhaseStartDate={surveyInfo.identificationPhaseStartDate}
+                    collectionStartDate={surveyInfo.collectionStartDate}
+                    collectionEndDate={surveyInfo.collectionEndDate}
+                    endDate={surveyInfo.endDate}
+                  />
                 </Col>
                 <Col>
                   <SurveyUnits

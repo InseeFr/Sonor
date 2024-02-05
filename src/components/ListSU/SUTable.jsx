@@ -6,14 +6,23 @@ import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import SortIcon from "../SortIcon/SortIcon";
 import SearchField from "../SearchField/SearchField";
 import PaginationNav from "../PaginationNav/PaginationNav";
 import SurveyUnitLine from "./SurveyUnitLine";
 import D from "../../i18n";
+import Utils from "../../utils/Utils";
+import { SUTableHeader } from "./SUTableHeader";
+import { SUTableHeaderParameters } from "./SUTableHeaderParameters";
 
-function makeTableForExport(data) {
-  const header = [
+const getInitiatedDate = (reminder) =>
+  reminder.status.find((status) => status.status === "INITIATED")?.date ?? 0;
+
+const orderReminders = (reminders) => {
+  reminders.sort((a, b) => getInitiatedDate(b) - getInitiatedDate(a));
+};
+
+function makeTableForExport(data, communicationRequestConfiguration) {
+  const headerTitle = [
     [
       D.identifier,
       D.interviewer,
@@ -25,17 +34,118 @@ function makeTableForExport(data) {
     ],
   ];
 
-  return header.concat(
-    data.map((line) => [
-      line.id,
-      line.interviewer,
-      line.idep,
-      line.ssech,
-      line.departement?.substring(0, 2),
-      line.city,
-      line.state,
-    ])
-  );
+  if (communicationRequestConfiguration) {
+    let maxReminders = 0;
+
+    headerTitle[0].splice(headerTitle[0].length - 1, 0, D.totalReminders);
+
+    data.forEach((survey) => {
+      const length =
+        survey.communicationRequests?.filter(
+          (request) =>
+            request.emiter === "INTERVIEWER" && request.type === "REMINDER"
+        )?.length ?? 0;
+      length > maxReminders && (maxReminders = length);
+    });
+
+    maxReminders !== 0 &&
+      headerTitle[0].splice(
+        headerTitle[0].length - 1,
+        0,
+        Array.from(new Array(maxReminders)).reduce((previous) => {
+          return [
+            ...previous,
+            D.reminderMediumExportLabel,
+            D.reminderReasonExportLabel,
+            D.reminderDateExportLabel,
+          ];
+        }, [])
+      );
+
+    headerTitle[0].splice(
+      headerTitle[0].length - 1,
+      0,
+      D.contactOutcomeLabel,
+      D.contactOutcomeDateLabel
+    );
+  }
+
+  const header = headerTitle;
+
+  return communicationRequestConfiguration
+    ? header.concat(
+        data.map((line) => {
+          const reminders =
+            line.communicationRequests?.filter(
+              (request) =>
+                request.emiter === "INTERVIEWER" && request.type === "REMINDER"
+            ) ?? [];
+          orderReminders(reminders);
+
+          const reminderInformationsToExport = reminders.reduce(
+            (previous, current) => {
+              const initiatedStatus = current.status.find(
+                (status) => status.status === "INITIATED"
+              );
+              return [
+                ...previous,
+                D[current.medium?.toLowerCase()] ?? "",
+                D[current.reason?.toLowerCase()] ?? "",
+                Utils.convertToDateString(new Date(initiatedStatus.date)),
+              ];
+            },
+            []
+          );
+
+          return reminders.length !== 0
+            ? [
+                line.id,
+                line.interviewer,
+                line.idep,
+                line.ssech,
+                line.departement?.substring(0, 2),
+                line.city,
+                reminders.length,
+                [...reminderInformationsToExport],
+                line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
+                line.contactOutcome?.date
+                  ? Utils.convertToDateString(
+                      new Date(line.contactOutcome.date)
+                    )
+                  : "",
+                line.state,
+              ]
+            : [
+                line.id,
+                line.interviewer,
+                line.idep,
+                line.ssech,
+                line.departement?.substring(0, 2),
+                line.city,
+                reminders.length,
+                line.contactOutcome?.type ? D[line.contactOutcome.type] : "",
+                line.contactOutcome?.date
+                  ? Utils.convertToDateString(
+                      new Date(line.contactOutcome.date)
+                    )
+                  : "",
+                line.state,
+              ];
+        })
+      )
+    : header.concat(
+        data.map((line) => {
+          return [
+            line.id,
+            line.interviewer,
+            line.idep,
+            line.ssech,
+            line.departement?.substring(0, 2),
+            line.city,
+            line.state,
+          ];
+        })
+      );
 }
 
 class SUTable extends React.Component {
@@ -132,7 +242,10 @@ class SUTable extends React.Component {
     const title = `${fileLabel}_${new Date()
       .toLocaleDateString()
       .replace(/\//g, "")}.csv`.replace(/ /g, "_");
-    const table = makeTableForExport(data);
+    const table = makeTableForExport(
+      data,
+      survey.communicationRequestConfiguration
+    );
     const csvContent = `data:text/csv;charset=utf-8,\ufeff${table
       .map((e) => e.join(";"))
       .join("\n")}`;
@@ -160,7 +273,7 @@ class SUTable extends React.Component {
   }
 
   render() {
-    const { data, sort, handleSort, isLoading } = this.props;
+    const { data, sort, handleSort, isLoading, survey } = this.props;
     const fieldsToSearch = ["city", "interviewer", "id", "state"];
     const {
       pagination,
@@ -178,6 +291,12 @@ class SUTable extends React.Component {
         handleSort(property);
       };
     }
+
+    const parameters = SUTableHeaderParameters.filter(
+      (parameter) =>
+        parameter.isAlwaysVisible || survey.communicationRequestConfiguration
+    );
+
     return (
       <Card className="ViewCard">
         <Card.Title className="PageTitle">
@@ -248,49 +367,14 @@ class SUTable extends React.Component {
                           onChange={(e) => this.handleCheckAll(e)}
                         />
                       </th>
-                      <th
-                        onClick={handleSortFunct("id")}
-                        className="Clickable ColId"
-                      >
-                        {D.identifier}
-                        <SortIcon val="id" sort={sort} />
-                      </th>
-                      <th
-                        data-testid="TableHeader_interviewer_name"
-                        onClick={handleSortFunct("interviewer")}
-                        className="Clickable ColInterviewer"
-                      >
-                        {D.interviewer}
-                        <SortIcon val="interviewer" sort={sort} />
-                      </th>
-                      <th
-                        onClick={handleSortFunct("ssech")}
-                        className="Clickable ColSsech"
-                      >
-                        {D.ssech}
-                        <SortIcon val="ssech" sort={sort} />
-                      </th>
-                      <th
-                        onClick={handleSortFunct("departement")}
-                        className="Clickable ColDepartement"
-                      >
-                        {D.department}
-                        <SortIcon val="departement" sort={sort} />
-                      </th>
-                      <th
-                        onClick={handleSortFunct("city")}
-                        className="Clickable ColCity"
-                      >
-                        {D.town}
-                        <SortIcon val="city" sort={sort} />
-                      </th>
-                      <th
-                        onClick={handleSortFunct("state")}
-                        className="Clickable ColState"
-                      >
-                        {D.state}
-                        <SortIcon val="state" sort={sort} />
-                      </th>
+                      {parameters.map((parameters) => (
+                        <SUTableHeader
+                          {...parameters}
+                          handleSortFunction={handleSortFunct}
+                          sort={sort}
+                          key={parameters.label}
+                        />
+                      ))}
                     </tr>
                   </thead>
                   <tbody>
@@ -302,14 +386,28 @@ class SUTable extends React.Component {
                           displayedLines.length
                         )
                       )
-                      .map((line) => (
-                        <SurveyUnitLine
-                          key={line.id}
-                          lineData={line}
-                          isChecked={checkboxArray[line.id]}
-                          updateFunc={() => toggleCheckBox(line.id)}
-                        />
-                      ))}
+                      .map((line) => {
+                        const reminders =
+                          line.communicationRequests?.filter(
+                            (request) =>
+                              request.emiter === "INTERVIEWER" &&
+                              request.type === "REMINDER"
+                          ) ?? [];
+
+                        orderReminders(reminders);
+
+                        return (
+                          <SurveyUnitLine
+                            key={line.id}
+                            lineData={{ ...line, remindersByOrder: reminders }}
+                            isChecked={checkboxArray[line.id]}
+                            updateFunc={() => toggleCheckBox(line.id)}
+                            communicationRequestConfiguration={
+                              survey.communicationRequestConfiguration
+                            }
+                          />
+                        );
+                      })}
                   </tbody>
                 </Table>
                 <div className="tableOptionsWrapper">

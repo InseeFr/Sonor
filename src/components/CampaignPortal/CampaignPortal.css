@@ -2,6 +2,15 @@
   width: 30%;
 }
 
+.ContactRow{
+ display: flex;
+ flex-direction: column;
+}
+
+.DatesLeftHeader{
+  width: 30%;
+}
+
 /* Column sizes */
 
 #CampaignPortal .ColInterviewerName{

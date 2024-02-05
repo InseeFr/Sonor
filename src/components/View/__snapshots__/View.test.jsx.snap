@@ -2730,6 +2730,16 @@ Object {
                       class="Clickable ColContactOutcome"
                       rowspan="2"
                     >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
                       Contact outcome
                     </th>
                     <th
@@ -3734,6 +3744,16 @@ Object {
                     class="Clickable ColContactOutcome"
                     rowspan="2"
                   >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
                     Contact outcome
                   </th>
                   <th
@@ -8237,46 +8257,93 @@ Object {
                             <tr>
                               <th
                                 class="VerticallyCentered ContactsLeftHeader"
-                                rowspan="2"
                               >
                                 CPOS
                               </th>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                Chloé Dupont
-                              </td>
-                            </tr>
-                            <tr>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                01 01 01 01 01
+                              <td>
+                                -
                               </td>
                             </tr>
                             <tr>
                               <th
                                 class="VerticallyCentered ContactsLeftHeader"
-                                rowspan="2"
                               >
                                 Deputy CPOS
                               </th>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                Thierry Fabres
-                              </td>
-                            </tr>
-                            <tr>
-                              <td
-                                class="LightGreyLine"
-                              >
-                                02 01 01 01 01
+                              <td>
+                                -
                               </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ViewCard card"
+                  >
+                    <div
+                      class="Title card-title h5"
+                    >
+                      Dates
+                    </div>
+                    <div
+                      class="table-responsive"
+                    >
+                      <table
+                        class="CustomTable table table-sm table-striped table-bordered"
+                      >
+                        <tbody>
+                          <tr>
+                            <th
+                              class="DatesLeftHeader"
+                            >
+                              Start of identification phase
+                            </th>
+                            <td
+                              class="LightGreyLine VerticallyCentered"
+                            >
+                              12/25/2019
+                            </td>
+                          </tr>
+                          <tr>
+                            <th
+                              class="DatesLeftHeader"
+                            >
+                              Collection start date
+                            </th>
+                            <td
+                              class="LightGreyLine VerticallyCentered"
+                            >
+                              1/1/2020
+                            </td>
+                          </tr>
+                          <tr>
+                            <th
+                              class="DatesLeftHeader"
+                            >
+                              Collection end date
+                            </th>
+                            <td
+                              class="LightGreyLine VerticallyCentered"
+                            >
+                              1/1/2022
+                            </td>
+                          </tr>
+                          <tr>
+                            <th
+                              class="DatesLeftHeader"
+                            >
+                              Processing end date
+                            </th>
+                            <td
+                              class="LightGreyLine VerticallyCentered"
+                            >
+                              1/7/2022
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -8713,46 +8780,93 @@ Object {
                           <tr>
                             <th
                               class="VerticallyCentered ContactsLeftHeader"
-                              rowspan="2"
                             >
                               CPOS
                             </th>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              Chloé Dupont
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              01 01 01 01 01
+                            <td>
+                              -
                             </td>
                           </tr>
                           <tr>
                             <th
                               class="VerticallyCentered ContactsLeftHeader"
-                              rowspan="2"
                             >
                               Deputy CPOS
                             </th>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              Thierry Fabres
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="LightGreyLine"
-                            >
-                              02 01 01 01 01
+                            <td>
+                              -
                             </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                </div>
+                <div
+                  class="ViewCard card"
+                >
+                  <div
+                    class="Title card-title h5"
+                  >
+                    Dates
+                  </div>
+                  <div
+                    class="table-responsive"
+                  >
+                    <table
+                      class="CustomTable table table-sm table-striped table-bordered"
+                    >
+                      <tbody>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Start of identification phase
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            12/25/2019
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection start date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            1/1/2020
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Collection end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            1/1/2022
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                            class="DatesLeftHeader"
+                          >
+                            Processing end date
+                          </th>
+                          <td
+                            class="LightGreyLine VerticallyCentered"
+                          >
+                            1/7/2022
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>

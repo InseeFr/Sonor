@@ -153,6 +153,21 @@ Object {
                       Identifier
                     </th>
                     <th
+                      class="Clickable ColContactOutcome"
+                    >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
+                      Contact outcome
+                    </th>
+                    <th
                       class="Clickable ColInterviewer"
                       data-testid="TableHeader_interviewer_name_review"
                     >
@@ -200,6 +215,11 @@ Object {
                       1032
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Interview accepted
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Dupont Chloé
@@ -240,6 +260,11 @@ Object {
                       class="ColId"
                     >
                       4819
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Impossible to reach
                     </td>
                     <td
                       class="ColInterviewer"
@@ -284,6 +309,11 @@ Object {
                       4818
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Refusal
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -324,6 +354,11 @@ Object {
                       class="ColId"
                     >
                       4817
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Already answered (other mode)
                     </td>
                     <td
                       class="ColInterviewer"
@@ -368,6 +403,11 @@ Object {
                       4816
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Unusable Contact Data
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -408,6 +448,11 @@ Object {
                       class="ColId"
                     >
                       4813
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Unable To Respond
                     </td>
                     <td
                       class="ColInterviewer"
@@ -452,6 +497,11 @@ Object {
                       4812
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Absence during Colletion Period
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -492,6 +542,11 @@ Object {
                       class="ColId"
                     >
                       4811
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Deceased
                     </td>
                     <td
                       class="ColInterviewer"
@@ -535,6 +590,9 @@ Object {
                     >
                       1099
                     </td>
+                    <td
+                      class="ColContactOutcome"
+                    />
                     <td
                       class="ColInterviewer"
                     >
@@ -743,6 +801,21 @@ Object {
                     Identifier
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                  >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColInterviewer"
                     data-testid="TableHeader_interviewer_name_review"
                   >
@@ -790,6 +863,11 @@ Object {
                     1032
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Dupont Chloé
@@ -830,6 +908,11 @@ Object {
                     class="ColId"
                   >
                     4819
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Impossible to reach
                   </td>
                   <td
                     class="ColInterviewer"
@@ -874,6 +957,11 @@ Object {
                     4818
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Refusal
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -914,6 +1002,11 @@ Object {
                     class="ColId"
                   >
                     4817
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Already answered (other mode)
                   </td>
                   <td
                     class="ColInterviewer"
@@ -958,6 +1051,11 @@ Object {
                     4816
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Unusable Contact Data
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -998,6 +1096,11 @@ Object {
                     class="ColId"
                   >
                     4813
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Unable To Respond
                   </td>
                   <td
                     class="ColInterviewer"
@@ -1042,6 +1145,11 @@ Object {
                     4812
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Absence during Colletion Period
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -1082,6 +1190,11 @@ Object {
                     class="ColId"
                   >
                     4811
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Deceased
                   </td>
                   <td
                     class="ColInterviewer"
@@ -1125,6 +1238,9 @@ Object {
                   >
                     1099
                   </td>
+                  <td
+                    class="ColContactOutcome"
+                  />
                   <td
                     class="ColInterviewer"
                   >
@@ -1390,6 +1506,21 @@ Object {
                       Identifier
                     </th>
                     <th
+                      class="Clickable ColContactOutcome"
+                    >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
+                      Contact outcome
+                    </th>
+                    <th
                       class="Clickable ColInterviewer"
                       data-testid="TableHeader_interviewer_name_review"
                     >
@@ -1437,6 +1568,11 @@ Object {
                       1032
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Interview accepted
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Dupont Chloé
@@ -1477,6 +1613,11 @@ Object {
                       class="ColId"
                     >
                       4819
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Impossible to reach
                     </td>
                     <td
                       class="ColInterviewer"
@@ -1521,6 +1662,11 @@ Object {
                       4818
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Refusal
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -1561,6 +1707,11 @@ Object {
                       class="ColId"
                     >
                       4817
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Already answered (other mode)
                     </td>
                     <td
                       class="ColInterviewer"
@@ -1605,6 +1756,11 @@ Object {
                       4816
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Unusable Contact Data
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -1645,6 +1801,11 @@ Object {
                       class="ColId"
                     >
                       4813
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Unable To Respond
                     </td>
                     <td
                       class="ColInterviewer"
@@ -1689,6 +1850,11 @@ Object {
                       4812
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Absence during Colletion Period
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -1729,6 +1895,11 @@ Object {
                       class="ColId"
                     >
                       4811
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Deceased
                     </td>
                     <td
                       class="ColInterviewer"
@@ -1772,6 +1943,9 @@ Object {
                     >
                       1099
                     </td>
+                    <td
+                      class="ColContactOutcome"
+                    />
                     <td
                       class="ColInterviewer"
                     >
@@ -1980,6 +2154,21 @@ Object {
                     Identifier
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                  >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColInterviewer"
                     data-testid="TableHeader_interviewer_name_review"
                   >
@@ -2027,6 +2216,11 @@ Object {
                     1032
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Dupont Chloé
@@ -2067,6 +2261,11 @@ Object {
                     class="ColId"
                   >
                     4819
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Impossible to reach
                   </td>
                   <td
                     class="ColInterviewer"
@@ -2111,6 +2310,11 @@ Object {
                     4818
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Refusal
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -2151,6 +2355,11 @@ Object {
                     class="ColId"
                   >
                     4817
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Already answered (other mode)
                   </td>
                   <td
                     class="ColInterviewer"
@@ -2195,6 +2404,11 @@ Object {
                     4816
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Unusable Contact Data
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -2235,6 +2449,11 @@ Object {
                     class="ColId"
                   >
                     4813
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Unable To Respond
                   </td>
                   <td
                     class="ColInterviewer"
@@ -2279,6 +2498,11 @@ Object {
                     4812
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Absence during Colletion Period
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -2319,6 +2543,11 @@ Object {
                     class="ColId"
                   >
                     4811
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Deceased
                   </td>
                   <td
                     class="ColInterviewer"
@@ -2362,6 +2591,9 @@ Object {
                   >
                     1099
                   </td>
+                  <td
+                    class="ColContactOutcome"
+                  />
                   <td
                     class="ColInterviewer"
                   >
@@ -2627,6 +2859,21 @@ Object {
                       Identifier
                     </th>
                     <th
+                      class="Clickable ColContactOutcome"
+                    >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
+                      Contact outcome
+                    </th>
+                    <th
                       class="Clickable ColInterviewer"
                       data-testid="TableHeader_interviewer_name_review"
                     >
@@ -2674,6 +2921,11 @@ Object {
                       1032
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Interview accepted
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Dupont Chloé
@@ -2714,6 +2966,11 @@ Object {
                       class="ColId"
                     >
                       4819
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Impossible to reach
                     </td>
                     <td
                       class="ColInterviewer"
@@ -2758,6 +3015,11 @@ Object {
                       4818
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Refusal
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -2798,6 +3060,11 @@ Object {
                       class="ColId"
                     >
                       4817
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Already answered (other mode)
                     </td>
                     <td
                       class="ColInterviewer"
@@ -2842,6 +3109,11 @@ Object {
                       4816
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Unusable Contact Data
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -2882,6 +3154,11 @@ Object {
                       class="ColId"
                     >
                       4813
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Unable To Respond
                     </td>
                     <td
                       class="ColInterviewer"
@@ -2926,6 +3203,11 @@ Object {
                       4812
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    >
+                      Absence during Colletion Period
+                    </td>
+                    <td
                       class="ColInterviewer"
                     >
                       Boulanger Jacques
@@ -2966,6 +3248,11 @@ Object {
                       class="ColId"
                     >
                       4811
+                    </td>
+                    <td
+                      class="ColContactOutcome"
+                    >
+                      Deceased
                     </td>
                     <td
                       class="ColInterviewer"
@@ -3009,6 +3296,9 @@ Object {
                     >
                       1099
                     </td>
+                    <td
+                      class="ColContactOutcome"
+                    />
                     <td
                       class="ColInterviewer"
                     >
@@ -3217,6 +3507,21 @@ Object {
                     Identifier
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                  >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColInterviewer"
                     data-testid="TableHeader_interviewer_name_review"
                   >
@@ -3264,6 +3569,11 @@ Object {
                     1032
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Interview accepted
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Dupont Chloé
@@ -3304,6 +3614,11 @@ Object {
                     class="ColId"
                   >
                     4819
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Impossible to reach
                   </td>
                   <td
                     class="ColInterviewer"
@@ -3348,6 +3663,11 @@ Object {
                     4818
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Refusal
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -3388,6 +3708,11 @@ Object {
                     class="ColId"
                   >
                     4817
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Already answered (other mode)
                   </td>
                   <td
                     class="ColInterviewer"
@@ -3432,6 +3757,11 @@ Object {
                     4816
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Unusable Contact Data
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -3472,6 +3802,11 @@ Object {
                     class="ColId"
                   >
                     4813
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Unable To Respond
                   </td>
                   <td
                     class="ColInterviewer"
@@ -3516,6 +3851,11 @@ Object {
                     4812
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  >
+                    Absence during Colletion Period
+                  </td>
+                  <td
                     class="ColInterviewer"
                   >
                     Boulanger Jacques
@@ -3556,6 +3896,11 @@ Object {
                     class="ColId"
                   >
                     4811
+                  </td>
+                  <td
+                    class="ColContactOutcome"
+                  >
+                    Deceased
                   </td>
                   <td
                     class="ColInterviewer"
@@ -3599,6 +3944,9 @@ Object {
                   >
                     1099
                   </td>
+                  <td
+                    class="ColContactOutcome"
+                  />
                   <td
                     class="ColInterviewer"
                   >
@@ -3896,6 +4244,21 @@ Object {
                       Identifier
                     </th>
                     <th
+                      class="Clickable ColContactOutcome"
+                    >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
+                      Contact outcome
+                    </th>
+                    <th
                       class="Clickable ColInterviewer"
                       data-testid="TableHeader_interviewer_name_review"
                     >
@@ -3943,6 +4306,9 @@ Object {
                       1032
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    />
+                    <td
                       class="ColInterviewer"
                     >
                       Dupont Chloé
@@ -3984,6 +4350,9 @@ Object {
                     >
                       4818
                     </td>
+                    <td
+                      class="ColContactOutcome"
+                    />
                     <td
                       class="ColInterviewer"
                     >
@@ -4224,6 +4593,21 @@ Object {
                     Identifier
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                  >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColInterviewer"
                     data-testid="TableHeader_interviewer_name_review"
                   >
@@ -4271,6 +4655,9 @@ Object {
                     1032
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  />
+                  <td
                     class="ColInterviewer"
                   >
                     Dupont Chloé
@@ -4312,6 +4699,9 @@ Object {
                   >
                     4818
                   </td>
+                  <td
+                    class="ColContactOutcome"
+                  />
                   <td
                     class="ColInterviewer"
                   >
@@ -4428,7 +4818,7 @@ exports[`Select another survey 1`] = `
 <div
   data-testid="Redirect-survey"
 >
-  {"allSurveys":[{"id":"vqs2021x00","label":"Everyday life and health survey 2021","managementStartDate":1576801000000,"interviewerStartDate":1575937000000,"identificationPhaseStartDate":1577233000000,"collectionStartDate":1577837800000,"collectionEndDate":1640996200000,"endDate":1641514600000},{"id":"simpsons2020x00","label":"Survey on the Simpsons tv show 2020","managementStartDate":1576801000000,"interviewerStartDate":1575937000000,"identificationPhaseStartDate":1577233000000,"collectionStartDate":1577837800000,"collectionEndDate":1640996200000,"endDate":1641514600000}],"id":"simpsons2020x00","label":"Survey on the Simpsons tv show 2020","managementStartDate":1576801000000,"interviewerStartDate":1575937000000,"identificationPhaseStartDate":1577233000000,"collectionStartDate":1577837800000,"collectionEndDate":1640996200000,"endDate":1641514600000}
+  {"allSurveys":[{"id":"vqs2021x00","label":"Everyday life and health survey 2021","managementStartDate":1576801000000,"interviewerStartDate":1575937000000,"identificationPhaseStartDate":1577233000000,"collectionStartDate":1577837800000,"collectionEndDate":1640996200000,"endDate":1641514600000},{"id":"simpsons2020x00","label":"Survey on the Simpsons tv show 2020","managementStartDate":1576801000000,"interviewerStartDate":1575937000000,"identificationPhaseStartDate":1577233000000,"collectionStartDate":1577837800000,"collectionEndDate":1640996200000,"endDate":1641514600000}],"id":"simpsons2020x00","label":"Survey on the Simpsons tv show 2020","managementStartDate":1576801000000,"interviewerStartDate":1575937000000,"identificationPhaseStartDate":1577233000000,"collectionStartDate":1577837800000,"collectionEndDate":1640996200000,"endDate":1641514600000,"communicationRequestConfiguration":false}
 </div>
 `;
 
@@ -4617,6 +5007,21 @@ Object {
                       Identifier
                     </th>
                     <th
+                      class="Clickable ColContactOutcome"
+                    >
+                      <span
+                        class="sortIcon"
+                      >
+                        <i
+                          class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                        />
+                        <i
+                          class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                        />
+                      </span>
+                      Contact outcome
+                    </th>
+                    <th
                       class="Clickable ColInterviewer"
                       data-testid="TableHeader_interviewer_name_review"
                     >
@@ -4664,6 +5069,9 @@ Object {
                       1032
                     </td>
                     <td
+                      class="ColContactOutcome"
+                    />
+                    <td
                       class="ColInterviewer"
                     >
                       Dupont Chloé
@@ -4705,6 +5113,9 @@ Object {
                     >
                       4818
                     </td>
+                    <td
+                      class="ColContactOutcome"
+                    />
                     <td
                       class="ColInterviewer"
                     >
@@ -4945,6 +5356,21 @@ Object {
                     Identifier
                   </th>
                   <th
+                    class="Clickable ColContactOutcome"
+                  >
+                    <span
+                      class="sortIcon"
+                    >
+                      <i
+                        class="fa fa-fw fa-caret-down sortIconDown iconInactive"
+                      />
+                      <i
+                        class="fa fa-fw fa-caret-up sortIconUp iconInactive"
+                      />
+                    </span>
+                    Contact outcome
+                  </th>
+                  <th
                     class="Clickable ColInterviewer"
                     data-testid="TableHeader_interviewer_name_review"
                   >
@@ -4992,6 +5418,9 @@ Object {
                     1032
                   </td>
                   <td
+                    class="ColContactOutcome"
+                  />
+                  <td
                     class="ColInterviewer"
                   >
                     Dupont Chloé
@@ -5033,6 +5462,9 @@ Object {
                   >
                     4818
                   </td>
+                  <td
+                    class="ColContactOutcome"
+                  />
                   <td
                     class="ColInterviewer"
                   >

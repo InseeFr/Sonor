@@ -10,16 +10,14 @@ import SearchField from "../SearchField/SearchField";
 import SurveyUnitLine from "./SurveyUnitLine";
 import PaginationNav from "../PaginationNav/PaginationNav";
 import D from "../../i18n";
+import Utils from "../../utils/Utils";
 
 class ReviewTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pagination: { size: 10, page: 1 },
-      checkboxArray: props.data.reduce((acc, curr) => {
-        acc[curr.id] = false;
-        return acc;
-      }, {}),
+      checkboxArray: props.data?.map((element) => {return  {id: element.id, isChecked: false}}) ?? [],
       checkAll: false,
       show: false,
       displayedLines: props.data,
@@ -30,27 +28,14 @@ class ReviewTable extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    const { survey, data } = this.props;
-    if (prevProps.survey !== survey) {
-      const newCheckboxArray = data.reduce((acc, curr) => {
-        acc[curr.id] = false;
-        return acc;
-      }, {});
-      this.setState({ checkboxArray: newCheckboxArray, checkAll: false });
-    }
-  }
-
   handlePageChange(pagination) {
-    this.setState({ pagination });
+    const checkAll = Utils.getCheckAllValue(this.state.checkboxArray, pagination)
+    this.setState({ pagination , checkAll});
   }
 
   updateLines(matchingLines) {
     const { pagination, checkboxArray } = this.state;
-    const newCheckboxArray = Object.keys(checkboxArray).reduce((acc, curr) => {
-      acc[curr] = false;
-      return acc;
-    }, {});
+    const newCheckboxArray = checkboxArray.map((element) => {return  {id :element.id, isChecked: false}})
     this.setState({
       checkboxArray: newCheckboxArray,
       checkAll: false,
@@ -101,36 +86,36 @@ class ReviewTable extends React.Component {
   validateSU() {
     const { validateSU } = this.props;
     const { checkboxArray } = this.state;
-    const ids = Object.entries(checkboxArray)
-      .filter((su) => su[1])
-      .map((su) => su[0]);
+    const ids = checkboxArray
+      .filter((su) => su.isChecked)
+      .map((su) => su.id);
     validateSU(ids);
   }
 
-  handleCheckAll() {
-    const { checkboxArray, checkAll } = this.state;
-    const newCheckboxArray = Object.keys(checkboxArray).reduce((acc, curr) => {
-      acc[curr] = !checkAll;
-      return acc;
-    }, {});
+  handleCheckAll(e) {
+    const { checkboxArray, displayedLines, pagination} = this.state;
+    
+    const newCheckboxArray = Utils.handleCheckAll(e.target.checked, checkboxArray, displayedLines, pagination);
+
     this.setState({
       checkboxArray: newCheckboxArray,
-      checkAll: !checkAll,
+      checkAll: e.target.checked,
     });
   }
 
   isDisabled() {
     const { checkboxArray } = this.state;
-    return !Object.values(checkboxArray).some((elm) => elm);
+    return !checkboxArray.some((element) => element.isChecked );
   }
 
-  toggleCheckBox(i) {
-    const { checkboxArray } = this.state;
-    const newCheckboxArray = { ...checkboxArray };
-    newCheckboxArray[i] = !newCheckboxArray[i];
+  toggleCheckBox(id) {
+    const { checkboxArray, pagination, displayedLines } = this.state;
+   
+    const {newCheckboxArray, newCheckAll} = Utils.getOnToggleChanges(id, checkboxArray, displayedLines, pagination);
+
     this.setState({
       checkboxArray: newCheckboxArray,
-      checkAll: !Object.values(newCheckboxArray).some((elm) => !elm),
+      checkAll: newCheckAll,
     });
   }
 
@@ -193,7 +178,7 @@ class ReviewTable extends React.Component {
         >
           <thead>
             <tr>
-              <th className="CheckboxCol" onClick={() => this.handleCheckAll()}>
+              <th className="CheckboxCol" onClick={(e) => this.handleCheckAll(e)}>
                 <input
                   type="checkbox"
                   name="checkAll"
@@ -211,6 +196,13 @@ class ReviewTable extends React.Component {
               <th onClick={handleSortFunct("id")} className="Clickable ColId">
                 <SortIcon val="id" sort={sort} />
                 {D.identifier}
+              </th>
+              <th
+                onClick={handleSortFunct("contactOutcomeType")}
+                className="Clickable ColContactOutcome"
+              >
+                <SortIcon val="contactOutcomeType" sort={sort} />
+                {D.contact}
               </th>
               <th
                 onClick={handleSortFunct("interviewer")}
@@ -232,17 +224,22 @@ class ReviewTable extends React.Component {
                   displayedLines.length
                 )
               )
-              .map((line) => (
-                <SurveyUnitLine
-                  key={line.id}
-                  lineData={line}
-                  dataRetreiver={dataRetreiver}
-                  isChecked={checkboxArray[line.id]}
-                  view={() => view(line)}
-                  updateFunc={() => toggleCheckBox(line.id)}
-                  handleShow={() => handleShowComment(line)}
-                />
-              ))}
+              .map((line) => {
+                const element = checkboxArray.filter(
+                  (element) => element.id === line.id
+                )[0];
+                return (
+                  <SurveyUnitLine
+                    key={line.id}
+                    lineData={line}
+                    dataRetreiver={dataRetreiver}
+                    isChecked={element?.isChecked ?? false}
+                    view={() => view(line)}
+                    updateFunc={() => toggleCheckBox(line.id)}
+                    handleShow={() => handleShowComment(line)}
+                  />
+                );
+              })}
             <Modal show={showComment} onHide={() => handleCloseComment()}>
               <Modal.Header closeButton>
                 <Modal.Title>
@@ -311,7 +308,7 @@ class ReviewTable extends React.Component {
           <Modal.Header closeButton />
           <Modal.Body>
             {D.reviewValidatePopupBodyPart1}
-            {Object.values(checkboxArray).filter((elm) => elm).length}
+            {checkboxArray.filter((element) => element.isChecked).length}
             {D.reviewValidatePopupBodyPart2}
           </Modal.Body>
           <Modal.Footer>

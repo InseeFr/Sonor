@@ -86,7 +86,7 @@ const mockGetDataForMonitoringTable = jest.fn(
 
 const mockDataFormatter = DataFormatter.mockImplementation(() => ({
   getDataForMonitoringTable: mockGetDataForMonitoringTable,
-  getDataForMainScreen: mockGetDataForMainScreen,
+  getFormattedCampaignsForMainScreen: mockGetDataForMainScreen,
 }));
 
 const mockDataRetreiver = new DataFormatter();
@@ -203,7 +203,7 @@ it('Select another date', async () => {
 
   const component = render(
     <Router history={history}>
-      <MonitoringTable location={{ survey, pathname }} dataRetreiver={mockDataRetreiver} />
+      <MonitoringTable location={{ survey, pathname }} dataRetreiver={mockDataRetreiver} campaigns={mainScreenData} />
     </Router>,
   );
 
@@ -216,6 +216,7 @@ it('Select another date', async () => {
     expect.anything(),
     expect.anything(),
     expect.anything(),
+    mainScreenData
   );
 
   // And the page should render correctly
@@ -228,13 +229,13 @@ it('Component did update', () => {
 
   const { container } = render(
     <Router history={history}>
-      <MonitoringTable location={{ survey, pathname }} dataRetreiver={mockDataRetreiver} />
+      <MonitoringTable location={{ survey, pathname }} dataRetreiver={mockDataRetreiver} campaigns={mainScreenData} />
     </Router>,
   );
 
   render(
     <Router history={history}>
-      <MonitoringTable location={{ survey, pathname: '/follow/sites/simpsons2020x00' }} dataRetreiver={mockDataRetreiver} />
+      <MonitoringTable location={{ survey, pathname: '/follow/sites/simpsons2020x00' }} dataRetreiver={mockDataRetreiver} campaigns={mainScreenData}/>
     </Router>,
     { container },
   );
@@ -246,6 +247,7 @@ it('Component did update', () => {
     expect.anything(),
     C.BY_SITE,
     expect.anything(),
+    mainScreenData
   );
 })
 

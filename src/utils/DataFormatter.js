@@ -25,6 +25,13 @@ class DataFormatter {
       cb(data);
     });
   }
+  
+  getAllCampaigns(cb) {
+    this.service.getCampaigns((data) => {
+      cb(data);
+    });
+    
+  }
 
   getPreferences(cb) {
     return new Promise((resolve) => {
@@ -44,6 +51,22 @@ class DataFormatter {
         resolve(formattedData);
       });
     });
+  }
+
+  getPreferencesWithCampaignsData(cb, campaigns) {
+    const formattedData = campaigns
+      .filter((survey) => Utils.isVisible(survey))
+      .reduce((acc, survey) => {
+        acc[survey.id] = {
+          label: survey.label,
+          preference: survey.preference,
+        };
+        return acc;
+      }, {});
+    if (cb) {
+      cb(formattedData);
+    }
+    return formattedData;
   }
 
   updatePreferences(preferences, cb) {
@@ -124,6 +147,25 @@ class DataFormatter {
     });
   }
 
+  getFormattedCampaignsForMainScreen(date, cb, campaigns){
+    const formattedData = campaigns
+      .filter((survey) => Utils.isVisible(survey, date))
+      .map((survey) => {
+        const formattedSurvey = {};
+        Object.assign(formattedSurvey, survey);
+        formattedSurvey.phase = Utils.getCampaignPhase(
+          survey.collectionStartDate,
+          survey.collectionEndDate,
+          survey.endDate
+        );
+        return formattedSurvey;
+      });
+      if (cb) {
+        cb(formattedData);
+      }
+      return formattedData
+  }
+
   getDataForClosePage(cb) {
     this.service.getSurveyUnitsClosable((data) => {
       cb(data);
@@ -158,8 +200,8 @@ class DataFormatter {
     });
   }
 
-  getDataForReview(surveyId, cb) {
-    this.getListSUToReview(surveyId).then((data) => {
+  getDataForReview(surveyId, cb, campaigns) {
+    this.getListSUToReview(surveyId, campaigns).then((data) => {
       cb(data);
     });
   }
@@ -195,12 +237,10 @@ class DataFormatter {
     });
   }
 
-  getListSUToReview(surveyId) {
+  getListSUToReview(surveyId, campaigns) {
     return new Promise((resolve) => {
-      this.service.getCampaigns((campaigns) => {
         const promises = campaigns
-          .filter((campaign) => surveyId === null || campaign.id === surveyId)
-
+          .filter((campaign) => surveyId !== null ? campaign.id === surveyId : campaign.toReview > 0 )
           .map(
             (campaign) =>
               new Promise((resolveCampaign) => {
@@ -221,6 +261,7 @@ class DataFormatter {
                         id: su.id,
                         viewed: su.viewed,
                         comments: su.comments,
+                        contactOutcome: su.contactOutcome
                       }))
                       // order by interviewer name
                       .sort((a, b) => (a.interviewer > b.interviewer ? 1 : -1));
@@ -234,7 +275,6 @@ class DataFormatter {
           resolve(data.flat());
         });
       });
-    });
   }
 
   /**
@@ -402,7 +442,7 @@ class DataFormatter {
     });
   }
 
-  async getDataForMonitoringTable(survey, givenDate, pagination, mode, cb) {
+  async getDataForMonitoringTable(survey, givenDate, pagination, mode, cb, campaigns) {
     // Adding 24h to take all states added before the next day into account
     const date = givenDate + 86400000;
     const interviewers = [];
@@ -424,7 +464,7 @@ class DataFormatter {
         if (getDataForSingleSurvey) {
           surveysToGetInterviewersFrom = [survey];
         } else {
-          surveysToGetInterviewersFrom = await this.getDataForMainScreen(date);
+          surveysToGetInterviewersFrom = await this.getFormattedCampaignsForMainScreen(date, null, campaigns);
         }
         site = (await this.service.getUser()).organizationUnit.label;
         p1 = new Promise((resolve) => {

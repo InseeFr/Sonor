@@ -13,7 +13,7 @@ import Utils from "../../utils/Utils";
 import D from "../../i18n";
 import "./Review.css";
 
-function Review({ location, dataRetreiver, match }) {
+function Review({ location, dataRetreiver, match, campaigns }) {
   const { survey } = location;
   const { id } = match.params;
   const [data, setData] = useState([]);
@@ -29,8 +29,8 @@ function Review({ location, dataRetreiver, match }) {
       setData(res);
       setRedirect(null);
       setIsLoading(false);
-    });
-  }, [dataRetreiver, survey]);
+    }, campaigns);
+  }, [dataRetreiver, survey, campaigns]);
 
   useEffect(() => {
     fetchData();

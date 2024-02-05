@@ -83,6 +83,16 @@ const campaignPortal = {
     fr: 'Aucun enquêteur n\'est associé à cette enquête',
     en: 'The is no interviewer associated with this survey',
   },
+  dates: {
+    fr: 'Dates',
+    en: 'Dates',
+  },
+  identificationPhaseStartDate: {
+    fr: 'Début repérage',
+    en: 'Start of identification phase'
+  },
+
+
 };
 
 export default campaignPortal;

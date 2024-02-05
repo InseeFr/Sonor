@@ -213,6 +213,50 @@ class Utils {
         return mainSort ? mainSortFunc(a, b) : 0;
       };
     }
+    if (sortOn === 'contactOutcomeDate') {
+      return (a, b) => {
+        const dateA = a.contactOutcome.date;
+        const dateB = b.contactOutcome.date;
+        if(!dateA || !dateB){
+          return dateA ? 1 * mult : -1 * mult;
+        }
+        if (dateA !== dateB) {
+          return (dateA < dateB ? -1 : 1) * mult;
+        }
+        return mainSort ? mainSortFunc(a, b) : 0;
+      };
+    }
+    if (sortOn === 'contactOutcomeType') {
+      const contactOutcomeTypeOrder = {
+        INA: 1,
+        REF: 2,
+        IMP: 3,
+        UTR: 4,
+        DCD: 5,
+        NUH: 6,
+        ALA: 7,
+        UCD: 8,
+        DUK: 9,
+        DUU: 10,
+        NOA: 11,
+        ACP: 12,
+        NER: 13,
+      }
+      
+      return (a, b) => {  
+        const typeAOrder = a?.contactOutcome !== undefined && a?.contactOutcome?.type !== undefined ? contactOutcomeTypeOrder[a.contactOutcome?.type] : 14;
+        const typeBOrder = b?.contactOutcome !==undefined && b?.contactOutcome?.type !== undefined  ? contactOutcomeTypeOrder[b.contactOutcome?.type] : 14;
+
+        if(!typeAOrder || !typeBOrder){
+          return typeAOrder ? -1 * mult : 1 * mult;
+        }
+        if (typeAOrder !== typeBOrder) {
+          return (typeAOrder < typeBOrder ? -1 : 1) * mult;
+        }
+       
+        return mainSort ? mainSortFunc(a, b) : 0;
+      };
+    }
     if (sortOn === 'contact_outcome') {
       return (a, b) => {
         if (!a.contactOutcome && !!b.contactOutcome) {
@@ -408,6 +452,53 @@ class Utils {
     }
 
     return [sortedData, { sortOn, asc: newOrder }];
+  }
+
+  static getCheckAllValue(checkboxArray, pagination){ 
+    const startIndex = pagination.size * (pagination.page - 1);
+    const endIndex = Math.min(pagination.size * pagination.page, checkboxArray.length);
+
+    return checkboxArray.slice(startIndex, endIndex).every(checkbox => checkbox.isChecked);
+  }
+
+  static getOnToggleChanges(id, checkboxArray, displayedLines, pagination ) {
+    const newCheckboxArray = displayedLines.map((element) =>{ 
+      const checkboxArrayData = checkboxArray.find((data) => data.id === element.id);
+      
+      return element.id !== id
+        ? checkboxArrayData
+        : { id: element.id, isChecked: !checkboxArrayData?.isChecked };
+
+    })
+    const newCheckAll = Utils.getCheckAllValue(newCheckboxArray, pagination);
+
+    checkboxArray.forEach((element) => {
+      if (!displayedLines.some((line) => line.id === element.id)) {
+        newCheckboxArray.push(element);
+      }
+    })
+
+    return {newCheckboxArray, newCheckAll};
+  }
+
+  static handleCheckAll(checkAllValue, checkboxArray, displayedLines, pagination) {
+    const newCheckboxArray = displayedLines.map((data, index) => {
+      const isWithinRange = index >= pagination.size * (pagination.page - 1) &&
+                            index < pagination.size * pagination.page;
+
+      const checkboxData = checkboxArray.find((element) => element.id === data.id);
+      const isChecked = isWithinRange ? checkAllValue : checkboxData?.isChecked || false;
+
+      return { id: data.id, isChecked };
+    })
+
+    checkboxArray.forEach((element) => {
+      if (!displayedLines.some((line) => line.id === element.id)) {
+        newCheckboxArray.push(element);
+      }
+    })
+
+    return newCheckboxArray;
   }
 }
 

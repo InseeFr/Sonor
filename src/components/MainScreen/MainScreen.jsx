@@ -33,16 +33,16 @@ class MainScreen extends React.Component {
   }
 
   fetchData() {
-    const { preferences, dataRetreiver } = this.props;
+    const { preferences, dataRetreiver, campaigns } = this.props;
     this.setState({ isLoading: true });
-    dataRetreiver.getDataForMainScreen(null, (data) => {
+    dataRetreiver.getFormattedCampaignsForMainScreen(null, (data) => {
       this.setState({
         isLoading: false,
         data: data.filter(
           (survey) => (preferences[survey.id] && preferences[survey.id].preference),
         ),
       }, () => { this.handleSort('label', true); });
-    });
+    }, campaigns );
   }
 
   handlePageChange(pagination) {
