@@ -17,6 +17,7 @@ function SurveyUnitLine({
     state,
     remindersByOrder = [],
     contactOutcome,
+    closingCause,
   } = lineData;
 
   const getReminderDescription = (reminder) => {
@@ -115,7 +116,7 @@ function SurveyUnitLine({
           </td>
         </>
       )}
-      <td className="ColState">{state ? D[state] : ""}</td>
+      <td className="ColState">{closingCause ? D[closingCause] : ""}</td>
     </tr>
   );
 }
