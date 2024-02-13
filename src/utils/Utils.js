@@ -186,8 +186,7 @@ class Utils {
       'survey',
       'site',
       'date',
-      'finalizationDate',
-      'state',
+      'finalizationDate',      
     ];
     if (labelsSimpleSort.includes(sortOn)) {
       return (a, b) => {
@@ -200,6 +199,21 @@ class Utils {
         return mainSort ? mainSortFunc(a, b) : 0;
       };
     }
+    if (sortOn === 'state') {
+      return (a, b) => {
+        const aState = a.closingCause ? D[a.closingCause] : undefined;
+        const bState = b.closingCause ? D[b.closingCause] : undefined;
+        
+        if(!aState || !bState){
+          return aState ? -1 * mult : 1 * mult;
+        }
+        if (aState !== bState) {
+          return (aState < bState ? -1 : 1) * mult;
+        }
+        return mainSort ? mainSortFunc(a, b) : 0;
+      };
+    }
+
     if (sortOn === 'CPinterviewer') {
       return (a, b) => {
         const aString = a.interviewerLastName + a.interviewerFirstName;
