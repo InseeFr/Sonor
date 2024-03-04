@@ -24,5 +24,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </SonorTheme>
       </QueryClientProvider>
     </AuthProvider>
-  </StrictMode>
+  </StrictMode>,
 );

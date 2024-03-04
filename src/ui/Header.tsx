@@ -1,12 +1,4 @@
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Link,
-  Stack,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Box, IconButton, Link, Stack, Toolbar, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { Row } from "./Row.tsx";
 import { PropsWithChildren } from "react";
@@ -34,11 +26,7 @@ export function Header() {
           <Row gap={2.5} component={HomeLink}>
             <img src="/logoInsee.png" alt="logo insee" width={48} height={50} />
             <Stack>
-              <Typography
-                variant="headlineSmall"
-                color="black.main"
-                fontWeight={600}
-              >
+              <Typography variant="headlineSmall" color="black.main" fontWeight={600}>
                 Sabiane Gestion
               </Typography>
               <Typography variant="bodySmall" color="black.main">
@@ -48,20 +36,10 @@ export function Header() {
           </Row>
           <Row gap={8}>
             <Row gap={3}>
-              <Link
-                color="inherit"
-                component={RouterLink}
-                underline="none"
-                to="/follow"
-              >
+              <Link color="inherit" component={RouterLink} underline="none" to="/follow">
                 Suivre
               </Link>
-              <Link
-                color="inherit"
-                component={RouterLink}
-                underline="none"
-                to="/read"
-              >
+              <Link color="inherit" component={RouterLink} underline="none" to="/read">
                 Relire
               </Link>
             </Row>

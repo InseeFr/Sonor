@@ -129,8 +129,7 @@ declare module "@mui/material/TextField" {
 }
 
 const baseTheme = createTheme({});
-const colors = (c: string) =>
-  baseTheme.palette.augmentColor({ color: { main: c } });
+const colors = (c: string) => baseTheme.palette.augmentColor({ color: { main: c } });
 const typography = {
   fontFamily: "Open Sans, sans-serif",
   displayLarge: {

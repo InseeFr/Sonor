@@ -10,7 +10,7 @@ type TokenInfo = {
 const guestUser: TokenInfo = {
   inseegroupedefaut: [],
   preferred_username: "Guest",
-  name:  "Guest"
+  name: "Guest",
 };
 
 const isOidc = import.meta.env.VITE_AUTH_TYPE === "oidc";
