@@ -24,6 +24,7 @@ jobs:
           node-version: 18
       - run: yarn
       - run: yarn build
+      - run: ls -l build
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
