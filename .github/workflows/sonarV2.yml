@@ -61,7 +61,7 @@ jobs:
         id: download
         uses: actions/download-artifact@v4
         with:
-          name: build
+          name: build-artifact
           path: dist
       - name: Get current version
         id: version
