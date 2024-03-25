@@ -1,111 +1,78 @@
-name: SonorV2 Branch CI
+name: Release & Docker
+
 on:
   push:
     branches:
       - sonorV2
-  pull_request:
-    branches:
-      - sonorV2
 
 jobs:
-  test_lint:
+  install:
     runs-on: ubuntu-latest
-    if: ${{ !github.event.created && github.repository != 'garronej/ts-ci' }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - uses: bahmutov/npm-install@v1
-      - name: If this step fails run 'yarn lint' and 'yarn format' then commit again.
-        run: |
-          yarn lint:check
-          yarn format:check
-  test:
-    runs-on: ${{ matrix.os }}
-    needs: test_lint
-    strategy:
-      matrix:
-        node: ["18", "20"]
-        os: [ubuntu-latest]
-    name: Test with Node v${{ matrix.node }} on ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Use Node.js 14C
+        uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
-      - uses: bahmutov/npm-install@v1
+          node-version: 14
+      - run: yarn --frozen-lockfile
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: yarn
       - run: yarn build
-      - run: echo "you should replace this line by yarn test (with green test)"
-
-  check_if_version_upgraded:
-    name: Check if version upgrade
-    # When someone forks the repo and opens a PR we want to enables the tests to be run (the previous jobs)
-    # but obviously only us should be allowed to release.
-    # In the following check we make sure that we own the branch this CI workflow is running on before continuing.
-    if: |
-      github.event_name == 'push' || 
-      github.event.pull_request.head.repo.owner.login == github.event.pull_request.base.repo.owner.login
-    runs-on: ubuntu-latest
-    needs: test
-    outputs:
-      from_version: ${{ steps.step1.outputs.from_version }}
-      to_version: ${{ steps.step1.outputs.to_version }}
-      is_upgraded_version: ${{ steps.step1.outputs.is_upgraded_version }}
-      is_pre_release: ${{steps.step1.outputs.is_pre_release }}
-    steps:
-      - uses: garronej/ts-ci@v2.1.0
-        id: step1
+      - name: Upload build
+        uses: actions/upload-artifact@v2
         with:
-          action_name: is_package_json_version_upgraded
-          branch: ${{ github.head_ref || github.ref }}
-
-  create_github_release:
+          name: dist
+          path: dist
+  release:
     runs-on: ubuntu-latest
-    # We create release only if the version in the package.json have been upgraded and this CI is running against the main branch.
-    # We allow branches with a PR open on main to publish pre-release (x.y.z-rc.u) but not actual releases.
-    if: |
-      needs.check_if_version_upgraded.outputs.is_upgraded_version == 'true' &&
-      (
-        github.event_name == 'push' ||
-        needs.check_if_version_upgraded.outputs.is_pre_release == 'true'
-      )
-    needs:
-      - check_if_version_upgraded
     steps:
-      - uses: softprops/action-gh-release@v1
+      - name: Checkout current branch
+        uses: actions/checkout@v2
+      - name: Get current version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
         with:
-          name: Release Candidate v${{ needs.check_if_version_upgraded.outputs.to_version }}-rc
-          tag_name: v${{ needs.check_if_version_upgraded.outputs.to_version }}-rc
-          target_commitish: ${{ github.head_ref || github.ref }}
-          generate_release_notes: true
-          draft: false
-          prerelease: ${{ needs.check_if_version_upgraded.outputs.is_pre_release == 'true' }}
+          path: "package.json"
+          prop_path: "version"
+      - run: echo ${{steps.version.outputs.prop}}
+      - name: Release snapshot
+        id: release-snapshot
+        uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+        with:
+          tag_name: ${{steps.version.outputs.prop}}
+          release_name: ${{steps.version.outputs.prop}}
+          draft: false
+          prerelease: false
   docker:
-    needs: check_if_version_upgraded
-    if: |
-      needs.check_if_version_upgraded.outputs.is_upgraded_version == 'true' &&
-      (
-        github.event_name == 'push' ||
-        needs.check_if_version_upgraded.outputs.is_pre_release == 'true'
-      )
+    needs: dist
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+      - name: Download build
+        id: download
+        uses: actions/download-artifact@v2
         with:
-          ref: ${{ github.ref }}
-      - uses: actions/setup-node@v3
-      - uses: docker/setup-qemu-action@v2
-      - uses: docker/setup-buildx-action@v2
-      - uses: docker/login-action@v2
+          name: dist
+          path: dist
+      - name: Get current version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
         with:
+          path: "package.json"
+          prop_path: "version"
+      - run: echo ${{steps.version.outputs.prop}}
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: inseefr/pearl-jam
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - uses: docker/build-push-action@v4
-        with:
-          platforms: linux/amd64,linux/arm64
-          context: .
-          push: true
-          tags: |
-            inseefr/sonor:${{ needs.check_if_version_upgraded.outputs.to_version }}
+          tags: ${{steps.version.outputs.prop}}
