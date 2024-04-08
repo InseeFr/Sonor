@@ -1,15 +1,16 @@
-import { AppBar, Box, IconButton, Link, Stack, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Divider, IconButton, Link, Stack, Toolbar, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { Row } from "./Row.tsx";
 import { PropsWithChildren } from "react";
-import { useUser, useLogout } from "../hooks/useAuth.ts";
 import packageInfo from "../../package.json";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import { AccountNavigation } from "./AccountNavigation.tsx";
+
+const style = {
+  "&.MuiLink-root:hover": { color: "primary.main" },
+};
 
 export function Header() {
-  const { name } = useUser();
-  const logout = useLogout();
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -24,7 +25,7 @@ export function Header() {
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Row gap={2.5} component={HomeLink}>
-            <img src="/logoInsee.png" alt="logo insee" width={48} height={50} />
+            <img src="/logoInsee.png" alt="logo insee" width={56} height={58} />
             <Stack>
               <Typography variant="headlineSmall" color="black.main" fontWeight={600}>
                 Sabiane Gestion
@@ -35,26 +36,44 @@ export function Header() {
             </Stack>
           </Row>
           <Row gap={8}>
-            <Row gap={3}>
-              <Link color="inherit" component={RouterLink} underline="none" to="/follow">
+            <Row gap={4} typography={"titleMedium"} color={"text.tertiary"}>
+              <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/follow">
                 Suivre
               </Link>
-              <Link color="inherit" component={RouterLink} underline="none" to="/read">
-                Relire
+              <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/read">
+                Lire
+              </Link>
+              <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/close">
+                Clore
+              </Link>
+              <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/notify">
+                Notifier
+              </Link>
+              <Link
+                sx={style}
+                color="inherit"
+                component={RouterLink}
+                underline="none"
+                to="/collectOrganization"
+              >
+                Organisation des collectes
+              </Link>
+              <Link
+                sx={style}
+                color="inherit"
+                component={RouterLink}
+                underline="none"
+                to="/reassignment"
+              >
+                Réaffectation
               </Link>
             </Row>
             <Row gap={1}>
-              <Typography>{name}</Typography>
-              <IconButton
-                onClick={() =>
-                  logout({
-                    redirectTo: "specific url",
-                    url: "",
-                  })
-                }
-              >
-                <ExitToAppIcon />
+              <IconButton>
+                <NotificationsIcon />
               </IconButton>
+              <Divider orientation="vertical" variant="middle" sx={{ height: "48px" }} />
+              <AccountNavigation />
             </Row>
           </Row>
         </Toolbar>

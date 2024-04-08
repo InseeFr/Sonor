@@ -111,7 +111,7 @@ declare module "@mui/material/SvgIcon" {
 
 declare module "@mui/material/Paper" {
   interface PaperPropsVariantOverrides {
-    home: true;
+    general: true;
     disabled: true;
   }
 }
@@ -328,14 +328,13 @@ export const theme = createTheme({
     MuiPaper: {
       variants: [
         {
-          props: { variant: "home" },
+          props: { variant: "general" },
           style: {
             boxShadow: shadows[2],
             borderRadius: 16,
             borderWidth: 1,
             borderStyle: "solid",
             borderColor: "white",
-            width: 164,
           },
         },
         {
