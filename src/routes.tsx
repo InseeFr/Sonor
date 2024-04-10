@@ -4,6 +4,10 @@ import { Home } from "./pages/Home";
 import { Layout } from "./ui/Layout";
 import { FollowPage } from "./pages/FollowPage";
 import { ReadPage } from "./pages/ReadPage";
+import { ClosePage } from "./pages/ClosePage";
+import { NotifyPage } from "./pages/NotifyPage";
+import { CollectOrganizationPage } from "./pages/CollectOrganizationPage";
+import { ReassignmentPage } from "./pages/ReassignmentPage";
 
 export const routes: RouteObject[] = [
   {
@@ -18,6 +22,10 @@ export const routes: RouteObject[] = [
       { path: "", element: <Home /> },
       { path: "follow", element: <FollowPage /> },
       { path: "read", element: <ReadPage /> },
+      { path: "close", element: <ClosePage /> },
+      { path: "notify", element: <NotifyPage /> },
+      { path: "collectOrganization", element: <CollectOrganizationPage /> },
+      { path: "reassignment", element: <ReassignmentPage /> },
     ],
   },
 ];
