@@ -9,6 +9,7 @@ export type Filter = {
   states: string[];
   contactOutcome: string[];
   priority: string[];
+  all: {name: string, value: string}[];
 };
 
 export const emptyFilter: Filter = {
@@ -18,6 +19,7 @@ export const emptyFilter: Filter = {
   states: [],
   contactOutcome: [],
   priority: [],
+  all:[]
 };
 
 const useSearchFilter = create(
@@ -38,19 +40,21 @@ export function useToggleSearchFilter() {
   const filters = useGetSearchFilter();
   const setFilter = useSetSearchFilter();
   return (name: string, value: string) => {
-    filters[name as keyof Filter].includes(value)
+    filters[name as keyof Omit<Filter, "all">].includes(value)
       ? setFilter({
           ...filters,
           [name]: [
             ...filters[name as keyof Filter].filter(f => {
-              console.log(f !== value, f, value);
               return f !== value;
             }),
-          ],
+          ], all : [...filters["all"].filter(f => {
+            return f.value !== value;
+          })],
         })
       : setFilter({
           ...filters,
           [name]: [...filters[name as keyof Filter], value],
+          all: [...filters["all"], {name, value: value}]
         });
   };
 }

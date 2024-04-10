@@ -1,9 +1,11 @@
 import MenuItem from "@mui/material/MenuItem";
-import { Button, Checkbox, Menu, Typography } from "@mui/material";
+import { Button, Checkbox, Popover, Typography } from "@mui/material";
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import shadows from "@mui/material/styles/shadows";
 import { Filter, emptyFilter } from "../hooks/useSearchFilter";
+import { useDebouncedState } from "../hooks/useDebouncedState";
+import { SearchField } from "./SearchField";
 
 const style = {
   root: {
@@ -21,10 +23,19 @@ type Props = {
   options: Option[];
   toggleSearchFilter: (name: string, value: string) => void;
   filters: typeof emptyFilter;
+  canSearch?: boolean;
 };
 
-export const SelectWithCheckbox = ({ label, options, name, filters, toggleSearchFilter }: Props) => {
+export const SelectWithCheckbox = ({
+  label,
+  options,
+  name,
+  filters,
+  toggleSearchFilter,
+  canSearch = false,
+}: Props) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [debouncedSearch, setDebouncedSearch] = useDebouncedState("", 500);
 
   const open = Boolean(anchorEl);
 
@@ -33,27 +44,26 @@ export const SelectWithCheckbox = ({ label, options, name, filters, toggleSearch
   };
   const onClose = () => {
     setAnchorEl(null);
+    setDebouncedSearch("");
   };
 
+  const filteredOptions = filterOptions({ options, search: debouncedSearch });
   return (
     <>
       <Button
         onClick={onClick}
         style={style.root}
-        sx={{ textTransform: "none", typography: "bodySmall" }}
+        sx={{ textTransform: "none", typography: "bodySmall", height: "48px" }}
         size="large"
         endIcon={<KeyboardArrowDownIcon fontSize="small" />}
         color="inherit"
       >
         {label}
       </Button>
-      <Menu
-        sx={{ my: 0.5 }}
-        elevation={2}
-        id="select-menu"
-        aria-labelledby="select-button"
-        anchorEl={anchorEl}
+      <Popover
+        sx={{ my: 0.5, maxHeight: "calc(100vh - 280px)" }}
         open={open}
+        anchorEl={anchorEl}
         onClose={onClose}
         anchorOrigin={{
           vertical: "bottom",
@@ -64,19 +74,38 @@ export const SelectWithCheckbox = ({ label, options, name, filters, toggleSearch
           horizontal: "left",
         }}
       >
-        {options.map(option => (
+        {canSearch && (
+          <SearchField
+            onChange={e => setDebouncedSearch(e.target.value)}
+            label={"Recherche"}
+            placeholder={"nom, prénom"}
+          />
+        )}
+        {filteredOptions.map(option => (
           <MenuItem
             key={option.value}
             onClick={() => {
               toggleSearchFilter(name, option.value);
             }}
-            sx={{ pl: 0, py: 0 }}
+            sx={{ pl: 1, py: 0 }}
           >
-            <Checkbox size="small" checked={filters[name as keyof Filter].includes(option.value)} />
-            <Typography variant="bodySmall">{option.label}</Typography>
+            <Checkbox
+              size="small"
+              checked={filters[name as keyof Omit<Filter, "all">].includes(option.value)}
+            />
+            <Typography variant="bodySmall" fontWeight={600}>
+              {option.label}
+            </Typography>
           </MenuItem>
         ))}
-      </Menu>
+      </Popover>
     </>
   );
+};
+
+const filterOptions = ({ options, search }: { options: Option[]; search?: string }) => {
+  if (search) {
+    return options.filter(item => item.label.toLowerCase().includes(search.toLowerCase()));
+  }
+  return options;
 };

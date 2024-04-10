@@ -195,7 +195,7 @@ export type APISchemas = {
     /* Format: int64 */
     surveyUnitCount?: number
   }
-  JsonNode: {}
+  JsonNode: object
   MailDto: { content?: string; subject?: string }
   MessageDto: {
     /* Format: int64 */
@@ -492,11 +492,11 @@ export type APIEndpoints = {
     requests: { method?: "get" }
   }
   "/api/campaign": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: { method: "post"; body: APISchemas["CampaignContextDto"] }
   }
   "/api/campaign/{idCampaign}/organizational-unit/{idOu}/visibility": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: {
       method: "put"
       urlParams: { idCampaign: string; idOu: string }
@@ -504,7 +504,7 @@ export type APIEndpoints = {
     }
   }
   "/api/campaign/{id}": {
-    responses: { get: APISchemas["CampaignContextDto"]; put: {}; delete: {} }
+    responses: { get: APISchemas["CampaignContextDto"]; put: object; delete: object }
     requests:
       | { method?: "get"; urlParams: { id: string } }
       | {
@@ -652,11 +652,11 @@ export type APIEndpoints = {
     requests: { method?: "get"; query: { id: string; role?: string } }
   }
   "/api/create-dataset": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: { method: "post" }
   }
   "/api/delete-dataset": {
-    responses: { delete: {} }
+    responses: { delete: object }
     requests: { method: "delete" }
   }
   "/api/enum/contact-attempt": {
@@ -716,7 +716,7 @@ export type APIEndpoints = {
     }
     requests: { method?: "get" }
   }
-  "/api/healthcheck": { responses: { get: {} }; requests: { method?: "get" } }
+  "/api/healthcheck": { responses: { get: object }; requests: { method?: "get" } }
   "/api/interviewer/campaigns": {
     responses: { get: Array<APISchemas["CampaignDto"]> }
     requests: { method?: "get" }
@@ -725,7 +725,7 @@ export type APIEndpoints = {
     responses: {
       get: APISchemas["InterviewerContextDto"]
       put: APISchemas["InterviewerContextDto"]
-      delete: {}
+      delete: object
     }
     requests:
       | { method?: "get"; urlParams: { id: string } }
@@ -757,11 +757,11 @@ export type APIEndpoints = {
     }
   }
   "/api/mail": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: { method: "post"; body: APISchemas["MailDto"] }
   }
   "/api/message": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: { method: "post"; body: APISchemas["MessageDto"] }
   }
   "/api/message-history": {
@@ -769,7 +769,7 @@ export type APIEndpoints = {
     requests: { method?: "get" }
   }
   "/api/message/{id}/interviewer/{idep}/delete": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: {
       method: "put"
       urlParams: {
@@ -780,7 +780,7 @@ export type APIEndpoints = {
     }
   }
   "/api/message/{id}/interviewer/{idep}/read": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: {
       method: "put"
       urlParams: {
@@ -795,15 +795,15 @@ export type APIEndpoints = {
     requests: { method?: "get"; urlParams: { id: string } }
   }
   "/api/organization-unit": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: { method: "post"; body: APISchemas["OrganizationUnitContextDto"] }
   }
   "/api/organization-unit/{id}": {
-    responses: { delete: {} }
+    responses: { delete: object }
     requests: { method: "delete"; urlParams: { id: string } }
   }
   "/api/organization-unit/{id}/users": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: {
       method: "post"
       urlParams: { id: string }
@@ -813,7 +813,7 @@ export type APIEndpoints = {
   "/api/organization-units": {
     responses: {
       get: Array<APISchemas["OrganizationUnitContextDto"]>
-      post: {}
+      post: object
     }
     requests:
       | { method?: "get" }
@@ -823,14 +823,14 @@ export type APIEndpoints = {
         }
   }
   "/api/preferences": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: { method: "put"; body: Array<string> }
   }
   "/api/survey-unit/{id}": {
     responses: {
       get: APISchemas["SurveyUnitDetailDto"]
       put: APISchemas["SurveyUnitDetailDto"]
-      delete: {}
+      delete: object
     }
     requests:
       | { method?: "get"; urlParams: { id: string } }
@@ -842,21 +842,21 @@ export type APIEndpoints = {
       | { method: "delete"; urlParams: { id: string } }
   }
   "/api/survey-unit/{id}/close/{closingCause}": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: {
       method: "put"
       urlParams: { closingCause: "NPA" | "NPI" | "NPX" | "ROW"; id: string }
     }
   }
   "/api/survey-unit/{id}/closing-cause/{closingCause}": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: {
       method: "put"
       urlParams: { closingCause: "NPA" | "NPI" | "NPX" | "ROW"; id: string }
     }
   }
   "/api/survey-unit/{id}/comment": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: {
       method: "put"
       urlParams: { id: string }
@@ -864,7 +864,7 @@ export type APIEndpoints = {
     }
   }
   "/api/survey-unit/{id}/state/{state}": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: {
       method: "put"
       urlParams: {
@@ -893,7 +893,7 @@ export type APIEndpoints = {
     requests: { method?: "get"; urlParams: { id: string } }
   }
   "/api/survey-unit/{id}/temp-zone": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: {
       method: "post"
       urlParams: { id: string }
@@ -901,11 +901,11 @@ export type APIEndpoints = {
     }
   }
   "/api/survey-unit/{id}/viewed": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: { method: "put"; urlParams: { id: string } }
   }
   "/api/survey-units": {
-    responses: { get: Array<APISchemas["SurveyUnitDto"]>; post: {} }
+    responses: { get: Array<APISchemas["SurveyUnitDto"]>; post: object }
     requests:
       | { method?: "get"; query?: { extended?: boolean } }
       | { method: "post"; body: Array<APISchemas["SurveyUnitContextDto"]> }
@@ -915,24 +915,24 @@ export type APIEndpoints = {
     requests: { method?: "get" }
   }
   "/api/survey-units/interviewers": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: {
       method: "post"
       body: Array<APISchemas["SurveyUnitInterviewerLinkDto"]>
     }
   }
   "/api/survey-units/temp-zone": {
-    responses: { get: {} }
+    responses: { get: object }
     requests: { method?: "get" }
   }
   "/api/user": {
-    responses: { get: APISchemas["UserDto"]; post: {} }
+    responses: { get: APISchemas["UserDto"]; post: object }
     requests:
       | { method?: "get" }
       | { method: "post"; body: APISchemas["UserDto"] }
   }
   "/api/user/{id}": {
-    responses: { get: APISchemas["UserDto"]; put: {}; delete: {} }
+    responses: { get: APISchemas["UserDto"]; put: object; delete: object }
     requests:
       | { method?: "get"; urlParams: { id: string } }
       | {
@@ -943,11 +943,11 @@ export type APIEndpoints = {
       | { method: "delete"; urlParams: { id: string } }
   }
   "/api/user/{userId}/organization-unit/{ouId}": {
-    responses: { put: {} }
+    responses: { put: object }
     requests: { method: "put"; urlParams: { ouId: string; userId: string } }
   }
   "/api/verify-name": {
-    responses: { post: {} }
+    responses: { post: object }
     requests: { method: "post"; body: APISchemas["WsText"] }
   }
   "/campaigns/{id}/ongoing": {
