@@ -52,6 +52,7 @@ export const AccountNavigation = () => {
         }}
       >
         <MenuItem key={"favorite-surveys"} value={"favorite"}>
+          {/* TODO: change link */}
           <Link to={"/follow"} color="inherit" underline="none">
             Sélectionner mes enquêtes favorites
           </Link>

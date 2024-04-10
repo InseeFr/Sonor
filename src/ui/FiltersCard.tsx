@@ -111,7 +111,6 @@ export const FiltersCard = () => {
 type GetFiltersTagsType = {
   filters: { name: string; value: string }[];
   options: Option[];
-
   toggleSearchFilter: (name: string, value: string) => void;
 };
 const getFiltersTags = ({ filters, options, toggleSearchFilter }: GetFiltersTagsType) => {
