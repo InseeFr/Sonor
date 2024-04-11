@@ -3,7 +3,7 @@ export const messagesEn = {
     goToReadPage: 'Read' ,
     goToClosePage: 'Close' ,
     goToNotifyPage: 'Notify' ,
-    goToCollectOrganization: 'Collect Organization',
+    goToCollectOrganization: 'Organization of collections',
     goToReassignment: 'Reassignment',
     goToHelp: 'HELP',
     logout: 'Logout',
