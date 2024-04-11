@@ -6,6 +6,7 @@ import shadows from "@mui/material/styles/shadows";
 import { Filter, emptyFilter } from "../hooks/useSearchFilter";
 import { useDebouncedState } from "../hooks/useDebouncedState";
 import { SearchField } from "./SearchField";
+import { useIntl } from "react-intl";
 
 const style = {
   root: {
@@ -34,6 +35,7 @@ export const SelectWithCheckbox = ({
   toggleSearchFilter,
   canSearch = false,
 }: Props) => {
+  const intl = useIntl();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [debouncedSearch, setDebouncedSearch] = useDebouncedState("", 500);
 
@@ -77,8 +79,8 @@ export const SelectWithCheckbox = ({
         {canSearch && (
           <SearchField
             onChange={e => setDebouncedSearch(e.target.value)}
-            label={"Recherche"}
-            placeholder={"nom, prénom"}
+            label={intl.formatMessage({ id: "searchLabel" })}
+            placeholder={intl.formatMessage({ id: "searchInterviewerPlaceholder" })}
           />
         )}
         {filteredOptions.map(option => (
@@ -87,7 +89,7 @@ export const SelectWithCheckbox = ({
             onClick={() => {
               toggleSearchFilter(name, option.value);
             }}
-            sx={{ pl: 1, py: 0 }}
+            sx={{ pl: 1, py: 0, minWidth: "150px" }}
           >
             <Checkbox
               size="small"

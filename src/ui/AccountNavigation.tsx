@@ -9,8 +9,10 @@ import { useLogout, useUser } from "../hooks/useAuth";
 import { Link } from "./Link";
 import { Row } from "./Row";
 import { theme } from "../theme";
+import { useIntl } from "react-intl";
 
 export const AccountNavigation = () => {
+  const intl = useIntl();
   const { name } = useUser();
 
   const logout = useLogout();
@@ -54,14 +56,14 @@ export const AccountNavigation = () => {
         <MenuItem key={"favorite-surveys"} value={"favorite"}>
           {/* TODO: change link */}
           <Link to={"/follow"} color="inherit" underline="none">
-            Sélectionner mes enquêtes favorites
+            {intl.formatMessage({ id: "selectFavoriteSurveys" })}
           </Link>
         </MenuItem>
         <Link to={"/"} color="inherit" underline="none" target="_blank">
           <MenuItem key={"help"} value={"help"}>
             <Row gap={0.5}>
               <OpenInNewIcon fontSize="small" />
-              <Typography>AIDE</Typography>
+              <Typography> {intl.formatMessage({ id: "goToHelp" })}</Typography>
             </Row>
           </MenuItem>
         </Link>
@@ -75,7 +77,7 @@ export const AccountNavigation = () => {
             })
           }
         >
-          Se déconnecter
+          {intl.formatMessage({ id: "logout" })}
         </MenuItem>
       </Menu>
     </Box>
