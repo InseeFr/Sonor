@@ -7,6 +7,7 @@ import { SelectWithCheckbox, Option } from "./SelectWithCheckbox";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useGetSearchFilter, useSearchForm, useToggleSearchFilter } from "../hooks/useSearchFilter";
 import Chip from "@mui/material/Chip";
+import { useIntl } from "react-intl";
 
 const styles = {
   Grid: {
@@ -17,7 +18,7 @@ const styles = {
 };
 
 // TODO: add other options (campaigns, states, ssech ...)
-const contactOutcomeOptions = [
+const closingCauseOptions = [
   { label: "Enquête acceptée", value: "ACCEPTED" },
   { label: "Déchet", value: "WASTE" },
   { label: "Hors champ", value: "HC" },
@@ -38,6 +39,7 @@ const interviewerMock = [
 ];
 
 export const FiltersCard = () => {
+  const intl = useIntl();
   const filters = useGetSearchFilter();
   const { onReset } = useSearchForm(filters);
   const toggleSearchFilter = useToggleSearchFilter();
@@ -46,28 +48,28 @@ export const FiltersCard = () => {
     <Card sx={{ p: 2 }} elevation={2} variant="general">
       <Stack gap={2}>
         <Row justifyContent={"space-between"}>
-          <Typography variant="titleMedium">Filtrer les unités par :</Typography>
+          <Typography variant="titleMedium">{intl.formatMessage({ id: "filterUnitsBy" })}</Typography>
           <Button variant="text" color="inherit" onClick={onReset}>
-            Réinitialiser les filtres
+            {intl.formatMessage({ id: "resetFilters" })}
           </Button>
         </Row>
         <Row style={styles.Grid} sx={{ color: "text.tertiary" }}>
           <SelectWithCheckbox
-            label={"Enquêtes..."}
+            label={intl.formatMessage({ id: "surveyFilterLabel" })}
             options={[]}
             name="campaigns"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={"Sous-échantillon..."}
+            label={intl.formatMessage({ id: "subSampleFilterLabel" })}
             options={[]}
             name="ssech"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={"Enquêteur..."}
+            label={intl.formatMessage({ id: "interviewerFilterLabel" })}
             options={interviewerMock}
             name="interviewer"
             toggleSearchFilter={toggleSearchFilter}
@@ -75,21 +77,21 @@ export const FiltersCard = () => {
             canSearch={true}
           />
           <SelectWithCheckbox
-            label={"Etat..."}
+            label={intl.formatMessage({ id: "statesFilterLabel" })}
             options={[]}
             name="states"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={"Bilan agrégé..."}
-            options={contactOutcomeOptions}
-            name="contactOutcome"
+            label={intl.formatMessage({ id: "closingCauseFilterLabel" })}
+            options={closingCauseOptions}
+            name="closingCause"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={"Prioritaire..."}
+            label={intl.formatMessage({ id: "priorityFilterLabel" })}
             options={priorityOptions}
             name="priority"
             toggleSearchFilter={toggleSearchFilter}
@@ -99,7 +101,7 @@ export const FiltersCard = () => {
         <Row gap={1} flexWrap={"wrap"}>
           {getFiltersTags({
             filters: filters.all,
-            options: [...priorityOptions, ...contactOutcomeOptions, ...interviewerMock],
+            options: [...priorityOptions, ...closingCauseOptions, ...interviewerMock],
             toggleSearchFilter,
           })}
         </Row>

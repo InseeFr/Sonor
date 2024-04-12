@@ -5,12 +5,15 @@ import { PropsWithChildren } from "react";
 import packageInfo from "../../package.json";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { AccountNavigation } from "./AccountNavigation.tsx";
+import { useIntl } from "react-intl";
 
 const style = {
   "&.MuiLink-root:hover": { color: "primary.main" },
 };
 
 export function Header() {
+  const intl = useIntl();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -38,16 +41,16 @@ export function Header() {
           <Row gap={8}>
             <Row gap={4} typography={"titleMedium"} color={"text.tertiary"}>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/follow">
-                Suivre
+                {intl.formatMessage({ id: "goToFollowPage" })}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/read">
-                Lire
+                {intl.formatMessage({ id: "goToReadPage" })}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/close">
-                Clore
+                {intl.formatMessage({ id: "goToClosePage" })}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/notify">
-                Notifier
+                {intl.formatMessage({ id: "goToNotifyPage" })}
               </Link>
               <Link
                 sx={style}
@@ -56,7 +59,7 @@ export function Header() {
                 underline="none"
                 to="/collectOrganization"
               >
-                Organisation des collectes
+                {intl.formatMessage({ id: "goToCollectOrganization" })}
               </Link>
               <Link
                 sx={style}
@@ -65,7 +68,7 @@ export function Header() {
                 underline="none"
                 to="/reassignment"
               >
-                Réaffectation
+                {intl.formatMessage({ id: "goToReassignment" })}
               </Link>
             </Row>
             <Row gap={1}>

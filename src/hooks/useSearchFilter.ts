@@ -7,7 +7,7 @@ export type Filter = {
   ssech: string[];
   interviewer: string[];
   states: string[];
-  contactOutcome: string[];
+  closingCause: string[];
   priority: string[];
   all: { name: string; value: string }[];
 };
@@ -17,7 +17,7 @@ export const emptyFilter: Filter = {
   ssech: [],
   interviewer: [],
   states: [],
-  contactOutcome: [],
+  closingCause: [],
   priority: [],
   all: [],
 };

@@ -20,6 +20,10 @@ type ObjectKeys<T> = T extends object
       ? string[]
       : never;
 
+interface Window {
+  _env_?: ImportMetaEnv;
+}
+
 interface ObjectConstructor {
   keys<T>(o: T): ObjectKeys<T>;
 }
