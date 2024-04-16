@@ -1,5 +1,5 @@
 import MenuItem from "@mui/material/MenuItem";
-import { Button, Checkbox, Popover, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Popover, Typography } from "@mui/material";
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import shadows from "@mui/material/styles/shadows";
@@ -63,7 +63,7 @@ export const SelectWithCheckbox = ({
         {label}
       </Button>
       <Popover
-        sx={{ my: 0.5, maxHeight: "calc(100vh - 280px)" }}
+        sx={{ my: 0.5 }}
         open={open}
         anchorEl={anchorEl}
         onClose={onClose}
@@ -78,28 +78,31 @@ export const SelectWithCheckbox = ({
       >
         {canSearch && (
           <SearchField
+            sx={{ m: 2 }}
             onChange={e => setDebouncedSearch(e.target.value)}
             label={intl.formatMessage({ id: "searchLabel" })}
             placeholder={intl.formatMessage({ id: "searchInterviewerPlaceholder" })}
           />
         )}
-        {filteredOptions.map(option => (
-          <MenuItem
-            key={option.value}
-            onClick={() => {
-              toggleSearchFilter(name, option.value);
-            }}
-            sx={{ pl: 1, py: 0, minWidth: "150px" }}
-          >
-            <Checkbox
-              size="small"
-              checked={filters[name as keyof Omit<Filter, "all">].includes(option.value)}
-            />
-            <Typography variant="bodySmall" fontWeight={600}>
-              {option.label}
-            </Typography>
-          </MenuItem>
-        ))}
+        <Box sx={{ overflow: "auto", maxHeight: "calc(100vh - 420px)" }}>
+          {filteredOptions.map(option => (
+            <MenuItem
+              key={option.value}
+              onClick={() => {
+                toggleSearchFilter(name, option.value);
+              }}
+              sx={{ pl: 1, py: 0, minWidth: "150px" }}
+            >
+              <Checkbox
+                size="small"
+                checked={filters[name as keyof Omit<Filter, "all">].includes(option.value)}
+              />
+              <Typography variant="bodySmall" fontWeight={600}>
+                {option.label}
+              </Typography>
+            </MenuItem>
+          ))}
+        </Box>
       </Popover>
     </>
   );

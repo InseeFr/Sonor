@@ -21,4 +21,18 @@ export const messagesEn = {
     statesFilterLabel: 'States...',
     closingCauseFilterLabel: 'Closing cause...',
     priorityFilterLabel: 'Priority...',
+    id: 'Identifier',
+    surveys: 'Surveys',
+    subSample: 'Sub-sample',
+    interviewer: 'Interviewer',
+    state: 'State',
+    closingCause: 'Closing cause',
+    contactOutcome: 'Contact outcome',
+    priority: 'Priority', 
+    actions: 'Actions',
+    yes: 'Yes',
+    no: 'No',
+    readQuestionnaire: 'Read questionnaire',
+    close: 'Close',
+    comment: 'Comment'
 }

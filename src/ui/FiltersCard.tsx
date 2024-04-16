@@ -17,7 +17,7 @@ const styles = {
   },
 };
 
-// TODO: add other options (campaigns, states, ssech ...)
+// TODO: add real options
 const closingCauseOptions = [
   { label: "Enquête acceptée", value: "ACCEPTED" },
   { label: "Déchet", value: "WASTE" },
@@ -36,6 +36,31 @@ const interviewerMock = [
   },
   { label: "james Doe", value: "2" },
   { label: "Jean Dupont", value: "3" },
+  { label: "enquêteur 1", value: "4" },
+  { label: "enquêteur 2", value: "5" },
+  { label: "enquêteur 3", value: "6" },
+  { label: "enquêteur 4", value: "7" },
+  { label: "enquêteur 5", value: "8" },
+  { label: "enquêteur 6", value: "9" },
+  { label: "enquêteur 7", value: "10" },
+  { label: "enquêteur 8", value: "11" },
+  { label: "enquêteur 9", value: "12" },
+  { label: "enquêteur 10", value: "13" },
+  { label: "enquêteur 11", value: "14" },
+  { label: "enquêteur 12", value: "15" },
+  { label: "enquêteur 13", value: "16" },
+];
+
+const surveysMock = [
+  { label: "enquête 1", value: "enquête 1" },
+  { label: "enquête 2", value: "enquête 2" },
+  { label: "enquête 3", value: "enquête 3" },
+];
+
+const subsampleMock = [
+  { label: "-", value: "undefined" },
+  { label: "10", value: "ss10" },
+  { label: "11", value: "ss11" },
 ];
 
 export const FiltersCard = () => {
@@ -50,20 +75,22 @@ export const FiltersCard = () => {
         <Row justifyContent={"space-between"}>
           <Typography variant="titleMedium">{intl.formatMessage({ id: "filterUnitsBy" })}</Typography>
           <Button variant="text" color="inherit" onClick={onReset}>
-            {intl.formatMessage({ id: "resetFilters" })}
+            <Typography sx={{ textDecoration: "underline" }}>
+              {intl.formatMessage({ id: "resetFilters" })}
+            </Typography>
           </Button>
         </Row>
         <Row style={styles.Grid} sx={{ color: "text.tertiary" }}>
           <SelectWithCheckbox
             label={intl.formatMessage({ id: "surveyFilterLabel" })}
-            options={[]}
+            options={surveysMock}
             name="campaigns"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
             label={intl.formatMessage({ id: "subSampleFilterLabel" })}
-            options={[]}
+            options={subsampleMock}
             name="ssech"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
@@ -101,7 +128,13 @@ export const FiltersCard = () => {
         <Row gap={1} flexWrap={"wrap"}>
           {getFiltersTags({
             filters: filters.all,
-            options: [...priorityOptions, ...closingCauseOptions, ...interviewerMock],
+            options: [
+              ...priorityOptions,
+              ...closingCauseOptions,
+              ...interviewerMock,
+              ...surveysMock,
+              ...subsampleMock,
+            ],
             toggleSearchFilter,
           })}
         </Row>

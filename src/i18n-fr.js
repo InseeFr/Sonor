@@ -21,4 +21,18 @@ export const messagesFr = {
     statesFilterLabel: 'Etat...',
     closingCauseFilterLabel: 'Bilan agrégé...',
     priorityFilterLabel: 'Prioritaire...', 
+    id: 'Identifiant',
+    surveys: 'Enquêtes',
+    subSample: 'Sous-éch.',
+    interviewer: 'Enquêteur',
+    state: 'Etat',
+    closingCause: 'Bilan agrégé',
+    contactOutcome: 'Bilan des contacts',
+    priority: 'Prioritaire', 
+    actions: 'Actions',
+    yes: 'Oui',
+    no: 'Non',
+    readQuestionnaire: 'Relire le questionnaire',
+    close: 'Clôturer',
+    comment: 'Commentaire'
 }

@@ -2,6 +2,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { FiltersCard } from "../ui/FiltersCard";
 import { useIntl } from "react-intl";
+import { HomeTableCard } from "../ui/HomeTableCard";
 
 export const Home = () => {
   const intl = useIntl();
@@ -12,6 +13,7 @@ export const Home = () => {
         {intl.formatMessage({ id: "homepageTitle" })}
       </Typography>
       <FiltersCard />
+      <HomeTableCard />
     </Stack>
   );
 };
