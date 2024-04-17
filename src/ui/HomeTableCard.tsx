@@ -5,27 +5,28 @@ import { useIntl } from "react-intl";
 import { useDebouncedState } from "../hooks/useDebouncedState";
 import { HomeTable } from "./HomeTable";
 import { Filter, useGetSearchFilter } from "../hooks/useSearchFilter";
+import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
 
 const surveyUnitsMock = [
   {
     id: "10000000000",
     campaignLabel: "Logement",
-    ssech: "10",
+    ssech: 10,
     interviewer: "enquêteur 1",
-    state: "état",
+    states: "état",
     closingCause: "ACCEPTED",
     contactOutcome: "bilan des contacts",
-    priority: "true",
+    priority: true,
   },
   {
     id: "20000000000",
     campaignLabel: "Autonomie",
-    ssech: "2",
+    ssech: 2,
     interviewer: "enquêteur 2",
-    state: "état 2",
+    states: "état 2",
     closingCause: "WASTE",
     contactOutcome: "bilan des contacts 2",
-    priority: "true",
+    priority: false,
   },
 ];
 
@@ -52,7 +53,7 @@ export const HomeTableCard = () => {
 };
 
 type FilterSurveyUnitsProps = {
-  surveyUnits: Record<string, string>[]; // TODO change type after backend rework
+  surveyUnits: SurveyUnitTemporaryType[]; // TODO change type after backend rework
   search?: string;
   filters: Filter;
 };
@@ -70,7 +71,7 @@ const filterSurveyUnits = ({ surveyUnits, search, filters }: FilterSurveyUnitsPr
     (surveyUnits = surveyUnits.filter(item => filters.campaigns.includes(item.campaignLabel)));
 
   filters.ssech.length !== 0 &&
-    (surveyUnits = surveyUnits.filter(item => filters.ssech.includes(item.ssech)));
+    (surveyUnits = surveyUnits.filter(item => filters.ssech.toString().includes(item.ssech.toString())));
 
   filters.interviewer.length !== 0 &&
     (surveyUnits = surveyUnits.filter(item => filters.interviewer.includes(item.interviewer)));
@@ -82,7 +83,9 @@ const filterSurveyUnits = ({ surveyUnits, search, filters }: FilterSurveyUnitsPr
     (surveyUnits = surveyUnits.filter(item => filters.closingCause.includes(item.closingCause)));
 
   filters.priority.length !== 0 &&
-    (surveyUnits = surveyUnits.filter(item => filters.priority.includes(item.priority)));
+    (surveyUnits = surveyUnits.filter(item =>
+      filters.priority.includes(item.priority ? "true" : "false"),
+    ));
 
   return surveyUnits;
 };

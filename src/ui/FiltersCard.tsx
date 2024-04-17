@@ -61,8 +61,8 @@ const surveysMock = [
 
 const subsampleMock = [
   { label: "-", value: "undefined" },
-  { label: "10", value: "10" },
-  { label: "11", value: "11" },
+  { label: 10, value: "10" },
+  { label: 11, value: "11" },
 ];
 
 export const FiltersCard = () => {

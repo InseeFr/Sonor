@@ -16,7 +16,7 @@ const style = {
   },
 };
 
-export type Option = { label: string; value: string };
+export type Option = { label: string | number; value: string };
 
 type Props = {
   label: string;
@@ -110,7 +110,7 @@ export const SelectWithCheckbox = ({
 
 const filterOptions = ({ options, search }: { options: Option[]; search?: string }) => {
   if (search) {
-    return options.filter(item => item.label.toLowerCase().includes(search.toLowerCase()));
+    return options.filter(item => item.label.toString().toLowerCase().includes(search.toLowerCase()));
   }
   return options;
 };

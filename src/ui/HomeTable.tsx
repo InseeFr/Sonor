@@ -5,14 +5,79 @@ import { useState } from "react";
 import { HomeTableRow } from "./HomeTableRow";
 import { TableFooter } from "./TableFooter";
 import { theme } from "../theme";
+import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
 
 type Props = {
-  surveyUnits: Record<string, string>[]; // TODO change type after backend rework
+  surveyUnits: SurveyUnitTemporaryType[]; // TODO change type after backend rework
 };
+
+const columns = [
+  {
+    columnId: "id",
+    label: "id",
+  },
+  {
+    columnId: "campaignLabel",
+    label: "surveys",
+  },
+  {
+    columnId: "ssech",
+    label: "subSample",
+  },
+  {
+    columnId: "interviewer",
+    label: "interviewer",
+  },
+  {
+    columnId: "states",
+    label: "state",
+  },
+  {
+    columnId: "closingCause",
+    label: "closingCause",
+  },
+  {
+    columnId: "contactOutcome",
+    label: "contactOutcome",
+  },
+  {
+    columnId: "priority",
+    label: "priority",
+  },
+  {
+    columnId: "actions",
+    label: "actions",
+    sort: false,
+  },
+];
+
+function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+
+function getComparator<Key extends keyof any>(
+  order: "asc" | "desc",
+  orderBy: Key,
+): (
+  a: { [key in Key]: number | string | boolean },
+  b: { [key in Key]: number | string | boolean },
+) => number {
+  return order === "desc"
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+}
 
 export const HomeTable = ({ surveyUnits }: Props) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [order, setOrder] = useState<"asc" | "desc">("asc");
+  const [orderBy, setOrderBy] = useState<string>("id");
 
   const handleChangePage = (_: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
@@ -22,6 +87,15 @@ export const HomeTable = ({ surveyUnits }: Props) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  const handleRequestSort = (_: React.MouseEvent<unknown>, property: string) => {
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setOrderBy(property);
+  };
+
+  const sortedRows = surveyUnits.sort(getComparator(order, orderBy));
+
   return (
     <TableContainer>
       <Table aria-label="survey units table" size="small">
@@ -31,24 +105,26 @@ export const HomeTable = ({ surveyUnits }: Props) => {
               borderBottom: `solid 1px ${theme.palette.text.hint}`,
             }}
           >
-            <TableHeadCell key={"id"} label={"id"} />
-            <TableHeadCell key={"campaignLabel"} label={"surveys"} />
-            <TableHeadCell key={"ssech"} label={"subSample"} />
-            <TableHeadCell key={"interviewer"} label={"interviewer"} />
-            <TableHeadCell key={"state"} label={"state"} />
-            <TableHeadCell key={"closingCause"} label={"closingCause"} />
-            <TableHeadCell key={"contactOutcome"} label={"contactOutcome"} />
-            <TableHeadCell key={"priority"} label={"priority"} />
-            <TableHeadCell key={"actions"} label={"actions"} />
+            {columns.map(c => (
+              <TableHeadCell
+                key={c.label}
+                columnId={c.columnId}
+                label={c.label}
+                sort={c.sort}
+                order={order}
+                orderBy={orderBy}
+                onRequestSort={handleRequestSort}
+              />
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {surveyUnits.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(su => (
+          {sortedRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(su => (
             <HomeTableRow surveyUnit={su} key={`surveyUnit-${su.id}`} />
           ))}
         </TableBody>
         <TableFooter
-          count={surveyUnits.length}
+          count={sortedRows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}

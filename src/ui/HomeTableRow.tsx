@@ -9,9 +9,10 @@ import { Divider, IconButton } from "@mui/material";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import InsertCommentIcon from "@mui/icons-material/InsertComment";
+import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
 
 type Props = {
-  surveyUnit: Record<string, string>; // TODO change type after backend rework
+  surveyUnit: SurveyUnitTemporaryType; // TODO change type after backend rework
 };
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -40,7 +41,7 @@ export const HomeTableRow = ({ surveyUnit }: Props) => {
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.ssech ?? "-"}</TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.interviewer}</TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
-        {intl.formatMessage({ id: surveyUnit.state })}
+        {intl.formatMessage({ id: surveyUnit.states })}
       </TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
         {surveyUnit.closingCause ? intl.formatMessage({ id: surveyUnit.closingCause }) : "-"}
