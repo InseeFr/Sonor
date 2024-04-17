@@ -36,31 +36,33 @@ const interviewerMock = [
   },
   { label: "james Doe", value: "2" },
   { label: "Jean Dupont", value: "3" },
-  { label: "enquêteur 1", value: "4" },
-  { label: "enquêteur 2", value: "5" },
-  { label: "enquêteur 3", value: "6" },
-  { label: "enquêteur 4", value: "7" },
-  { label: "enquêteur 5", value: "8" },
-  { label: "enquêteur 6", value: "9" },
-  { label: "enquêteur 7", value: "10" },
-  { label: "enquêteur 8", value: "11" },
-  { label: "enquêteur 9", value: "12" },
-  { label: "enquêteur 10", value: "13" },
-  { label: "enquêteur 11", value: "14" },
-  { label: "enquêteur 12", value: "15" },
-  { label: "enquêteur 13", value: "16" },
+  { label: "enquêteur 1", value: "enquêteur 1" },
+  { label: "enquêteur 2", value: "enquêteur 2" },
+  { label: "enquêteur 3", value: "enquêteur 3" },
+  { label: "enquêteur 4", value: "enquêteur 4" },
+  { label: "enquêteur 5", value: "enquêteur 5" },
+  { label: "enquêteur 6", value: "enquêteur 6" },
+  { label: "enquêteur 7", value: "enquêteur 7" },
+  { label: "enquêteur 8", value: "enquêteur 8" },
+  { label: "enquêteur 9", value: "enquêteur 9" },
+  { label: "enquêteur 10", value: "enquêteur 10" },
+  { label: "enquêteur 11", value: "enquêteur 11" },
+  { label: "enquêteur 12", value: "enquêteur 12" },
+  { label: "enquêteur 13", value: "enquêteur 13" },
 ];
 
 const surveysMock = [
   { label: "enquête 1", value: "enquête 1" },
   { label: "enquête 2", value: "enquête 2" },
   { label: "enquête 3", value: "enquête 3" },
+  { label: "Autonomie", value: "Autonomie" },
+  { label: "Logement", value: "Logement" },
 ];
 
 const subsampleMock = [
   { label: "-", value: "undefined" },
-  { label: "10", value: "ss10" },
-  { label: "11", value: "ss11" },
+  { label: "10", value: "10" },
+  { label: "11", value: "11" },
 ];
 
 export const FiltersCard = () => {
