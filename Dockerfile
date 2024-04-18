@@ -33,3 +33,4 @@ USER nginx
 
 # Start Nginx server
 ENTRYPOINT sh -c "./vite-envs.sh && nginx -g 'daemon off;'"
+RUN chmod -R 777 vite-envs.sh
