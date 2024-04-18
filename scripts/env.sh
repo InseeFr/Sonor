@@ -15,8 +15,10 @@ do
   # Otherwise use value from .env file
   [[ -z $value ]] && value=${varvalue}
 
-  export $varname=$value  
+  export $varname=$value
   
 done < .env
 envsubst < "./configuration.json" > "configuration.temp"
+envsubst < "./keycloak.json" > "keycloak.temp"
 mv configuration.temp configuration.json
+mv keycloak.temp keycloak.json
