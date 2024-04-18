@@ -1,5 +1,4 @@
 import TableRow from "@mui/material/TableRow";
-import { theme } from "../theme";
 import TableCell from "@mui/material/TableCell";
 import { useIntl } from "react-intl";
 import { styled } from "@mui/material/styles";
@@ -10,6 +9,9 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
+import { useToggle } from "react-use";
+import { CommentDialog } from "./CommentDialog";
+import { Link } from "./Link";
 
 type Props = {
   surveyUnit: SurveyUnitTemporaryType; // TODO change type after backend rework
@@ -24,18 +26,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const HomeTableRow = ({ surveyUnit }: Props) => {
   const intl = useIntl();
 
+  const [isDialogOpen, toggleDialog] = useToggle(false);
+
   return (
-    <StyledTableRow
-      tabIndex={-1}
-      key={`row-${surveyUnit.id}`}
-      sx={{
-        borderBottom: `solid 1px ${theme.palette.text.hint}`,
-      }}
-    >
-      <TableCell
-        sx={{ typography: "itemSmall", textDecoration: "underline", ":hover": { cursor: "pointer" } }}
-      >
-        {surveyUnit.id}
+    <StyledTableRow tabIndex={-1} key={`row-${surveyUnit.id}`}>
+      <TableCell sx={{ typography: "itemSmall" }}>
+        <Link to={`/surveyUnits/${surveyUnit.id}`} color="inherit">
+          {surveyUnit.id}
+        </Link>
       </TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.campaignLabel}</TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.ssech ?? "-"}</TableCell>
@@ -65,20 +63,21 @@ export const HomeTableRow = ({ surveyUnit }: Props) => {
           </Tooltip>
           <Divider orientation="vertical" variant="middle" sx={{ height: "24px" }} />
 
+          <Tooltip title={intl.formatMessage({ id: "comment" })} placement="bottom-start" arrow>
+            <IconButton color="inherit" onClick={toggleDialog}>
+              <InsertCommentIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
+          <Divider orientation="vertical" variant="middle" sx={{ height: "24px" }} />
+
           <Tooltip title={intl.formatMessage({ id: "close" })} placement="bottom-start" arrow>
             <IconButton color="inherit">
               <NotInterestedIcon fontSize="small" />
             </IconButton>
           </Tooltip>
-          <Divider orientation="vertical" variant="middle" sx={{ height: "24px" }} />
-
-          <Tooltip title={intl.formatMessage({ id: "comment" })} placement="bottom-start" arrow>
-            <IconButton color="inherit">
-              <InsertCommentIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
         </Row>
       </TableCell>
+      <CommentDialog open={isDialogOpen} onClose={toggleDialog} surveyUnitId={surveyUnit.id} />
     </StyledTableRow>
   );
 };

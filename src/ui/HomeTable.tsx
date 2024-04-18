@@ -4,7 +4,6 @@ import { TableHeadCell } from "./TableHeadCell";
 import { useState } from "react";
 import { HomeTableRow } from "./HomeTableRow";
 import { TableFooter } from "./TableFooter";
-import { theme } from "../theme";
 import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
 
 type Props = {
@@ -94,17 +93,13 @@ export const HomeTable = ({ surveyUnits }: Props) => {
     setOrderBy(property);
   };
 
-  const sortedRows = surveyUnits.sort(getComparator(order, orderBy));
+  surveyUnits.sort(getComparator(order, orderBy));
 
   return (
     <TableContainer>
       <Table aria-label="survey units table" size="small">
         <TableHead>
-          <TableRow
-            sx={{
-              borderBottom: `solid 1px ${theme.palette.text.hint}`,
-            }}
-          >
+          <TableRow>
             {columns.map(c => (
               <TableHeadCell
                 key={c.label}
@@ -119,12 +114,12 @@ export const HomeTable = ({ surveyUnits }: Props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {sortedRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(su => (
+          {surveyUnits.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(su => (
             <HomeTableRow surveyUnit={su} key={`surveyUnit-${su.id}`} />
           ))}
         </TableBody>
         <TableFooter
-          count={sortedRows.length}
+          count={surveyUnits.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}

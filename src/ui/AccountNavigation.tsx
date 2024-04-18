@@ -59,14 +59,13 @@ export const AccountNavigation = () => {
             {intl.formatMessage({ id: "selectFavoriteSurveys" })}
           </Link>
         </MenuItem>
-        <Link to={"/"} color="inherit" underline="none" target="_blank">
-          <MenuItem key={"help"} value={"help"}>
-            <Row gap={0.5}>
-              <OpenInNewIcon fontSize="small" />
-              <Typography> {intl.formatMessage({ id: "goToHelp" })}</Typography>
-            </Row>
-          </MenuItem>
-        </Link>
+        {/* TODO: change link */}
+        <MenuItem {...{ component: Link, to: "/", target: "_blank" }}>
+          <Row gap={0.5}>
+            <OpenInNewIcon fontSize="small" />
+            <Typography> {intl.formatMessage({ id: "goToHelp" })}</Typography>
+          </Row>
+        </MenuItem>
         <MenuItem
           key={"logout"}
           value={"logout"}

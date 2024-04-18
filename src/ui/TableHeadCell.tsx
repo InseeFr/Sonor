@@ -32,8 +32,9 @@ export const TableHeadCell = ({
     <MuiTableCell sx={{ ...sx, typography: "titleSmall", pb: 2 }}>
       {sort ? (
         <TableSortLabel
+          className="Mui-active"
           active={orderBy === columnId}
-          direction={orderBy === columnId ? order : "asc"}
+          direction={orderBy === columnId ? order : "desc"}
           onClick={createSortHandler(columnId)}
         >
           {intl.formatMessage({ id: label })}

@@ -34,5 +34,15 @@ export const messagesEn = {
     no: 'No',
     readQuestionnaire: 'Read questionnaire',
     close: 'Close',
-    comment: 'Comment'
+    comment: 'Comment', 
+    surveyUnitNumber: 'SU n°',
+    commentPlaceholder: 'Write a comment',
+    commentDialogHelpText: 'Edit the text directly in the input field and click “validate” to validate your changes.',
+    delete:'delete',
+    cancel: 'cancel',
+    closeButtonLabel: 'close',
+    validate: 'validate',
+    labelRowsPerPage: 'Rows per page:',
+    labelDisplayedRows: 'entities displayed',
+    on: 'on'
 }

@@ -183,7 +183,7 @@ const typography = {
     fontSize: 12,
     lineHeight: "16px",
     fontWeight: 600,
-    letterSpacing: 0.5,
+    letterSpacing: 0.1,
   },
   labelSmall: {
     fontSize: 11,
@@ -366,7 +366,7 @@ export const theme = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottom: "none",
+          borderBottom: `solid 1px ${palette.text.hint}`,
         },
       },
     },
@@ -409,6 +409,7 @@ export const theme = createTheme({
           ...typography.titleMedium,
           fontSize: "20px",
           lineHeight: "32px",
+          fontWeight: 400,
         },
       },
     },

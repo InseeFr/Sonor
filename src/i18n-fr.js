@@ -34,5 +34,15 @@ export const messagesFr = {
     no: 'Non',
     readQuestionnaire: 'Relire le questionnaire',
     close: 'Clôturer',
-    comment: 'Commentaire'
+    comment: 'Commentaire',
+    surveyUnitNumber: 'UE n°',
+    commentPlaceholder: 'Rédiger un commentaire',
+    commentDialogHelpText: 'Modifiez le texte directement dans le champ de saisie et cliquez sur “valider” pour valider vos changements.',
+    delete:'supprimer',
+    cancel: 'annuler',
+    closeButtonLabel: 'fermer',
+    validate: 'valider',
+    labelRowsPerPage: 'Lignes par page :',
+    labelDisplayedRows: 'entités affichées',
+    on: 'sur'
 }
