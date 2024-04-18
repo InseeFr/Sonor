@@ -15,7 +15,7 @@ export function App() {
 
   let locale: LocaleType = "en";
   if (getEnvVar("VITE_LOCALE")) {
-    locale = getEnvVar("VITE_LOCALE");
+    locale = getEnvVar("VITE_LOCALE") as LocaleType;
   }
 
   if (!isAuthenticated) {
