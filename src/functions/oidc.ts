@@ -1,6 +1,7 @@
-import { createReactOidc } from "oidc-spa/react";
 import { Fragment } from "react";
-
+import { z } from "zod";
+import { createReactOidc } from "oidc-spa/react";
+import { createMockReactOidc } from "oidc-spa/mock/react";
 type TokenInfo = {
   inseegroupedefaut: string[];
   preferred_username: string;
@@ -15,14 +16,31 @@ const guestUser: TokenInfo = {
 
 const isOidc = import.meta.env.VITE_AUTH_TYPE === "oidc";
 
+const decodedIdTokenSchema = z.object({
+  inseegroupedefaut: z.array(z.string()),
+  preferred_username: z.string(),
+  name: z.string(),
+});
+
 export const createAppOidc = () => {
   if (isOidc) {
-    return createReactOidc<TokenInfo>({
-      issuerUri: import.meta.env.VITE_OIDC_ISSUER,
-      clientId: import.meta.env.VITE_OIDC_CLIENT_ID,
-      publicUrl: "/",
-      extraQueryParams: { kc_idp_hint: import.meta.env.VITE_IDENTITY_PROVIDER },
-    });
+    return !import.meta.env.VITE_OIDC_ISSUER
+      ? createMockReactOidc<TokenInfo>({
+          isUserInitiallyLoggedIn: false,
+          mockedTokens: {
+            decodedIdToken: {
+              inseegroupedefaut: ["gr"],
+              preferred_username: "john doe",
+              name: "john",
+            } satisfies z.infer<typeof decodedIdTokenSchema>,
+          },
+        })
+      : createReactOidc<TokenInfo>({
+          issuerUri: import.meta.env.VITE_OIDC_ISSUER,
+          clientId: import.meta.env.VITE_OIDC_CLIENT_ID,
+          publicUrl: "/",
+          extraQueryParams: { kc_idp_hint: import.meta.env.VITE_IDENTITY_PROVIDER },
+        });
   }
 
   return {

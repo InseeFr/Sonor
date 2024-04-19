@@ -4278,9 +4278,9 @@ oidc-client-ts@2.4.0:
     jwt-decode "^3.1.2"
 
 oidc-spa@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/oidc-spa/-/oidc-spa-4.2.1.tgz#1b33214fd4b657f7a09aae70058df76ce7275a8e"
-  integrity sha512-2Vm3Ohrh+F6Xd+HfybBs20ahQmJf3w852G20hnOl80O7G8wQ2IBKuivVEU/gb2hg4O3X9h4uQr4fuhIMO0/dFA==
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/oidc-spa/-/oidc-spa-4.5.0.tgz#eab4643f80006ad6d0db906e646241f64c88c304"
+  integrity sha512-3E32oaOaL2/NfJWyg7vjHPOb1SRe3q9oJ5OMSDcuF9AVZYbfgrKeCTvQcQhkxlIDLfZ4zKVQYVm45ft8Wj5W7w==
   dependencies:
     jwt-decode "^3.1.2"
     oidc-client-ts "2.4.0"
@@ -5457,6 +5457,11 @@ yocto-queue@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.0.0.tgz#7f816433fb2cbc511ec8bf7d263c3b58a1a3c251"
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
+
+zod@^3.22.5:
+  version "3.22.5"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.5.tgz#b9b09db03f6700b0d0b75bf0dbf0c5fc46155220"
+  integrity sha512-HqnGsCdVZ2xc0qWPLdO25WnseXThh0kEYKIdV5F/hTHO75hNZFp8thxSeHhiPrHZKrFTo1SOgkAj9po5bexZlw==
 
 zustand@^4.5.2:
   version "4.5.2"
