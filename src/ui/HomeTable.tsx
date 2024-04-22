@@ -17,7 +17,7 @@ const columns = [
   },
   {
     columnId: "campaignLabel",
-    label: "surveys",
+    label: "survey",
   },
   {
     columnId: "ssech",

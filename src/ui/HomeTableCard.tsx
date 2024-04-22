@@ -7,7 +7,7 @@ import { HomeTable } from "./HomeTable";
 import { Filter, useGetSearchFilter } from "../hooks/useSearchFilter";
 import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
 
-const surveyUnitsMock = [
+export const surveyUnitsMock = [
   {
     id: "10000000000",
     campaignLabel: "Logement",

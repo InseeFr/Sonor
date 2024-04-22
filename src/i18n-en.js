@@ -22,7 +22,7 @@ export const messagesEn = {
     closingCauseFilterLabel: 'Closing cause...',
     priorityFilterLabel: 'Priority...',
     id: 'Identifier',
-    surveys: 'Surveys',
+    survey: 'Survey',
     subSample: 'Sub-sample',
     interviewer: 'Interviewer',
     state: 'State',

@@ -22,7 +22,7 @@ export const messagesFr = {
     closingCauseFilterLabel: 'Bilan agrégé...',
     priorityFilterLabel: 'Prioritaire...', 
     id: 'Identifiant',
-    surveys: 'Enquêtes',
+    survey: 'Enquête',
     subSample: 'Sous-éch.',
     interviewer: 'Enquêteur',
     state: 'Etat',

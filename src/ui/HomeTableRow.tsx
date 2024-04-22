@@ -37,7 +37,7 @@ export const HomeTableRow = ({ surveyUnit }: Props) => {
       </TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.campaignLabel}</TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.ssech ?? "-"}</TableCell>
-      <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.interviewer}</TableCell>
+      <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.interviewer ?? "-"}</TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
         {intl.formatMessage({ id: surveyUnit.states })}
       </TableCell>
