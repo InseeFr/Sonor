@@ -6,12 +6,13 @@ import { Row } from "./Row";
 import Tooltip from "@mui/material/Tooltip";
 import { Divider, IconButton } from "@mui/material";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
-import NotInterestedIcon from "@mui/icons-material/NotInterested";
 import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
 import { useToggle } from "react-use";
 import { CommentDialog } from "./CommentDialog";
 import { Link } from "./Link";
+import { StateChip } from "./StateChip";
+import ClearIcon from "@mui/icons-material/Clear";
 
 type Props = {
   surveyUnit: SurveyUnitTemporaryType; // TODO change type after backend rework
@@ -39,7 +40,7 @@ export const HomeTableRow = ({ surveyUnit }: Props) => {
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.ssech ?? "-"}</TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>{surveyUnit.interviewer ?? "-"}</TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
-        {intl.formatMessage({ id: surveyUnit.states })}
+        <StateChip value={surveyUnit.states} />
       </TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
         {surveyUnit.closingCause ? intl.formatMessage({ id: surveyUnit.closingCause }) : "-"}
@@ -72,7 +73,7 @@ export const HomeTableRow = ({ surveyUnit }: Props) => {
 
           <Tooltip title={intl.formatMessage({ id: "close" })} placement="bottom-start" arrow>
             <IconButton color="inherit">
-              <NotInterestedIcon fontSize="small" />
+              <ClearIcon fontSize="small" />
             </IconButton>
           </Tooltip>
         </Row>

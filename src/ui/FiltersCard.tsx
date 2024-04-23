@@ -8,6 +8,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useGetSearchFilter, useSearchForm, useToggleSearchFilter } from "../hooks/useSearchFilter";
 import Chip from "@mui/material/Chip";
 import { useIntl } from "react-intl";
+import { closingCausesEnum } from "../constants/closingCauses";
+import { surveyUnitStatesEnum } from "../constants/surveyUnitStates";
 
 const styles = {
   Grid: {
@@ -18,12 +20,6 @@ const styles = {
 };
 
 // TODO: add real options
-const closingCauseOptions = [
-  { label: "Enquête acceptée", value: "ACCEPTED" },
-  { label: "Déchet", value: "WASTE" },
-  { label: "Hors champ", value: "HC" },
-];
-
 const priorityOptions = [
   { label: "Oui", value: "true" },
   { label: "Non", value: "false" },
@@ -71,6 +67,14 @@ export const FiltersCard = () => {
   const { onReset } = useSearchForm(filters);
   const toggleSearchFilter = useToggleSearchFilter();
 
+  const closingCauseOptions = closingCausesEnum.map(c => {
+    return { label: intl.formatMessage({ id: c }), value: c };
+  });
+
+  const statesOptions = surveyUnitStatesEnum.map(s => {
+    return { label: intl.formatMessage({ id: s }), value: s };
+  });
+
   return (
     <Card sx={{ p: 2 }} elevation={2} variant="general">
       <Stack gap={2}>
@@ -107,7 +111,7 @@ export const FiltersCard = () => {
           />
           <SelectWithCheckbox
             label={intl.formatMessage({ id: "statesFilterLabel" })}
-            options={[]}
+            options={statesOptions}
             name="states"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
@@ -133,6 +137,7 @@ export const FiltersCard = () => {
             options: [
               ...priorityOptions,
               ...closingCauseOptions,
+              ...statesOptions,
               ...interviewerMock,
               ...surveysMock,
               ...subsampleMock,

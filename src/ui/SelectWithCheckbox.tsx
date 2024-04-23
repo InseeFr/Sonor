@@ -7,6 +7,7 @@ import { Filter, emptyFilter } from "../hooks/useSearchFilter";
 import { useDebouncedState } from "../hooks/useDebouncedState";
 import { SearchField } from "./SearchField";
 import { useIntl } from "react-intl";
+import { StateChip } from "./StateChip";
 
 const style = {
   root: {
@@ -97,9 +98,13 @@ export const SelectWithCheckbox = ({
                 size="small"
                 checked={filters[name as keyof Omit<Filter, "all">].includes(option.value)}
               />
-              <Typography variant="bodySmall" fontWeight={600}>
-                {option.label}
-              </Typography>
+              {name !== "states" ? (
+                <Typography variant="bodySmall" fontWeight={600}>
+                  {option.label}
+                </Typography>
+              ) : (
+                <StateChip value={option.value} />
+              )}
             </MenuItem>
           ))}
         </Box>

@@ -300,31 +300,6 @@ export const theme = createTheme({
         },
       ],
     },
-    MuiTab: {
-      variants: [
-        {
-          props: { classes: "search" },
-          style: {
-            fontSize: "12px",
-            fontWeight: 600,
-            lineHeight: "16px",
-            textTransform: "none",
-            color: palette.text.tertiary,
-            padding: 8,
-            minHeight: 54,
-            whiteSpace: "nowrap",
-
-            "&.Mui-selected": {
-              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-              backgroundColor: palette.primary.light,
-            },
-            "&>.MuiTab-iconWrapper": {
-              margin: 0,
-            },
-          },
-        },
-      ],
-    },
     MuiPaper: {
       variants: [
         {
@@ -346,43 +321,10 @@ export const theme = createTheme({
         },
       ],
     },
-    MuiToggleButtonGroup: {
-      styleOverrides: {
-        root: {
-          borderRadius: 24,
-          boxShadow: `inset 0 0 0 1px ${palette.text.tertiary}`,
-          ".MuiToggleButtonGroup-grouped.Mui-selected": {
-            position: "relative",
-            zIndex: 2,
-          },
-          ".MuiToggleButtonGroup-grouped:not(:first-of-type)": {
-            marginLeft: -12,
-            zIndex: 1,
-            paddingLeft: 24,
-          },
-        },
-      },
-    },
     MuiTableCell: {
       styleOverrides: {
         root: {
           borderBottom: `solid 1px ${palette.text.hint}`,
-        },
-      },
-    },
-    MuiToggleButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 24,
-          paddingInline: 24,
-          border: "none",
-          ...typography.bodyMedium,
-          textTransform: "none",
-          "&.Mui-selected, &.Mui-selected:hover": {
-            borderRadius: "24px!important",
-            background: palette.primary.main,
-            color: "white",
-          },
         },
       },
     },
@@ -440,12 +382,8 @@ export const theme = createTheme({
       styleOverrides: {
         colorError: {
           backgroundColor: "#FDDBC3",
-          color: "#C71A01",
           ".MuiChip-deleteIcon": {
             color: "#C71A01",
-          },
-          "&:hover": {
-            backgroundColor: "#F9C3AF",
           },
         },
         colorSuccess: {
@@ -454,13 +392,15 @@ export const theme = createTheme({
           ".MuiChip-deleteIcon": {
             color: "#057345",
           },
-          "&:hover": {
-            backgroundColor: "#A9C6AF",
-          },
         },
         root: {
+          height: "26px",
           ".MuiChip-deleteIcon": {
             color: palette.text.primary,
+          },
+          ".MuiChip-label": {
+            ...typography.labelMedium,
+            color: palette.black.main,
           },
         },
       },
