@@ -7,7 +7,7 @@ export const messagesFr = {
     goToReassignment: 'Réaffectation', 
     goToHelp: 'AIDE',
     logout: 'Se déconnecter',
-    selectFavoriteSurveys: 'Sélectionner mes enquêtes favorites', 
+    selectFavoriteSurveys: 'MES ENQUÊTES FAVORITES', 
     resetFilters: 'Réinitialiser les filtres',
     searchLabel: 'Recherche',
     searchInterviewerPlaceholder: 'nom, prénom',
@@ -75,4 +75,5 @@ export const messagesFr = {
     DUK: 'Indisponibilité définitive pour motif connu',
     DUU: 'Indisponibilité définitive pour motif inconnu',
     NOA: 'Sans objet',
+    myProfile: 'Mon profil'
 }

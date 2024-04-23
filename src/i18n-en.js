@@ -7,7 +7,7 @@ export const messagesEn = {
     goToReassignment: 'Reassignment',
     goToHelp: 'HELP',
     logout: 'Logout',
-    selectFavoriteSurveys: 'Select my favorite surveys',
+    selectFavoriteSurveys: 'MY FAVORITE SURVEYS',
     resetFilters: 'Reset filters',
     searchLabel: 'Search',
     searchInterviewerPlaceholder: 'lastname, firstname',
@@ -75,4 +75,5 @@ export const messagesEn = {
     DUK: 'Definitely unavailable for a known reason',
     DUU: 'Definitely unavailable for an unknown reason',
     NOA: 'Not applicable',
+    myProfile: 'My profile'
 }

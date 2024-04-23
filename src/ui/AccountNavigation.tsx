@@ -1,6 +1,6 @@
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
-import { Button, Menu, Typography } from "@mui/material";
+import { Button, Divider, Menu, Typography } from "@mui/material";
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
@@ -36,7 +36,7 @@ export const AccountNavigation = () => {
         startIcon={<AccountCircleIcon fontSize="large" style={{ color: theme.palette.text.tertiary }} />}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        <Typography variant="bodyMedium">{name}</Typography>
+        <Typography variant="bodyMedium">{intl.formatMessage({ id: "myProfile" })}</Typography>
       </Button>
       <Menu
         id="account-menu"
@@ -53,22 +53,37 @@ export const AccountNavigation = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem key={"favorite-surveys"} value={"favorite"}>
-          {/* TODO: change link */}
-          <Link to={"/follow"} color="inherit" underline="none">
-            {intl.formatMessage({ id: "selectFavoriteSurveys" })}
-          </Link>
+        <MenuItem disabled sx={{ "&.Mui-disabled": { opacity: 1 }, typography: "titleSmall" }}>
+          {name}
+        </MenuItem>
+        <Divider variant="fullWidth" sx={{ mt: "0px !important" }} />
+        {/* TODO: change link */}
+        <MenuItem
+          {...{ component: Link, to: "/follow" }}
+          sx={{
+            mt: "12px",
+            typography: "bodyMedium",
+            textDecoration: "underline",
+            color: "primary.main",
+          }}
+        >
+          {intl.formatMessage({ id: "selectFavoriteSurveys" })}
         </MenuItem>
         {/* TODO: change link */}
-        <MenuItem {...{ component: Link, to: "/", target: "_blank" }}>
+        <MenuItem
+          {...{ component: Link, to: "/", target: "_blank" }}
+          sx={{
+            textDecoration: "underline",
+            color: "primary.main",
+          }}
+        >
           <Row gap={0.5}>
-            <OpenInNewIcon fontSize="small" />
-            <Typography> {intl.formatMessage({ id: "goToHelp" })}</Typography>
+            <OpenInNewIcon fontSize="littleIcon" />
+            <Typography variant={"bodyMedium"}>{intl.formatMessage({ id: "goToHelp" })}</Typography>
           </Row>
         </MenuItem>
         <MenuItem
-          key={"logout"}
-          value={"logout"}
+          sx={{ typography: "bodyMedium" }}
           onClick={() =>
             logout({
               redirectTo: "specific url",
