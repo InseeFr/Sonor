@@ -21,4 +21,10 @@ export const messagesEn = {
     statesFilterLabel: 'States...',
     closingCauseFilterLabel: 'Closing cause...',
     priorityFilterLabel: 'Priority...',
+    searchInterviewer: 'an interviewer...',
+    searchOrganizationUnit: "an organization unit...",
+    chooseSurvey: "Choose a survey :",
+    chooseInterviewer: "Choose an interviewer :",
+    chooseOrganizationUnit: "Choose an organization unit :",
+    followInterviewer: "Follow an interviewer",
 }

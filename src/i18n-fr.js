@@ -21,4 +21,11 @@ export const messagesFr = {
     statesFilterLabel: 'Etat...',
     closingCauseFilterLabel: 'Bilan agrégé...',
     priorityFilterLabel: 'Prioritaire...', 
+    searchInterviewer: 'un enquêteur...',
+    searchOrganizationUnit: "un site...",
+    chooseSurvey: "Choisissez une enquête :",
+    chooseInterviewer: "Choisissez un enquêteur / une enquêtrice :",
+    chooseOrganizationUnit: "Choisissez un site :",
+    followInterviewer: "Suivre un enquêteur",
+
 }
