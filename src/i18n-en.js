@@ -27,4 +27,7 @@ export const messagesEn = {
     chooseInterviewer: "Choose an interviewer :",
     chooseOrganizationUnit: "Choose an organization unit :",
     followInterviewer: "Follow an interviewer",
+    followSurvey: 'Follow a survey',
+    allSurveys: 'All surveys',
+    followOrganizationUnit: "Follow an organization unit"
 }

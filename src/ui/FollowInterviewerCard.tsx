@@ -2,12 +2,15 @@ import { useIntl } from "react-intl";
 import { useDebouncedState } from "../hooks/useDebouncedState";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import { SearchField } from "./SearchField";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import { TableBody, TableCell, TableRow } from "@mui/material";
+import { useState } from "react";
+import { APISchemas } from "../types/api";
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from "./Link";
+import { FollowCardHeader } from "./FollowCardHeader";
 
 const interviewersMock = [
   {
@@ -40,24 +43,22 @@ const interviewersMock = [
 export const FollowInterviewerCard = () => {
   const intl = useIntl();
   const [search, setSearch] = useDebouncedState("", 500);
-  // const [page, setPage] = useState(0);
+  const [page, setPage] = useState(0);
 
-  // const handleChangePage = (_: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-  //   setPage(newPage);
-  // };
+  const handleChangePage = (_: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const filteredInterviewers = filterInterviewers({ interviewers: interviewersMock, search });
 
   return (
-    <Card variant="general" sx={{ height: "calc(100vh - 140px)", py: 4, px: 3 }}>
+    <Card variant="general" sx={{ height: "calc(100vh - 140px)", py: 4, px: 3, overflow: "auto" }}>
       <Stack gap={3}>
-        <Typography variant="headlineLarge">
-          {intl.formatMessage({ id: "followInterviewer" })}
-        </Typography>
-        <SearchField
-          onChange={e => setSearch(e.target.value)}
-          label={intl.formatMessage({ id: "toSearchLabel" })}
-          placeholder={intl.formatMessage({ id: "searchInterviewer" })}
+        <FollowCardHeader
+          title={"followInterviewer"}
+          onSearch={e => setSearch(e.target.value)}
+          placeholder="searchInterviewer"
         />
-
         <TableContainer>
           <Table aria-label="interviewer list" size="small" sx={{ typography: "bodyMedium" }}>
             <TableHead>
@@ -68,11 +69,18 @@ export const FollowInterviewerCard = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {interviewersMock.map(interviewer => (
+              {filteredInterviewers.map(interviewer => (
                 <TableRow key={interviewer.id}>
-                  <TableCell>
-                    {interviewer.interviewerLastName.toLocaleUpperCase()}{" "}
-                    {interviewer.interviewerFirstName}
+                  <TableCell sx={{ py: 0.5 }}>
+                    <Link
+                      color="inherit"
+                      component={RouterLink}
+                      underline="none"
+                      to={`/follow/interviewer/${interviewer.id}`}
+                    >
+                      {interviewer.interviewerLastName?.toLocaleUpperCase()}{" "}
+                      {interviewer.interviewerFirstName}
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
@@ -83,4 +91,31 @@ export const FollowInterviewerCard = () => {
       </Stack>
     </Card>
   );
+};
+
+type FilterInterviewerProps = {
+  interviewers: APISchemas["InterviewerDto"][];
+  search?: string;
+};
+
+const filterInterviewers = ({ interviewers, search }: FilterInterviewerProps) => {
+  if (search) {
+    interviewers = interviewers.filter(
+      item =>
+        item.interviewerFirstName?.toLowerCase().includes(search.toLowerCase()) ||
+        item.interviewerLastName?.toLowerCase().includes(search.toLowerCase()) ||
+        (item.interviewerFirstName &&
+          item.interviewerLastName &&
+          (item.interviewerFirstName
+            ?.toLowerCase()
+            .concat(item.interviewerLastName?.toLowerCase())
+            .includes(search.split(" ").join("").toLowerCase()) ||
+            item.interviewerLastName
+              ?.toLowerCase()
+              .concat(item.interviewerFirstName?.toLowerCase())
+              .includes(search.split(" ").join("").toLowerCase()))),
+    );
+  }
+
+  return interviewers;
 };

@@ -27,5 +27,7 @@ export const messagesFr = {
     chooseInterviewer: "Choisissez un enquêteur / une enquêtrice :",
     chooseOrganizationUnit: "Choisissez un site :",
     followInterviewer: "Suivre un enquêteur",
-
+    followSurvey: "Suivre une enquête",
+    allSurveys: "Ensemble des enquêtes",
+    followOrganizationUnit: "Suivre un site"
 }
