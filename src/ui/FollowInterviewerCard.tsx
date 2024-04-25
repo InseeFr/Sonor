@@ -98,6 +98,13 @@ type FilterInterviewerProps = {
   search?: string;
 };
 
+/*  filterInterviewers :
+  conditions enable to filter when user search by:
+  - firstName 
+  - lastName
+  - firstName follow by lastName 
+  - lastName follow by firstName
+*/
 const filterInterviewers = ({ interviewers, search }: FilterInterviewerProps) => {
   if (search) {
     interviewers = interviewers.filter(
@@ -117,5 +124,25 @@ const filterInterviewers = ({ interviewers, search }: FilterInterviewerProps) =>
     );
   }
 
-  return interviewers;
+  return interviewers.sort((i1, i2) => {
+    const nameI1 = getInterviewerName({
+      lastName: i1.interviewerLastName,
+      firstName: i1.interviewerFirstName,
+    });
+
+    const nameI2 = getInterviewerName({
+      lastName: i2.interviewerLastName,
+      firstName: i2.interviewerFirstName,
+    });
+
+    return nameI1.trim().localeCompare(nameI2.trim());
+  });
+};
+
+const getInterviewerName = ({ lastName, firstName }: { lastName?: string; firstName?: string }) => {
+  if (lastName) {
+    return firstName ? lastName.concat(firstName) : lastName;
+  } else {
+    return firstName ?? "";
+  }
 };

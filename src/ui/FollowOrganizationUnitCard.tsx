@@ -96,5 +96,5 @@ const filterOrganizationUnits = ({ organizationUnits, search }: FilterOUProps) =
     );
   }
 
-  return organizationUnits;
+  return organizationUnits.sort((ou1, ou2) => ou1.label.localeCompare(ou2.label));
 };

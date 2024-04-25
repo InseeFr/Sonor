@@ -24,6 +24,8 @@ const surveysMock = [
 export const FollowSurveyCard = () => {
   const intl = useIntl();
 
+  surveysMock.sort((su1, su2) => su1.label.localeCompare(su2.label));
+
   return (
     <Card variant="general" sx={{ height: "calc(100vh - 140px)", py: 4, px: 3, overflow: "auto" }}>
       <Stack gap={3}>
