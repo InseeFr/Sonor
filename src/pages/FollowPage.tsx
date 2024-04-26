@@ -1,7 +1,7 @@
 import { Row } from "../ui/Row";
-import { FollowInterviewerCard } from "../ui/FollowInterviewerCard";
-import { FollowSurveyCard } from "../ui/FollowSurveyCard";
-import { FollowOrganizationUnitCard } from "../ui/FollowOrganizationUnitCard";
+import { FollowInterviewerCard } from "../ui/follow/FollowInterviewerCard";
+import { FollowSurveyCard } from "../ui/follow/FollowSurveyCard";
+import { FollowOrganizationUnitCard } from "../ui/follow/FollowOrganizationUnitCard";
 
 export const FollowPage = () => {
   // TODO use real condition

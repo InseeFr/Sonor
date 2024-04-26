@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Link } from "./Link";
+import { Link } from "../Link";
 import { Link as RouterLink } from "react-router-dom";
 
 const surveysMock = [

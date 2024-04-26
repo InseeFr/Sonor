@@ -119,6 +119,7 @@ declare module "@mui/material/Paper" {
 declare module "@mui/material/Tab" {
   interface TabPropsClassesOverrides {
     search: true;
+    cardTab: true;
   }
 }
 
@@ -148,6 +149,7 @@ const typography = {
   headlineLarge: {
     fontSize: 32,
     lineHeight: "40px",
+    fontWeight: 400,
   },
   headlineMedium: {
     fontSize: 28,
@@ -320,6 +322,42 @@ export const theme = createTheme({
             },
             "&>.MuiTab-iconWrapper": {
               margin: 0,
+            },
+          },
+        },
+        {
+          props: { classes: "cardTab" },
+          style: {
+            borderTopLeftRadius: "16px !important",
+            borderTopRightRadius: "16px !important",
+            paddingLeft: 40,
+            paddingRight: 40,
+            backgroundColor: "#EFEFEF",
+            border: "none",
+            ...typography.titleSmall,
+            textTransform: "none",
+            "&:hover": {
+              backgroundColor: "#EFEFEF",
+            },
+            ":nth-of-type(2)": {
+              left: -20,
+            },
+            ":nth-of-type(3)": {
+              left: -40,
+            },
+            ":nth-of-type(4)": {
+              left: -60,
+            },
+            ":nth-of-type(5)": {
+              left: -80,
+            },
+            "&.Mui-selected": {
+              position: "relative",
+              zIndex: 2,
+              background: "white",
+              "&:hover": {
+                background: "white",
+              },
             },
           },
         },

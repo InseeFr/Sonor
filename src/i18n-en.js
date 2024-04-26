@@ -29,5 +29,13 @@ export const messagesEn = {
     followInterviewer: "Follow an interviewer",
     followSurvey: 'Follow a survey',
     allSurveys: 'All surveys',
-    followOrganizationUnit: "Follow an organization unit"
+    followOrganizationUnit: "Follow an organization unit",
+    followCampaignBreacrumb: "Follow survey",
+    survey: "Survey",
+    progress: "Progress",
+    collect: "Collect",
+    reminders: "Reminders",
+    provisionalStatus: "Provisional status",
+    closedSU: "Closed SU",
+    terminatedSU: "Terminated SU"
 }

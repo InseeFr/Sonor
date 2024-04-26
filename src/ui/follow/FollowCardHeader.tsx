@@ -1,7 +1,7 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useIntl } from "react-intl";
-import { SearchField } from "./SearchField";
+import { SearchField } from "../SearchField";
 import { ChangeEvent } from "react";
 
 type Props = {

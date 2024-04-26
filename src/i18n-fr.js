@@ -29,5 +29,13 @@ export const messagesFr = {
     followInterviewer: "Suivre un enquêteur",
     followSurvey: "Suivre une enquête",
     allSurveys: "Ensemble des enquêtes",
-    followOrganizationUnit: "Suivre un site"
+    followOrganizationUnit: "Suivre un site",
+    followCampaignBreacrumb: "Suivre enquête",
+    survey: "Enquête",
+    progress: "Avancement",
+    collect: "Collecte",
+    reminders: "Relances",
+    provisionalStatus: "Statut provisoire",
+    closedSU: "UE cloturées",
+    terminatedSU: "UE terminées"
 }

@@ -1,5 +1,5 @@
 import { useIntl } from "react-intl";
-import { useDebouncedState } from "../hooks/useDebouncedState";
+import { useDebouncedState } from "../../hooks/useDebouncedState";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import TableContainer from "@mui/material/TableContainer";
@@ -7,9 +7,9 @@ import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
-import { APISchemas } from "../types/api";
+import { APISchemas } from "../../types/api";
 import { Link as RouterLink } from "react-router-dom";
-import { Link } from "./Link";
+import { Link } from "../Link";
 import { FollowCardHeader } from "./FollowCardHeader";
 
 const interviewersMock = [
