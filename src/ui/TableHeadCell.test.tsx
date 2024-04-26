@@ -3,8 +3,13 @@ import { WrappedRender } from "../WrappedRender";
 import { TableHeadCell } from "./TableHeadCell";
 
 describe("TableHeadCell component", () => {
+  const onRequestSortMock = vi.fn();
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("should render label, sort icon and call sort function  ", () => {
-    const onRequestSortMock = vi.fn();
     WrappedRender(
       <TableHeadCell
         columnId={"id"}
@@ -21,7 +26,6 @@ describe("TableHeadCell component", () => {
   });
 
   it("should only render label  ", () => {
-    const onRequestSortMock = vi.fn();
     WrappedRender(
       <TableHeadCell
         columnId={"id"}

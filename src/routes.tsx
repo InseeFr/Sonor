@@ -27,7 +27,7 @@ export const routes: RouteObject[] = [
       { path: "notify", element: <NotifyPage /> },
       { path: "collectOrganization", element: <CollectOrganizationPage /> },
       { path: "reassignment", element: <ReassignmentPage /> },
-      { path: "surveyUnits/:id", element: <SurveyUnitPage /> },
+      { path: "survey-unit/:id", element: <SurveyUnitPage /> },
     ],
   },
 ];

@@ -32,8 +32,8 @@ const columns = [
     label: "state",
   },
   {
-    columnId: "closingCause",
-    label: "closingCause",
+    columnId: "result",
+    label: "result",
   },
   {
     columnId: "contactOutcome",
@@ -51,6 +51,17 @@ const columns = [
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
+  if (orderBy === "contactOutcome") {
+    const typeA = (a[orderBy] as SurveyUnitTemporaryType["contactOutcome"]).type;
+    const typeB = (b[orderBy] as SurveyUnitTemporaryType["contactOutcome"]).type;
+    if (typeB < typeA) {
+      return -1;
+    }
+    if (typeB > typeA) {
+      return 1;
+    }
+    return 0;
+  }
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -64,8 +75,8 @@ function getComparator<Key extends keyof any>(
   order: "asc" | "desc",
   orderBy: Key,
 ): (
-  a: { [key in Key]: number | string | boolean },
-  b: { [key in Key]: number | string | boolean },
+  a: { [key in Key]: number | string | boolean | { date: number; type: string } },
+  b: { [key in Key]: number | string | boolean | { date: number; type: string } },
 ) => number {
   return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)

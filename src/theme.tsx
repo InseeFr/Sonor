@@ -133,6 +133,9 @@ const baseTheme = createTheme({});
 const colors = (c: string) => baseTheme.palette.augmentColor({ color: { main: c } });
 const typography = {
   fontFamily: "Open Sans, sans-serif",
+  fontWeight: {
+    standard: 400,
+  },
   displayLarge: {
     fontSize: 57,
     lineHeight: "64px",
@@ -358,7 +361,7 @@ export const theme = createTheme({
           ...typography.titleMedium,
           fontSize: "20px",
           lineHeight: "32px",
-          fontWeight: 400,
+          fontWeight: typography.fontWeight.standard,
         },
       },
     },

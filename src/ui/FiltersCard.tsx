@@ -8,8 +8,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useGetSearchFilter, useSearchForm, useToggleSearchFilter } from "../hooks/useSearchFilter";
 import Chip from "@mui/material/Chip";
 import { useIntl } from "react-intl";
-import { closingCausesEnum } from "../constants/closingCauses";
 import { surveyUnitStatesEnum } from "../constants/surveyUnitStates";
+import { translate } from "../functions/translate";
 
 const styles = {
   Grid: {
@@ -67,42 +67,43 @@ export const FiltersCard = () => {
   const { onReset } = useSearchForm(filters);
   const toggleSearchFilter = useToggleSearchFilter();
 
-  const closingCauseOptions = closingCausesEnum.map(c => {
-    return { label: intl.formatMessage({ id: c }), value: c };
+  // TODO: find enum
+  const resultOptions = [].map(c => {
+    return { label: translate(c, intl), value: c };
   });
 
   const statesOptions = surveyUnitStatesEnum.map(s => {
-    return { label: intl.formatMessage({ id: s }), value: s };
+    return { label: translate(s, intl), value: s };
   });
 
   return (
     <Card sx={{ p: 2 }} elevation={2} variant="general">
       <Stack gap={2}>
         <Row justifyContent={"space-between"}>
-          <Typography variant="titleMedium">{intl.formatMessage({ id: "filterUnitsBy" })}</Typography>
+          <Typography variant="titleMedium">{translate("filterUnitsBy", intl)}</Typography>
           <Button variant="text" color="inherit" onClick={onReset}>
             <Typography sx={{ textDecoration: "underline" }}>
-              {intl.formatMessage({ id: "resetFilters" })}
+              {translate("resetFilters", intl)}
             </Typography>
           </Button>
         </Row>
         <Row style={styles.Grid} sx={{ color: "text.tertiary" }}>
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "surveyFilterLabel" })}
+            label={translate("surveyFilterLabel", intl)}
             options={surveysMock}
             name="campaigns"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "subSampleFilterLabel" })}
+            label={translate("subSampleFilterLabel", intl)}
             options={subsampleMock}
             name="ssech"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "interviewerFilterLabel" })}
+            label={translate("interviewerFilterLabel", intl)}
             options={interviewerMock}
             name="interviewer"
             toggleSearchFilter={toggleSearchFilter}
@@ -110,21 +111,21 @@ export const FiltersCard = () => {
             canSearch={true}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "statesFilterLabel" })}
+            label={translate("statesFilterLabel", intl)}
             options={statesOptions}
             name="states"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "closingCauseFilterLabel" })}
-            options={closingCauseOptions}
-            name="closingCause"
+            label={translate("resultFilterLabel", intl)}
+            options={resultOptions}
+            name="result"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "priorityFilterLabel" })}
+            label={translate("priorityFilterLabel", intl)}
             options={priorityOptions}
             name="priority"
             toggleSearchFilter={toggleSearchFilter}
@@ -136,7 +137,7 @@ export const FiltersCard = () => {
             filters: filters.all,
             options: [
               ...priorityOptions,
-              ...closingCauseOptions,
+              ...resultOptions,
               ...statesOptions,
               ...interviewerMock,
               ...surveysMock,

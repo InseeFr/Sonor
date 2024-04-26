@@ -4,7 +4,10 @@ export type SurveyUnitTemporaryType = {
   ssech: number;
   interviewer: string;
   states: string;
-  closingCause: string;
-  contactOutcome: string;
+  result: string;
+  contactOutcome: {
+    date: number;
+    type: string;
+  };
   priority: boolean;
 };

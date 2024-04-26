@@ -1,4 +1,5 @@
 import { Chip } from "@mui/material";
+import { translate } from "../functions/translate";
 import { useIntl } from "react-intl";
 
 type Props = {
@@ -7,8 +8,7 @@ type Props = {
 
 export const StateChip = ({ value }: Props) => {
   const intl = useIntl();
-
-  return <Chip label={intl.formatMessage({ id: value })} variant="filled" color={getChipColor(value)} />;
+  return <Chip label={translate(value, intl)} variant="filled" color={getChipColor(value)} />;
 };
 
 const getChipColor = (value: string) => {

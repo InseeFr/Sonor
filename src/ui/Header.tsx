@@ -5,6 +5,7 @@ import { PropsWithChildren } from "react";
 import packageInfo from "../../package.json";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { AccountNavigation } from "./AccountNavigation.tsx";
+import { translate } from "../functions/translate.ts";
 import { useIntl } from "react-intl";
 
 const style = {
@@ -41,16 +42,16 @@ export function Header() {
           <Row gap={8}>
             <Row gap={4} typography={"titleMedium"} color={"text.tertiary"}>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/follow">
-                {intl.formatMessage({ id: "goToFollowPage" })}
+                {translate("goToFollowPage", intl)}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/read">
-                {intl.formatMessage({ id: "goToReadPage" })}
+                {translate("goToReadPage", intl)}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/close">
-                {intl.formatMessage({ id: "goToClosePage" })}
+                {translate("goToClosePage", intl)}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/notify">
-                {intl.formatMessage({ id: "goToNotifyPage" })}
+                {translate("goToNotifyPage", intl)}
               </Link>
               <Link
                 sx={style}
@@ -59,7 +60,7 @@ export function Header() {
                 underline="none"
                 to="/collectOrganization"
               >
-                {intl.formatMessage({ id: "goToCollectOrganization" })}
+                {translate("goToCollectOrganization", intl)}
               </Link>
               <Link
                 sx={style}
@@ -68,7 +69,7 @@ export function Header() {
                 underline="none"
                 to="/reassignment"
               >
-                {intl.formatMessage({ id: "goToReassignment" })}
+                {translate("goToReassignment", intl)}
               </Link>
             </Row>
             <Row gap={1}>

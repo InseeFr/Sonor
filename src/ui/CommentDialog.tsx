@@ -8,8 +8,9 @@ import { theme } from "../theme";
 import { ChangeEvent, useState } from "react";
 import { Box, Divider, InputAdornment, Stack, Typography } from "@mui/material";
 import { Row } from "./Row";
+import { translate } from "../functions/translate";
 import { useIntl } from "react-intl";
-
+import { useFetchMutation } from "../hooks/useFetchQuery";
 type Props = {
   open: boolean;
   onClose: () => void;
@@ -19,8 +20,9 @@ type Props = {
 
 export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Props) => {
   const intl = useIntl();
-
   const [newComment, setNewComment] = useState(comment);
+
+  const { mutateAsync, isPending } = useFetchMutation("/api/survey-unit/{id}/comment", "put");
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -32,15 +34,23 @@ export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Pro
     setNewComment(comment);
   };
 
-  const handleDelete = () => {
-    // TODO call api to delete comment
+  const handleDelete = async () => {
+    await mutateAsync({
+      body: { type: "MANAGEMENT", value: "" },
+      urlParams: { id: surveyUnitId },
+    });
     onClose();
-    setNewComment("");
   };
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = e => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
-    // TODO call api to add comment
+    const data = new FormData(e.currentTarget);
+    const commentData = data.get("comment") as string;
+    await mutateAsync({
+      body: { type: "MANAGEMENT", value: commentData },
+      urlParams: { id: surveyUnitId },
+    });
+
     onClose();
   };
 
@@ -55,11 +65,11 @@ export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Pro
       <form onSubmit={handleSubmit}>
         <DialogTitle>
           <Row justifyContent={"space-between"}>
-            <Box>{intl.formatMessage({ id: "comment" })}</Box>
+            <Box>{translate("comment", intl)}</Box>
             <Row gap={1}>
               <Divider orientation="vertical" variant="middle" sx={{ height: "20px" }} />
               <Box>
-                {intl.formatMessage({ id: "surveyUnitNumber" })} {surveyUnitId}
+                {translate("surveyUnitNumber", intl)} {surveyUnitId}
               </Box>
             </Row>
           </Row>
@@ -82,11 +92,10 @@ export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Pro
               InputProps={{
                 startAdornment: <InputAdornment position="start" />,
               }}
-              autoFocus
               id="comment"
               name="comment"
-              label={intl.formatMessage({ id: "comment" })}
-              placeholder={intl.formatMessage({ id: "commentPlaceholder" })}
+              label={translate("comment", intl)}
+              placeholder={translate("commentPlaceholder", intl)}
               type="text"
               fullWidth
               variant="outlined"
@@ -96,22 +105,24 @@ export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Pro
               onChange={onChange}
             />
             <Typography variant="bodySmall" color={"text.tertiary"}>
-              {intl.formatMessage({ id: "commentDialogHelpText" })}
+              {translate("commentDialogHelpText", intl)}
             </Typography>
           </Stack>
         </DialogContent>
         {comment === "" || isModified ? (
           <DialogActions>
-            <Button onClick={handleCancel}>{intl.formatMessage({ id: "cancel" })}</Button>
-            <Button type="submit" variant="contained" disabled={!isModified}>
-              {intl.formatMessage({ id: "validate" })}
+            <Button onClick={handleCancel}>{translate("cancel", intl)}</Button>
+            <Button type="submit" variant="contained" disabled={!isModified || isPending}>
+              {translate("validate", intl)}
             </Button>
           </DialogActions>
         ) : (
           <DialogActions>
-            <Button onClick={handleDelete}>{intl.formatMessage({ id: "delete" })}</Button>
+            <Button onClick={handleDelete} disabled={isPending}>
+              {translate("delete", intl)}
+            </Button>
             <Button onClick={handleCancel} variant="contained">
-              {intl.formatMessage({ id: "closeButtonLabel" })}
+              {translate("closeButtonLabel", intl)}
             </Button>
           </DialogActions>
         )}

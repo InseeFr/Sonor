@@ -6,6 +6,7 @@ import { useDebouncedState } from "../hooks/useDebouncedState";
 import { HomeTable } from "./HomeTable";
 import { Filter, useGetSearchFilter } from "../hooks/useSearchFilter";
 import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
+import { translate } from "../functions/translate";
 
 export const surveyUnitsMock = [
   {
@@ -14,8 +15,11 @@ export const surveyUnitsMock = [
     ssech: 10,
     interviewer: "enquêteur 1",
     states: "CLO",
-    closingCause: "NPA",
-    contactOutcome: "NOA",
+    result: "NPA",
+    contactOutcome: {
+      date: 123,
+      type: "NOA",
+    },
     priority: true,
   },
   {
@@ -24,8 +28,11 @@ export const surveyUnitsMock = [
     ssech: 2,
     interviewer: "enquêteur 2",
     states: "FIN",
-    closingCause: "NPI",
-    contactOutcome: "ALA",
+    result: "NPI",
+    contactOutcome: {
+      date: 123,
+      type: "ALA",
+    },
     priority: false,
   },
 ];
@@ -43,8 +50,8 @@ export const HomeTableCard = () => {
         <SearchField
           sx={{ maxWidth: "330px" }}
           onChange={e => setSearch(e.target.value)}
-          label={intl.formatMessage({ id: "toSearchLabel" })}
-          placeholder={intl.formatMessage({ id: "searchSurveyUnitPlaceholder" })}
+          label={translate("toSearchLabel", intl)}
+          placeholder={translate("searchSurveyUnitPlaceholder", intl)}
         />
         <HomeTable surveyUnits={filteredSurveyUnits} />
       </Stack>
@@ -79,8 +86,8 @@ const filterSurveyUnits = ({ surveyUnits, search, filters }: FilterSurveyUnitsPr
   filters.states.length !== 0 &&
     (surveyUnits = surveyUnits.filter(item => filters.states.includes(item.states)));
 
-  filters.closingCause.length !== 0 &&
-    (surveyUnits = surveyUnits.filter(item => filters.closingCause.includes(item.closingCause)));
+  filters.result.length !== 0 &&
+    (surveyUnits = surveyUnits.filter(item => filters.result.includes(item.result)));
 
   filters.priority.length !== 0 &&
     (surveyUnits = surveyUnits.filter(item =>

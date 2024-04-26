@@ -1,10 +1,25 @@
 import { screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
 import { WrappedRender } from "../WrappedRender";
-
+import * as hooks from "../hooks/useFetchQuery";
 import { HomeTableCard } from "./HomeTableCard";
 import userEvent from "@testing-library/user-event";
+import { UseMutationResult } from "@tanstack/react-query";
+import { APIError } from "../functions/api";
+import { APIEndpoints, APIMethods, APIRequest } from "../types/api";
 
 describe("HomeTableCard component", () => {
+  const mockedResponse = {
+    mutateAsync: vi.fn(),
+    mutationFn: vi.fn(),
+  } as unknown as UseMutationResult<
+    never,
+    APIError,
+    Omit<APIRequest<keyof APIEndpoints, APIMethods<keyof APIEndpoints>>, "method">,
+    unknown
+  >;
+
+  vi.spyOn(hooks, "useFetchMutation").mockReturnValue(mockedResponse);
+
   it("should render HomeTable and filter by id", async () => {
     WrappedRender(<HomeTableCard />);
 

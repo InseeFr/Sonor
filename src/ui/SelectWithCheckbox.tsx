@@ -8,6 +8,7 @@ import { useDebouncedState } from "../hooks/useDebouncedState";
 import { SearchField } from "./SearchField";
 import { useIntl } from "react-intl";
 import { StateChip } from "./StateChip";
+import { translate } from "../functions/translate";
 
 const style = {
   root: {
@@ -81,8 +82,8 @@ export const SelectWithCheckbox = ({
           <SearchField
             sx={{ m: 2 }}
             onChange={e => setDebouncedSearch(e.target.value)}
-            label={intl.formatMessage({ id: "searchLabel" })}
-            placeholder={intl.formatMessage({ id: "searchInterviewerPlaceholder" })}
+            label={translate("searchLabel", intl)}
+            placeholder={translate("searchInterviewerPlaceholder", intl)}
           />
         )}
         <Box sx={{ overflow: "auto", maxHeight: "calc(100vh - 420px)" }}>

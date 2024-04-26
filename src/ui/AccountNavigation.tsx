@@ -9,6 +9,7 @@ import { useLogout, useUser } from "../hooks/useAuth";
 import { Link } from "./Link";
 import { Row } from "./Row";
 import { theme } from "../theme";
+import { translate } from "../functions/translate";
 import { useIntl } from "react-intl";
 
 export const AccountNavigation = () => {
@@ -36,7 +37,7 @@ export const AccountNavigation = () => {
         startIcon={<AccountCircleIcon fontSize="large" style={{ color: theme.palette.text.tertiary }} />}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        <Typography variant="bodyMedium">{intl.formatMessage({ id: "myProfile" })}</Typography>
+        <Typography variant="bodyMedium">{translate("myProfile", intl)}</Typography>
       </Button>
       <Menu
         id="account-menu"
@@ -67,7 +68,7 @@ export const AccountNavigation = () => {
             color: "primary.main",
           }}
         >
-          {intl.formatMessage({ id: "selectFavoriteSurveys" })}
+          {translate("selectFavoriteSurveys", intl).toLocaleUpperCase()}
         </MenuItem>
         {/* TODO: change link */}
         <MenuItem
@@ -79,7 +80,9 @@ export const AccountNavigation = () => {
         >
           <Row gap={0.5}>
             <OpenInNewIcon fontSize="littleIcon" />
-            <Typography variant={"bodyMedium"}>{intl.formatMessage({ id: "goToHelp" })}</Typography>
+            <Typography variant={"bodyMedium"}>
+              {translate("goToHelp", intl).toLocaleUpperCase()}
+            </Typography>
           </Row>
         </MenuItem>
         <MenuItem
@@ -91,7 +94,7 @@ export const AccountNavigation = () => {
             })
           }
         >
-          {intl.formatMessage({ id: "logout" })}
+          {translate("logout", intl)}
         </MenuItem>
       </Menu>
     </Box>
