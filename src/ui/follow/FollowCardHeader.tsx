@@ -18,7 +18,7 @@ export const FollowCardHeader = ({ title, placeholder, onSearch }: Props) => {
   };
 
   return (
-    <Stack gap={3}>
+    <Stack gap={2}>
       <Typography variant="headlineLarge">{intl.formatMessage({ id: title })}</Typography>
       <SearchField
         onChange={handleChange}

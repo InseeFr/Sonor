@@ -11,49 +11,26 @@ import { APISchemas } from "../../types/api";
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from "../Link";
 import { FollowCardHeader } from "./FollowCardHeader";
+import { useFetchQuery } from "../../hooks/useFetchQuery";
 
-const interviewersMock = [
-  {
-    id: "1",
-    interviewerFirstName: "John",
-    interviewerLastName: "Doe",
-  },
-  {
-    id: "2",
-    interviewerFirstName: "Marion",
-    interviewerLastName: "Cotillard",
-  },
-  {
-    id: "3",
-    interviewerFirstName: "Johnny",
-    interviewerLastName: "Depp",
-  },
-  {
-    id: "4",
-    interviewerFirstName: "Romain",
-    interviewerLastName: "Duris",
-  },
-  {
-    id: "5",
-    interviewerFirstName: "Angélina",
-    interviewerLastName: "Jolie",
-  },
-];
+import { LoadingCell } from "../LoadingCell";
 
 export const FollowInterviewerCard = () => {
   const intl = useIntl();
   const [search, setSearch] = useDebouncedState("", 500);
   const [page, setPage] = useState(0);
 
+  const { data: interviewers, isLoading } = useFetchQuery("/api/interviewers", { method: "get" });
+
   const handleChangePage = (_: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
   };
 
-  const filteredInterviewers = filterInterviewers({ interviewers: interviewersMock, search });
+  const filteredInterviewers = filterInterviewers({ interviewers: interviewers ?? [], search });
 
   return (
     <Card variant="general" sx={{ height: "calc(100vh - 140px)", py: 4, px: 3, overflow: "auto" }}>
-      <Stack gap={3}>
+      <Stack gap={2}>
         <FollowCardHeader
           title={"followInterviewer"}
           onSearch={e => setSearch(e.target.value)}
@@ -63,27 +40,31 @@ export const FollowInterviewerCard = () => {
           <Table aria-label="interviewer list" size="small" sx={{ typography: "bodyMedium" }}>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ color: "text.tertiary" }}>
+                <TableCell sx={{ color: "text.tertiary", px: 0 }}>
                   {intl.formatMessage({ id: "chooseInterviewer" })}
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredInterviewers.map(interviewer => (
-                <TableRow key={interviewer.id}>
-                  <TableCell sx={{ py: 0.5 }}>
-                    <Link
-                      color="inherit"
-                      component={RouterLink}
-                      underline="none"
-                      to={`/follow/interviewer/${interviewer.id}`}
-                    >
-                      {interviewer.interviewerLastName?.toLocaleUpperCase()}{" "}
-                      {interviewer.interviewerFirstName}
-                    </Link>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {isLoading ? (
+                <LoadingCell columnLength={1} />
+              ) : (
+                filteredInterviewers.map(interviewer => (
+                  <TableRow key={interviewer.id}>
+                    <TableCell sx={{ py: 0.5, px: 0 }}>
+                      <Link
+                        color="inherit"
+                        component={RouterLink}
+                        underline="none"
+                        to={`/follow/interviewer/${interviewer.id}`}
+                      >
+                        {interviewer.interviewerLastName?.toLocaleUpperCase()}{" "}
+                        {interviewer.interviewerFirstName}
+                      </Link>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
             </TableBody>
             {/* TODO use TableFooter  */}
           </Table>

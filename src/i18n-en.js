@@ -37,5 +37,10 @@ export const messagesEn = {
     reminders: "Reminders",
     provisionalStatus: "Provisional status",
     closedSU: "Closed SU",
-    terminatedSU: "Terminated SU"
+    terminatedSU: "Terminated SU",
+    interviewer: "Interviewer",
+    followInterviewerBreacrumb: "Follow interviewer",
+    lastSynchronization: "Last synchronization",
+    followOrganizationUnitBreacrumb: "Follow organization unit",
+    organizationUnit: "OU"
 }

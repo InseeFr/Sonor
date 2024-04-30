@@ -37,5 +37,12 @@ export const messagesFr = {
     reminders: "Relances",
     provisionalStatus: "Statut provisoire",
     closedSU: "UE cloturées",
-    terminatedSU: "UE terminées"
+    terminatedSU: "UE terminées",
+    interviewer: "Enquêteur",
+    followInterviewerBreacrumb: "Suivre enquêteur",
+    lastSynchronization: "Dernière synchronization",
+    followOrganizationUnitBreacrumb: "Suivre site",
+    organizationUnit: "DEM"
+
+
 }

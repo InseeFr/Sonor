@@ -7,8 +7,6 @@ export const FollowPage = () => {
   // TODO use real condition
   const isNationalProfile = true;
 
-  // TODO call api to get interviewers, surveys and organizationUnits
-
   const gridTemplateColumns = isNationalProfile
     ? { gridTemplateColumns: "1fr 1fr 1fr" }
     : { gridTemplateColumns: "1fr 1fr" };
