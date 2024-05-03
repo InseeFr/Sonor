@@ -20,8 +20,8 @@ enum Tab {
 
 export const FollowCampaignPage = () => {
   const intl = useIntl();
-  const [currentTab, setCurrentTab] = useState(Tab.progress);
-  const handleChange = (_: SyntheticEvent, newValue: Tab) => {
+  const [currentTab, setCurrentTab] = useState<string>(Tab.progress);
+  const handleChange = (_: SyntheticEvent, newValue: string) => {
     setCurrentTab(newValue);
   };
 
@@ -33,19 +33,18 @@ export const FollowCampaignPage = () => {
 
   return (
     <>
-      <FollowSinglePageHeader category={"survey"} label={labelMock} breadcrumbs={breadcrumbs} />
-      <Tabs
-        value={currentTab}
+      <FollowSinglePageHeader
+        category={"survey"}
+        label={labelMock}
+        breadcrumbs={breadcrumbs}
+        currentTab={currentTab}
         onChange={handleChange}
-        sx={{
-          px: 3,
-          backgroundColor: "white",
-        }}
       >
         {Object.keys(Tab).map(k => (
           <PageTab key={k} value={k} label={intl.formatMessage({ id: k })} />
         ))}
-      </Tabs>
+      </FollowSinglePageHeader>
+
       <Stack px={3} py={4}>
         {currentTab === Tab.progress && <FollowCampaignProgress />}
         {currentTab === Tab.collect && <>tab collecte</>}

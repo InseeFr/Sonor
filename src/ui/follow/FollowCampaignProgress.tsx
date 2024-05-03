@@ -26,7 +26,12 @@ export const FollowCampaignProgress = () => {
       <Tabs
         value={currentTab}
         onChange={handleChange}
-        sx={{ ml: 5, ".MuiTabs-indicator": { backgroundColor: "white" } }}
+        sx={{
+          ml: 5,
+          ".MuiTabs-indicator": { backgroundColor: "white" },
+          position: "relative",
+          width: "fit-content",
+        }}
       >
         {Object.keys(Tab).map(k => (
           <MuiTab classes={"cardTab"} label={intl.formatMessage({ id: k })} key={k} value={k} />

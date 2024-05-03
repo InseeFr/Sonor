@@ -26,7 +26,8 @@ export const createAppOidc = () => {
   if (isOidc) {
     return !import.meta.env.VITE_OIDC_ISSUER
       ? createMockReactOidc<TokenInfo>({
-          isUserInitiallyLoggedIn: false,
+          isUserInitiallyLoggedIn: true,
+          
           mockedTokens: {
             decodedIdToken: {
               inseegroupedefaut: ["gr"],

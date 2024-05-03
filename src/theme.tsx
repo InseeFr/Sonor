@@ -328,35 +328,41 @@ export const theme = createTheme({
         {
           props: { classes: "cardTab" },
           style: {
-            borderTopLeftRadius: "16px !important",
-            borderTopRightRadius: "16px !important",
-            paddingLeft: 40,
-            paddingRight: 40,
+            padding: "10px 40px",
             backgroundColor: "#EFEFEF",
-            border: "none",
-            ...typography.titleSmall,
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: "#EFEFEF",
-            },
-            ":nth-of-type(2)": {
-              left: -20,
-            },
-            ":nth-of-type(3)": {
-              left: -40,
-            },
-            ":nth-of-type(4)": {
-              left: -60,
-            },
-            ":nth-of-type(5)": {
-              left: -80,
-            },
+            borderTopLeftRadius: 16,
+            borderTopRightRadius: 16,
+            zIndex: 1,
+            overflow: "visible",
+
             "&.Mui-selected": {
-              position: "relative",
-              zIndex: 2,
+              zIndex: 3,
               background: "white",
               "&:hover": {
                 background: "white",
+              },
+
+              "&::before": {
+                content: "''",
+                position: "absolute",
+                bottom: 0,
+                width: 15,
+                height: 15,
+                background:
+                  "#FFF radial-gradient(circle at top left, #EFEFEF 0px, #EFEFEF 70%, transparent 71%, transparent 100%) no-repeat",
+                left: -15,
+                zIndex: 5,
+              },
+              "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: 0,
+                width: 15,
+                height: 15,
+                background:
+                  "#FFF radial-gradient(circle at top right, #EFEFEF 0px, #EFEFEF 70%, transparent 71%, transparent 100%) no-repeat",
+                right: -15,
+                zIndex: 5,
               },
             },
           },

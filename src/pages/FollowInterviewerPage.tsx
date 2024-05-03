@@ -17,7 +17,7 @@ export const FollowInterviewerPage = () => {
   const { id } = useParams();
   const intl = useIntl();
 
-  const [currentTab, setCurrentTab] = useState(Tab.progress);
+  const [currentTab, setCurrentTab] = useState<string>(Tab.progress);
 
   const { data: interviewer } = useFetchQuery("/api/interviewer/{id}", {
     urlParams: {
@@ -35,7 +35,7 @@ export const FollowInterviewerPage = () => {
 
   const label = `${interviewer.lastName?.toLocaleUpperCase() ?? ""} ${interviewer.firstName ?? ""}`;
 
-  const handleChange = (_: SyntheticEvent, newValue: Tab) => {
+  const handleChange = (_: SyntheticEvent, newValue: string) => {
     setCurrentTab(newValue);
   };
 
@@ -47,19 +47,18 @@ export const FollowInterviewerPage = () => {
 
   return (
     <>
-      <FollowSinglePageHeader category={"interviewer"} label={label} breadcrumbs={breadcrumbs} />
-      <Tabs
-        value={currentTab}
+      <FollowSinglePageHeader
+        category={"interviewer"}
+        label={label}
+        breadcrumbs={breadcrumbs}
+        currentTab={currentTab}
         onChange={handleChange}
-        sx={{
-          px: 3,
-          backgroundColor: "white",
-        }}
       >
         {Object.keys(Tab).map(k => (
           <PageTab key={k} value={k} label={intl.formatMessage({ id: k })} />
         ))}
-      </Tabs>
+      </FollowSinglePageHeader>
+
       <Stack px={3} py={4}>
         {currentTab === Tab.progress && <>tab avancement</>}
         {currentTab === Tab.collect && <>tab collecte</>}

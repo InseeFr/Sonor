@@ -1,18 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import { Row } from "../Row";
 import Stack from "@mui/material/Stack";
-import { Box, Divider, IconButton, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Tabs, Typography } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Breadcrumbs, BreadcrumbsItem } from "../Breadcrumbs";
 import { useIntl } from "react-intl";
+import { ReactNode, SyntheticEvent } from "react";
 
 type Props = {
   category: string;
   label: string;
   breadcrumbs: BreadcrumbsItem[];
+  currentTab: string;
+  onChange: (_: SyntheticEvent, newValue: string) => void;
+  children: ReactNode;
 };
 
-export const FollowSinglePageHeader = ({ category, label, breadcrumbs }: Props) => {
+export const FollowSinglePageHeader = ({
+  category,
+  label,
+  breadcrumbs,
+  currentTab,
+  onChange,
+  children,
+}: Props) => {
   const navigate = useNavigate();
   const intl = useIntl();
 
@@ -34,6 +45,15 @@ export const FollowSinglePageHeader = ({ category, label, breadcrumbs }: Props) 
         <Breadcrumbs items={breadcrumbs} />
       </Row>
       <Divider variant="fullWidth" />
+      <Tabs
+        value={currentTab}
+        onChange={onChange}
+        sx={{
+          px: 3,
+        }}
+      >
+        {children}
+      </Tabs>
     </Stack>
   );
 };
