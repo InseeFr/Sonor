@@ -1,5 +1,31 @@
-import { Typography } from "@mui/material";
+import { Row } from "../ui/Row";
+import { FollowInterviewerCard } from "../ui/follow/FollowInterviewerCard";
+import { FollowSurveyCard } from "../ui/follow/FollowSurveyCard";
+import { FollowOrganizationUnitCard } from "../ui/follow/FollowOrganizationUnitCard";
 
 export const FollowPage = () => {
-  return <Typography>Page suivre</Typography>;
+  // TODO use real condition
+  const isNationalProfile = true;
+
+  const gridTemplateColumns = isNationalProfile
+    ? { gridTemplateColumns: "1fr 1fr 1fr" }
+    : { gridTemplateColumns: "1fr 1fr" };
+
+  return (
+    <Row
+      style={{
+        ...{
+          display: "grid",
+          ...gridTemplateColumns,
+        },
+      }}
+      gap={3}
+      px={4}
+      py={3}
+    >
+      <FollowSurveyCard />
+      <FollowInterviewerCard />
+      {isNationalProfile && <FollowOrganizationUnitCard />}
+    </Row>
+  );
 };

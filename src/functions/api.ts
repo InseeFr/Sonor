@@ -1,6 +1,19 @@
-import type { APIPaths, APIRequests, APIResponse } from "../types/api.ts";
+import type { APIPaths, APIRequests, APIResponse, APIMethods, APIRequest } from "../types/api.ts";
 
 const baseURL = import.meta.env.VITE_API_ENDPOINT;
+
+const mockApiRequest = new Map<string, (url: string, options: any) => any>()
+
+export function mockRequest<
+Path extends APIPaths,
+Method extends APIMethods<Path>,
+>(path: Path, method: Method, cb: (options: APIRequest<Path, Method>) => APIResponse<Path, Method>) {
+  mockApiRequest.set(`${method} ${path}`, cb as any)
+}
+
+export function clearMockRequest() {
+  mockApiRequest.clear()
+}
 
 export async function fetchAPI<
   Path extends APIPaths,
@@ -45,6 +58,10 @@ export async function fetchAPI<
         );
       }
     }
+  }
+  const requestKey = `${fetchOptions.method?.toLowerCase()} ${path}`
+  if (mockApiRequest.has(requestKey)) {
+    return (mockApiRequest.get('requestKey') as any)(options) as APIResponse<Path, Options["method"]>
   }
   const response = await fetch(url.toString(), fetchOptions);
   if (response.status === 204) {

@@ -21,4 +21,28 @@ export const messagesFr = {
     statesFilterLabel: 'Etat...',
     closingCauseFilterLabel: 'Bilan agrégé...',
     priorityFilterLabel: 'Prioritaire...', 
+    searchInterviewer: 'un enquêteur...',
+    searchOrganizationUnit: "un site...",
+    chooseSurvey: "Choisissez une enquête :",
+    chooseInterviewer: "Choisissez un enquêteur / une enquêtrice :",
+    chooseOrganizationUnit: "Choisissez un site :",
+    followInterviewer: "Suivre un enquêteur",
+    followSurvey: "Suivre une enquête",
+    allSurveys: "Ensemble des enquêtes",
+    followOrganizationUnit: "Suivre un site",
+    followCampaignBreacrumb: "Suivre enquête",
+    survey: "Enquête",
+    progress: "Avancement",
+    collect: "Collecte",
+    reminders: "Relances",
+    provisionalStatus: "Statut provisoire",
+    closedSU: "UE cloturées",
+    terminatedSU: "UE terminées",
+    interviewer: "Enquêteur",
+    followInterviewerBreacrumb: "Suivre enquêteur",
+    lastSynchronization: "Dernière synchronization",
+    followOrganizationUnitBreacrumb: "Suivre site",
+    organizationUnit: "DEM"
+
+
 }
