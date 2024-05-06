@@ -1,6 +1,6 @@
 {
   "name": "sonor",
-  "version": "0.5.33",
+  "version": "0.5.34",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -10,11 +10,13 @@
     "core-js": "^3.6.5",
     "cypress": "^4.9.0",
     "cypress-multi-reporters": "^1.2.4",
+    "engine.io": "6.4.2",
     "font-awesome": "^4.7.0",
     "history": "^5.0.0",
     "keycloak-js": "4.0.0-beta.2",
     "mocha-junit-reporter": "^1.23.3",
     "prop-types": "^15.7.2",
+    "qs": "6.8.3",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-bootstrap-typeahead": "^5.1.1",
@@ -25,9 +27,13 @@
     "react-scripts": "3.4.0",
     "react-test-renderer": "^16.13.1",
     "react-transition-group": "^4.4.1",
+    "socket.io": "2.4.0",
+    "socket.io-parser": "4.2.4",
+    "sockjs": "0.3.20",
     "test": "^0.6.0",
     "user-event": "^4.0.0",
-    "whatwg-fetch": "^3.4.0"
+    "whatwg-fetch": "^3.4.0",
+    "xmlhttprequest-ssl": "1.6.3"
   },
   "scripts": {
     "start": "react-scripts start",
