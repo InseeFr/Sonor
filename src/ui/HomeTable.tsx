@@ -54,13 +54,7 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (orderBy === "contactOutcome") {
     const typeA = (a[orderBy] as SurveyUnitTemporaryType["contactOutcome"]).type;
     const typeB = (b[orderBy] as SurveyUnitTemporaryType["contactOutcome"]).type;
-    if (typeB < typeA) {
-      return -1;
-    }
-    if (typeB > typeA) {
-      return 1;
-    }
-    return 0;
+    return typeA.localeCompare(typeB);
   }
   if (b[orderBy] < a[orderBy]) {
     return -1;

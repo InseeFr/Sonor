@@ -1,12 +1,11 @@
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import { SearchField } from "./SearchField";
-import { useIntl } from "react-intl";
 import { useDebouncedState } from "../hooks/useDebouncedState";
 import { HomeTable } from "./HomeTable";
 import { Filter, useGetSearchFilter } from "../hooks/useSearchFilter";
 import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
-import { translate } from "../functions/translate";
+import { useTranslation } from "../functions/translate";
 
 export const surveyUnitsMock = [
   {
@@ -38,7 +37,7 @@ export const surveyUnitsMock = [
 ];
 
 export const HomeTableCard = () => {
-  const intl = useIntl();
+  const { translate } = useTranslation();
   const [search, setSearch] = useDebouncedState("", 500);
   const filters = useGetSearchFilter();
 
@@ -50,8 +49,8 @@ export const HomeTableCard = () => {
         <SearchField
           sx={{ maxWidth: "330px" }}
           onChange={e => setSearch(e.target.value)}
-          label={translate("toSearchLabel", intl)}
-          placeholder={translate("searchSurveyUnitPlaceholder", intl)}
+          label={translate("toSearchLabel")}
+          placeholder={translate("searchSurveyUnitPlaceholder")}
         />
         <HomeTable surveyUnits={filteredSurveyUnits} />
       </Stack>

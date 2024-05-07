@@ -1,6 +1,5 @@
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import { useIntl } from "react-intl";
 import { styled } from "@mui/material/styles";
 import { Row } from "./Row";
 import Tooltip from "@mui/material/Tooltip";
@@ -13,7 +12,7 @@ import { CommentDialog } from "./CommentDialog";
 import { Link } from "./Link";
 import { StateChip } from "./StateChip";
 import ClearIcon from "@mui/icons-material/Clear";
-import { translate } from "../functions/translate";
+import { useTranslation } from "../functions/translate";
 
 type Props = {
   surveyUnit: SurveyUnitTemporaryType; // TODO change type after backend rework
@@ -26,7 +25,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export const HomeTableRow = ({ surveyUnit }: Props) => {
-  const intl = useIntl();
+  const { translate } = useTranslation();
 
   const [isDialogOpen, toggleDialog] = useToggle(false);
 
@@ -44,31 +43,31 @@ export const HomeTableRow = ({ surveyUnit }: Props) => {
         <StateChip value={surveyUnit.states} />
       </TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
-        {surveyUnit.result ? translate(surveyUnit.result, intl) : "-"}
+        {surveyUnit.result ? translate(surveyUnit.result) : "-"}
       </TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
-        {surveyUnit.contactOutcome ? translate(surveyUnit.contactOutcome.type, intl) : "-"}
+        {surveyUnit.contactOutcome ? translate(surveyUnit.contactOutcome.type) : "-"}
       </TableCell>
       <TableCell sx={{ typography: "itemSmall" }}>
-        {surveyUnit.priority ? translate("yes", intl) : translate("no", intl)}
+        {surveyUnit.priority ? translate("yes") : translate("no")}
       </TableCell>
       <TableCell>
         <Row gap={0.5}>
-          <Tooltip title={translate("readQuestionnaire", intl)} placement="bottom-start" arrow>
+          <Tooltip title={translate("readQuestionnaire")} placement="bottom-start" arrow>
             <IconButton color="inherit">
               <InsertDriveFileIcon fontSize="small" />
             </IconButton>
           </Tooltip>
           <Divider orientation="vertical" variant="middle" sx={{ height: "24px" }} />
 
-          <Tooltip title={translate("comment", intl)} placement="bottom-start" arrow>
+          <Tooltip title={translate("comment")} placement="bottom-start" arrow>
             <IconButton color="inherit" onClick={toggleDialog}>
               <InsertCommentIcon fontSize="small" />
             </IconButton>
           </Tooltip>
           <Divider orientation="vertical" variant="middle" sx={{ height: "24px" }} />
 
-          <Tooltip title={translate("close", intl)} placement="bottom-start" arrow>
+          <Tooltip title={translate("close")} placement="bottom-start" arrow>
             <IconButton color="inherit">
               <ClearIcon fontSize="small" />
             </IconButton>

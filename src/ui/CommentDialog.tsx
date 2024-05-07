@@ -8,9 +8,8 @@ import { theme } from "../theme";
 import { ChangeEvent, useState } from "react";
 import { Box, Divider, InputAdornment, Stack, Typography } from "@mui/material";
 import { Row } from "./Row";
-import { translate } from "../functions/translate";
-import { useIntl } from "react-intl";
 import { useFetchMutation } from "../hooks/useFetchQuery";
+import { useTranslation } from "../functions/translate";
 type Props = {
   open: boolean;
   onClose: () => void;
@@ -19,7 +18,7 @@ type Props = {
 };
 
 export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Props) => {
-  const intl = useIntl();
+  const { translate } = useTranslation();
   const [newComment, setNewComment] = useState(comment);
 
   const { mutateAsync, isPending } = useFetchMutation("/api/survey-unit/{id}/comment", "put");
@@ -65,11 +64,11 @@ export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Pro
       <form onSubmit={handleSubmit}>
         <DialogTitle>
           <Row justifyContent={"space-between"}>
-            <Box>{translate("comment", intl)}</Box>
+            <Box>{translate("comment")}</Box>
             <Row gap={1}>
               <Divider orientation="vertical" variant="middle" sx={{ height: "20px" }} />
               <Box>
-                {translate("surveyUnitNumber", intl)} {surveyUnitId}
+                {translate("surveyUnitNumber")} {surveyUnitId}
               </Box>
             </Row>
           </Row>
@@ -94,8 +93,8 @@ export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Pro
               }}
               id="comment"
               name="comment"
-              label={translate("comment", intl)}
-              placeholder={translate("commentPlaceholder", intl)}
+              label={translate("comment")}
+              placeholder={translate("commentPlaceholder")}
               type="text"
               fullWidth
               variant="outlined"
@@ -105,24 +104,24 @@ export const CommentDialog = ({ open, onClose, comment = "", surveyUnitId }: Pro
               onChange={onChange}
             />
             <Typography variant="bodySmall" color={"text.tertiary"}>
-              {translate("commentDialogHelpText", intl)}
+              {translate("commentDialogHelpText")}
             </Typography>
           </Stack>
         </DialogContent>
         {comment === "" || isModified ? (
           <DialogActions>
-            <Button onClick={handleCancel}>{translate("cancel", intl)}</Button>
+            <Button onClick={handleCancel}>{translate("cancel")}</Button>
             <Button type="submit" variant="contained" disabled={!isModified || isPending}>
-              {translate("validate", intl)}
+              {translate("validate")}
             </Button>
           </DialogActions>
         ) : (
           <DialogActions>
             <Button onClick={handleDelete} disabled={isPending}>
-              {translate("delete", intl)}
+              {translate("delete")}
             </Button>
             <Button onClick={handleCancel} variant="contained">
-              {translate("closeButtonLabel", intl)}
+              {translate("closeButtonLabel")}
             </Button>
           </DialogActions>
         )}

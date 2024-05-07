@@ -9,11 +9,10 @@ import { useLogout, useUser } from "../hooks/useAuth";
 import { Link } from "./Link";
 import { Row } from "./Row";
 import { theme } from "../theme";
-import { translate } from "../functions/translate";
-import { useIntl } from "react-intl";
+import { useTranslation } from "../functions/translate";
 
 export const AccountNavigation = () => {
-  const intl = useIntl();
+  const { translate } = useTranslation();
   const { name } = useUser();
 
   const logout = useLogout();
@@ -37,7 +36,7 @@ export const AccountNavigation = () => {
         startIcon={<AccountCircleIcon fontSize="large" style={{ color: theme.palette.text.tertiary }} />}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        <Typography variant="bodyMedium">{translate("myProfile", intl)}</Typography>
+        <Typography variant="bodyMedium">{translate("myProfile")}</Typography>
       </Button>
       <Menu
         id="account-menu"
@@ -68,7 +67,7 @@ export const AccountNavigation = () => {
             color: "primary.main",
           }}
         >
-          {translate("selectFavoriteSurveys", intl).toLocaleUpperCase()}
+          {translate("selectFavoriteSurveys").toLocaleUpperCase()}
         </MenuItem>
         {/* TODO: change link */}
         <MenuItem
@@ -80,9 +79,7 @@ export const AccountNavigation = () => {
         >
           <Row gap={0.5}>
             <OpenInNewIcon fontSize="littleIcon" />
-            <Typography variant={"bodyMedium"}>
-              {translate("goToHelp", intl).toLocaleUpperCase()}
-            </Typography>
+            <Typography variant={"bodyMedium"}>{translate("goToHelp").toLocaleUpperCase()}</Typography>
           </Row>
         </MenuItem>
         <MenuItem
@@ -94,7 +91,7 @@ export const AccountNavigation = () => {
             })
           }
         >
-          {translate("logout", intl)}
+          {translate("logout")}
         </MenuItem>
       </Menu>
     </Box>

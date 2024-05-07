@@ -1,14 +1,13 @@
 import { Chip } from "@mui/material";
-import { translate } from "../functions/translate";
-import { useIntl } from "react-intl";
+import { useTranslation } from "../functions/translate";
 
 type Props = {
   value: string;
 };
 
 export const StateChip = ({ value }: Props) => {
-  const intl = useIntl();
-  return <Chip label={translate(value, intl)} variant="filled" color={getChipColor(value)} />;
+  const { translate } = useTranslation();
+  return <Chip label={translate(value)} variant="filled" color={getChipColor(value)} />;
 };
 
 const getChipColor = (value: string) => {

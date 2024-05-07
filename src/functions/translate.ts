@@ -1,5 +1,11 @@
-import { IntlShape } from "react-intl";
+import { useIntl } from "react-intl";
 
-export const translate = (id: string, intl: IntlShape) => {
-  return intl.formatMessage({ id });
+export const useTranslation = () => {
+  const intl = useIntl();
+
+  return {
+    translate: (id: string) => {
+      return intl.formatMessage({ id });
+    },
+  };
 };

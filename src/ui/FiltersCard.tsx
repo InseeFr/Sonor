@@ -7,9 +7,8 @@ import { SelectWithCheckbox, Option } from "./SelectWithCheckbox";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useGetSearchFilter, useSearchForm, useToggleSearchFilter } from "../hooks/useSearchFilter";
 import Chip from "@mui/material/Chip";
-import { useIntl } from "react-intl";
 import { surveyUnitStatesEnum } from "../constants/surveyUnitStates";
-import { translate } from "../functions/translate";
+import { useTranslation } from "../functions/translate";
 
 const styles = {
   Grid: {
@@ -62,48 +61,46 @@ const subsampleMock = [
 ];
 
 export const FiltersCard = () => {
-  const intl = useIntl();
+  const { translate } = useTranslation();
   const filters = useGetSearchFilter();
   const { onReset } = useSearchForm(filters);
   const toggleSearchFilter = useToggleSearchFilter();
 
   // TODO: find enum
   const resultOptions = [].map(c => {
-    return { label: translate(c, intl), value: c };
+    return { label: translate(c), value: c };
   });
 
   const statesOptions = surveyUnitStatesEnum.map(s => {
-    return { label: translate(s, intl), value: s };
+    return { label: translate(s), value: s };
   });
 
   return (
     <Card sx={{ p: 2 }} elevation={2} variant="general">
       <Stack gap={2}>
         <Row justifyContent={"space-between"}>
-          <Typography variant="titleMedium">{translate("filterUnitsBy", intl)}</Typography>
+          <Typography variant="titleMedium">{translate("filterUnitsBy")}</Typography>
           <Button variant="text" color="inherit" onClick={onReset}>
-            <Typography sx={{ textDecoration: "underline" }}>
-              {translate("resetFilters", intl)}
-            </Typography>
+            <Typography sx={{ textDecoration: "underline" }}>{translate("resetFilters")}</Typography>
           </Button>
         </Row>
         <Row style={styles.Grid} sx={{ color: "text.tertiary" }}>
           <SelectWithCheckbox
-            label={translate("surveyFilterLabel", intl)}
+            label={translate("surveyFilterLabel")}
             options={surveysMock}
             name="campaigns"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={translate("subSampleFilterLabel", intl)}
+            label={translate("subSampleFilterLabel")}
             options={subsampleMock}
             name="ssech"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={translate("interviewerFilterLabel", intl)}
+            label={translate("interviewerFilterLabel")}
             options={interviewerMock}
             name="interviewer"
             toggleSearchFilter={toggleSearchFilter}
@@ -111,21 +108,21 @@ export const FiltersCard = () => {
             canSearch={true}
           />
           <SelectWithCheckbox
-            label={translate("statesFilterLabel", intl)}
+            label={translate("statesFilterLabel")}
             options={statesOptions}
             name="states"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={translate("resultFilterLabel", intl)}
+            label={translate("resultFilterLabel")}
             options={resultOptions}
             name="result"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={translate("priorityFilterLabel", intl)}
+            label={translate("priorityFilterLabel")}
             options={priorityOptions}
             name="priority"
             toggleSearchFilter={toggleSearchFilter}

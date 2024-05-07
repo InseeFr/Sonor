@@ -1,6 +1,5 @@
 import { TableCell as MuiTableCell, TableCellProps, TableSortLabel } from "@mui/material";
-import { useIntl } from "react-intl";
-import { translate } from "../functions/translate";
+import { useTranslation } from "../functions/translate";
 
 type Props = {
   columnId: string;
@@ -20,7 +19,7 @@ export const TableHeadCell = ({
   onRequestSort,
   sx,
 }: Props) => {
-  const intl = useIntl();
+  const { translate } = useTranslation();
 
   const createSortHandler = (property: string) => (event: React.MouseEvent<unknown>) => {
     onRequestSort?.(event, property);
@@ -35,10 +34,10 @@ export const TableHeadCell = ({
           direction={orderBy === columnId ? order : "desc"}
           onClick={createSortHandler(columnId)}
         >
-          {translate(label, intl)}
+          {translate(label)}
         </TableSortLabel>
       ) : (
-        translate(label, intl)
+        translate(label)
       )}
     </MuiTableCell>
   );

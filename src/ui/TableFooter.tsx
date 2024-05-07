@@ -1,6 +1,5 @@
 import { TableFooter as MuiTableFooter, TablePagination, TableRow } from "@mui/material";
-import { translate } from "../functions/translate";
-import { useIntl } from "react-intl";
+import { useTranslation } from "../functions/translate";
 
 const style = {
   root: {
@@ -33,17 +32,16 @@ export const TableFooter = ({
   onChangePage,
   onChangeRowsPerPage,
 }: TableFooterProps) => {
-  const intl = useIntl();
-
+  const { translate } = useTranslation();
   return (
     <MuiTableFooter>
       <TableRow>
         <TablePagination
           sx={style.root}
           rowsPerPageOptions={[10, 20, 50]}
-          labelRowsPerPage={translate("labelRowsPerPage", intl)}
+          labelRowsPerPage={translate("labelRowsPerPage")}
           labelDisplayedRows={page =>
-            `${page.from}-${page.to === -1 ? page.count : page.to} ${translate("on", intl)} ${page.count} ${translate("labelDisplayedRows", intl)}`
+            `${page.from}-${page.to === -1 ? page.count : page.to} ${translate("on")} ${page.count} ${translate("labelDisplayedRows")}`
           }
           count={count}
           rowsPerPage={rowsPerPage}
