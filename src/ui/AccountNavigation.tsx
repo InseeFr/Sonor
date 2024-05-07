@@ -9,7 +9,7 @@ import { useLogout, useUser } from "../hooks/useAuth";
 import { Link } from "./Link";
 import { Row } from "./Row";
 import { theme } from "../theme";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const AccountNavigation = () => {
   const { translate } = useTranslation();

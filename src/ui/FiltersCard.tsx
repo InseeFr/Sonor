@@ -8,7 +8,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useGetSearchFilter, useSearchForm, useToggleSearchFilter } from "../hooks/useSearchFilter";
 import Chip from "@mui/material/Chip";
 import { surveyUnitStatesEnum } from "../constants/surveyUnitStates";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 const styles = {
   Grid: {

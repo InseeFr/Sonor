@@ -5,7 +5,7 @@ import { PropsWithChildren } from "react";
 import packageInfo from "../../package.json";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { AccountNavigation } from "./AccountNavigation.tsx";
-import { useTranslation } from "../functions/translate.ts";
+import { useTranslation } from "../hooks/useTranslation.ts";
 
 const style = {
   "&.MuiLink-root:hover": { color: "primary.main" },

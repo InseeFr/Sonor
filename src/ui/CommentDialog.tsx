@@ -9,7 +9,7 @@ import { ChangeEvent, useState } from "react";
 import { Box, Divider, InputAdornment, Stack, Typography } from "@mui/material";
 import { Row } from "./Row";
 import { useFetchMutation } from "../hooks/useFetchQuery";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 type Props = {
   open: boolean;
   onClose: () => void;

@@ -12,7 +12,7 @@ import { CommentDialog } from "./CommentDialog";
 import { Link } from "./Link";
 import { StateChip } from "./StateChip";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 type Props = {
   surveyUnit: SurveyUnitTemporaryType; // TODO change type after backend rework

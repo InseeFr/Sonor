@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { FiltersCard } from "../ui/FiltersCard";
 import { HomeTableCard } from "../ui/HomeTableCard";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const Home = () => {
   const { translate } = useTranslation();

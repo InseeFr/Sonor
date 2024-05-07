@@ -1,5 +1,5 @@
 import { TableCell as MuiTableCell, TableCellProps, TableSortLabel } from "@mui/material";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 type Props = {
   columnId: string;

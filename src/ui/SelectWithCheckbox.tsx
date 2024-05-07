@@ -7,7 +7,7 @@ import { Filter, emptyFilter } from "../hooks/useSearchFilter";
 import { useDebouncedState } from "../hooks/useDebouncedState";
 import { SearchField } from "./SearchField";
 import { StateChip } from "./StateChip";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 const style = {
   root: {

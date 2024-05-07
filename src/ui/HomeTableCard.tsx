@@ -5,7 +5,7 @@ import { useDebouncedState } from "../hooks/useDebouncedState";
 import { HomeTable } from "./HomeTable";
 import { Filter, useGetSearchFilter } from "../hooks/useSearchFilter";
 import { SurveyUnitTemporaryType } from "../types/temporaryTypes";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const surveyUnitsMock = [
   {

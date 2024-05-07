@@ -1,5 +1,5 @@
 import { TableFooter as MuiTableFooter, TablePagination, TableRow } from "@mui/material";
-import { useTranslation } from "../functions/translate";
+import { useTranslation } from "../hooks/useTranslation";
 
 const style = {
   root: {
