@@ -7,7 +7,8 @@ import { SelectWithCheckbox, Option } from "./SelectWithCheckbox";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useGetSearchFilter, useSearchForm, useToggleSearchFilter } from "../hooks/useSearchFilter";
 import Chip from "@mui/material/Chip";
-import { useIntl } from "react-intl";
+import { surveyUnitStatesEnum } from "../constants/surveyUnitStates";
+import { useTranslation } from "../hooks/useTranslation";
 
 const styles = {
   Grid: {
@@ -17,13 +18,7 @@ const styles = {
   },
 };
 
-// TODO: add other options (campaigns, states, ssech ...)
-const closingCauseOptions = [
-  { label: "Enquête acceptée", value: "ACCEPTED" },
-  { label: "Déchet", value: "WASTE" },
-  { label: "Hors champ", value: "HC" },
-];
-
+// TODO: add real options
 const priorityOptions = [
   { label: "Oui", value: "true" },
   { label: "Non", value: "false" },
@@ -36,40 +31,76 @@ const interviewerMock = [
   },
   { label: "james Doe", value: "2" },
   { label: "Jean Dupont", value: "3" },
+  { label: "enquêteur 1", value: "enquêteur 1" },
+  { label: "enquêteur 2", value: "enquêteur 2" },
+  { label: "enquêteur 3", value: "enquêteur 3" },
+  { label: "enquêteur 4", value: "enquêteur 4" },
+  { label: "enquêteur 5", value: "enquêteur 5" },
+  { label: "enquêteur 6", value: "enquêteur 6" },
+  { label: "enquêteur 7", value: "enquêteur 7" },
+  { label: "enquêteur 8", value: "enquêteur 8" },
+  { label: "enquêteur 9", value: "enquêteur 9" },
+  { label: "enquêteur 10", value: "enquêteur 10" },
+  { label: "enquêteur 11", value: "enquêteur 11" },
+  { label: "enquêteur 12", value: "enquêteur 12" },
+  { label: "enquêteur 13", value: "enquêteur 13" },
+];
+
+const surveysMock = [
+  { label: "enquête 1", value: "enquête 1" },
+  { label: "enquête 2", value: "enquête 2" },
+  { label: "enquête 3", value: "enquête 3" },
+  { label: "Autonomie", value: "Autonomie" },
+  { label: "Logement", value: "Logement" },
+];
+
+const subsampleMock = [
+  { label: "-", value: "undefined" },
+  { label: 10, value: "10" },
+  { label: 11, value: "11" },
 ];
 
 export const FiltersCard = () => {
-  const intl = useIntl();
+  const { translate } = useTranslation();
   const filters = useGetSearchFilter();
   const { onReset } = useSearchForm(filters);
   const toggleSearchFilter = useToggleSearchFilter();
+
+  // TODO: find enum
+  const resultOptions = [].map(c => {
+    return { label: translate(c), value: c };
+  });
+
+  const statesOptions = surveyUnitStatesEnum.map(s => {
+    return { label: translate(s), value: s };
+  });
 
   return (
     <Card sx={{ p: 2 }} elevation={2} variant="general">
       <Stack gap={2}>
         <Row justifyContent={"space-between"}>
-          <Typography variant="titleMedium">{intl.formatMessage({ id: "filterUnitsBy" })}</Typography>
+          <Typography variant="titleMedium">{translate("filterUnitsBy")}</Typography>
           <Button variant="text" color="inherit" onClick={onReset}>
-            {intl.formatMessage({ id: "resetFilters" })}
+            <Typography sx={{ textDecoration: "underline" }}>{translate("resetFilters")}</Typography>
           </Button>
         </Row>
         <Row style={styles.Grid} sx={{ color: "text.tertiary" }}>
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "surveyFilterLabel" })}
-            options={[]}
+            label={translate("surveyFilterLabel")}
+            options={surveysMock}
             name="campaigns"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "subSampleFilterLabel" })}
-            options={[]}
+            label={translate("subSampleFilterLabel")}
+            options={subsampleMock}
             name="ssech"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "interviewerFilterLabel" })}
+            label={translate("interviewerFilterLabel")}
             options={interviewerMock}
             name="interviewer"
             toggleSearchFilter={toggleSearchFilter}
@@ -77,21 +108,21 @@ export const FiltersCard = () => {
             canSearch={true}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "statesFilterLabel" })}
-            options={[]}
+            label={translate("statesFilterLabel")}
+            options={statesOptions}
             name="states"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "closingCauseFilterLabel" })}
-            options={closingCauseOptions}
-            name="closingCause"
+            label={translate("resultFilterLabel")}
+            options={resultOptions}
+            name="result"
             toggleSearchFilter={toggleSearchFilter}
             filters={filters}
           />
           <SelectWithCheckbox
-            label={intl.formatMessage({ id: "priorityFilterLabel" })}
+            label={translate("priorityFilterLabel")}
             options={priorityOptions}
             name="priority"
             toggleSearchFilter={toggleSearchFilter}
@@ -101,7 +132,14 @@ export const FiltersCard = () => {
         <Row gap={1} flexWrap={"wrap"}>
           {getFiltersTags({
             filters: filters.all,
-            options: [...priorityOptions, ...closingCauseOptions, ...interviewerMock],
+            options: [
+              ...priorityOptions,
+              ...resultOptions,
+              ...statesOptions,
+              ...interviewerMock,
+              ...surveysMock,
+              ...subsampleMock,
+            ],
             toggleSearchFilter,
           })}
         </Row>

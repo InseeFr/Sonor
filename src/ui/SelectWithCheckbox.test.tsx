@@ -27,7 +27,7 @@ describe("SelectWithCheckbox component", () => {
           ssech: [],
           interviewer: [],
           states: [],
-          closingCause: [],
+          result: [],
           priority: [],
           all: [],
         }}

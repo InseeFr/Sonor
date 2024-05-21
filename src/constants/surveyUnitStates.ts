@@ -1,0 +1,17 @@
+export const surveyUnitStatesEnum = [
+  "NVM",
+  "NNS",
+  "ANV",
+  "VIN",
+  "VIC",
+  "PRC",
+  "AOC",
+  "APS",
+  "INS",
+  "WFT",
+  "WFS",
+  "TBR",
+  "FIN",
+  "NVA",
+  "CLO",
+];

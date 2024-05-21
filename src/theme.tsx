@@ -103,6 +103,7 @@ declare module "@mui/material/SvgIcon" {
     tabTitle: true;
     headerSinglePage: true;
     cardTitle: true;
+    littleIcon: true;
   }
   interface SvgIconPropsColorOverrides {
     yellow: true;
@@ -132,6 +133,9 @@ const baseTheme = createTheme({});
 const colors = (c: string) => baseTheme.palette.augmentColor({ color: { main: c } });
 const typography = {
   fontFamily: "Open Sans, sans-serif",
+  fontWeight: {
+    standard: 400,
+  },
   displayLarge: {
     fontSize: 57,
     lineHeight: "64px",
@@ -183,7 +187,7 @@ const typography = {
     fontSize: 12,
     lineHeight: "16px",
     fontWeight: 600,
-    letterSpacing: 0.5,
+    letterSpacing: 0.1,
   },
   labelSmall: {
     fontSize: 11,
@@ -298,29 +302,10 @@ export const theme = createTheme({
             fontSize: 24,
           },
         },
-      ],
-    },
-    MuiTab: {
-      variants: [
         {
-          props: { classes: "search" },
+          props: { fontSize: "littleIcon" },
           style: {
-            fontSize: "12px",
-            fontWeight: 600,
-            lineHeight: "16px",
-            textTransform: "none",
-            color: palette.text.tertiary,
-            padding: 8,
-            minHeight: 54,
-            whiteSpace: "nowrap",
-
-            "&.Mui-selected": {
-              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-              backgroundColor: palette.primary.light,
-            },
-            "&>.MuiTab-iconWrapper": {
-              margin: 0,
-            },
+            fontSize: 16,
           },
         },
       ],
@@ -346,43 +331,10 @@ export const theme = createTheme({
         },
       ],
     },
-    MuiToggleButtonGroup: {
-      styleOverrides: {
-        root: {
-          borderRadius: 24,
-          boxShadow: `inset 0 0 0 1px ${palette.text.tertiary}`,
-          ".MuiToggleButtonGroup-grouped.Mui-selected": {
-            position: "relative",
-            zIndex: 2,
-          },
-          ".MuiToggleButtonGroup-grouped:not(:first-of-type)": {
-            marginLeft: -12,
-            zIndex: 1,
-            paddingLeft: 24,
-          },
-        },
-      },
-    },
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottom: "none",
-        },
-      },
-    },
-    MuiToggleButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 24,
-          paddingInline: 24,
-          border: "none",
-          ...typography.bodyMedium,
-          textTransform: "none",
-          "&.Mui-selected, &.Mui-selected:hover": {
-            borderRadius: "24px!important",
-            background: palette.primary.main,
-            color: "white",
-          },
+          borderBottom: `solid 1px ${palette.text.hint}`,
         },
       },
     },
@@ -409,6 +361,7 @@ export const theme = createTheme({
           ...typography.titleMedium,
           fontSize: "20px",
           lineHeight: "32px",
+          fontWeight: typography.fontWeight.standard,
         },
       },
     },
@@ -439,12 +392,8 @@ export const theme = createTheme({
       styleOverrides: {
         colorError: {
           backgroundColor: "#FDDBC3",
-          color: "#C71A01",
           ".MuiChip-deleteIcon": {
             color: "#C71A01",
-          },
-          "&:hover": {
-            backgroundColor: "#F9C3AF",
           },
         },
         colorSuccess: {
@@ -453,13 +402,15 @@ export const theme = createTheme({
           ".MuiChip-deleteIcon": {
             color: "#057345",
           },
-          "&:hover": {
-            backgroundColor: "#A9C6AF",
-          },
         },
         root: {
+          height: "26px",
           ".MuiChip-deleteIcon": {
             color: palette.text.primary,
+          },
+          ".MuiChip-label": {
+            ...typography.labelMedium,
+            color: palette.black.main,
           },
         },
       },

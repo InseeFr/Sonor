@@ -5,14 +5,14 @@ import { PropsWithChildren } from "react";
 import packageInfo from "../../package.json";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { AccountNavigation } from "./AccountNavigation.tsx";
-import { useIntl } from "react-intl";
+import { useTranslation } from "../hooks/useTranslation.ts";
 
 const style = {
   "&.MuiLink-root:hover": { color: "primary.main" },
 };
 
 export function Header() {
-  const intl = useIntl();
+  const { translate } = useTranslation();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -41,16 +41,16 @@ export function Header() {
           <Row gap={8}>
             <Row gap={4} typography={"titleMedium"} color={"text.tertiary"}>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/follow">
-                {intl.formatMessage({ id: "goToFollowPage" })}
+                {translate("goToFollowPage")}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/read">
-                {intl.formatMessage({ id: "goToReadPage" })}
+                {translate("goToReadPage")}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/close">
-                {intl.formatMessage({ id: "goToClosePage" })}
+                {translate("goToClosePage")}
               </Link>
               <Link sx={style} color="inherit" component={RouterLink} underline="none" to="/notify">
-                {intl.formatMessage({ id: "goToNotifyPage" })}
+                {translate("goToNotifyPage")}
               </Link>
               <Link
                 sx={style}
@@ -59,7 +59,7 @@ export function Header() {
                 underline="none"
                 to="/collectOrganization"
               >
-                {intl.formatMessage({ id: "goToCollectOrganization" })}
+                {translate("goToCollectOrganization")}
               </Link>
               <Link
                 sx={style}
@@ -68,7 +68,7 @@ export function Header() {
                 underline="none"
                 to="/reassignment"
               >
-                {intl.formatMessage({ id: "goToReassignment" })}
+                {translate("goToReassignment")}
               </Link>
             </Row>
             <Row gap={1}>

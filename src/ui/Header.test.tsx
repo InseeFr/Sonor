@@ -21,6 +21,14 @@ describe("Header component", () => {
     expect(screen.getByText("Notifier")).toBeInTheDocument();
     expect(screen.getByText("Réaffectation")).toBeInTheDocument();
     expect(screen.getByText("Organisation des collectes")).toBeInTheDocument();
+    expect(screen.getByText("Mon profil")).toBeInTheDocument();
+  });
+
+  it("should open account menu and show name", () => {
+    WrappedRender(<Header />);
+
+    fireEvent.click(screen.getByText("Mon profil"));
+
     expect(screen.getByText("John Doe")).toBeInTheDocument();
   });
 
@@ -31,7 +39,7 @@ describe("Header component", () => {
     });
     WrappedRender(<Header />);
 
-    fireEvent.click(screen.getByText("John Doe"));
+    fireEvent.click(screen.getByText("Mon profil"));
 
     const logoutButton = screen.getByText("Se déconnecter");
     expect(logoutButton).toBeInTheDocument();

@@ -8,6 +8,7 @@ import { ClosePage } from "./pages/ClosePage";
 import { NotifyPage } from "./pages/NotifyPage";
 import { CollectOrganizationPage } from "./pages/CollectOrganizationPage";
 import { ReassignmentPage } from "./pages/ReassignmentPage";
+import { SurveyUnitPage } from "./pages/SurveyUnitPage";
 
 export const routes: RouteObject[] = [
   {
@@ -26,6 +27,7 @@ export const routes: RouteObject[] = [
       { path: "notify", element: <NotifyPage /> },
       { path: "collectOrganization", element: <CollectOrganizationPage /> },
       { path: "reassignment", element: <ReassignmentPage /> },
+      { path: "survey-unit/:id", element: <SurveyUnitPage /> },
     ],
   },
 ];
