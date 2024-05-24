@@ -29,7 +29,7 @@ class View extends React.Component {
       loadingPreferences: true,
       campaigns: []
     };
-    this.dataRetreiver = new DataFormatter(props.keycloak);
+    this.dataRetreiver = new DataFormatter(props.token);
   }
 
   componentDidMount() {

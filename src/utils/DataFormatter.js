@@ -10,8 +10,8 @@ import Service from "./Service";
 import Utils from "./Utils";
 
 class DataFormatter {
-  constructor(keycloak) {
-    this.service = new Service(keycloak);
+  constructor(token) {
+    this.service = new Service(token);
   }
 
   getInterviewers(cb) {

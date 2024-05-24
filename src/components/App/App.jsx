@@ -1,16 +1,14 @@
-import React from 'react';
-import Keycloak from 'keycloak-js';
-import View from '../View/View';
-import DataFormatter from '../../utils/DataFormatter';
-import { KEYCLOAK, ANONYMOUS } from '../../utils/constants.json';
-import initConfiguration from '../../initConfiguration';
-import D from '../../i18n';
+import React from "react";
+import View from "../View/View";
+import DataFormatter from "../../utils/DataFormatter";
+import { OIDC, ANONYMOUS } from "../../utils/constants.json";
+import initConfiguration from "../../initConfiguration";
+import D from "../../i18n";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      keycloak: null,
       authenticated: false,
       contactFailed: false,
       initialisationFailed: false,
@@ -24,7 +22,7 @@ class App extends React.Component {
     } catch (e) {
       this.setState({ initialisationFailed: true });
     }
-    if (window.localStorage.getItem('AUTHENTICATION_MODE') === ANONYMOUS) {
+    if (window.localStorage.getItem("AUTHENTICATION_MODE") === ANONYMOUS) {
       const dataRetreiver = new DataFormatter();
       dataRetreiver.getUserInfo((data) => {
         if (data.error) {
@@ -33,54 +31,50 @@ class App extends React.Component {
           this.setState({ authenticated: true, data });
         }
       });
-    } else if (window.localStorage.getItem('AUTHENTICATION_MODE') === KEYCLOAK) {
-      const keycloak = Keycloak('/keycloak.json');
-      keycloak.init({ onLoad: 'login-required', checkLoginIframe: false }).then((authenticated) => {
-        const dataRetreiver = new DataFormatter(keycloak);
-        dataRetreiver.getUserInfo((data) => {
-          this.setState({ keycloak, authenticated, data });
-        });
-        // Update 20 seconds before expiracy
-        const updateInterval = (keycloak.tokenParsed.exp + keycloak.timeSkew)
-          * 1000
-          - new Date().getTime()
-          - 20000;
-        setInterval(() => {
-          keycloak.updateToken(100).error(() => {
-            throw new Error('Failed to refresh token');
-          });
-        }, updateInterval);
+    } else if (
+      window.localStorage.getItem("AUTHENTICATION_MODE") === OIDC &&
+      this.props.token
+    ) {
+      const dataRetreiver = new DataFormatter(this.props.token);
+      dataRetreiver.getUserInfo((data) => {
+        this.setState({ authenticated: data !== undefined, data });
+      });
+    }
+  }
+
+  async componentDidUpdate(prevprops, prevstate) {
+    const { token } = this.props;
+
+    if (
+      (token && token !== prevprops.token) ||
+      this.state.authenticated !== prevstate.authenticated
+    ) {
+      const dataRetreiver = new DataFormatter(this.props.token);
+      dataRetreiver.getUserInfo((data) => {
+        this.setState({ authenticated: data !== undefined, data });
       });
     }
   }
 
   render() {
-    const {
-      keycloak, authenticated, data, contactFailed, initialisationFailed,
-    } = this.state;
-    if (keycloak || authenticated) {
-      if (authenticated) {
-        return (
-          <div className="App">
+    const { authenticated, data, contactFailed, initialisationFailed } =
+      this.state;
 
-            <View
-              keycloak={keycloak}
-              userData={data}
-            />
-          </div>
-        );
-      }
-      return (<div>{D.unableToAuthenticate}</div>);
+    if (authenticated) {
+      return (
+        <div className="App">
+          <View token={this.props.token} userData={data} />
+        </div>
+      );
     }
     if (initialisationFailed) {
-      return (<div>{D.initializationFailed}</div>);
+      return <div>{D.initializationFailed}</div>;
     }
     if (contactFailed) {
-      return (<div>{D.cannotContactServer}</div>);
+      return <div>{D.cannotContactServer}</div>;
     }
-    return (
-      <div>{D.initializing}</div>
-    );
+
+    return <div>{D.initializing}</div>;
   }
 }
 

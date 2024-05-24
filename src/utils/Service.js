@@ -1,20 +1,18 @@
 import { NotificationManager } from "react-notifications";
 import D from "../i18n";
-
-const baseUrlPearlJam = `${window.localStorage.getItem("PEARL_JAM_URL")}`;
-const baseUrlQueen = `${window.localStorage.getItem("QUEEN_URL_BACK_END")}`;
-
 class Service {
-  constructor(keycloak) {
-    this.keycloak = keycloak;
+  constructor(token) {
+    this.token = token;
+    this.baseUrlPearlJam = `${window.localStorage.getItem("PEARL_JAM_URL")}`;
+    this.baseUrlQueen = `${window.localStorage.getItem("QUEEN_URL_BACK_END")}`;
   }
-
   makeOptions() {
-    if (this.keycloak) {
+    if (this.token && this.token !== "accessToken") {
+     
       return {
         headers: new Headers({
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.keycloak.token}`,
+          Authorization: `Bearer ${this.token}`,
         }),
       };
     }
@@ -31,7 +29,7 @@ class Service {
   getSurveyUnits(campaignId, state, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units?${
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units?${
           state ? `state=${state}` : ""
         }`,
         this.makeOptions()
@@ -55,7 +53,7 @@ class Service {
   }
 
   async getSurveyUnitsQuestionnaireId(listSurveyUnitIds, cb) {
-    return fetch(`${baseUrlQueen}/api/survey-units/questionnaire-model-id`, {
+    return fetch(`${this.baseUrlPearlJam}/api/survey-units/questionnaire-model-id`, {
       ...this.makeOptions(),
       method: "POST",
       body: JSON.stringify(listSurveyUnitIds),
@@ -76,7 +74,7 @@ class Service {
   }
 
   getSurveyUnitsClosable(cb) {
-    fetch(`${baseUrlPearlJam}/api/survey-units/closable`, this.makeOptions())
+    fetch(`${this.baseUrlPearlJam}/api/survey-units/closable`, this.makeOptions())
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -93,7 +91,7 @@ class Service {
 
   getSurveyUnitsNotAttributedByCampaign(campaignId, cb) {
     fetch(
-      `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed`,
+      `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed`,
       this.makeOptions()
     )
       .then((res) => res.json())
@@ -108,7 +106,7 @@ class Service {
 
   getSurveyUnitsAbandonedByCampaign(campaignId, cb) {
     fetch(
-      `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/abandoned`,
+      `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/abandoned`,
       this.makeOptions()
     )
       .then((res) => res.json())
@@ -122,7 +120,7 @@ class Service {
   }
 
   getStatesBySurveyUnit(su, cb) {
-    fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/states`, this.makeOptions())
+    fetch(`${this.baseUrlPearlJam}/api/survey-unit/${su}/states`, this.makeOptions())
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -141,7 +139,7 @@ class Service {
     const options = {};
     Object.assign(options, this.makeOptions());
     options.method = "PUT";
-    fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/state/FIN`, options)
+    fetch(`${this.baseUrlPearlJam}/api/survey-unit/${su}/state/FIN`, options)
       .then((res) => cb(res))
       .catch((e) => {
         console.error(e);
@@ -153,7 +151,7 @@ class Service {
     const options = {};
     Object.assign(options, this.makeOptions());
     options.method = "PUT";
-    fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/state/${state}`, options)
+    fetch(`${this.baseUrlPearlJam}/api/survey-unit/${su}/state/${state}`, options)
       .then((res) => cb(res))
       .catch((e) => {
         console.error(e);
@@ -166,7 +164,7 @@ class Service {
     Object.assign(options, this.makeOptions());
     options.method = "PUT";
     fetch(
-      `${baseUrlPearlJam}/api/survey-unit/${su}/close/${closingCause}`,
+      `${this.baseUrlPearlJam}/api/survey-unit/${su}/close/${closingCause}`,
       options
     )
       .then((res) => cb(res))
@@ -181,7 +179,7 @@ class Service {
     Object.assign(options, this.makeOptions());
     options.method = "PUT";
     fetch(
-      `${baseUrlPearlJam}/api/survey-unit/${su}/closing-cause/${closingCause}`,
+      `${this.baseUrlPearlJam}/api/survey-unit/${su}/closing-cause/${closingCause}`,
       options
     )
       .then((res) => cb(res))
@@ -196,7 +194,7 @@ class Service {
     Object.assign(options, this.makeOptions());
     options.method = "PUT";
     options.body = JSON.stringify(comment);
-    fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/comment`, options)
+    fetch(`${this.baseUrlPearlJam}/api/survey-unit/${su}/comment`, options)
       .then((res) => cb(res))
       .catch((e) => {
         console.error(e);
@@ -208,7 +206,7 @@ class Service {
     const options = {};
     Object.assign(options, this.makeOptions());
     options.method = "PUT";
-    fetch(`${baseUrlPearlJam}/api/survey-unit/${su}/viewed`, options)
+    fetch(`${this.baseUrlPearlJam}/api/survey-unit/${su}/viewed`, options)
       .then((res) => cb(res))
       .catch((e) => {
         console.error(e);
@@ -227,7 +225,7 @@ class Service {
     Object.assign(options, this.makeOptions());
     options.method = "PUT";
     options.body = JSON.stringify(preferences);
-    fetch(`${baseUrlPearlJam}/api/preferences`, options)
+    fetch(`${this.baseUrlPearlJam}/api/preferences`, options)
       .then((res) => cb(res))
       .catch(console.error);
   }
@@ -240,7 +238,7 @@ class Service {
   // -------------------- //
   getUser(cb) {
     return new Promise((resolve) => {
-      fetch(`${baseUrlPearlJam}/api/user`, this.makeOptions())
+      fetch(`${this.baseUrlPearlJam}/api/user`, this.makeOptions())
         .then((res) => res.json())
         .then((data) => {
           if (cb) {
@@ -269,7 +267,7 @@ class Service {
   // Campaigns service begin //
   // ----------------------- //
   getCampaigns(cb) {
-    fetch(`${baseUrlPearlJam}/api/campaigns`, this.makeOptions())
+    fetch(`${this.baseUrlPearlJam}/api/campaigns`, this.makeOptions())
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -287,7 +285,7 @@ class Service {
   getCampaignsByInterviewer(idep, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/interviewer/${idep}/campaigns`,
+        `${this.baseUrlPearlJam}/api/interviewer/${idep}/campaigns`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -316,7 +314,7 @@ class Service {
   getStateCount(campaignId, date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -335,7 +333,7 @@ class Service {
   getStateCountNotAttributed(campaignId, date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/state-count?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/state-count?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -358,7 +356,7 @@ class Service {
   getStateCountByInterviewer(campaignId, idep, date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/state-count?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/state-count?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -381,7 +379,7 @@ class Service {
   getStateCountByCampaign(date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaigns/survey-units/state-count?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaigns/survey-units/state-count?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -399,7 +397,7 @@ class Service {
 
   getStateCountTotalByCampaign(campaignId, cb) {
     fetch(
-      `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count`,
+      `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/state-count`,
       this.makeOptions()
     )
       .then((res) => res.json())
@@ -425,7 +423,7 @@ class Service {
   getContactOutcomes(campaignId, date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/contact-outcomes?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/contact-outcomes?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -444,7 +442,7 @@ class Service {
   getContactOutcomesNotAttributed(campaignId, date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/contact-outcomes?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/not-attributed/contact-outcomes?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -467,7 +465,7 @@ class Service {
   getContactOutcomesByInterviewer(campaignId, idep, date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/contact-outcomes?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/contact-outcomes?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -490,7 +488,7 @@ class Service {
   getContactOutcomesByCampaign(date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaigns/survey-units/contact-outcomes?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaigns/survey-units/contact-outcomes?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -515,7 +513,7 @@ class Service {
   getClosingCausesByInterviewer(campaignId, idep, date, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/closing-causes?date=${date}`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/survey-units/interviewer/${idep}/closing-causes?date=${date}`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -542,7 +540,7 @@ class Service {
   // Interviewers service begin //
   // --------------------------- //
   getInterviewers(cb) {
-    fetch(`${baseUrlPearlJam}/api/interviewers`, this.makeOptions())
+    fetch(`${this.baseUrlPearlJam}/api/interviewers`, this.makeOptions())
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -556,7 +554,7 @@ class Service {
   getInterviewersByCampaign(campaignId, cb) {
     return new Promise((resolve) => {
       fetch(
-        `${baseUrlPearlJam}/api/campaign/${campaignId}/interviewers`,
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/interviewers`,
         this.makeOptions()
       )
         .then((res) => res.json())
@@ -578,7 +576,7 @@ class Service {
   // ----------------------------- //
   getQuestionnaireId(campaignId, cb) {
     fetch(
-      `${baseUrlQueen}/api/campaign/${campaignId}/questionnaire-id`,
+      `${this.baseUrlPearlJam}/api/campaign/${campaignId}/questionnaire-id`,
       this.makeOptions()
     )
       .then((res) => res.json())
@@ -603,7 +601,7 @@ class Service {
     options.method = "POST";
     options.body = JSON.stringify(body);
 
-    fetch(`${baseUrlPearlJam}/api/message`, options).then((data) => {
+    fetch(`${this.baseUrlPearlJam}/api/message`, options).then((data) => {
       cb(data);
     });
   }
@@ -614,7 +612,7 @@ class Service {
     options.method = "POST";
     options.body = JSON.stringify({ text });
 
-    fetch(`${baseUrlPearlJam}/api/verify-name`, options)
+    fetch(`${this.baseUrlPearlJam}/api/verify-name`, options)
       .then((res) => res.json())
       .then((data) => {
         cb(data);
@@ -626,7 +624,7 @@ class Service {
   }
 
   getMessageHistory(cb) {
-    fetch(`${baseUrlPearlJam}/api/message-history`, this.makeOptions())
+    fetch(`${this.baseUrlPearlJam}/api/message-history`, this.makeOptions())
       .then((res) => res.json())
       .then((data) => {
         cb(data);
