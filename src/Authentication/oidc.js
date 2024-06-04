@@ -1,42 +1,42 @@
 import { createMockReactOidc } from "oidc-spa/mock/react";
 import { createReactOidc } from "oidc-spa/react";
+import { useEffect, useState } from "react";
 
 const guestUser = {
   inseegroupedefaut: [],
-  preferred_username: "Guest",
-  name: "Guest",
+  preferred_username: "anonymous",
+  name: "anonymous",
 };
 
-// const publicUrl = new URL(process.env.PUBLIC_URL!, window.location.href); 
-// const response = await fetch(`${publicUrl.origin}/configuration.json`);
-// const configuration = await response.json();
 
-// const isOidc = configuration.AUTHENTICATION_MODE === "oidc"
-const isOidc = true
-
-const getConfiguration = async () => {
-  const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
-  const response = await fetch(`${publicUrl.origin}/configuration.json`)
-  const configuration = await response.json();
-  console.log("configuration", configuration)
-  return  configuration
+export const useConfiguration = () => {
+  const [configuration, setConfiguration] = useState()
+  useEffect(() => {
+    const getConfiguration =  async () => {
+      const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+      const response = await fetch(`${publicUrl.origin}/configuration.json`)
+      const configuration = await response.json();
+      setConfiguration(configuration)
+      window.localStorage.setItem(
+        'AUTHENTICATION_MODE',
+        configuration.AUTHENTICATION_MODE,
+      );
+      window.localStorage.setItem('PEARL_JAM_URL', configuration.PEARL_JAM_URL);
+      window.localStorage.setItem('QUEEN_URL_BACK_END', configuration.QUEEN_URL_BACK_END);
+      window.localStorage.setItem('QUEEN_URL_FRONT_END', configuration.QUEEN_URL_FRONT_END);
+    }
+    getConfiguration()
+  }, [])
+  
+  return configuration
 }
 
-export const createAppOidc = () => {
-  // const configuration =  getConfiguration()
-  // console.log("dans oidc",configuration)
-  
-  if (isOidc) {
+export const createAppOidc =  (configuration) => {
+  if(configuration && configuration.AUTHENTICATION_MODE === "oidc"){
     return createReactOidc({
-    // issuerUri: configuration.ISSUER_URI,
-    // clientId: configuration.OIDC_CLIENT_ID,
-    
-    issuerUri:"https://auth.insee.test/auth/realms/agents-insee-interne",
-    clientId:"localhost-frontend",
-    
-    publicUrl: "/",
-    //   extraQueryParams: { kc_idp_hint: import.meta.env.VITE_IDENTITY_PROVIDER },
-    extraQueryParams: {kc_idp_hint :"insee-ssp"}
+      issuerUri: configuration.ISSUER_URI,
+      clientId: configuration.OIDC_CLIENT_ID,
+      publicUrl: "/",  
     });
   }
 

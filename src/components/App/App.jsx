@@ -1,81 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useIsAuthenticated } from "../../Authentication/useAuth";
+import D from "../../i18n";
 import View from "../View/View";
 import DataFormatter from "../../utils/DataFormatter";
 import { OIDC, ANONYMOUS } from "../../utils/constants.json";
-import initConfiguration from "../../initConfiguration";
-import D from "../../i18n";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      authenticated: false,
-      contactFailed: false,
-      initialisationFailed: false,
-      data: null,
-    };
-  }
+export const App = () => {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [contactFailed, setContactFailed] = useState(false);
+  const [data, setData] = useState(null);
 
-  async componentDidMount() {
-    try {
-      await initConfiguration();
-    } catch (e) {
-      this.setState({ initialisationFailed: true });
-    }
+  const { tokens } = useIsAuthenticated();
+
+  useEffect(() => {
     if (window.localStorage.getItem("AUTHENTICATION_MODE") === ANONYMOUS) {
       const dataRetreiver = new DataFormatter();
       dataRetreiver.getUserInfo((data) => {
         if (data.error) {
-          this.setState({ contactFailed: true });
+          setContactFailed(true);
         } else {
-          this.setState({ authenticated: true, data });
+          setAuthenticated(true);
+          setData(data);
         }
       });
     } else if (
       window.localStorage.getItem("AUTHENTICATION_MODE") === OIDC &&
-      this.props.token
+      tokens?.accessToken
     ) {
-      const dataRetreiver = new DataFormatter(this.props.token);
+      const dataRetreiver = new DataFormatter(tokens.accessToken);
       dataRetreiver.getUserInfo((data) => {
-        this.setState({ authenticated: data !== undefined, data });
+        setAuthenticated(data !== undefined);
+        setData(data);
       });
     }
+  }, [tokens]);
+
+  if (!tokens?.accessToken) {
+    return <div>{D.initializationFailed}</div>;
   }
 
-  async componentDidUpdate(prevprops, prevstate) {
-    const { token } = this.props;
-
-    if (
-      (token && token !== prevprops.token) ||
-      this.state.authenticated !== prevstate.authenticated
-    ) {
-      const dataRetreiver = new DataFormatter(this.props.token);
-      dataRetreiver.getUserInfo((data) => {
-        this.setState({ authenticated: data !== undefined, data });
-      });
-    }
+  if (authenticated && tokens?.accessToken && data) {
+    return (
+      <div className="App">
+        <View token={tokens.accessToken} userData={data} />
+      </div>
+    );
   }
 
-  render() {
-    const { authenticated, data, contactFailed, initialisationFailed } =
-      this.state;
-
-    if (authenticated) {
-      return (
-        <div className="App">
-          <View token={this.props.token} userData={data} />
-        </div>
-      );
-    }
-    if (initialisationFailed) {
-      return <div>{D.initializationFailed}</div>;
-    }
-    if (contactFailed) {
-      return <div>{D.cannotContactServer}</div>;
-    }
-
-    return <div>{D.initializing}</div>;
+  if (contactFailed) {
+    return <div>{D.cannotContactServer}</div>;
   }
-}
 
-export default App;
+  return <div>{D.initializing}</div>;
+};

@@ -2,8 +2,9 @@
   "PEARL_JAM_URL": "http://localhost:7777",
   "QUEEN_URL_BACK_END": "http://localhost:7777",
   "QUEEN_URL_FRONT_END": "http://localhost:7777",
-
+  "ISSUER_URI": "http://localhost:7777",
   "AUTHENTICATION_MODE": "anonymous",
-  "_AUTHENTICATION_MODE_COMMENT_": "Use 'keycloak' or 'anonymous'"
+  "OIDC_CLIENT_ID": "clientId",
+  "_AUTHENTICATION_MODE_COMMENT_": "Use 'oidc' or 'anonymous'"
 }
 
