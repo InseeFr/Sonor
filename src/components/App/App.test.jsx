@@ -1,14 +1,12 @@
 // Link.react.test.js
 import React from 'react';
-import {
-  render, screen, cleanup, waitForElement,
-} from '@testing-library/react';
-import Keycloak from 'keycloak-js';
+import { render, screen, cleanup } from "@testing-library/react";
 import { NotificationManager } from 'react-notifications';
 import DataFormatter from '../../utils/DataFormatter';
-import App from './App';
+import { App } from "./App";
 import mocks from '../../tests/mocks';
 import C from '../../utils/constants.json';
+import { mockOidcForUser, mockOidcFailed } from "../../Authentication/useAuth";
 
 jest.mock(
 	"../../../package.json",
@@ -29,7 +27,6 @@ Date.now = jest.fn(() => 1597916474000);
 
 afterEach(cleanup);
 
-jest.mock('keycloak-js');
 jest.mock('react-notifications');
 jest.mock('../../utils/DataFormatter');
 jest.mock('../../initConfiguration');
@@ -52,15 +49,6 @@ const mockSuccess = jest.fn();
 const mockError = jest.fn();
 NotificationManager.success = mockSuccess;
 NotificationManager.error = mockError;
-
-Keycloak.init = jest.fn(() => (Promise.resolve({ token: 'abc' })));
-
-Keycloak.mockImplementation(() => ({
-  init: jest.fn(() => (Promise.resolve({ token: 'abc' }))),
-  updateToken: (() => ({ error: (() => {}) })),
-  tokenParsed: { exp: 300 },
-  timeSkew: 0,
-}));
 
 const updatePreferences = jest.fn((newPrefs, cb) => {
   if (newPrefs.includes('simpsonkgs2020x00')) {
@@ -104,52 +92,15 @@ DataFormatter.mockImplementation(() => ({
   updatePreferences,
 }));
 
-it('Component is displayed (initializing)', async () => {
-  const component = render(
-    <App />,
-  );
-  // Should match snapshot
+it("Component is displayed ", async () => {
+  mockOidcForUser();
+  const component = render(<App />);
+  await screen.findByText("List of surveys");
   expect(component).toMatchSnapshot();
 });
 
-it('Component is displayed (anonymous mode)', async () => {
-  Object.getPrototypeOf(window.localStorage).getItem = jest.fn(() => ('anonymous'));
-  const component = render(
-    <App />,
-  );
-
-  await waitForElement(() => screen.getByTestId('pagination-nav'));
-
-  // Should match snapshot
-  expect(component).toMatchSnapshot();
-});
-
-it('Component is displayed (keycloak mode)', async () => {
-  Object.getPrototypeOf(window.localStorage).getItem = jest.fn(() => ('keycloak'));
-  const component = render(
-    <App />,
-  );
-
-  await waitForElement(() => screen.getByTestId('pagination-nav'));
-
-  // Should match snapshot
-  expect(component).toMatchSnapshot();
-});
-
-it('Could not authenticate with keycloak', async () => {
-  Object.getPrototypeOf(window.localStorage).getItem = jest.fn(() => ('keycloak'));
-
-  Keycloak.mockImplementation(() => ({
-    init: jest.fn(() => (Promise.resolve(false))),
-    updateToken: (() => ({ error: (() => {}) })),
-    tokenParsed: { exp: 300 },
-    timeSkew: 0,
-  }));
-
-  const component = render(
-    <App />,
-  );
-
-  // Should match snapshot
+it("Component is not displayed ", async () => {
+  mockOidcFailed();
+  const component = render(<App />);
   expect(component).toMatchSnapshot();
 });
