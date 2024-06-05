@@ -34,7 +34,7 @@ async function main() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 1000,
+        staleTime: 10000,
         refetchOnWindowFocus: false,
         retry: false,
       },
