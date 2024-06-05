@@ -3,8 +3,8 @@
   "QUEEN_URL_BACK_END": "http://localhost:7777",
   "QUEEN_URL_FRONT_END": "http://localhost:7777",
   "ISSUER_URI": "http://localhost:7777",
-  "AUTHENTICATION_MODE": "anonymous",
   "OIDC_CLIENT_ID": "clientId",
+  "AUTHENTICATION_MODE": "anonymous",
   "_AUTHENTICATION_MODE_COMMENT_": "Use 'oidc' or 'anonymous'"
 }
 
