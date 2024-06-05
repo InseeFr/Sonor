@@ -7,7 +7,7 @@ class Service {
     this.baseUrlQueen = `${window.localStorage.getItem("QUEEN_URL_BACK_END")}`;
   }
   makeOptions() {
-    if (this.token && this.token !== "accessToken") {
+    if (this.token) {
      
       return {
         headers: new Headers({
@@ -53,7 +53,7 @@ class Service {
   }
 
   async getSurveyUnitsQuestionnaireId(listSurveyUnitIds, cb) {
-    return fetch(`${this.baseUrlPearlJam}/api/survey-units/questionnaire-model-id`, {
+    return fetch(`${this.baseUrlQueen}/api/survey-units/questionnaire-model-id`, {
       ...this.makeOptions(),
       method: "POST",
       body: JSON.stringify(listSurveyUnitIds),
@@ -576,7 +576,7 @@ class Service {
   // ----------------------------- //
   getQuestionnaireId(campaignId, cb) {
     fetch(
-      `${this.baseUrlPearlJam}/api/campaign/${campaignId}/questionnaire-id`,
+      `${this.baseUrlQueen}/api/campaign/${campaignId}/questionnaire-id`,
       this.makeOptions()
     )
       .then((res) => res.json())
