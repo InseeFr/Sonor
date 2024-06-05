@@ -8,7 +8,7 @@ import { createReactOidc } from "oidc-spa/react";
  */
 const mockOidc = { login: () => {}, isUserLoggedIn: false, oidcTokens: {} }
 // Global method that will be replaced when oidc is initialized 
-let useOidc = () => mockOidc;
+let useOidc = ({assertUserLoggedIn}) => mockOidc;
 
 /**
  * Helper method used for tests, set a fake Oidc authentication state
