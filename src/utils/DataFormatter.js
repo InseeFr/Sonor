@@ -491,6 +491,7 @@ class DataFormatter {
                 res.map((x) => {
                   const obj = Utils.formatForMonitoringTable(x);
                   obj.survey = x.campaign.label;
+                  obj.campaignId = x.campaign.id;
                   return obj;
                 })
               );
@@ -674,7 +675,7 @@ class DataFormatter {
         .filter((camp) => camp.total)
         .map((camp) =>
           Utils.formatForCollectionTable(
-            { survey: camp.campaign.label },
+            { survey: camp.campaign.label, campaignId: camp.campaign?.id },
             data[0].find((c) => c.campaign.id === camp.campaign.id),
             camp
           )

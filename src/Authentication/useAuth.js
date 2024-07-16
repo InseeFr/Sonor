@@ -36,7 +36,7 @@ export function initializeOidc (config) {
  * Retrieve authentication status based of Oidc
  */
 export function useIsAuthenticated() {
-  const { login, isUserLoggedIn, oidcTokens } = useOidc({ assertUserLoggedIn: false });
+  const { login, isUserLoggedIn, oidcTokens, renewTokens} = useOidc({ assertUserLoggedIn: false });
 
   useEffect(() => {
     if (!login) {
@@ -47,5 +47,5 @@ export function useIsAuthenticated() {
     });
   }, [login]);
 
-  return { isAuthenticated: isUserLoggedIn, tokens: oidcTokens };
+  return { isAuthenticated: isUserLoggedIn, tokens: oidcTokens, renewTokens  };
 }

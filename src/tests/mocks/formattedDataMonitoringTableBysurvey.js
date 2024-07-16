@@ -3,6 +3,7 @@ const val = {
   "linesDetails": [
     {
       "completionRate": 0.057692307692307696,
+      "campaignId": "simpsons2020x00",
       "total": 82,
       "notStarted": 22,
       "onGoing": 76,
@@ -17,6 +18,7 @@ const val = {
     },
     {
       "completionRate": 0.057692307692307696,
+      "campaignId": "simpsosfqns2020x00",
       "total": 82,
       "notStarted": 22,
       "onGoing": 76,
@@ -31,6 +33,7 @@ const val = {
     },
     {
       "completionRate": 0.057692307692307696,
+      "campaignId": "vqs2fsqe021x00",
       "total": 82,
       "notStarted": 22,
       "onGoing": 76,
@@ -45,6 +48,7 @@ const val = {
     },
     {
       "completionRate": 0.057692307692307696,
+      "campaignId": "simpsonqsdfsqes2020x00",
       "total": 82,
       "notStarted": 22,
       "onGoing": 76,
@@ -59,6 +63,7 @@ const val = {
     },
     {
       "completionRate": 0.057692307692307696,
+      "campaignId": "vqs2qfsdfsqe021x00",
       "total": 82,
       "notStarted": 22,
       "onGoing": 76,
@@ -73,6 +78,7 @@ const val = {
     },
     {
       "completionRate": 0.057692307692307696,
+      "campaignId": "simpsonkgs2020x00",
       "total": 82,
       "notStarted": 22,
       "onGoing": 76,
@@ -87,6 +93,7 @@ const val = {
     },
     {
       "completionRate": 0.057692307692307696,
+      "campaignId": "vqs202fgd1x00",
       "total": 82,
       "notStarted": 22,
       "onGoing": 76,
