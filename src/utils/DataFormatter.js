@@ -491,6 +491,7 @@ class DataFormatter {
                 res.map((x) => {
                   const obj = Utils.formatForMonitoringTable(x);
                   obj.survey = x.campaign.label;
+                  obj.campaignId = x.campaign.id;
                   return obj;
                 })
               );
