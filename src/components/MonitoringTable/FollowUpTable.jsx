@@ -186,8 +186,8 @@ function FollowUpTable({
             (pagination.page - 1) * pagination.size,
             Math.min(pagination.page * pagination.size, displayedLines.length),
           )
-          .map((line) => (
-            <FollowUpTableLine key={line.interviewerId || line.survey || line.site} data={line} />
+          .map((line, index) => (
+            <FollowUpTableLine key={index} data={line} />
           ))}
       </tbody>
       {tableFooter}

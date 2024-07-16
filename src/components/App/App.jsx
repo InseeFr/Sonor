@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useIsAuthenticated } from "../../Authentication/useAuth";
 import D from "../../i18n";
 import View from "../View/View";
@@ -9,8 +9,41 @@ export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [contactFailed, setContactFailed] = useState(false);
   const [data, setData] = useState(null);
+  const timeoutIdRef = useRef(null);
 
-  const { tokens } = useIsAuthenticated();
+  const { tokens, renewTokens } = useIsAuthenticated();
+
+  useEffect(() => {
+    const resetInactivityTimeout = () => {
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
+      timeoutIdRef.current = setTimeout(renewTokens, 5 * 60 * 1000);
+    };
+
+    const events = [
+      "mousemove",
+      "mousedown",
+      "keypress",
+      "touchstart",
+      "click",
+    ];
+
+    events.forEach((event) => {
+      window.addEventListener(event, resetInactivityTimeout);
+    });
+
+    resetInactivityTimeout();
+
+    return () => {
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
+      events.forEach((event) => {
+        window.removeEventListener(event, resetInactivityTimeout);
+      });
+    };
+  }, [renewTokens]);
 
   useEffect(() => {
     if (window.localStorage.getItem("AUTHENTICATION_MODE") === ANONYMOUS) {
