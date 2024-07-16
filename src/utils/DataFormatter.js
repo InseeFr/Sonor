@@ -674,7 +674,7 @@ class DataFormatter {
         .filter((camp) => camp.total)
         .map((camp) =>
           Utils.formatForCollectionTable(
-            { survey: camp.campaign.label },
+            { survey: camp.campaign.label, campaignId: camp.campaign?.id },
             data[0].find((c) => c.campaign.id === camp.campaign.id),
             camp
           )

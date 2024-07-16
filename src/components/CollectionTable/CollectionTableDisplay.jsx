@@ -272,10 +272,10 @@ function CollectionTableDisplay({
             (pagination.page - 1) * pagination.size,
             Math.min(pagination.page * pagination.size, displayedLines.length),
           )
-          .map((line, index) => (
-            <CollectionTableDisplayLine key={index} data={line}
-            />
-          ))}
+          .map((line) =>  (
+              <CollectionTableDisplayLine key={line.id || line.interviewerId || line.site || line.campaignId} data={line} />
+            )
+          )}
       </tbody>
       {tableFooter}
     </Table>

@@ -85,7 +85,7 @@ class Utils {
     line.interviewerFirstName = stateCount.interviewerFirstName;
     line.interviewerFirstName = stateCount.interviewerLastName;
     line.interviewerId = stateCount.interviewerId;
-
+    line.campaignId = stateCount.campaign?.id;
     return line;
   }
 
