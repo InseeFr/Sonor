@@ -82,10 +82,6 @@ class Utils {
     line.appointmentTaken = stateCount.apsCount;
     line.interviewStarted = stateCount.insCount;
 
-    line.interviewerFirstName = stateCount.interviewerFirstName;
-    line.interviewerFirstName = stateCount.interviewerLastName;
-    line.interviewerId = stateCount.interviewerId;
-
     return line;
   }
 

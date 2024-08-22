@@ -26,7 +26,7 @@ const {
 const service = new Service();
 
 it('Test option creation', async () => {
-  const s = new Service({ token: 'ABC' });
+  const s = new Service('ABC');
   // Should return correct options
   expect(s.makeOptions()).toEqual({ headers: { map: { authorization: 'Bearer ABC', 'content-type': 'application/json' } } });
 });
