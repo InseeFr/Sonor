@@ -26,6 +26,7 @@ class TerminatedTable extends React.Component {
       stateId: "",
       showComment: false,
       suToModifySelected: "",
+      suToModifySelectedDisplayName: "",
       oldComment: "",
       newComment: "",
     };
@@ -41,7 +42,7 @@ class TerminatedTable extends React.Component {
     ];
   }
 
-  toggleStateHistoryTable(e, newStateTitle) {
+  toggleStateHistoryTable(e, newStateTitle, displayName) {
     const { dataRetreiver } = this.props;
     e.stopPropagation();
     dataRetreiver.getStatesSurvey(newStateTitle, (data) => {
@@ -49,6 +50,7 @@ class TerminatedTable extends React.Component {
         toggleStateHistory: true,
         stateId: newStateTitle,
         stateData: data,
+        displayName:displayName
       });
     });
   }
@@ -62,7 +64,7 @@ class TerminatedTable extends React.Component {
   }
 
   handleShowComment(line) {
-    this.setState({ showComment: true, suToModifySelected: line.id });
+    this.setState({ showComment: true, suToModifySelected: line.id, suToModifySelectedDisplayName: line.displayName });
     if (line.comments != null) {
       let comToSet = "";
       const comment = line.comments.find((c) => c.type === "MANAGEMENT");
@@ -99,7 +101,7 @@ class TerminatedTable extends React.Component {
       <tr key={data.id}>
         <td className="ColCampaign">{survey.label}</td>
         <td className="ColId" data-testid="campaign-label">
-          {data.id}
+          {data.displayName}
         </td>
         <td className="ColInterviewer">{`${data.interviewer.interviewerLastName} ${data.interviewer.interviewerFirstName}`}</td>
         <td className="ColFinalizationDate">{`${Utils.convertToDateString(data.finalizationDate)}`}</td>
@@ -147,7 +149,7 @@ class TerminatedTable extends React.Component {
               className="fa fa-history HistoryDisplayIcon Clickable"
               aria-hidden="true"
               onClick={(e) => {
-                this.toggleStateHistoryTable(e, data.id);
+                this.toggleStateHistoryTable(e, data.id, data.displayName);
               }}
             />
           </OverlayTrigger>
@@ -162,16 +164,16 @@ class TerminatedTable extends React.Component {
       displayData,
       stateData,
       toggleStateHistory,
-      stateId,
+      displayName,
       showComment,
-      suToModifySelected,
+      suToModifySelectedDisplayName,
       oldComment,
     } = this.state;
     const { data, survey, handleSort, sort } = this.props;
     const fieldsToSearch = [
       "interviewerFirstName",
       "interviewerLastName",
-      "id",
+      "displayName",
     ];
     const handleCloseComment = () => {
       this.handleCloseComment();
@@ -227,10 +229,10 @@ class TerminatedTable extends React.Component {
                   id="stateHistoryDate"
                   data-testid="TableHeader_id_terminated"
                   rowSpan="2"
-                  onClick={handleSortFunct("id")}
+                  onClick={handleSortFunct("displayName")}
                   className="Clickable ColId"
                 >
-                  <SortIcon val="id" sort={sort} />
+                  <SortIcon val="displayName" sort={sort} />
                   {D.identifier}
                 </th>
                 <th
@@ -289,7 +291,7 @@ class TerminatedTable extends React.Component {
             <Modal show={showComment} onHide={() => handleCloseComment()}>
               <Modal.Header closeButton>
                 <Modal.Title>
-                  {D.modifiedCommentSu + suToModifySelected}
+                  {D.modifiedCommentSu + suToModifySelectedDisplayName}
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -342,7 +344,7 @@ class TerminatedTable extends React.Component {
         {!toggleStateHistory ||
           displayStateHistoryTable(
             stateData,
-            stateId,
+            displayName,
             () => this.hideStateHistoryTable(),
             () => this.getMaxWidth()
           )}

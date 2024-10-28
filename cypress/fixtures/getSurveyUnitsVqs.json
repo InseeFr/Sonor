@@ -1,6 +1,7 @@
 [
     {
         "id" : "1032",
+        "displayName" : "1032",
         "ssech" : "hgSkR29",
         "location" : "95160",
         "city" : "MONTMORENCY",
@@ -13,6 +14,7 @@
     },
     {
         "id" : "4819",
+        "displayName" : "4819",
         "ssech" : "dlcB55jdf",
         "location" : "90000",
         "city" : "BELFORT",
@@ -24,4 +26,3 @@
         }
     }
 ]
-
