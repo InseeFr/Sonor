@@ -25,12 +25,11 @@ class DataFormatter {
       cb(data);
     });
   }
-  
+
   getAllCampaigns(cb) {
     this.service.getCampaigns((data) => {
       cb(data);
     });
-    
   }
 
   getPreferences(cb) {
@@ -147,7 +146,7 @@ class DataFormatter {
     });
   }
 
-  getFormattedCampaignsForMainScreen(date, cb, campaigns){
+  getFormattedCampaignsForMainScreen(date, cb, campaigns) {
     const formattedData = campaigns
       .filter((survey) => Utils.isVisible(survey, date))
       .map((survey) => {
@@ -160,10 +159,10 @@ class DataFormatter {
         );
         return formattedSurvey;
       });
-      if (cb) {
-        cb(formattedData);
-      }
-      return formattedData
+    if (cb) {
+      cb(formattedData);
+    }
+    return formattedData;
   }
 
   getDataForClosePage(cb) {
@@ -182,6 +181,7 @@ class DataFormatter {
       this.service.getSurveyUnits(surveyId, null, (res) => {
         const processedData = res.map((su) => ({
           id: su.id,
+          displayName: su.displayName,
           ssech: su.ssech,
           departement: su.location,
           city: su.city,
@@ -192,7 +192,7 @@ class DataFormatter {
           state: su.state,
           closingCause: su.closingCause,
         }));
-        resolve(Utils.sortData(processedData, "id", true));
+        resolve(Utils.sortData(processedData, "displayName", true));
       });
     });
     Promise.all([p1, p2]).then((data) => {
@@ -239,42 +239,41 @@ class DataFormatter {
 
   getListSUToReview(surveyId, campaigns) {
     return new Promise((resolve) => {
-        const promises = campaigns
-          .filter((campaign) => surveyId !== null ? campaign.id === surveyId : campaign.toReview > 0 )
-          .map(
-            (campaign) =>
-              new Promise((resolveCampaign) => {
-                // get SU by campaignId with state = TBR
-                this.service.getSurveyUnits(
-                  campaign.id,
-                  "TBR",
-                  (surveyUnits) => {
-                    const lstSU = surveyUnits
-                      // format survey-unit data
-                      .map((su) => ({
-                        campaignLabel: campaign.label,
-                        campaignId: campaign.id,
-                        interviewer: su.interviewer
-                          ? `${su.interviewer.interviewerLastName} ${su.interviewer.interviewerFirstName}`
-                          : D.unaffected,
-                        idep: su.interviewer ? su.interviewer.id : "",
-                        id: su.id,
-                        viewed: su.viewed,
-                        comments: su.comments,
-                        contactOutcome: su.contactOutcome
-                      }))
-                      // order by interviewer name
-                      .sort((a, b) => (a.interviewer > b.interviewer ? 1 : -1));
-                    resolveCampaign(lstSU);
-                  }
-                );
-              })
-          );
+      const promises = campaigns
+        .filter((campaign) =>
+          surveyId !== null ? campaign.id === surveyId : campaign.toReview > 0
+        )
+        .map(
+          (campaign) =>
+            new Promise((resolveCampaign) => {
+              // get SU by campaignId with state = TBR
+              this.service.getSurveyUnits(campaign.id, "TBR", (surveyUnits) => {
+                const lstSU = surveyUnits
+                  // format survey-unit data
+                  .map((su) => ({
+                    campaignLabel: campaign.label,
+                    campaignId: campaign.id,
+                    interviewer: su.interviewer
+                      ? `${su.interviewer.interviewerLastName} ${su.interviewer.interviewerFirstName}`
+                      : D.unaffected,
+                    idep: su.interviewer ? su.interviewer.id : "",
+                    id: su.id,
+                    displayName: su.displayName,
+                    viewed: su.viewed,
+                    comments: su.comments,
+                    contactOutcome: su.contactOutcome,
+                  }))
+                  // order by interviewer name
+                  .sort((a, b) => (a.interviewer > b.interviewer ? 1 : -1));
+                resolveCampaign(lstSU);
+              });
+            })
+        );
 
-        Promise.all(promises).then((data) => {
-          resolve(data.flat());
-        });
+      Promise.all(promises).then((data) => {
+        resolve(data.flat());
       });
+    });
   }
 
   /**
@@ -442,7 +441,14 @@ class DataFormatter {
     });
   }
 
-  async getDataForMonitoringTable(survey, givenDate, pagination, mode, cb, campaigns) {
+  async getDataForMonitoringTable(
+    survey,
+    givenDate,
+    pagination,
+    mode,
+    cb,
+    campaigns
+  ) {
     // Adding 24h to take all states added before the next day into account
     const date = givenDate + 86400000;
     const interviewers = [];
@@ -464,7 +470,12 @@ class DataFormatter {
         if (getDataForSingleSurvey) {
           surveysToGetInterviewersFrom = [survey];
         } else {
-          surveysToGetInterviewersFrom = await this.getFormattedCampaignsForMainScreen(date, null, campaigns);
+          surveysToGetInterviewersFrom =
+            await this.getFormattedCampaignsForMainScreen(
+              date,
+              null,
+              campaigns
+            );
         }
         site = (await this.service.getUser()).organizationUnit.label;
         p1 = new Promise((resolve) => {

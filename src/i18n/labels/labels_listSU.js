@@ -15,6 +15,10 @@ const listSU = {
     fr: 'Identifiant',
     en: 'Identifier',
   },
+  displayName: {
+    fr: 'Identifiant',
+    en: 'Identifier',
+  },
   ssech: {
     fr: 'Ssech',
     en: 'Ssech',

@@ -25,6 +25,7 @@ function makeTableForExport(data, communicationRequestConfiguration) {
   const headerTitle = [
     [
       D.identifier,
+      D.displayName,
       D.interviewer,
       D.idep,
       D.ssech,
@@ -100,6 +101,7 @@ function makeTableForExport(data, communicationRequestConfiguration) {
           return reminders.length !== 0
             ? [
                 line.id,
+                line.displayName,
                 line.interviewer,
                 line.idep,
                 line.ssech,
@@ -117,6 +119,7 @@ function makeTableForExport(data, communicationRequestConfiguration) {
               ]
             : [
                 line.id,
+                line.displayName,
                 line.interviewer,
                 line.idep,
                 line.ssech,
@@ -137,6 +140,7 @@ function makeTableForExport(data, communicationRequestConfiguration) {
         data.map((line) => {
           return [
             line.id,
+            line.displayName,
             line.interviewer,
             line.idep,
             line.ssech,
@@ -274,7 +278,7 @@ class SUTable extends React.Component {
 
   render() {
     const { data, sort, handleSort, isLoading, survey } = this.props;
-    const fieldsToSearch = ["city", "interviewer", "id", "state"];
+    const fieldsToSearch = ["city", "interviewer", "displayName", "state"];
     const {
       pagination,
       displayedLines,
@@ -395,7 +399,6 @@ class SUTable extends React.Component {
                           ) ?? [];
 
                         orderReminders(reminders);
-
                         return (
                           <SurveyUnitLine
                             key={line.id}

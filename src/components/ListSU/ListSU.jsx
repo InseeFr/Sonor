@@ -77,7 +77,7 @@ function ListSU({
 
   useEffect(() => {
     if (sort.sortOn === null) {
-      handleSort('id', true);
+      handleSort('displayName', true);
     }
   }, [data, handleSort, sort.sortOn]);
 

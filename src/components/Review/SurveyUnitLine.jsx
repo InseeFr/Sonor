@@ -11,7 +11,7 @@ function SurveyUnitLine({
   view,
   dataRetreiver,
 }) {
-  const { campaignLabel, interviewer, id, viewed, contactOutcome } = lineData;
+  const { campaignLabel, interviewer, id, displayName, viewed, contactOutcome } = lineData;
   const queenUrl = `${window.localStorage.getItem("QUEEN_URL_FRONT_END")}`;
   return (
     <tr className={viewed ? "" : "notViewed"}>
@@ -26,7 +26,7 @@ function SurveyUnitLine({
         />
       </td>
       <td className="ColCampaign">{campaignLabel}</td>
-      <td className="ColId">{id}</td>
+      <td className="ColId">{displayName}</td>
       <td className="ColContactOutcome">
         {contactOutcome?.type && D[contactOutcome.type]}
       </td>

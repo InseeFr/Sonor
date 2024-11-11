@@ -155,7 +155,7 @@ it('Export table', async () => {
   HTMLAnchorElement.prototype.remove = removeElmMock;
 
   const fileTitle = 'National_organizational_unit_Everyday_life_and_health_survey_2021_UE_confiees_8202020.csv';
-  const fileContent = 'data:text/csv;charset=utf-8,%EF%BB%BFIdentifier;Interviewer;Idep;Ssech;Department;Town;Provisional%20state%0A20;Lucas%20Margie;INTW1;1;59;Aulnoye-Aimeries;%0A21;Campbell%20Carlton;INTW2;1;38;Vienne;%0A22;Xern%20Fabrice;INTW4;2;62;Arras;%0A29;Delmare%20Mathilde;INTW12;1;65;Belfort;%0A33;Antoine%20Tarje;INTW14;1;75;Paris;%0A55;Bertrand%20Ulysse;INTW4;2;62;Arras;%0A23;Grant%20Melody;INTW4;1;35;Rennes;';
+  const fileContent = 'data:text/csv;charset=utf-8,%EF%BB%BFIdentifier;Identifier;Interviewer;Idep;Ssech;Department;Town;Provisional%20state%0A20;20;Lucas%20Margie;INTW1;1;59;Aulnoye-Aimeries;%0A21;21;Campbell%20Carlton;INTW2;1;38;Vienne;%0A22;22;Xern%20Fabrice;INTW4;2;62;Arras;%0A29;29;Delmare%20Mathilde;INTW12;1;65;Belfort;%0A33;33;Antoine%20Tarje;INTW14;1;75;Paris;%0A55;55;Bertrand%20Ulysse;INTW4;2;62;Arras;%0A23;23;Grant%20Melody;INTW4;1;35;Rennes;';
   screen.getByTestId('export-button').click();
   const downnloadLink = component.baseElement.querySelector('a[download]');
 
