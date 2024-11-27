@@ -3,7 +3,7 @@ import React from 'react';
 
 function CloseSurveyUnitLine({ lineData, isChecked, updateFunc }) {
   const {
-    campaign, id, ssech, contactOutcome, questionnaireState, interviewer, closingCause, identificationState
+    campaign, id,displayName, ssech, contactOutcome, questionnaireState, interviewer, closingCause, identificationState
   } = lineData;
   return (
     <tr>
@@ -11,7 +11,7 @@ function CloseSurveyUnitLine({ lineData, isChecked, updateFunc }) {
         <input key={lineData.id} type="checkbox" checked={isChecked} name={id} value={id} onChange={() => updateFunc()} />
       </td>
       <td className="ColCampaign">{campaign}</td>
-      <td className="ColId">{id}</td>
+      <td className="ColId">{displayName}</td>
       <td className="ColInterviewer">{`${interviewer?.interviewerLastName ?? ""} ${interviewer?.interviewerFirstName ?? ""}`}</td>
       <td className="ColSsech">{ssech}</td>
       <td className="ColIdentificationState">{identificationState ? D[identificationState] : ''}</td>
