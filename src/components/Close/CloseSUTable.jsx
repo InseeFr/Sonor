@@ -18,7 +18,7 @@ function makeTableForExport(data) {
     [
       D.survey,
       D.identifier,
-      D.displayName,
+      D.displayNameDownload,
       D.interviewer,
       D.ssech,
       D.department,

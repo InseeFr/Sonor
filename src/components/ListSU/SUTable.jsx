@@ -25,7 +25,7 @@ function makeTableForExport(data, communicationRequestConfiguration) {
   const headerTitle = [
     [
       D.identifier,
-      D.displayName,
+      D.displayNameDownload,
       D.interviewer,
       D.idep,
       D.ssech,
