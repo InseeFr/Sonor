@@ -1,71 +1,79 @@
 const listSU = {
   result: {
-    fr: 'Resultat : ',
-    en: 'Result: ',
+    fr: "Resultat : ",
+    en: "Result: ",
   },
   units: {
-    fr: 'unités',
-    en: 'units',
+    fr: "unités",
+    en: "units",
   },
   surveyUnitsAllocatedToTheOU: {
-    fr: 'Unités enquêtées confiées au site : ',
-    en: 'Survey units allocated to the organizational unit: ',
+    fr: "Unités enquêtées confiées au site : ",
+    en: "Survey units allocated to the organizational unit: ",
   },
   identifier: {
-    fr: 'Identifiant',
-    en: 'Identifier',
+    fr: "Identifiant",
+    en: "Identifier",
+  },
+  displayName: {
+    fr: "Identifiant",
+    en: "Identifier",
+  },
+  displayNameDownload: {
+    fr: `Identifiant de l'ue`,
+    en: "Survey unit identifier",
   },
   ssech: {
-    fr: 'Ssech',
-    en: 'Ssech',
+    fr: "Ssech",
+    en: "Ssech",
   },
   department: {
-    fr: 'Département',
-    en: 'Department',
+    fr: "Département",
+    en: "Department",
   },
   town: {
-    fr: 'Commune',
-    en: 'Town',
+    fr: "Commune",
+    en: "Town",
   },
   noListSuToDisplay: {
-    fr: 'Aucune unité enquêtée à afficher',
-    en: 'There are no survey units to display',
+    fr: "Aucune unité enquêtée à afficher",
+    en: "There are no survey units to display",
   },
   state: {
-    fr: 'Statut provisoire',
-    en: 'Provisional state',
+    fr: "Statut provisoire",
+    en: "Provisional state",
   },
   modified: {
-    fr: 'Modifier le statut',
-    en: 'Change the state',
+    fr: "Modifier le statut",
+    en: "Change the state",
   },
   modaleModifiedText: {
-    fr: 'Sélectionner la modalité souhaitée',
-    en: 'Select the desired modality',
+    fr: "Sélectionner la modalité souhaitée",
+    en: "Select the desired modality",
   },
   validate: {
-    fr: 'Valider',
-    en: 'Validate',
+    fr: "Valider",
+    en: "Validate",
   },
   cancel: {
-    fr: 'Annuler',
-    en: 'Cancel',
+    fr: "Annuler",
+    en: "Cancel",
   },
   contactOutcome: {
-    fr: 'Bilan des contacts',
-    en: 'Contact outcome',
+    fr: "Bilan des contacts",
+    en: "Contact outcome",
   },
   questionnaireState: {
-    fr: 'État du questionnaire',
-    en: 'Questionnaire state',
+    fr: "État du questionnaire",
+    en: "Questionnaire state",
   },
   totalRemindersLabel: {
-    fr: 'T Rel',
-    en: 'T Rem',
+    fr: "T Rel",
+    en: "T Rem",
   },
   totalReminders: {
-    fr: 'Total des relances',
-    en: 'Total reminders',
+    fr: "Total des relances",
+    en: "Total reminders",
   },
   latestReminderLabel: {
     fr: "Rel n",
@@ -89,19 +97,19 @@ const listSU = {
   },
   reminderEmailMedium: {
     fr: "M",
-    en: "E"
+    en: "E",
   },
   reminderMailMedium: {
     fr: "C",
-    en: "M"
+    en: "M",
   },
   reminderRefReason: {
     fr: "Ref",
-    en: "Ref"
+    en: "Ref",
   },
   reminderItjReason: {
     fr: "IAJ",
-    en: "ITJ"
+    en: "ITJ",
   },
   contactOutcomeLabel: {
     fr: "Bilan des contacts",

@@ -178,6 +178,7 @@ class Utils {
       'campaign',
       'label',
       'id',
+      'displayName',
       'identificationState',
       'survey',
       'site',
@@ -418,7 +419,7 @@ class Utils {
         sortedData = this.sortData(data, sortOn, newOrder, 'label');
         break;
       case 'listSU':
-        sortedData = this.sortData(data, sortOn, newOrder, 'id');
+        sortedData = this.sortData(data, sortOn, newOrder, 'displayName');
         break;
       case 'terminated':
         sortedData = this.sortData(data, sortOn, newOrder, 'campaignLabel');

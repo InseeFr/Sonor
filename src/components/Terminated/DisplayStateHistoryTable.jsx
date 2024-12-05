@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Utils from '../../utils/Utils';
 import D from '../../i18n';
 
-function displayStateHistoryTable(stateData, stateId, hideStateHistoryTable, maxWidth) {
+function displayStateHistoryTable(stateData, displayName, hideStateHistoryTable, maxWidth) {
   return (
     <div id="StateHistoryTableContainer">
       <Card.Title className="PageTitle">
@@ -15,7 +15,7 @@ function displayStateHistoryTable(stateData, stateId, hideStateHistoryTable, max
           tabIndex={0}
           onClick={() => { hideStateHistoryTable(); }}
         />
-        {`${D.titleStateSu}${stateId}`}
+        {`${D.titleStateSu}${displayName}`}
       </Card.Title>
       <Table id="SurveyList" className="CustomTable" bordered striped hover responsive size="sm" style={{maxWidth:maxWidth()[0] + maxWidth()[1] + maxWidth()[2]}}>
         <thead>

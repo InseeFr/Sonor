@@ -5,6 +5,7 @@ const val = {
       "city": "Aulnoye-Aimeries",
       "departement": "59620",
       "id": "20",
+      "displayName": "20",
       "idep": "INTW1",
       "interviewer": "Lucas Margie",
       "ssech": 1
@@ -13,6 +14,7 @@ const val = {
       "city": "Vienne",
       "departement": "38200",
       "id": "21",
+      "displayName": "21",
       "idep": "INTW2",
       "interviewer": "Campbell Carlton",
       "ssech": 1
@@ -21,6 +23,7 @@ const val = {
       "city": "Arras",
       "departement": "62000",
       "id": "22",
+      "displayName": "22",
       "idep": "INTW4",
       "interviewer": "Xern Fabrice",
       "ssech": 2
@@ -29,6 +32,7 @@ const val = {
       "city": "Belfort",
       "departement": "65000",
       "id": "29",
+      "displayName": "29",
       "idep": "INTW12",
       "interviewer": "Delmare Mathilde",
       "ssech": 1
@@ -37,6 +41,7 @@ const val = {
       "city": "Paris",
       "departement": "75000",
       "id": "33",
+      "displayName": "33",
       "idep": "INTW14",
       "interviewer": "Antoine Tarje",
       "ssech": 1
@@ -45,6 +50,7 @@ const val = {
       "city": "Arras",
       "departement": "62000",
       "id": "55",
+      "displayName": "55",
       "idep": "INTW4",
       "interviewer": "Bertrand Ulysse",
       "ssech": 2
@@ -53,6 +59,7 @@ const val = {
       "city": "Rennes",
       "departement": "35000",
       "id": "23",
+      "displayName": "23",
       "idep": "INTW4",
       "interviewer": "Grant Melody",
       "ssech": 1

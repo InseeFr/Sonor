@@ -4,7 +4,7 @@ export const SUTableHeaderParameters =[
     {
         label: D.identifier,
         className: "Clickable ColId",
-        sortValue: "id",
+        sortValue: "displayName",
         isAlwaysVisible: true,
     },
     {

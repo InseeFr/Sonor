@@ -10,6 +10,7 @@ function SurveyUnitLine({
 }) {
   const {
     id,
+    displayName,
     ssech,
     departement,
     city,
@@ -75,7 +76,7 @@ function SurveyUnitLine({
           <span />
         )}
       </td>
-      <td className="ColId">{id}</td>
+      <td className="ColId">{displayName}</td>
       <td className="ColInterviewer">{interviewer}</td>
       <td className="ColSsech">{ssech}</td>
       <td className="ColDepartement">{departement?.substring(0, 2) ?? ""}</td>

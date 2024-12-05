@@ -23,6 +23,7 @@ class ReviewTable extends React.Component {
       displayedLines: props.data,
       showComment: false,
       suToModifySelected: "",
+      suToModifySelectedDisplayName:"",
       oldComment: "",
       newComment: "",
     };
@@ -57,7 +58,7 @@ class ReviewTable extends React.Component {
   }
 
   handleShowComment(line) {
-    this.setState({ showComment: true, suToModifySelected: line.id });
+    this.setState({ showComment: true, suToModifySelected: line.id, suToModifySelectedDisplayName: line.displayName });
     if (line.comments != null) {
       let comToSet = "";
       const comment = line.comments.find((c) => c.type === "MANAGEMENT");
@@ -128,10 +129,10 @@ class ReviewTable extends React.Component {
       checkAll,
       show,
       showComment,
-      suToModifySelected,
+      suToModifySelectedDisplayName,
       oldComment,
     } = this.state;
-    const fieldsToSearch = ["campaignLabel", "interviewer", "id"];
+    const fieldsToSearch = ["campaignLabel", "interviewer", "displayName"];
     const toggleCheckBox = (i) => {
       this.toggleCheckBox(i);
     };
@@ -193,8 +194,8 @@ class ReviewTable extends React.Component {
                 <SortIcon val="campaignLabel" sort={sort} />
                 {D.survey}
               </th>
-              <th onClick={handleSortFunct("id")} className="Clickable ColId">
-                <SortIcon val="id" sort={sort} />
+              <th onClick={handleSortFunct("displayName")} className="Clickable ColId">
+                <SortIcon val="displayName" sort={sort} />
                 {D.identifier}
               </th>
               <th
@@ -243,7 +244,7 @@ class ReviewTable extends React.Component {
             <Modal show={showComment} onHide={() => handleCloseComment()}>
               <Modal.Header closeButton>
                 <Modal.Title>
-                  {D.modifiedCommentSu + suToModifySelected}
+                  {D.modifiedCommentSu + suToModifySelectedDisplayName}
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
