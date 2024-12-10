@@ -44,8 +44,8 @@ const labelsContactOutcomes = {
     fr: 'Sans objet',
   },
   DUK: {
-    en: 'Definitely unavailable for a known reason',
-    fr: 'Indisponibilité définitive pour motif connu',
+    en: 'Definitely unavailable',
+    fr: 'Indisponibilité définitive',
   },
   DUU: {
     en: 'Definitely unavailable for an unknown reason',
