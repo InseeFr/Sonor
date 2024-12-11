@@ -1,6 +1,6 @@
 {
   "name": "sonor",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "4.0.5",
@@ -9,8 +9,6 @@
     "awesome-debounce-promise": "^2.1.0",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
-    "cypress": "^4.9.0",
-    "cypress-multi-reporters": "^1.2.4",
     "font-awesome": "^4.7.0",
     "history": "^5.0.0",
     "mocha-junit-reporter": "^1.23.3",
@@ -32,9 +30,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:test": "start-server-and-test start http://localhost:3000 cypress:run",
     "test": "react-scripts test --coverage .",
     "build": "react-scripts build && copy-and-watch configuration/configuration.json build"
   },
