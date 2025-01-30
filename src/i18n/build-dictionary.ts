@@ -6,7 +6,7 @@ import dictionary from './dictionary';
  *
  * @param {string} lang the lang of the user
  */
-export const createDictionary = lang =>
+export const createDictionary = (lang: string) =>
   Object.keys(dictionary).reduce((_, k) => {
     _[k] = dictionary[k][lang];
     return _;
@@ -18,10 +18,8 @@ export const createDictionary = lang =>
  * If the lang is not fr, will return en
  * @param {string} lang the lang of the user
  */
-export const getLang = defaultLang =>
-  (defaultLang || navigator.language || navigator.browserLanguage).split('-')[0] === 'fr'
-    ? 'fr'
-    : 'en';
+export const getLang = (defaultLang?: string) =>
+  (defaultLang || navigator.language || navigator.language).split('-')[0] === 'fr' ? 'fr' : 'en';
 
 export default createDictionary(getLang());
 //export default createDictionary('en');
