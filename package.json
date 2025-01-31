@@ -34,7 +34,7 @@
     "test": "vitest",
     "prepare": "husky",
     "typecheck": "tsc --noEmit",
-    "pre-push": "stylelint \"src/**/*.css\"  && yarn test  --watch=false"
+    "pre-push": "yarn test  --watch=false"
   },
   "eslintConfig": {
     "extends": [

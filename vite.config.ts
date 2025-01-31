@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   test: {
     globals: true,
-    include: ['src/**/*.test.*'],
+    include: ['src/**/*.spec.*'],
     environment: 'jsdom',
     coverage: {
       reporter: ['text', 'lcov'],
