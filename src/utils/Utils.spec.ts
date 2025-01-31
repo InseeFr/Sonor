@@ -1,6 +1,7 @@
 import { cleanup } from '@testing-library/react';
 import Utils from './Utils';
 import D from '../i18n';
+import { vi, it, expect, afterEach } from 'vitest';
 
 const toLocaleDateString = Date.prototype.toLocaleString;
 const getHours = Date.prototype.getUTCHours;
@@ -20,12 +21,10 @@ Date.prototype.getMinutes = function () {
   return getMinutes.call(this);
 };
 const OriginalDate = global.Date;
-jest
-  .spyOn(global, 'Date')
-  .mockImplementation(a =>
-    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
-  );
-Date.now = jest.fn(() => 1597916474000);
+vi.spyOn(global, 'Date').mockImplementation(a =>
+  a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
+);
+Date.now = vi.fn(() => 1597916474000);
 
 afterEach(cleanup);
 
