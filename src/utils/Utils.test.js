@@ -1,4 +1,3 @@
-// Link.react.test.js
 import { cleanup } from '@testing-library/react';
 import Utils from './Utils';
 import D from '../i18n';
@@ -23,8 +22,8 @@ Date.prototype.getMinutes = function () {
 const OriginalDate = global.Date;
 jest
   .spyOn(global, 'Date')
-  .mockImplementation((a) =>
-    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z'),
+  .mockImplementation(a =>
+    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
   );
 Date.now = jest.fn(() => 1597916474000);
 
@@ -43,7 +42,7 @@ it('Test function convertMsToHoursMinutes', async () => {
 it('Test function calculateCompletionRate', async () => {
   // Should equal 7/9
   expect(
-    Utils.calculateCompletionRate({ tbrCount: 4, finCount: 3, cloCount: 2, total: 11 }),
+    Utils.calculateCompletionRate({ tbrCount: 4, finCount: 3, cloCount: 2, total: 11 })
   ).toEqual(9 / 11);
 });
 
@@ -59,16 +58,14 @@ it('Test isVisible', async () => {
         collectionEndDate: 1640996200000,
         endDate: 1641514600000,
       },
-      '08-20-2020',
-    ),
+      '08-20-2020'
+    )
   ).toEqual(true);
 });
 
 it('Test getCampaignPhase', async () => {
   // Should equal 0
-  expect(
-    Utils.getCampaignPhase(1620504561350, 1622035845000, 1622025045000),
-  ).toEqual(0);
+  expect(Utils.getCampaignPhase(1620504561350, 1622035845000, 1622025045000)).toEqual(0);
 });
 
 it('Test displayCampaignPhase', async () => {

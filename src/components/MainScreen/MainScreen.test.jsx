@@ -1,8 +1,5 @@
-// Link.react.test.js
 import React from 'react';
-import {
-  render, screen, fireEvent, cleanup,
-} from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import DataFormatter from '../../utils/DataFormatter';
@@ -12,13 +9,20 @@ import mocks from '../../tests/mocks';
 const history = createMemoryHistory();
 
 const toLocaleDateString = Date.prototype.toLocaleString;
-Date.prototype.toLocaleDateString = function() {
-  return toLocaleDateString.call(this, 'en-EN', { timeZone: 'UTC', year: "numeric", month: "numeric", day: "numeric" });
+Date.prototype.toLocaleDateString = function () {
+  return toLocaleDateString.call(this, 'en-EN', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
 };
 const OriginalDate = global.Date;
 jest
   .spyOn(global, 'Date')
-  .mockImplementation((a) => (a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')));
+  .mockImplementation(a =>
+    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
+  );
 Date.now = jest.fn(() => 1597916474000);
 
 beforeEach(() => {
@@ -38,11 +42,21 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
       <Route path="/" render={() => <ComponentWithRedirection />} />
       <Route
         path="*"
-        render={(routeProps) => (
+        render={routeProps => (
           <div>
-            <div data-testid="Redirect-url">{JSON.stringify(routeProps.history.location.pathname)}</div>
-            <div data-testid="Redirect-survey">{!routeProps.history.location || !routeProps.history.location.survey || JSON.stringify(routeProps.history.location.survey)}</div>
-            <div data-testid="Redirect-surveyInfos">{!routeProps.history.location || !routeProps.history.location.surveyInfos || JSON.stringify(routeProps.history.location.surveyInfos)}</div>
+            <div data-testid="Redirect-url">
+              {JSON.stringify(routeProps.history.location.pathname)}
+            </div>
+            <div data-testid="Redirect-survey">
+              {!routeProps.history.location ||
+                !routeProps.history.location.survey ||
+                JSON.stringify(routeProps.history.location.survey)}
+            </div>
+            <div data-testid="Redirect-surveyInfos">
+              {!routeProps.history.location ||
+                !routeProps.history.location.surveyInfos ||
+                JSON.stringify(routeProps.history.location.surveyInfos)}
+            </div>
           </div>
         )}
       />
@@ -51,7 +65,7 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
 );
 
 DataFormatter.mockImplementation(() => ({
-  getFormattedCampaignsForMainScreen: (a, c) => (c(data)),
+  getFormattedCampaignsForMainScreen: (a, c) => c(data),
 }));
 
 const mockDataRetreiver = new DataFormatter();
@@ -60,7 +74,7 @@ it('Component is correctly displayed', async () => {
   const component = render(
     <Router history={history}>
       <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
 
   // Should match snapshot (rows with preference = true displayed)
@@ -71,7 +85,7 @@ it('Sort by collection end date', async () => {
   const component = render(
     <Router history={history}>
       <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
 
   screen.getByTestId('Header-collection-end-date').click();
@@ -84,7 +98,7 @@ it('Change page', async () => {
   const component = render(
     <Router history={history}>
       <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
 
   screen.getByTestId('pagination-nav').lastChild.firstChild.click();
@@ -97,7 +111,7 @@ it('Change pagination size', async () => {
   const component = render(
     <Router history={history}>
       <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
 
   fireEvent.change(component.getByTestId('pagination-size-selector'), { target: { value: '10' } });
@@ -107,14 +121,13 @@ it('Change pagination size', async () => {
 });
 
 it('Go to monitoring table by site', async () => {
-
   const redirectUrl = '/follow/sites/vqs2021x00';
   render(
     <TestingRouter
-      ComponentWithRedirection={
-        () => <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-      }
-    />,
+      ComponentWithRedirection={() => (
+        <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
+      )}
+    />
   );
   screen.getByText('Everyday life and health survey 2021').click();
 
@@ -130,10 +143,10 @@ it('Go to portal', async () => {
   const redirectUrl = '/portal/vqs202fgd1x00';
   render(
     <TestingRouter
-      ComponentWithRedirection={
-        () => <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-      }
-    />,
+      ComponentWithRedirection={() => (
+        <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
+      )}
+    />
   );
   screen.getAllByText('1/1/2020')[0].click();
 
@@ -153,10 +166,10 @@ it('Go to listSU', async () => {
   const redirectUrl = '/listSU/vqs202fgd1x00';
   render(
     <TestingRouter
-      ComponentWithRedirection={
-        () => <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-      }
-    />,
+      ComponentWithRedirection={() => (
+        <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
+      )}
+    />
   );
   screen.getAllByText('4')[0].click();
 
@@ -172,10 +185,10 @@ it('Go to monitoring table', async () => {
   const redirectUrl = '/follow/campaign/vqs202fgd1x00';
   render(
     <TestingRouter
-      ComponentWithRedirection={
-        () => <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
-      }
-    />,
+      ComponentWithRedirection={() => (
+        <MainScreen preferences={preferences} dataRetreiver={mockDataRetreiver} />
+      )}
+    />
   );
   screen.getAllByText('0')[0].click();
 

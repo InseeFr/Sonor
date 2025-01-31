@@ -1,9 +1,6 @@
-// Link.react.test.js
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import {
-  render, screen, fireEvent, cleanup, waitForElement, wait,
-} from '@testing-library/react';
+import { act } from 'vitest';
+import { render, screen, fireEvent, cleanup, waitForElement, wait } from '@testing-library/react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import DataFormatter from '../../utils/DataFormatter';
@@ -13,13 +10,20 @@ import mocks from '../../tests/mocks';
 const history = createMemoryHistory();
 
 const toLocaleDateString = Date.prototype.toLocaleString;
-Date.prototype.toLocaleDateString = function() {
-  return toLocaleDateString.call(this, 'en-EN', { timeZone: 'UTC',year: "numeric", month: "numeric", day: "numeric" });
+Date.prototype.toLocaleDateString = function () {
+  return toLocaleDateString.call(this, 'en-EN', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
 };
 const OriginalDate = global.Date;
 jest
   .spyOn(global, 'Date')
-  .mockImplementation((a) => (a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')));
+  .mockImplementation(a =>
+    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
+  );
 Date.now = jest.fn(() => 1597916474000);
 
 beforeEach(() => {
@@ -39,10 +43,16 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
       <Route path="/listSU/vqs2021x00" component={() => <ComponentWithRedirection />} />
       <Route
         path="*"
-        render={(routeProps) => (
+        render={routeProps => (
           <div>
-            <div data-testid="Redirect-url">{JSON.stringify(routeProps.history.location.pathname)}</div>
-            <div data-testid="Redirect-survey">{!routeProps.history.location || !routeProps.history.location.survey || JSON.stringify(routeProps.history.location.survey)}</div>
+            <div data-testid="Redirect-url">
+              {JSON.stringify(routeProps.history.location.pathname)}
+            </div>
+            <div data-testid="Redirect-survey">
+              {!routeProps.history.location ||
+                !routeProps.history.location.survey ||
+                JSON.stringify(routeProps.history.location.survey)}
+            </div>
           </div>
         )}
       />
@@ -51,7 +61,10 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
 );
 
 DataFormatter.mockImplementation(() => ({
-  getDataForListSU: (a, c) => (setTimeout(() => { c(resp); }, 3)),
+  getDataForListSU: (a, c) =>
+    setTimeout(() => {
+      c(resp);
+    }, 3),
 }));
 
 const mockDataRetreiver = new DataFormatter();
@@ -60,7 +73,7 @@ it('Component is correctly displayed', async () => {
   const component = render(
     <Router history={history}>
       <ListSU location={{ survey }} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
   await waitForElement(() => screen.getByTestId('TableHeader_interviewer_name'));
   // Should match snapshot (rows displayed)
@@ -71,7 +84,7 @@ it('Sort by interviewer name', async () => {
   const component = render(
     <Router history={history}>
       <ListSU location={{ survey }} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
   await waitForElement(() => screen.getByTestId('TableHeader_interviewer_name'));
   screen.getByTestId('TableHeader_interviewer_name').click();
@@ -83,7 +96,7 @@ it('Change page', async () => {
   const component = render(
     <Router history={history}>
       <ListSU location={{ survey }} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
 
   await waitForElement(() => screen.getByTestId('TableHeader_interviewer_name'));
@@ -97,11 +110,13 @@ it('Change pagination size', async () => {
   const component = render(
     <Router history={history}>
       <ListSU location={{ survey }} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
   await waitForElement(() => screen.getByTestId('TableHeader_interviewer_name'));
   act(() => {
-    fireEvent.change(component.getByTestId('pagination-size-selector'), { target: { value: '10' } });
+    fireEvent.change(component.getByTestId('pagination-size-selector'), {
+      target: { value: '10' },
+    });
   });
   // Should match snapshot (all 8 rows are now displayed)
   expect(component).toMatchSnapshot();
@@ -111,14 +126,16 @@ it('Select another survey', async () => {
   const redirectUrl = '/listSU/simpsons2020x00';
   const component = render(
     <TestingRouter
-      ComponentWithRedirection={
-        () => <ListSU location={{ survey }} dataRetreiver={mockDataRetreiver} />
-      }
-    />,
+      ComponentWithRedirection={() => (
+        <ListSU location={{ survey }} dataRetreiver={mockDataRetreiver} />
+      )}
+    />
   );
   await waitForElement(() => screen.getByTestId('TableHeader_interviewer_name'));
   act(() => {
-    fireEvent.change(component.getByTestId('Survey_selector'), { target: { value: 'simpsons2020x00' } });
+    fireEvent.change(component.getByTestId('Survey_selector'), {
+      target: { value: 'simpsons2020x00' },
+    });
   });
   // Should redirect to '/listSU/simpsons2020x00'
   expect(screen.getByTestId('Redirect-url').innerHTML).toEqual(`\"${redirectUrl}\"`);
@@ -129,33 +146,36 @@ it('Select another survey', async () => {
 });
 
 it('Reloading the page with no survey set (F5)', async () => {
-
   const redirectUrl = '/';
   act(() => {
     render(
       <TestingRouter
-        ComponentWithRedirection={() => <ListSU location={{ }} dataRetreiver={mockDataRetreiver} />}
-      />,
+        ComponentWithRedirection={() => <ListSU location={{}} dataRetreiver={mockDataRetreiver} />}
+      />
     );
   });
 
   // Should redirect to '/'
-  await wait(() => expect(screen.getByTestId('Redirect-url').innerHTML).toEqual(`\"${redirectUrl}\"`));
+  await wait(() =>
+    expect(screen.getByTestId('Redirect-url').innerHTML).toEqual(`\"${redirectUrl}\"`)
+  );
 });
 
 it('Export table', async () => {
   const component = render(
     <Router history={history}>
       <ListSU location={{ survey }} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
   await waitForElement(() => screen.getByTestId('TableHeader_interviewer_name'));
   const realRemoveFunc = HTMLAnchorElement.prototype.remove;
   const removeElmMock = jest.fn();
   HTMLAnchorElement.prototype.remove = removeElmMock;
 
-  const fileTitle = 'National_organizational_unit_Everyday_life_and_health_survey_2021_UE_confiees_8202020.csv';
-  const fileContent = 'data:text/csv;charset=utf-8,%EF%BB%BFIdentifier;Survey%20unit%20identifier;Interviewer;Idep;Ssech;Department;Town;Provisional%20state%0A20;20;Lucas%20Margie;INTW1;1;59;Aulnoye-Aimeries;%0A21;21;Campbell%20Carlton;INTW2;1;38;Vienne;%0A22;22;Xern%20Fabrice;INTW4;2;62;Arras;%0A29;29;Delmare%20Mathilde;INTW12;1;65;Belfort;%0A33;33;Antoine%20Tarje;INTW14;1;75;Paris;%0A55;55;Bertrand%20Ulysse;INTW4;2;62;Arras;%0A23;23;Grant%20Melody;INTW4;1;35;Rennes;';
+  const fileTitle =
+    'National_organizational_unit_Everyday_life_and_health_survey_2021_UE_confiees_8202020.csv';
+  const fileContent =
+    'data:text/csv;charset=utf-8,%EF%BB%BFIdentifier;Survey%20unit%20identifier;Interviewer;Idep;Ssech;Department;Town;Provisional%20state%0A20;20;Lucas%20Margie;INTW1;1;59;Aulnoye-Aimeries;%0A21;21;Campbell%20Carlton;INTW2;1;38;Vienne;%0A22;22;Xern%20Fabrice;INTW4;2;62;Arras;%0A29;29;Delmare%20Mathilde;INTW12;1;65;Belfort;%0A33;33;Antoine%20Tarje;INTW14;1;75;Paris;%0A55;55;Bertrand%20Ulysse;INTW4;2;62;Arras;%0A23;23;Grant%20Melody;INTW4;1;35;Rennes;';
   screen.getByTestId('export-button').click();
   const downnloadLink = component.baseElement.querySelector('a[download]');
 

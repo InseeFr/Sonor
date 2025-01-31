@@ -1,4 +1,3 @@
-// Link.react.test.js
 import 'core-js';
 import { wait } from '@testing-library/react';
 import DataFormatter from './DataFormatter';
@@ -10,7 +9,9 @@ import Utils from './Utils';
 const OriginalDate = global.Date;
 jest
   .spyOn(global, 'Date')
-  .mockImplementation((a) => (a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')));
+  .mockImplementation(a =>
+    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
+  );
 Date.now = jest.fn(() => 1597916474000);
 
 jest.mock('./Service');
@@ -35,55 +36,64 @@ const {
 } = mocks;
 
 Service.mockImplementation(() => ({
-  getUser: jest.fn((cb) => {
-    if (cb) { cb(userData); }
+  getUser: jest.fn(cb => {
+    if (cb) {
+      cb(userData);
+    }
     return Promise.resolve(userData);
   }),
-  putSurveyUnitToValidate: jest.fn((su, cb) => (cb({ status: 200 }))),
-  putPreferences: jest.fn((prefs, cb) => (cb({ status: 200 }))),
-  getQuestionnaireId: jest.fn((id, c) => (c({ questionnaireId: 'QXT55' }))),
-  getCampaigns: jest.fn((cb) => (cb(mainScreenData))),
-  getInterviewersByCampaign: jest.fn((id, cb) => (cb(pearlJamMocks.interviewersByCampaign))),
-  getInterviewers: jest.fn((cb) => (cb(pearlJamMocks.interviewers))),
-  getSurveyUnitsNotAttributedByCampaign: jest.fn((id, cb) => (cb(pearlJamMocks.notAttributed))),
-  getSurveyUnitsAbandonedByCampaign: jest.fn((id, cb) => (cb(pearlJamMocks.abandoned))),
-  getTerminatedByCampaign: jest.fn(
-    (id, cb) => {
-      (cb(Utils.sortData(pearlJamMocks.terminated, 'finalizationDate', true)));
-      resolve(Utils.sortData(processedData, 'finalizationDate', true));
-    }
-  ),
-  getSurveyUnitsClosable: jest.fn((cb) => (cb(pearlJamMocks.surveyUnitsClosable))),
-  getStatesBySurveyUnit: jest.fn((id, cb) => (cb(pearlJamMocks.states))),
-  getStateCountTotalByCampaign: jest.fn((id, cb) => (cb(pearlJamMocks.stateCountTotal))),
+  putSurveyUnitToValidate: jest.fn((su, cb) => cb({ status: 200 })),
+  putPreferences: jest.fn((prefs, cb) => cb({ status: 200 })),
+  getQuestionnaireId: jest.fn((id, c) => c({ questionnaireId: 'QXT55' })),
+  getCampaigns: jest.fn(cb => cb(mainScreenData)),
+  getInterviewersByCampaign: jest.fn((id, cb) => cb(pearlJamMocks.interviewersByCampaign)),
+  getInterviewers: jest.fn(cb => cb(pearlJamMocks.interviewers)),
+  getSurveyUnitsNotAttributedByCampaign: jest.fn((id, cb) => cb(pearlJamMocks.notAttributed)),
+  getSurveyUnitsAbandonedByCampaign: jest.fn((id, cb) => cb(pearlJamMocks.abandoned)),
+  getTerminatedByCampaign: jest.fn((id, cb) => {
+    cb(Utils.sortData(pearlJamMocks.terminated, 'finalizationDate', true));
+    resolve(Utils.sortData(processedData, 'finalizationDate', true));
+  }),
+  getSurveyUnitsClosable: jest.fn(cb => cb(pearlJamMocks.surveyUnitsClosable)),
+  getStatesBySurveyUnit: jest.fn((id, cb) => cb(pearlJamMocks.states)),
+  getStateCountTotalByCampaign: jest.fn((id, cb) => cb(pearlJamMocks.stateCountTotal)),
   getSurveyUnits: jest.fn((id, state, cb) => {
     if (cb) {
       cb(pearlJamMocks.surveyUnits);
     }
-    return new Promise((resolve) => { resolve(pearlJamMocks.surveyUnits); });
+    return new Promise(resolve => {
+      resolve(pearlJamMocks.surveyUnits);
+    });
   }),
   getStateCountByInterviewer: jest.fn((id, idep, date, cb) => {
     if (cb) {
       cb(pearlJamMocks.interviewerStateCount);
     }
-    return new Promise((resolve) => { resolve(pearlJamMocks.interviewerStateCount); });
+    return new Promise(resolve => {
+      resolve(pearlJamMocks.interviewerStateCount);
+    });
   }),
   getCampaignsByInterviewer: jest.fn((idep, cb) => {
     if (cb) {
       cb(pearlJamMocks.campaignsByInterviewer);
     }
-    return new Promise((resolve) => { resolve(pearlJamMocks.campaignsByInterviewer); });
+    return new Promise(resolve => {
+      resolve(pearlJamMocks.campaignsByInterviewer);
+    });
   }),
-  getStateCount: jest.fn((id, date, cb) => (cb(pearlJamMocks.stateCountTotal))),
-  getStateCountByCampaign: jest.fn((date, cb) => (cb(pearlJamMocks.stateCountByCampaign))),
+  getStateCount: jest.fn((id, date, cb) => cb(pearlJamMocks.stateCountTotal)),
+  getStateCountByCampaign: jest.fn((date, cb) => cb(pearlJamMocks.stateCountByCampaign)),
   getStateCountByInterviewers: jest.fn((date, cb) => {
     if (cb) {
       cb(pearlJamMocks.stateCountByInterv);
     }
-    return new Promise((resolve) => { resolve(pearlJamMocks.stateCountByInterv); });
+    return new Promise(resolve => {
+      resolve(pearlJamMocks.stateCountByInterv);
+    });
   }),
-  getSurveyUnitsQuestionnaireIdByCampaign: jest.fn((campaignId, cb) => (
-    cb(pearlJamMocks.surveyUnitsQuestionnaireId))),
+  getSurveyUnitsQuestionnaireIdByCampaign: jest.fn((campaignId, cb) =>
+    cb(pearlJamMocks.surveyUnitsQuestionnaireId)
+  ),
 }));
 
 const dataRetreiver = new DataFormatter();
@@ -154,27 +164,31 @@ it('Test getDataForListSU', async () => {
 
 it('Test getDataForReview', async () => {
   const callBack = jest.fn();
-  dataRetreiver.getDataForReview(null, callBack, [...mainScreenData, {
-    "id": "simpsons2020x00",
-    "label": "Survey on the Simpsons tv show 2020",
-    "managementStartDate": 1576801000000,
-    "interviewerStartDate": 1575937000000,
-    "identificationPhaseStartDate": 1577233000000,
-    "collectionStartDate": 1577837800000,
-    "collectionEndDate": 1640996200000,
-    "endDate": 1641514600000,
-    "allocated": 4,
-    "toProcessInterviewer": 0,
-    "toAffect": 0,
-    "toFollowUp": 0,
-    "toReview": 16,
-    "finalized": 0,
-    "preference": true
-  },]);
+  dataRetreiver.getDataForReview(null, callBack, [
+    ...mainScreenData,
+    {
+      id: 'simpsons2020x00',
+      label: 'Survey on the Simpsons tv show 2020',
+      managementStartDate: 1576801000000,
+      interviewerStartDate: 1575937000000,
+      identificationPhaseStartDate: 1577233000000,
+      collectionStartDate: 1577837800000,
+      collectionEndDate: 1640996200000,
+      endDate: 1641514600000,
+      allocated: 4,
+      toProcessInterviewer: 0,
+      toAffect: 0,
+      toFollowUp: 0,
+      toReview: 16,
+      finalized: 0,
+      preference: true,
+    },
+  ]);
   await wait(() => expect(callBack).toHaveBeenCalled());
   // Should return properly formatted data
-  expect(callBack.mock.calls[0][0].map((a) => a.id).sort())
-    .toEqual(formattedReviewData.map((a) => a.id).sort());
+  expect(callBack.mock.calls[0][0].map(a => a.id).sort()).toEqual(
+    formattedReviewData.map(a => a.id).sort()
+  );
 });
 
 it('Test getListSuTerminated', async () => {
@@ -187,7 +201,13 @@ it('Test getListSuTerminated', async () => {
 
 it('Test getDataForMonitoringTable (by interviewer 1 survey)', async () => {
   const callBack = jest.fn();
-  dataRetreiver.getDataForMonitoringTable(surveyVqs, new Date('2020-08-20T11:01:58.135Z'), null, C.BY_INTERVIEWER_ONE_SURVEY, callBack);
+  dataRetreiver.getDataForMonitoringTable(
+    surveyVqs,
+    new Date('2020-08-20T11:01:58.135Z'),
+    null,
+    C.BY_INTERVIEWER_ONE_SURVEY,
+    callBack
+  );
   await wait(() => expect(callBack).toHaveBeenCalled());
   // Should return properly formatted data
   expect(callBack).toHaveBeenLastCalledWith(formattedDataMonitoringTableByInterv1surv);
@@ -195,7 +215,13 @@ it('Test getDataForMonitoringTable (by interviewer 1 survey)', async () => {
 
 it('Test getDataForMonitoringTable (by survey 1 Interviewer)', async () => {
   const callBack = jest.fn();
-  dataRetreiver.getDataForMonitoringTable(mainScreenData1Survey, new Date('2020-08-20T11:01:58.135Z'), null, C.BY_SURVEY_ONE_INTERVIEWER, callBack);
+  dataRetreiver.getDataForMonitoringTable(
+    mainScreenData1Survey,
+    new Date('2020-08-20T11:01:58.135Z'),
+    null,
+    C.BY_SURVEY_ONE_INTERVIEWER,
+    callBack
+  );
   await wait(() => expect(callBack).toHaveBeenCalled());
   // Should return properly formatted data
   expect(callBack).toHaveBeenCalledWith(formattedDataMonitoringTableByInterv);
@@ -204,7 +230,14 @@ it('Test getDataForMonitoringTable (by survey 1 Interviewer)', async () => {
 it('Test getDataForMonitoringTable (by survey)', async () => {
   const callBack2 = jest.fn();
   const dataRet = new DataFormatter();
-  dataRet.getDataForMonitoringTable(mainScreenData1Survey, new Date('2020-08-20T11:01:58.135Z'), null, C.BY_SURVEY, callBack2, mainScreenData);
+  dataRet.getDataForMonitoringTable(
+    mainScreenData1Survey,
+    new Date('2020-08-20T11:01:58.135Z'),
+    null,
+    C.BY_SURVEY,
+    callBack2,
+    mainScreenData
+  );
   await wait(() => expect(callBack2).toHaveBeenCalled());
   // Should return properly formatted data
   expect(callBack2).toHaveBeenCalledWith(formattedDataMonitoringTableBysurvey);
@@ -212,7 +245,13 @@ it('Test getDataForMonitoringTable (by survey)', async () => {
 
 it('Test getDataForMonitoringTable (by site)', async () => {
   const callBack = jest.fn();
-  dataRetreiver.getDataForMonitoringTable(formattedSurveys, new Date('2020-08-20T11:01:58.135Z'), null, C.BY_SITE, callBack);
+  dataRetreiver.getDataForMonitoringTable(
+    formattedSurveys,
+    new Date('2020-08-20T11:01:58.135Z'),
+    null,
+    C.BY_SITE,
+    callBack
+  );
   await wait(() => expect(callBack).toHaveBeenCalled());
   // Should return properly formatted data
   expect(callBack).toHaveBeenLastCalledWith(formattedDataMonitoringTableBySite);
@@ -243,8 +282,7 @@ it('Test finalizeSurveyUnits', async () => {
 it('Test getListSUToReview', async () => {
   const res = await dataRetreiver.getListSUToReview('simpsons2020x00', mainScreenData);
   // Should return properly formatted data
-  expect(res.map((a) => a.id).sort())
-    .toEqual(formattedLisSuToReviewSimpsons.map((a) => a.id).sort());
+  expect(res.map(a => a.id).sort()).toEqual(formattedLisSuToReviewSimpsons.map(a => a.id).sort());
 });
 
 // getInterviewers

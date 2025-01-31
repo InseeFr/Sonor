@@ -1,25 +1,22 @@
 import dictionary from './dictionary';
 
-/**
- * Based on the locale passed as a paremeter, this function will return
- * the corresponding dictionary.
- *
- * @param {string} lang the lang of the user
- */
-export const createDictionary = (lang: string) =>
-  Object.keys(dictionary).reduce((_, k) => {
-    _[k] = dictionary[k][lang];
-    return _;
+export type SupportedLocales = 'fr' | 'sq' | 'en';
+type DictionaryKey = keyof typeof dictionary;
+type DictionaryValue = Record<SupportedLocales, any>;
+type Dictionary = Record<DictionaryKey, DictionaryValue>;
+
+export const createDictionary = (lang: SupportedLocales): Record<string, string> => {
+  return Object.entries(dictionary as Dictionary).reduce((acc, [key, value]) => {
+    return {
+      ...acc,
+      [key]: value[lang],
+    };
   }, {});
+};
 
-/**
- * This function will return only the lang part of a locale
- * For example, with fr-FR, will return fr
- * If the lang is not fr, will return en
- * @param {string} lang the lang of the user
- */
-export const getLang = (defaultLang?: string) =>
-  (defaultLang || navigator.language || navigator.language).split('-')[0] === 'fr' ? 'fr' : 'en';
+export const getLang = (defaultLang?: string) => {
+  const lang = defaultLang?.split('-')[0];
+  return lang;
+};
 
-export default createDictionary(getLang());
-//export default createDictionary('en');
+export default createDictionary(getLang('fr'));

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useIsAuthenticated } from '../../Authentication/useAuth';
 import D from '../../i18n';
 import View from '../View/View';
@@ -9,8 +9,7 @@ export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [contactFailed, setContactFailed] = useState(false);
   const [data, setData] = useState(null);
-  const timeoutIdRef = useRef(null);
-
+  const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const { tokens, renewTokens } = useIsAuthenticated();
 
   useEffect(() => {
@@ -18,7 +17,7 @@ export const App = () => {
       if (timeoutIdRef.current) {
         clearTimeout(timeoutIdRef.current);
       }
-      timeoutIdRef.current = setTimeout(renewTokens, 5 * 60 * 1000);
+      timeoutIdRef.current = setTimeout(() => renewTokens, 5 * 60 * 1000);
     };
 
     const events = ['mousemove', 'mousedown', 'keypress', 'touchstart', 'click'];
