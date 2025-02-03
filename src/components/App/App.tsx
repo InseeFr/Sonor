@@ -75,7 +75,7 @@ export const App = () => {
           <View token={tokens.accessToken} userData={data} />
         </div>
       )}
-      {/* {!authenticated && !tokens?.accessToken && {D.configLoadFailed}} */}
+      {!authenticated && !tokens?.accessToken && D.cannotAuth}
     </>
   );
 };
