@@ -22,6 +22,6 @@ describe('Component display', () => {
       render(<App />);
     });
 
-    expect(await screen.findByText(D.configLoadFailed));
+    expect(await screen.findByText(D.cannotAuth));
   });
 });
