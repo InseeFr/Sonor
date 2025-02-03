@@ -1,8 +1,6 @@
 import React from 'react';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
-import {
-  BrowserRouter as Router, Switch, Route, Redirect,
-} from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import MainScreen from '../MainScreen/MainScreen';
 import CampaignPortal from '../CampaignPortal/CampaignPortal';
@@ -27,7 +25,7 @@ class View extends React.Component {
       preferences: {},
       redirect: null,
       loadingPreferences: true,
-      campaigns: []
+      campaigns: [],
     };
     this.dataRetreiver = new DataFormatter(props.token);
   }
@@ -38,26 +36,27 @@ class View extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if( !this.state.campaigns.every((element) => prevState.campaigns.includes(element)) 
-        || !prevState.campaigns.every((element) => this.state.campaigns.includes(element)) 
-      ){
+    if (
+      !this.state.campaigns.every(element => prevState.campaigns.includes(element)) ||
+      !prevState.campaigns.every(element => this.state.campaigns.includes(element))
+    ) {
       this.loadPreferences();
     }
   }
 
   loadPreferences() {
     this.setState({ loadingPreferences: true });
-    this.dataRetreiver.getPreferences((preferences) => {
+    this.dataRetreiver.getPreferences(preferences => {
       this.setState({ preferences, loadingPreferences: false, redirect: <Redirect to="/" /> });
     }, this.state.campaigns);
   }
 
   updatePreferences(newPreferences) {
-    this.dataRetreiver.updatePreferences(newPreferences, (res) => {
+    this.dataRetreiver.updatePreferences(newPreferences, res => {
       if (res.status === 200 || res.status === 201 || res.status === 204) {
-        NotificationManager.success(D.preferencesUpdated, D.updateSuccess, 3500);
+        toast.success(D.preferencesUpdated, D.updateSuccess, 3500);
       } else {
-        NotificationManager.error(D.preferencesNotUpdated, D.error, 3500);
+        toast.error(D.preferencesNotUpdated, D.error, 3500);
       }
       this.loadPreferences();
     });
@@ -72,15 +71,13 @@ class View extends React.Component {
   }
 
   getAllCampaignsData() {
-    this.dataRetreiver.getAllCampaigns((data) => {
-      this.setState({campaigns: data ?? []});
-    })
+    this.dataRetreiver.getAllCampaigns(data => {
+      this.setState({ campaigns: data ?? [] });
+    });
   }
 
   render() {
-    const {
-      showPreferences, preferences, redirect, loadingPreferences, campaigns
-    } = this.state;
+    const { showPreferences, preferences, redirect, loadingPreferences, campaigns } = this.state;
     const { userData } = this.props;
     return (
       <>
@@ -97,17 +94,97 @@ class View extends React.Component {
               preferences={preferences}
             />
             <Switch>
-              <Route path="/review/:id?" component={(routeProps) => <Review dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns} />} />
-              <Route path="/followUp" component={(routeProps) => <Remind dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/follow" component={(routeProps) => <MonitoringTable dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns} />} />
-              <Route path="/collection" component={(routeProps) => <CollectionTable dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns} />} />
-              <Route path="/provisionalstatus" component={(routeProps) => <ProvisionalStatusTable dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/terminated/:id" component={(routeProps) => <Terminated dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/listSU/:id" component={(routeProps) => <ListSU dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/portal/:id" component={(routeProps) => <CampaignPortal dataRetreiver={this.dataRetreiver} {...routeProps} campaigns={campaigns}/>} />
-              <Route path="/notifications" component={(routeProps) => <Notifications dataRetreiver={this.dataRetreiver} {...routeProps} user={userData} />} />
-              <Route path="/close" component={(routeProps) => <Close dataRetreiver={this.dataRetreiver} {...routeProps} />} />
-              <Route path="/" component={() => <MainScreen preferences={preferences} loadingPreferences={loadingPreferences} dataRetreiver={this.dataRetreiver} campaigns={campaigns} />} />
+              <Route
+                path="/review/:id?"
+                component={routeProps => (
+                  <Review
+                    dataRetreiver={this.dataRetreiver}
+                    {...routeProps}
+                    campaigns={campaigns}
+                  />
+                )}
+              />
+              <Route
+                path="/followUp"
+                component={routeProps => (
+                  <Remind dataRetreiver={this.dataRetreiver} {...routeProps} />
+                )}
+              />
+              <Route
+                path="/follow"
+                component={routeProps => (
+                  <MonitoringTable
+                    dataRetreiver={this.dataRetreiver}
+                    {...routeProps}
+                    campaigns={campaigns}
+                  />
+                )}
+              />
+              <Route
+                path="/collection"
+                component={routeProps => (
+                  <CollectionTable
+                    dataRetreiver={this.dataRetreiver}
+                    {...routeProps}
+                    campaigns={campaigns}
+                  />
+                )}
+              />
+              <Route
+                path="/provisionalstatus"
+                component={routeProps => (
+                  <ProvisionalStatusTable dataRetreiver={this.dataRetreiver} {...routeProps} />
+                )}
+              />
+              <Route
+                path="/terminated/:id"
+                component={routeProps => (
+                  <Terminated dataRetreiver={this.dataRetreiver} {...routeProps} />
+                )}
+              />
+              <Route
+                path="/listSU/:id"
+                component={routeProps => (
+                  <ListSU dataRetreiver={this.dataRetreiver} {...routeProps} />
+                )}
+              />
+              <Route
+                path="/portal/:id"
+                component={routeProps => (
+                  <CampaignPortal
+                    dataRetreiver={this.dataRetreiver}
+                    {...routeProps}
+                    campaigns={campaigns}
+                  />
+                )}
+              />
+              <Route
+                path="/notifications"
+                component={routeProps => (
+                  <Notifications
+                    dataRetreiver={this.dataRetreiver}
+                    {...routeProps}
+                    user={userData}
+                  />
+                )}
+              />
+              <Route
+                path="/close"
+                component={routeProps => (
+                  <Close dataRetreiver={this.dataRetreiver} {...routeProps} />
+                )}
+              />
+              <Route
+                path="/"
+                component={() => (
+                  <MainScreen
+                    preferences={preferences}
+                    loadingPreferences={loadingPreferences}
+                    dataRetreiver={this.dataRetreiver}
+                    campaigns={campaigns}
+                  />
+                )}
+              />
             </Switch>
           </div>
         </Router>
@@ -115,9 +192,8 @@ class View extends React.Component {
           preferences={preferences}
           showPreferences={showPreferences}
           hidePreferences={() => this.hidePreferences()}
-          updatePreferences={(prefs) => this.updatePreferences(prefs)}
+          updatePreferences={prefs => this.updatePreferences(prefs)}
         />
-        <NotificationContainer />
       </>
     );
   }

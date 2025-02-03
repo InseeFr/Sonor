@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, cleanup, wait } from '@testing-library/react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { NotificationManager } from 'react-notifications';
+import { toast } from 'react-toastify';
 import DataFormatter from '../../utils/DataFormatter';
 import Review from './Review';
 import mocks from '../../tests/mocks';
@@ -29,7 +29,7 @@ Date.now = jest.fn(() => 1597916474000);
 afterEach(cleanup);
 
 jest.mock('../../utils/DataFormatter');
-jest.mock('react-notifications');
+jest.mock('react-toastify');
 
 const survey = mocks.surveyVqs;
 
@@ -61,8 +61,8 @@ const mockDataFormatter = DataFormatter.mockImplementation(() => ({
 
 const mockSuccess = jest.fn();
 const mockError = jest.fn();
-NotificationManager.success = mockSuccess;
-NotificationManager.error = mockError;
+toast.success = mockSuccess;
+toast.error = mockError;
 
 const TestingRouter = ({ ComponentWithRedirection }) => (
   <Router history={history}>

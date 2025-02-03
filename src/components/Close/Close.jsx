@@ -2,15 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { NotificationManager } from 'react-notifications';
+import { toast } from 'react-toastify';
 import CloseSUTable from './CloseSUTable';
 import Utils from '../../utils/Utils';
 import D from '../../i18n';
 import './Close.css';
 
-function Close({
-  location, dataRetreiver,
-}) {
+function Close({ location, dataRetreiver }) {
   const { survey } = location;
 
   const [data, setData] = useState([]);
@@ -20,7 +18,7 @@ function Close({
 
   const fetchData = useCallback(() => {
     setIsLoading(true);
-    dataRetreiver.getDataForClosePage((res) => {
+    dataRetreiver.getDataForClosePage(res => {
       setData(res);
       setSite(res.site);
       setIsLoading(false);
@@ -31,11 +29,14 @@ function Close({
     fetchData();
   }, [fetchData]);
 
-  const handleSort = useCallback((property, asc) => {
-    const [sortedData, newSort] = Utils.handleSort(property, data, sort, 'listSU', asc);
-    setSort(newSort);
-    setData(sortedData);
-  }, [data, sort]);
+  const handleSort = useCallback(
+    (property, asc) => {
+      const [sortedData, newSort] = Utils.handleSort(property, data, sort, 'listSU', asc);
+      setSort(newSort);
+      setData(sortedData);
+    },
+    [data, sort]
+  );
 
   function validateChangingState(lstSUChangingState, closingCause) {
     let cc;
@@ -48,18 +49,31 @@ function Close({
     } else if (closingCause === D.ROW) {
       cc = 'ROW';
     }
-    dataRetreiver.closeSurveyUnits(lstSUChangingState, cc)
-      .then((response) => {
-        if (response.some(
-          (res) => !(res.status === 200 || res.status === 201 || res.status === 204),
-        )) {
-          NotificationManager.error(`${D.changingStateAlertError}: ${lstSUChangingState
-            .filter((x, index) => !(response[index].status === 200 || response[index].status === 201 || response[index].status === 204)).join(', ')}.`, D.error, 3500);
-        } else {
-          NotificationManager.success(`${D.changingStateAlertSuccess}: ${lstSUChangingState.join(', ')}.`, D.updateSuccess, 3500);
-        }
-        fetchData();
-      });
+    dataRetreiver.closeSurveyUnits(lstSUChangingState, cc).then(response => {
+      if (response.some(res => !(res.status === 200 || res.status === 201 || res.status === 204))) {
+        toast.error(
+          `${D.changingStateAlertError}: ${lstSUChangingState
+            .filter(
+              (x, index) =>
+                !(
+                  response[index].status === 200 ||
+                  response[index].status === 201 ||
+                  response[index].status === 204
+                )
+            )
+            .join(', ')}.`,
+          D.error,
+          3500
+        );
+      } else {
+        toast.success(
+          `${D.changingStateAlertSuccess}: ${lstSUChangingState.join(', ')}.`,
+          D.updateSuccess,
+          3500
+        );
+      }
+      fetchData();
+    });
   }
 
   useEffect(() => {
@@ -73,10 +87,11 @@ function Close({
       <Row>
         <Col>
           <Link to="/" className="ButtonLink ReturnButtonLink">
-            <Button className="ReturnButton" data-testid="return-button">{D.back}</Button>
+            <Button className="ReturnButton" data-testid="return-button">
+              {D.back}
+            </Button>
           </Link>
         </Col>
-
       </Row>
       <CloseSUTable
         sort={sort}
@@ -85,9 +100,8 @@ function Close({
         survey={survey}
         site={site}
         isLoading={isLoading}
-        validateChangingState={
-          (lstSUChangingState,
-            stateModified) => validateChangingState(lstSUChangingState, stateModified)
+        validateChangingState={(lstSUChangingState, stateModified) =>
+          validateChangingState(lstSUChangingState, stateModified)
         }
       />
     </div>

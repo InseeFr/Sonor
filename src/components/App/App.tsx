@@ -1,14 +1,16 @@
-import { useEffect, useState, useRef } from 'react';
-import { useIsAuthenticated } from '../../Authentication/useAuth';
-import D from '../../i18n';
-import View from '../View/View';
+import { useEffect, useRef, useState } from 'react';
+import { ANONYMOUS, OIDC } from '../../utils/constants.json';
 import DataFormatter from '../../utils/DataFormatter';
-import { OIDC, ANONYMOUS } from '../../utils/constants.json';
+import D from '../../i18n';
+import View from 'components/View/View';
+import { useIsAuthenticated } from 'components/CustomHooks/useAuth';
+import { toast } from 'react-toastify';
 
 export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [contactFailed, setContactFailed] = useState(false);
   const [data, setData] = useState(null);
+
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const { tokens, renewTokens } = useIsAuthenticated();
 
@@ -59,20 +61,21 @@ export const App = () => {
   }, [tokens]);
 
   if (!tokens?.accessToken) {
-    return <div>{D.initializationFailed}</div>;
-  }
-
-  if (authenticated && tokens?.accessToken && data) {
-    return (
-      <div className="App">
-        <View token={tokens.accessToken} userData={data} />
-      </div>
-    );
+    toast.error(D.cannotAuth);
   }
 
   if (contactFailed) {
-    return <div>{D.cannotContactServer}</div>;
+    toast.error(D.cannotContactServer);
   }
 
-  return <div>{D.initializing}</div>;
+  return (
+    <>
+      {authenticated && tokens?.accessToken && data && (
+        <div className="App">
+          <View token={tokens.accessToken} userData={data} />
+        </div>
+      )}
+      {/* {!authenticated && !tokens?.accessToken && {D.configLoadFailed}} */}
+    </>
+  );
 };

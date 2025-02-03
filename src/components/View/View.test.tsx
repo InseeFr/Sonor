@@ -38,7 +38,7 @@ Date.now = jest.fn(() => 1597914060000);
 
 afterEach(cleanup);
 
-jest.mock('react-notifications');
+jest.mock('react-toastify');
 jest.mock('../../utils/DataFormatter');
 
 const {
@@ -57,8 +57,8 @@ const {
 
 const mockSuccess = jest.fn();
 const mockError = jest.fn();
-NotificationManager.success = mockSuccess;
-NotificationManager.error = mockError;
+toast.success = mockSuccess;
+toast.error = mockError;
 
 const updatePreferences = jest.fn((newPrefs, cb) => {
   if (newPrefs.includes('simpsonkgs2020x00')) {

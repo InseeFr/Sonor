@@ -12,7 +12,7 @@ const app = {
     fr: 'Initialisation de Keycloak',
     en: 'Initializing Keycloak',
   },
-  initializationFailed: {
+  configLoadFailed: {
     fr: 'Le chargement de la configuration a échoué.',
     en: 'Could not load settings',
   },

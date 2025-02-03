@@ -11,7 +11,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src",
-    "module": "ES2020",
+    "module": "esnext",
     "types": ["vite/client"],
   }
 }

@@ -1,10 +1,8 @@
 import { screen, cleanup, render, act } from '@testing-library/react';
 import { App } from './App';
-import { mockOidcForUser, mockOidcFailed } from '../../Authentication/useAuth';
+import { mockOidcForUser, mockOidcFailed } from '../CustomHooks/useAuth';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import D from '../../i18n';
-
-vi.mock('react-notifications');
 
 describe('Component display', () => {
   it('Component is displayed ', async () => {
@@ -24,6 +22,6 @@ describe('Component display', () => {
       render(<App />);
     });
 
-    expect(await screen.findByText(D.initializationFailed));
+    expect(await screen.findByText(D.configLoadFailed));
   });
 });
