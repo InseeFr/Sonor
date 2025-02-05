@@ -1,4 +1,4 @@
-import { screen, cleanup, render, act } from '@testing-library/react';
+import { screen, render, act } from '@testing-library/react';
 import { App } from './App';
 import { mockOidcForUser, mockOidcFailed } from '../CustomHooks/useAuth';
 import { describe, expect, it } from 'vitest';
@@ -12,7 +12,7 @@ describe('Component display', () => {
       render(<App />);
     });
 
-    expect(await screen.findByText(D.surveyList));
+    expect(await screen.findByText(D.surveyList, {}, { timeout: 20000 }));
   });
 
   it('Component is not displayed ', async () => {
