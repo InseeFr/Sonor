@@ -4,12 +4,11 @@ import D from '../../i18n';
 function getMatchingLines(data, searchBy, str) {
   const s = str.toLowerCase().split(' ');
 
-  const matchingLines = data.filter((line) => {
-
+  const matchingLines = data.filter(line => {
     if (line.interviewer && typeof line.interviewer === 'object') {
       Object.values(line.interviewer).join(' ');
     }
-    const toSearch = searchBy.map((fieldName) => {
+    const toSearch = searchBy.map(fieldName => {
       if (!line[fieldName]) {
         return '';
       }
@@ -21,7 +20,7 @@ function getMatchingLines(data, searchBy, str) {
       }
       return line[fieldName].toLowerCase();
     });
-    return (!s.some((word) => !toSearch.some((field) => field.includes(word))));
+    return !s.some(word => !toSearch.some(field => field.includes(word)));
   });
   return matchingLines;
 }
@@ -35,44 +34,25 @@ class SearchField extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      data, searchBy, updateFunc,
-    } = this.props;
+    const { data, searchBy, updateFunc } = this.props;
     if (prevProps.data !== data) {
       const { inputValue } = this.state;
-      updateFunc(getMatchingLines(
-        data,
-        searchBy,
-        inputValue,
-      ));
+      updateFunc(getMatchingLines(data, searchBy, inputValue));
     }
-    
   }
 
   updateInputValue(e) {
-    const {
-      data, searchBy, updateFunc,
-    } = this.props;
+    const { data, searchBy, updateFunc } = this.props;
     this.setState({ inputValue: e.target.value });
-    updateFunc(getMatchingLines(
-      data,
-      searchBy,
-      e.target.value,
-    ));
+    updateFunc(getMatchingLines(data, searchBy, e.target.value));
   }
 
   clearSearchFeild() {
-    const {
-      data, searchBy, updateFunc,
-    } = this.props;
+    const { data, searchBy, updateFunc } = this.props;
     this.setState({
       inputValue: '',
     });
-    updateFunc(getMatchingLines(
-      data,
-      searchBy,
-      '',
-    ));
+    updateFunc(getMatchingLines(data, searchBy, ''));
   }
 
   render() {
@@ -84,11 +64,12 @@ class SearchField extends React.Component {
           type="text"
           placeholder={D.search}
           value={inputValue}
-          onChange={(e) => this.updateInputValue(e)}
-          />
-        <span id="ClearSearchInput" onClick={() => this.clearSearchFeild()}>&times;</span>
+          onChange={e => this.updateInputValue(e)}
+        />
+        <span id="ClearSearchInput" onClick={() => this.clearSearchFeild()}>
+          &times;
+        </span>
       </div>
-        
     );
   }
 }

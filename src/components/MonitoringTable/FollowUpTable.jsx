@@ -6,19 +6,17 @@ import C from '../../utils/constants.json';
 import D from '../../i18n';
 import './MonitoringTable.css';
 
-function FollowUpTable({
-  data, sort, displayedLines, pagination, mode, handleSort,
-}) {
+function FollowUpTable({ data, sort, displayedLines, pagination, mode, handleSort }) {
+  console.log(data);
+  console.log(displayedLines);
+
   const totalDemRow = mode !== C.BY_INTERVIEWER_ONE_SURVEY || (
     <tr>
       <th className="ColFirstCol">{D.totalDEM}</th>
       <th className="ColumnSpacing" />
       <th className="YellowHeader ColCompletionRate">
         {Number.isNaN(data.total.dem.completionRate) || (
-          <>
-            {(data.total.dem.completionRate * 100).toFixed(1)}
-            %
-          </>
+          <>{(data.total.dem.completionRate * 100).toFixed(1)}%</>
         )}
       </th>
       <th className="ColumnSpacing" />
@@ -33,6 +31,8 @@ function FollowUpTable({
       <th className="YellowHeader ColAtLeastOneContact">{data.total.dem.atLeastOneContact}</th>
       <th className="YellowHeader ColAppointmentTaken">{data.total.dem.appointmentTaken}</th>
       <th className="YellowHeader ColInterviewStarted">{data.total.dem.interviewStarted}</th>
+      <th className="YellowHeader ColNoticeLetter">{-1}</th>
+      <th className="YellowHeader ColReminders">{-1}</th>
     </tr>
   );
 
@@ -44,10 +44,7 @@ function FollowUpTable({
         <th className="ColumnSpacing" />
         <th className="YellowHeader ColCompletionRate">
           {Number.isNaN(data.total.france.completionRate) || (
-            <>
-              {(data.total.france.completionRate * 100).toFixed(1)}
-              %
-            </>
+            <>{(data.total.france.completionRate * 100).toFixed(1)}%</>
           )}
         </th>
         <th className="ColumnSpacing" />
@@ -62,6 +59,8 @@ function FollowUpTable({
         <th className="YellowHeader ColAtLeastOneContact">{data.total.france.atLeastOneContact}</th>
         <th className="YellowHeader ColAppointmentTaken">{data.total.france.appointmentTaken}</th>
         <th className="YellowHeader ColInterviewStarted">{data.total.france.interviewStarted}</th>
+        <th className="YellowHeader ColNoticeLetter">{-1}</th>
+        <th className="YellowHeader ColReminders">{-1}</th>
       </tr>
     </tfoot>
   );
@@ -77,7 +76,11 @@ function FollowUpTable({
     firstColumnTitle = D.interviewer;
     firstColumnSortAttribute = 'CPinterviewer';
   }
-  function handleSortFunct(property) { return () => { handleSort(property); }; }
+  function handleSortFunct(property) {
+    return () => {
+      handleSort(property);
+    };
+  }
 
   return (
     <Table id="FollowUpTable" className="CustomTable" bordered striped hover responsive size="sm">
@@ -87,9 +90,13 @@ function FollowUpTable({
           <th className="ColumnSpacing" />
           <th className="EmptyHeader ColCompletionRate" />
           <th rowSpan="2" className="ColumnSpacing" />
-          <th colSpan="6" className="CenteredText">{D.numberOfSurveyUnits}</th>
+          <th colSpan="6" className="CenteredText">
+            {D.numberOfSurveyUnits}
+          </th>
           <th rowSpan="2" className="ColumnSpacing" />
-          <th colSpan="4" className="YellowHeader CenteredText">{D.suCollectionsOngoing}</th>
+          <th colSpan="10" className="YellowHeader CenteredText">
+            {D.suCollectionsOngoing}
+          </th>
         </tr>
         <tr>
           <th
@@ -108,24 +115,15 @@ function FollowUpTable({
             {D.completionRate}
             <SortIcon val="completionRate" sort={sort} />
           </th>
-          <th
-            onClick={handleSortFunct('total')}
-            className="Clickable ColAllocated"
-          >
+          <th onClick={handleSortFunct('total')} className="Clickable ColAllocated">
             {D.allocated}
             <SortIcon val="total" sort={sort} />
           </th>
-          <th
-            onClick={handleSortFunct('notStarted')}
-            className="Clickable ColNotStarted"
-          >
+          <th onClick={handleSortFunct('notStarted')} className="Clickable ColNotStarted">
             {D.notStarted}
             <SortIcon val="notStarted" sort={sort} />
           </th>
-          <th
-            onClick={handleSortFunct('onGoing')}
-            className="Clickable ColOngoing"
-          >
+          <th onClick={handleSortFunct('onGoing')} className="Clickable ColOngoing">
             {D.inProgressInterviewer}
             <SortIcon val="onGoing" sort={sort} />
           </th>
@@ -136,17 +134,11 @@ function FollowUpTable({
             {D.waitingForIntReview}
             <SortIcon val="waitingForIntValidation" sort={sort} />
           </th>
-          <th
-            onClick={handleSortFunct('intValidated')}
-            className="Clickable ColIntVal"
-          >
+          <th onClick={handleSortFunct('intValidated')} className="Clickable ColIntVal">
             {D.reviewedByInterviewer}
             <SortIcon val="intValidated" sort={sort} />
           </th>
-          <th
-            onClick={handleSortFunct('demValidated')}
-            className="Clickable ColDemVal"
-          >
+          <th onClick={handleSortFunct('demValidated')} className="Clickable ColDemVal">
             {D.reviewedEnded}
             <SortIcon val="demValidated" sort={sort} />
           </th>
@@ -178,16 +170,27 @@ function FollowUpTable({
             {D.interviewStarted}
             <SortIcon val="interviewStarted" sort={sort} />
           </th>
+          <th className="YellowHeader Clickable CenteredText">
+            {D.noticeLetter}
+            <SortIcon val="interviewStarted" sort={sort} />
+          </th>
+          <th className="YellowHeader Clickable CenteredText">
+            {D.reminders}
+            <SortIcon val="interviewStarted" sort={sort} />
+          </th>
         </tr>
       </thead>
       <tbody>
         {displayedLines
           .slice(
             (pagination.page - 1) * pagination.size,
-            Math.min(pagination.page * pagination.size, displayedLines.length),
+            Math.min(pagination.page * pagination.size, displayedLines.length)
           )
-          .map((line) => (
-            <FollowUpTableLine key={line.campaignId || line.interviewerId || line.site} data={line} />
+          .map(line => (
+            <FollowUpTableLine
+              key={line.campaignId || line.interviewerId || line.site}
+              data={line}
+            />
           ))}
       </tbody>
       {tableFooter}

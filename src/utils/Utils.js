@@ -29,42 +29,39 @@ class Utils {
   }
 
   static calculateWasteRate(outcomes, stateCount) {
-    return (
-      (outcomes.refCount + outcomes.impCount + stateCount.npiCount)
-      / stateCount.total
-    );
+    return (outcomes.refCount + outcomes.impCount + stateCount.npiCount) / stateCount.total;
   }
 
   // Comming soon with business rule
   static calculateOutOfScopeRateInterviewer(outcomes, stateCount) {
     return (
-      (outcomes.ucdCount
-        + outcomes.utrCount
-        + outcomes.alaCount
-        + outcomes.dcdCount
-        + outcomes.nuhCount
-        + outcomes.dukCount
-        + outcomes.duuCount
-        + outcomes.noaCount
-        + stateCount.npxCount
-        + stateCount.rowCount)
-      / (stateCount.total - stateCount.npaCount)
+      (outcomes.ucdCount +
+        outcomes.utrCount +
+        outcomes.alaCount +
+        outcomes.dcdCount +
+        outcomes.nuhCount +
+        outcomes.dukCount +
+        outcomes.duuCount +
+        outcomes.noaCount +
+        stateCount.npxCount +
+        stateCount.rowCount) /
+      (stateCount.total - stateCount.npaCount)
     );
   }
 
   static calculateOutOfScopeRateManagement(outcomes, stateCount) {
     return (
-      (outcomes.ucdCount
-        + outcomes.utrCount
-        + outcomes.alaCount
-        + outcomes.dcdCount
-        + outcomes.nuhCount
-        + outcomes.dukCount
-        + outcomes.duuCount
-        + outcomes.noaCount
-        + stateCount.npxCount
-        + stateCount.rowCount)
-      / (stateCount.total)
+      (outcomes.ucdCount +
+        outcomes.utrCount +
+        outcomes.alaCount +
+        outcomes.dcdCount +
+        outcomes.nuhCount +
+        outcomes.dukCount +
+        outcomes.duuCount +
+        outcomes.noaCount +
+        stateCount.npxCount +
+        stateCount.rowCount) /
+      stateCount.total
     );
   }
 
@@ -81,6 +78,8 @@ class Utils {
     line.atLeastOneContact = stateCount.aocCount;
     line.appointmentTaken = stateCount.apsCount;
     line.interviewStarted = stateCount.insCount;
+    line.interviewStarted = stateCount.insCount;
+    line.interviewStarted = stateCount.insCount;
 
     return line;
   }
@@ -94,18 +93,20 @@ class Utils {
     line.surveysAccepted = outcomes.inaCount;
     line.refusal = outcomes.refCount;
     line.unreachable = outcomes.impCount;
-    line.outOfScope = outcomes.ucdCount
-      + outcomes.utrCount
-      + outcomes.alaCount
-      + outcomes.dcdCount
-      + outcomes.nuhCount
-      + outcomes.dukCount
-      + outcomes.duuCount
-      + outcomes.noaCount;
+    line.outOfScope =
+      outcomes.ucdCount +
+      outcomes.utrCount +
+      outcomes.alaCount +
+      outcomes.dcdCount +
+      outcomes.nuhCount +
+      outcomes.dukCount +
+      outcomes.duuCount +
+      outcomes.noaCount;
     line.totalProcessed = stateCount.tbrCount + stateCount.finCount;
     line.absInterviewer = stateCount.npaCount;
     line.otherReason = stateCount.npiCount + stateCount.npxCount + stateCount.rowCount;
-    line.totalClosed = stateCount.npaCount + stateCount.npiCount + stateCount.npxCount + stateCount.rowCount;
+    line.totalClosed =
+      stateCount.npaCount + stateCount.npiCount + stateCount.npxCount + stateCount.rowCount;
     line.allocated = stateCount.total;
 
     return line;
@@ -183,7 +184,7 @@ class Utils {
       'survey',
       'site',
       'date',
-      'finalizationDate',      
+      'finalizationDate',
     ];
     if (labelsSimpleSort.includes(sortOn)) {
       return (a, b) => {
@@ -200,8 +201,8 @@ class Utils {
       return (a, b) => {
         const aState = a.closingCause ? D[a.closingCause] : undefined;
         const bState = b.closingCause ? D[b.closingCause] : undefined;
-        
-        if(!aState || !bState){
+
+        if (!aState || !bState) {
           return aState ? -1 * mult : 1 * mult;
         }
         if (aState !== bState) {
@@ -228,7 +229,7 @@ class Utils {
       return (a, b) => {
         const dateA = a.contactOutcome.date;
         const dateB = b.contactOutcome.date;
-        if(!dateA || !dateB){
+        if (!dateA || !dateB) {
           return dateA ? 1 * mult : -1 * mult;
         }
         if (dateA !== dateB) {
@@ -252,19 +253,25 @@ class Utils {
         NOA: 11,
         ACP: 12,
         NER: 13,
-      }
-      
-      return (a, b) => {  
-        const typeAOrder = a?.contactOutcome !== undefined && a?.contactOutcome?.type !== undefined ? contactOutcomeTypeOrder[a.contactOutcome?.type] : 14;
-        const typeBOrder = b?.contactOutcome !==undefined && b?.contactOutcome?.type !== undefined  ? contactOutcomeTypeOrder[b.contactOutcome?.type] : 14;
+      };
 
-        if(!typeAOrder || !typeBOrder){
+      return (a, b) => {
+        const typeAOrder =
+          a?.contactOutcome !== undefined && a?.contactOutcome?.type !== undefined
+            ? contactOutcomeTypeOrder[a.contactOutcome?.type]
+            : 14;
+        const typeBOrder =
+          b?.contactOutcome !== undefined && b?.contactOutcome?.type !== undefined
+            ? contactOutcomeTypeOrder[b.contactOutcome?.type]
+            : 14;
+
+        if (!typeAOrder || !typeBOrder) {
           return typeAOrder ? -1 * mult : 1 * mult;
         }
         if (typeAOrder !== typeBOrder) {
           return (typeAOrder < typeBOrder ? -1 : 1) * mult;
         }
-       
+
         return mainSort ? mainSortFunc(a, b) : 0;
       };
     }
@@ -290,10 +297,8 @@ class Utils {
     }
     if (['interviewer_terminated', 'interviewer_closable'].includes(sortOn)) {
       return (a, b) => {
-        const aString = a.interviewer.interviewerLastName
-          + a.interviewer.interviewerFirstName;
-        const bString = b.interviewer.interviewerLastName
-          + b.interviewer.interviewerFirstName;
+        const aString = a.interviewer.interviewerLastName + a.interviewer.interviewerFirstName;
+        const bString = b.interviewer.interviewerLastName + b.interviewer.interviewerFirstName;
         if (aString < bString) {
           return -1 * mult;
         }
@@ -303,9 +308,8 @@ class Utils {
         return mainSort ? mainSortFunc(a, b) : 0;
       };
     }
-    return (a, b) => (a[sortOn] === b[sortOn] && mainSort
-      ? mainSortFunc(a, b)
-      : (a[sortOn] - b[sortOn]) * mult);
+    return (a, b) =>
+      a[sortOn] === b[sortOn] && mainSort ? mainSortFunc(a, b) : (a[sortOn] - b[sortOn]) * mult;
   }
 
   static sortData(data, sortOn, asc, mainSortAttr) {
@@ -320,7 +324,7 @@ class Utils {
   }
 
   static addIfNotAlreadyPresent(array, element) {
-    if (!array.some((elm) => elm.id === element.id)) {
+    if (!array.some(elm => elm.id === element.id)) {
       array.push(element);
     }
   }
@@ -328,23 +332,21 @@ class Utils {
   static sumOn(data, groupBy) {
     const result = {};
     data
-      .filter((elm) => elm.stateCount)
-      .forEach((elm) => {
+      .filter(elm => elm.stateCount)
+      .forEach(elm => {
         if (!Object.prototype.hasOwnProperty.call(result, elm[groupBy])) {
           result[elm[groupBy]] = JSON.parse(JSON.stringify(elm));
         } else {
           Object.entries(elm.stateCount)
-            .filter((x) => !isNaN(x[1]))
+            .filter(x => !isNaN(x[1]))
             .forEach(([key, val]) => {
               result[elm[groupBy]].stateCount[key] += val;
             });
         }
       });
 
-    const finalArray = Object.keys(result).map((key) => {
-      const formattedData = this.formatForMonitoringTable(
-        result[key].stateCount,
-      );
+    const finalArray = Object.keys(result).map(key => {
+      const formattedData = this.formatForMonitoringTable(result[key].stateCount);
       formattedData.interviewerFirstName = result[key].interviewerFirstName;
       formattedData.interviewerLastName = result[key].interviewerLastName;
       formattedData.interviewerId = result[key].interviewerId;
@@ -357,12 +359,12 @@ class Utils {
   static getStateCountSum(data) {
     const result = {};
     data
-      .filter((elm) => elm.stateCount)
-      .forEach((elm) => {
+      .filter(elm => elm.stateCount)
+      .forEach(elm => {
         Object.keys(elm.stateCount)
-          .filter((key) => !isNaN(elm.stateCount[key]))
-          .forEach((key) => {
-            result[key] = (result[key] + elm.stateCount[key]) || elm.stateCount[key];
+          .filter(key => !isNaN(elm.stateCount[key]))
+          .forEach(key => {
+            result[key] = result[key] + elm.stateCount[key] || elm.stateCount[key];
           });
       });
 
@@ -371,11 +373,11 @@ class Utils {
 
   static sumElms(data) {
     const result = {};
-    data.forEach((elm) => {
+    data.forEach(elm => {
       Object.keys(elm)
-        .filter((key) => !isNaN(elm[key]))
-        .forEach((key) => {
-          result[key] = (result[key] + elm[key]) || elm[key];
+        .filter(key => !isNaN(elm[key]))
+        .forEach(key => {
+          result[key] = result[key] + elm[key] || elm[key];
         });
     });
     return result;
@@ -403,8 +405,7 @@ class Utils {
       dateToUse = new Date(dateToUse).getTime();
     }
     return (
-      survey.managementStartDate < dateToUse
-      && (!survey.endDate || survey.endDate > dateToUse)
+      survey.managementStartDate < dateToUse && (!survey.endDate || survey.endDate > dateToUse)
     );
   }
 
@@ -430,7 +431,7 @@ class Utils {
           data.interviewers,
           sortOn,
           newOrder,
-          'CPinterviewer',
+          'CPinterviewer'
         );
         break;
       case 'monitoringTable': {
@@ -445,12 +446,7 @@ class Utils {
             mainAttr = 'CPinterviewer';
           }
         }
-        sortedData.linesDetails = this.sortData(
-          data.linesDetails,
-          sortOn,
-          newOrder,
-          mainAttr,
-        );
+        sortedData.linesDetails = this.sortData(data.linesDetails, sortOn, newOrder, mainAttr);
         break;
       }
       case 'review':
@@ -465,49 +461,49 @@ class Utils {
     return [sortedData, { sortOn, asc: newOrder }];
   }
 
-  static getCheckAllValue(checkboxArray, pagination){ 
+  static getCheckAllValue(checkboxArray, pagination) {
     const startIndex = pagination.size * (pagination.page - 1);
     const endIndex = Math.min(pagination.size * pagination.page, checkboxArray.length);
 
     return checkboxArray.slice(startIndex, endIndex).every(checkbox => checkbox.isChecked);
   }
 
-  static getOnToggleChanges(id, checkboxArray, displayedLines, pagination ) {
-    const newCheckboxArray = displayedLines.map((element) =>{ 
-      const checkboxArrayData = checkboxArray.find((data) => data.id === element.id);
-      
+  static getOnToggleChanges(id, checkboxArray, displayedLines, pagination) {
+    const newCheckboxArray = displayedLines.map(element => {
+      const checkboxArrayData = checkboxArray.find(data => data.id === element.id);
+
       return element.id !== id
         ? checkboxArrayData
         : { id: element.id, isChecked: !checkboxArrayData?.isChecked };
-
-    })
+    });
     const newCheckAll = Utils.getCheckAllValue(newCheckboxArray, pagination);
 
-    checkboxArray.forEach((element) => {
-      if (!displayedLines.some((line) => line.id === element.id)) {
+    checkboxArray.forEach(element => {
+      if (!displayedLines.some(line => line.id === element.id)) {
         newCheckboxArray.push(element);
       }
-    })
+    });
 
-    return {newCheckboxArray, newCheckAll};
+    return { newCheckboxArray, newCheckAll };
   }
 
   static handleCheckAll(checkAllValue, checkboxArray, displayedLines, pagination) {
     const newCheckboxArray = displayedLines.map((data, index) => {
-      const isWithinRange = index >= pagination.size * (pagination.page - 1) &&
-                            index < pagination.size * pagination.page;
+      const isWithinRange =
+        index >= pagination.size * (pagination.page - 1) &&
+        index < pagination.size * pagination.page;
 
-      const checkboxData = checkboxArray.find((element) => element.id === data.id);
+      const checkboxData = checkboxArray.find(element => element.id === data.id);
       const isChecked = isWithinRange ? checkAllValue : checkboxData?.isChecked || false;
 
       return { id: data.id, isChecked };
-    })
+    });
 
-    checkboxArray.forEach((element) => {
-      if (!displayedLines.some((line) => line.id === element.id)) {
+    checkboxArray.forEach(element => {
+      if (!displayedLines.some(line => line.id === element.id)) {
         newCheckboxArray.push(element);
       }
-    })
+    });
 
     return newCheckboxArray;
   }

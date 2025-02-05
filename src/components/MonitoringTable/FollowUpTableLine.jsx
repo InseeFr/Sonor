@@ -26,12 +26,7 @@ function FollowUpTableLine({ data }) {
       <td className="ColFirstCol">{interviewerName || survey || site}</td>
       <td className="ColumnSpacing" />
       <td className="ColCompletionRate">
-        {Number.isNaN(completionRate) || (
-          <>
-            {(completionRate * 100).toFixed(1)}
-            %
-          </>
-        )}
+        {Number.isNaN(completionRate) || <>{(completionRate * 100).toFixed(1)}%</>}
       </td>
       <td className="ColumnSpacing" />
       <td className="ColAllocated">{total}</td>
@@ -45,6 +40,8 @@ function FollowUpTableLine({ data }) {
       <td className="ColAtLeastOneContact">{atLeastOneContact}</td>
       <td className="ColAppointmentTaken">{appointmentTaken}</td>
       <td className="ColInterviewStarted">{interviewStarted}</td>
+      <td className="ColNoticeLetter">{50}</td>
+      <td className="ColReminders">{10}</td>
     </tr>
   );
 }

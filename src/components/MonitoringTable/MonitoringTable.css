@@ -37,3 +37,9 @@
 #MonitoringTable .ColInterviewStarted{
   width: 7%;
 }
+#MonitoringTable .ColNoticeLetter{
+  width: 7%;
+}
+#MonitoringTable .ColReminders{
+  width: 7%;
+}
