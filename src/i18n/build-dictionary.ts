@@ -14,9 +14,9 @@ export const createDictionary = (lang: SupportedLocales): Record<string, string>
   }, {});
 };
 
-export const getLang = (defaultLang?: string) => {
-  const lang = defaultLang?.split('-')[0];
-  return lang;
+export const getLang = (defaultLang?: string): SupportedLocales => {
+  const lang = (defaultLang ?? navigator.language).split('-')[0];
+  return lang === 'fr' ? 'fr' : 'en';
 };
 
-export default createDictionary(getLang('fr'));
+export default createDictionary(getLang());
