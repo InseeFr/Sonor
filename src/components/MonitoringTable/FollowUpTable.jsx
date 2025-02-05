@@ -30,9 +30,9 @@ function FollowUpTable({ data, sort, displayedLines, pagination, mode, handleSor
       <th className="YellowHeader ColPreparingContact">{data.total.dem.preparingContact}</th>
       <th className="YellowHeader ColAtLeastOneContact">{data.total.dem.atLeastOneContact}</th>
       <th className="YellowHeader ColAppointmentTaken">{data.total.dem.appointmentTaken}</th>
-      <th className="YellowHeader ColInterviewStarted">{data.total.dem.interviewStarted}</th>
-      <th className="YellowHeader ColNoticeLetter">{-1}</th>
-      <th className="YellowHeader ColReminders">{-1}</th>
+      <th className="YellowHeader ColInterviewStarted">{data.total.dem.reminderCounter}</th>
+      <th className="YellowHeader ColNoticeLetter">{data.total.dem.noticeLetter}</th>
+      <th className="YellowHeader ColReminders">{data.total.dem.reminders}</th>
     </tr>
   );
 
@@ -59,8 +59,8 @@ function FollowUpTable({ data, sort, displayedLines, pagination, mode, handleSor
         <th className="YellowHeader ColAtLeastOneContact">{data.total.france.atLeastOneContact}</th>
         <th className="YellowHeader ColAppointmentTaken">{data.total.france.appointmentTaken}</th>
         <th className="YellowHeader ColInterviewStarted">{data.total.france.interviewStarted}</th>
-        <th className="YellowHeader ColNoticeLetter">{-1}</th>
-        <th className="YellowHeader ColReminders">{-1}</th>
+        <th className="YellowHeader ColNoticeLetter">{data.total.france.noticeLetter}</th>
+        <th className="YellowHeader ColReminders">{data.total.france.reminders}</th>
       </tr>
     </tfoot>
   );

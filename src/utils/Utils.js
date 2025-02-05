@@ -78,8 +78,8 @@ class Utils {
     line.atLeastOneContact = stateCount.aocCount;
     line.appointmentTaken = stateCount.apsCount;
     line.interviewStarted = stateCount.insCount;
-    line.interviewStarted = stateCount.insCount;
-    line.interviewStarted = stateCount.insCount;
+    line.noticeLetter = stateCount.noticeCount;
+    line.reminders = stateCount.reminderCount;
 
     return line;
   }

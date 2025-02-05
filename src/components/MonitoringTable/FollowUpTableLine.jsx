@@ -17,6 +17,8 @@ function FollowUpTableLine({ data }) {
     atLeastOneContact,
     appointmentTaken,
     interviewStarted,
+    noticeLetter,
+    reminders,
   } = data;
   const interviewerName = interviewerFirstName
     ? `${interviewerLastName} ${interviewerFirstName}`
@@ -40,8 +42,8 @@ function FollowUpTableLine({ data }) {
       <td className="ColAtLeastOneContact">{atLeastOneContact}</td>
       <td className="ColAppointmentTaken">{appointmentTaken}</td>
       <td className="ColInterviewStarted">{interviewStarted}</td>
-      <td className="ColNoticeLetter">{50}</td>
-      <td className="ColReminders">{10}</td>
+      <td className="ColNoticeLetter">{noticeLetter}</td>
+      <td className="ColReminders">{reminders}</td>
     </tr>
   );
 }
