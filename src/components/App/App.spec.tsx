@@ -12,7 +12,7 @@ describe('Component display', () => {
       render(<App />);
     });
 
-    expect(await screen.findByText(D.mySurveys));
+    expect(await screen.findByText(D.surveyList));
   });
 
   it('Component is not displayed ', async () => {
