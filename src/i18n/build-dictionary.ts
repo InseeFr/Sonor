@@ -1,6 +1,6 @@
 import dictionary from './dictionary';
 
-export type SupportedLocales = 'fr' | 'sq' | 'en';
+export type SupportedLocales = 'fr' | 'en';
 type DictionaryKey = keyof typeof dictionary;
 type DictionaryValue = Record<SupportedLocales, any>;
 type Dictionary = Record<DictionaryKey, DictionaryValue>;
