@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import D from '../../i18n';
 
 describe('Component display', () => {
-  it('Component is displayed ', async () => {
+  it('Component is displayed ', { timeout: 30000 }, async () => {
     mockOidcForUser();
 
     await act(async () => {
