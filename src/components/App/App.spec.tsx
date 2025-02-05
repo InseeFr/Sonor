@@ -1,7 +1,7 @@
-import { screen, cleanup, render, act } from '@testing-library/react';
+import { screen, render, act, waitFor } from '@testing-library/react';
 import { App } from './App';
 import { mockOidcForUser, mockOidcFailed } from '../CustomHooks/useAuth';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import D from '../../i18n';
 
 describe('Component display', () => {
@@ -12,7 +12,8 @@ describe('Component display', () => {
       render(<App />);
     });
 
-    expect(await screen.findByText(D.mySurveys));
+    await waitFor(() => screen.getByText(D.surveyList));
+    expect(await screen.findByText(D.surveyList));
   });
 
   it('Component is not displayed ', async () => {

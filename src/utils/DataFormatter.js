@@ -10,8 +10,8 @@ import Service from './Service';
 import Utils from './Utils';
 
 class DataFormatter {
-  constructor(token) {
-    this.service = new Service(token);
+  constructor(token, configuration) {
+    this.service = new Service(token, configuration);
   }
 
   getInterviewers(cb) {

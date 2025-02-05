@@ -5,14 +5,19 @@ import D from '../../i18n';
 import View from 'components/View/View';
 import { useIsAuthenticated } from 'components/CustomHooks/useAuth';
 import { toast } from 'react-toastify';
+import { useConfiguration } from 'components/CustomHooks/useConfiguration';
 
 export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [contactFailed, setContactFailed] = useState(false);
   const [data, setData] = useState(null);
 
+  const configuration = useConfiguration();
+
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const { tokens, renewTokens } = useIsAuthenticated();
+
+  console.log(tokens);
 
   useEffect(() => {
     const resetInactivityTimeout = () => {
@@ -41,7 +46,7 @@ export const App = () => {
   }, [renewTokens]);
 
   useEffect(() => {
-    if (window.localStorage.getItem('AUTHENTICATION_MODE') === ANONYMOUS) {
+    if (configuration.AUTHENTICATION_MODE === ANONYMOUS) {
       const dataRetreiver = new DataFormatter();
       dataRetreiver.getUserInfo(data => {
         if (data.error) {
@@ -51,8 +56,8 @@ export const App = () => {
           setData(data);
         }
       });
-    } else if (window.localStorage.getItem('AUTHENTICATION_MODE') === OIDC && tokens?.accessToken) {
-      const dataRetreiver = new DataFormatter(tokens.accessToken);
+    } else if (configuration.AUTHENTICATION_MODE === OIDC && tokens?.accessToken) {
+      const dataRetreiver = new DataFormatter(tokens.accessToken, configuration);
       dataRetreiver.getUserInfo(data => {
         setAuthenticated(data !== undefined);
         setData(data);

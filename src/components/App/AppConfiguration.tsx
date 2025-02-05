@@ -1,12 +1,12 @@
-import useConfiguration from 'components/CustomHooks/useConfiguration';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { App } from './App';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { initializeOidc } from 'components/CustomHooks/useAuth';
-import D from '../../i18n';
+import { useConfiguration } from 'components/CustomHooks/useConfiguration';
 
 export const AppConfiguration = () => {
   const configuration = useConfiguration();
+  console.log(configuration);
 
   if (!configuration) {
     return <></>;
@@ -20,6 +20,8 @@ export const AppConfiguration = () => {
     clientId: configuration.OIDC_CLIENT_ID,
     publicUrl: '/',
   });
+
+  console.log(OidcProvider);
 
   const queryClient = new QueryClient({
     defaultOptions: {

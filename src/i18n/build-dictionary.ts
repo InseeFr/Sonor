@@ -1,6 +1,6 @@
 import dictionary from './dictionary';
 
-export type SupportedLocales = 'fr' | 'sq' | 'en';
+export type SupportedLocales = 'fr' | 'en';
 type DictionaryKey = keyof typeof dictionary;
 type DictionaryValue = Record<SupportedLocales, any>;
 type Dictionary = Record<DictionaryKey, DictionaryValue>;
@@ -14,9 +14,9 @@ export const createDictionary = (lang: SupportedLocales): Record<string, string>
   }, {});
 };
 
-export const getLang = (defaultLang?: string) => {
-  const lang = defaultLang?.split('-')[0];
-  return lang;
+export const getLang = (defaultLang?: string): SupportedLocales => {
+  const lang = (defaultLang ?? navigator.language).split('-')[0];
+  return lang === 'fr' ? 'fr' : 'en';
 };
 
-export default createDictionary(getLang('fr'));
+export default createDictionary(getLang());

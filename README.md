@@ -15,14 +15,15 @@
 
 ### Configuration of the application
 
-If you need, the configuration of the application can be modified in the configuration.json file :
+The configuration of the application can be modified in the .env file :
 
-```shell
-  "PEARL_JAM_URL": "http://localhost:7777", (URL of the PearlJamApi, defaut value is the mocked_apis_server)
-  "QUEEN_URL_BACK_END": "http://localhost:7777", (URL of the QueenApi, defaut value is the mocked_apis_server)
-  "QUEEN_URL_FRONT_END": "http://localhost:7777", (URL of the Queen frontend, defaut value is the mocked_apis_server)
-
-  "AUTHENTICATION_MODE": "anonymous" (choose between "anonymous" or "oicd")
+```
+  AUTHENTICATION_MODE
+  PEARL_JAM_URL
+  QUEEN_URL_BACK_END
+  QUEEN_URL_FRONT_END
+  ISSUER_URI
+  OIDC_CLIENT_ID
 ```
 
 ## Usage

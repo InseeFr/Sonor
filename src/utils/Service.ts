@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify';
 import D from '../i18n';
 class Service {
-  constructor(token) {
+  constructor(token, configuration) {
     this.token = token;
-    this.baseUrlPearlJam = `${window.localStorage.getItem('PEARL_JAM_URL')}`;
-    this.baseUrlQueen = `${window.localStorage.getItem('QUEEN_URL_BACK_END')}`;
+    this.baseUrlPearlJam = configuration.PEARL_JAM_URL;
+    this.baseUrlQueen = configuration.QUEEN_URL_BACK_END;
   }
   makeOptions() {
     if (this.token) {

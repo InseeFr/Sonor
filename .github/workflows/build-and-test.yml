@@ -16,10 +16,8 @@ jobs:
         run: yarn --frozen-lockfile
       - name: test & coverage
         run: yarn run test
-      - name: fix code coverage paths
-        working-directory: ./coverage
-      - name: SonarCloud scan
-        run: yarn test --coverage
+      - run: yarn test --coverage
+      - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v4.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any

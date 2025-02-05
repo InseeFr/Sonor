@@ -16,6 +16,7 @@ import DataFormatter from '../../utils/DataFormatter';
 import ModalPreferences from '../ModalPreferences/ModalPreferences';
 import D from '../../i18n';
 import Terminated from '../Terminated/Terminated';
+import { useConfiguration } from 'components/CustomHooks/useConfiguration';
 
 class View extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class View extends React.Component {
       loadingPreferences: true,
       campaigns: [],
     };
-    this.dataRetreiver = new DataFormatter(props.token);
+    this.dataRetreiver = new DataFormatter(props.token, useConfiguration());
   }
 
   componentDidMount() {
