@@ -12,7 +12,6 @@ describe('Component display', () => {
       render(<App />);
     });
 
-    await waitFor(() => screen.getByText(D.surveyList));
     expect(await screen.findByText(D.surveyList));
   });
 
