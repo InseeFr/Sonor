@@ -1,8 +1,15 @@
 import { screen, render, act } from '@testing-library/react';
 import { App } from './App';
 import { mockOidcForUser, mockOidcFailed } from '../CustomHooks/useAuth';
-import { describe, it } from 'vitest';
+import { describe, it, vi } from 'vitest';
 import D from '../../i18n';
+import { OIDC } from '../../utils/constants.json';
+
+vi.mock('../../useConfiguration', () => ({
+  useConfiguration: () => ({
+    AUTHENTICATION_MODE: OIDC,
+  }),
+}));
 
 describe('Component display', () => {
   it('Component is displayed ', async () => {
