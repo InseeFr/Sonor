@@ -1,28 +1,24 @@
-import { screen, render, act, waitFor } from '@testing-library/react';
-import { App } from './App';
-import { mockOidcForUser, mockOidcFailed } from '../CustomHooks/useAuth';
-import { describe, expect, it } from 'vitest';
-import D from '../../i18n';
+import { screen, render, act } from "@testing-library/react";
+import { App } from "./App";
+import { mockOidcForUser, mockOidcFailed } from "../CustomHooks/useAuth";
+import { it, vi } from "vitest";
+import D from "../../i18n";
+import { OIDC } from "../../utils/constants.json";
 
-describe('Component display', () => {
-  it('Component is displayed ', async () => {
-    mockOidcForUser();
+vi.mock("components/CustomHooks/useConfiguration", () => ({
+  useConfiguration: () => ({
+    AUTHENTICATION_MODE: OIDC,
+  }),
+}));
 
-    await act(async () => {
-      render(<App />);
-    });
+it("Component is displayed ", async () => {
+  mockOidcForUser();
+  render(<App />);
+  await screen.findByText(D.surveyList);
+});
 
-    await waitFor(() => screen.getByText(D.surveyList));
-    expect(await screen.findByText(D.surveyList));
-  });
-
-  it('Component is not displayed ', async () => {
-    mockOidcFailed();
-
-    await act(async () => {
-      render(<App />);
-    });
-
-    expect(await screen.findByText(D.cannotAuth));
-  });
+it("Component is not displayed ", async () => {
+  mockOidcFailed();
+  render(<App />);
+  await screen.findByText(D.cannotAuth);
 });
