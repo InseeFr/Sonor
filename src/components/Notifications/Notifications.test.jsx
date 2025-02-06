@@ -1,9 +1,6 @@
-// Link.react.test.js
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import {
-  render, screen, fireEvent, cleanup, waitForElement, wait,
-} from '@testing-library/react';
+import { act } from 'vitest';
+import { render, screen, fireEvent, cleanup, waitForElement, wait } from '@testing-library/react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import DataFormatter from '../../utils/DataFormatter';
@@ -11,29 +8,33 @@ import Notifications from './Notifications';
 import mocks from '../../tests/mocks';
 import userEvent from '@testing-library/user-event';
 
-import {mount, configure} from "enzyme";
+import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import waitUntil from 'async-wait-until';
 
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
-
-const history = createMemoryHistory(); 
+const history = createMemoryHistory();
 
 const toLocaleDateString = Date.prototype.toLocaleString;
 const getHours = Date.prototype.getUTCHours;
 const getMinutes = Date.prototype.getUTCMinutes;
-Date.prototype.toLocaleDateString = function() {
-  return toLocaleDateString.call(this, 'en-EN', { timeZone: 'UTC',year: "numeric", month: "numeric", day: "numeric" });
+Date.prototype.toLocaleDateString = function () {
+  return toLocaleDateString.call(this, 'en-EN', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
 };
-Date.prototype.getHours = function() {
+Date.prototype.getHours = function () {
   return getHours.call(this);
 };
-Date.prototype.getMinutes = function() {
+Date.prototype.getMinutes = function () {
   return getMinutes.call(this);
 };
 
-(global).document.createRange = () => ({
+global.document.createRange = () => ({
   setStart: () => {},
   setEnd: () => {},
   commonAncestorContainer: {
@@ -45,7 +46,9 @@ Date.prototype.getMinutes = function() {
 const OriginalDate = global.Date;
 jest
   .spyOn(global, 'Date')
-  .mockImplementation((a) => (a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')));
+  .mockImplementation(a =>
+    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
+  );
 Date.now = jest.fn(() => 1597916474000);
 
 beforeEach(() => {
@@ -66,10 +69,16 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
       <Route path="/notifications" component={() => <ComponentWithRedirection />} />
       <Route
         path="*"
-        render={(routeProps) => (
+        render={routeProps => (
           <div>
-            <div data-testid="Redirect-url">{JSON.stringify(routeProps.history.location.pathname)}</div>
-            <div data-testid="Redirect-survey">{!routeProps.history.location || !routeProps.history.location.survey || JSON.stringify(routeProps.history.location.survey)}</div>
+            <div data-testid="Redirect-url">
+              {JSON.stringify(routeProps.history.location.pathname)}
+            </div>
+            <div data-testid="Redirect-survey">
+              {!routeProps.history.location ||
+                !routeProps.history.location.survey ||
+                JSON.stringify(routeProps.history.location.survey)}
+            </div>
           </div>
         )}
       />
@@ -77,9 +86,9 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
   </Router>
 );
 const postMessageMock = jest.fn();
-const verifyNameMock = jest.fn((q, c) => (c(verifyNameResp)));
+const verifyNameMock = jest.fn((q, c) => c(verifyNameResp));
 DataFormatter.mockImplementation(() => ({
-  getMessageHistory: (c) => (c(messageHistory)),
+  getMessageHistory: c => c(messageHistory),
   verifyName: verifyNameMock,
   postMessage: postMessageMock,
 }));
@@ -90,7 +99,7 @@ it('Component is correctly displayed', async () => {
   const component = render(
     <Router history={history}>
       <Notifications user={{ id: 'test' }} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
 
   // Should match snapshot (rows displayed)
@@ -101,7 +110,7 @@ it('Change page', async () => {
   const component = render(
     <Router history={history}>
       <Notifications user={{ id: 'test' }} dataRetreiver={mockDataRetreiver} />
-    </Router>,
+    </Router>
   );
 
   screen.getByTestId('pagination-nav').lastChild.firstChild.click();
@@ -134,10 +143,7 @@ it('Send message', async () => {
   input.prop('onChange')(inputEvent);
 
   // VerifyName should have been called
-  expect(verifyNameMock).toHaveBeenLastCalledWith(
-    'm',
-    expect.anything(),
-  );
+  expect(verifyNameMock).toHaveBeenLastCalledWith('m', expect.anything());
 
   // Writting a message in the textArea
   const messageInput = wrapper.find('#message');
@@ -154,7 +160,6 @@ it('Send message', async () => {
 
   expect(postMessageMock).toHaveBeenLastCalledWith(
     { recipients: ['INTW1'], sender: 'test', text: 'a message' },
-    expect.anything(),
+    expect.anything()
   );
-
 });

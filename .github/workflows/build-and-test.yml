@@ -11,15 +11,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 18
       - name: install
         run: yarn --frozen-lockfile
       - name: test & coverage
         run: yarn run test
-      - name: fix code coverage paths
-        working-directory: ./coverage
-        run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' lcov.info
-      - name: SonarCloud scan
+      - run: yarn test --coverage
+      - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v4.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any

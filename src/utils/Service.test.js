@@ -1,4 +1,3 @@
-// Link.react.test.js
 import 'core-js';
 import { wait } from '@testing-library/react';
 import Service from './Service';
@@ -7,7 +6,9 @@ import mocks from '../tests/mocks';
 const OriginalDate = global.Date;
 jest
   .spyOn(global, 'Date')
-  .mockImplementation((a) => (a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')));
+  .mockImplementation(a =>
+    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
+  );
 Date.now = jest.fn(() => 1597916474000);
 
 const makeResponse = function (obj) {
@@ -16,19 +17,16 @@ const makeResponse = function (obj) {
   return new Response(blob, init);
 };
 
-const {
-  mainScreenData,
-  userData,
-  campaignsByInterviewer,
-  pearlJamMocks,
-} = mocks;
+const { mainScreenData, userData, campaignsByInterviewer, pearlJamMocks } = mocks;
 
 const service = new Service();
 
 it('Test option creation', async () => {
   const s = new Service('ABC');
   // Should return correct options
-  expect(s.makeOptions()).toEqual({ headers: { map: { authorization: 'Bearer ABC', 'content-type': 'application/json' } } });
+  expect(s.makeOptions()).toEqual({
+    headers: { map: { authorization: 'Bearer ABC', 'content-type': 'application/json' } },
+  });
 });
 
 // -------------------------- //
@@ -37,9 +35,9 @@ it('Test option creation', async () => {
 // getSurveyUnits
 it('Test getSurveyUnits', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.surveyUnits))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.surveyUnits)));
   service.getSurveyUnits('id', 'FIN', cb);
   service.getSurveyUnits('id', null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
@@ -50,9 +48,9 @@ it('Test getSurveyUnits', async () => {
 // getSurveyUnitsClosable
 it('Test getSurveyUnitsClosable', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.surveyUnitsClosable))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.surveyUnitsClosable)));
   service.getSurveyUnitsClosable(cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -64,9 +62,9 @@ it('Test getSurveyUnitsClosable', async () => {
 // getSurveyUnitsNotAttributedByCampaign
 it('Test getSurveyUnitsNotAttributedByCampaign', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.notAttributed))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.notAttributed)));
   service.getSurveyUnitsNotAttributedByCampaign('id', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -78,9 +76,9 @@ it('Test getSurveyUnitsNotAttributedByCampaign', async () => {
 // getSurveyUnitsAbandonedByCampaign
 it('Test getSurveyUnitsAbandonedByCampaign', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.abandoned))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.abandoned)));
   service.getSurveyUnitsAbandonedByCampaign('id', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -92,9 +90,9 @@ it('Test getSurveyUnitsAbandonedByCampaign', async () => {
 // getStatesBySurveyUnit
 it('Test getStatesBySurveyUnit', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.states))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.states)));
   service.getStatesBySurveyUnit('id', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -106,7 +104,7 @@ it('Test getStatesBySurveyUnit', async () => {
 // putSurveyUnitToValidate
 it('Test putSurveyUnitToValidate', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
   service.putSurveyUnitToValidate(['su'], cb);
   await wait(() => expect(cb).toHaveBeenCalled());
 
@@ -117,7 +115,7 @@ it('Test putSurveyUnitToValidate', async () => {
 // putSurveyUnitStateToChange
 it('Test putSurveyUnitStateToChange', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
   service.putSurveyUnitStateToChange(['su'], 'FIN', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
 
@@ -128,7 +126,7 @@ it('Test putSurveyUnitStateToChange', async () => {
 // putSurveyUnitClose
 it('Test putSurveyUnitClose', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
   service.putSurveyUnitClose(['su'], 'closingCause', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
 
@@ -139,7 +137,7 @@ it('Test putSurveyUnitClose', async () => {
 // putSurveyUnitClosingCause
 it('Test putSurveyUnitClosingCause', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
   service.putSurveyUnitClosingCause(['su'], 'closingCause', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
 
@@ -150,8 +148,8 @@ it('Test putSurveyUnitClosingCause', async () => {
 // putSurveyUnitComment
 it('Test putSurveyUnitComment', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
-  service.putSurveyUnitComment(['su'], '{\'comment\' : \'value\'}', cb);
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
+  service.putSurveyUnitComment(['su'], "{'comment' : 'value'}", cb);
   await wait(() => expect(cb).toHaveBeenCalled());
 
   // Should return the data fetched
@@ -161,7 +159,7 @@ it('Test putSurveyUnitComment', async () => {
 // putSurveyUnitViewed
 it('Test putSurveyUnitViewed', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
   service.putSurveyUnitViewed(['su'], cb);
   await wait(() => expect(cb).toHaveBeenCalled());
 
@@ -178,7 +176,7 @@ it('Test putSurveyUnitViewed', async () => {
 // putPreferences
 it('Test putPreferences', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
   service.putPreferences(['id'], cb);
   await wait(() => expect(cb).toHaveBeenCalled());
 
@@ -195,9 +193,7 @@ it('Test putPreferences', async () => {
 // getUser
 it('Test getUser', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(userData))),
-  );
+  global.fetch = jest.fn().mockImplementation(() => Promise.resolve(makeResponse(userData)));
   service.getUser(cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   // Should return the data fetched
@@ -219,9 +215,7 @@ it('Test getUser', async () => {
 // getCampaigns
 it('Test getCampaigns', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(mainScreenData))),
-  );
+  global.fetch = jest.fn().mockImplementation(() => Promise.resolve(makeResponse(mainScreenData)));
   service.getCampaigns(cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -233,9 +227,9 @@ it('Test getCampaigns', async () => {
 // getCampaignsByInterviewer
 it('Test getCampaignsByInterviewer', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(campaignsByInterviewer))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(campaignsByInterviewer)));
   service.getCampaignsByInterviewer('idep', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   // Should return the data fetched
@@ -257,9 +251,9 @@ it('Test getCampaignsByInterviewer', async () => {
 // getStateCount
 it('Test getStateCount', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.stateCountTotal))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.stateCountTotal)));
   service.getStateCount('id', null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -271,9 +265,9 @@ it('Test getStateCount', async () => {
 // getStateCountNotAttributed
 it('Test getStateCountNotAttributed', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.stateCountNotAttributed))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.stateCountNotAttributed)));
   service.getStateCountNotAttributed('id', null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -284,9 +278,9 @@ it('Test getStateCountNotAttributed', async () => {
 // getStateCountByInterviewer
 it('Test getStateCountByInterviewer', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.interviewerStateCount))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.interviewerStateCount)));
   service.getStateCountByInterviewer('id', 'idep', null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -298,9 +292,9 @@ it('Test getStateCountByInterviewer', async () => {
 // getStateCountByCampaign
 it('Test getStateCountByCampaign', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.stateCountByCampaign))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.stateCountByCampaign)));
   service.getStateCountByCampaign(null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -312,9 +306,9 @@ it('Test getStateCountByCampaign', async () => {
 // getStateCountTotalByCampaign
 it('Test getStateCountTotalByCampaign', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.stateCountTotal))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.stateCountTotal)));
   service.getStateCountTotalByCampaign('id', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -332,9 +326,9 @@ it('Test getStateCountTotalByCampaign', async () => {
 // getContactOutcomes
 it('Test getContactOutcomes', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.contactOutcomes))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.contactOutcomes)));
   service.getContactOutcomes('id', null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -346,9 +340,11 @@ it('Test getContactOutcomes', async () => {
 // getContactOutcomesNotAttributed
 it('Test getContactOutcomesNotAttributed', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.contactOutcomesNotAttributed))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() =>
+      Promise.resolve(makeResponse(pearlJamMocks.contactOutcomesNotAttributed))
+    );
   service.getContactOutcomesNotAttributed('id', null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -360,9 +356,11 @@ it('Test getContactOutcomesNotAttributed', async () => {
 // getContactOutcomesByInterviewer
 it('Test getContactOutcomesByInterviewer', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.contactOutcomesByInterviewer))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() =>
+      Promise.resolve(makeResponse(pearlJamMocks.contactOutcomesByInterviewer))
+    );
   service.getContactOutcomesByInterviewer('id', 'idep', null, cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -374,9 +372,11 @@ it('Test getContactOutcomesByInterviewer', async () => {
 // getContactOutcomesByCampaign
 it('Test getContactOutcomesByCampaign', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.contactOutcomesByCampaign))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() =>
+      Promise.resolve(makeResponse(pearlJamMocks.contactOutcomesByCampaign))
+    );
   service.getContactOutcomesByCampaign('id', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -395,9 +395,9 @@ it('Test getContactOutcomesByCampaign', async () => {
 // getInterviewers
 it('Test getInterviewers', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.interviewers))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.interviewers)));
   service.getInterviewers(cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -409,9 +409,9 @@ it('Test getInterviewers', async () => {
 // getInterviewersByCampaign
 it('Test getInterviewersByCampaign', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.interviewersByCampaign))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.interviewersByCampaign)));
   service.getInterviewersByCampaign('id', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -429,9 +429,9 @@ it('Test getInterviewersByCampaign', async () => {
 // getQuestionnaireId
 it('Test getQuestionnaireId', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn().mockImplementation(
-    () => (Promise.resolve(makeResponse(pearlJamMocks.interviewersByCampaign))),
-  );
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve(makeResponse(pearlJamMocks.interviewersByCampaign)));
   service.getQuestionnaireId('id', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   global.fetch.mockClear();
@@ -449,7 +449,7 @@ it('Test getQuestionnaireId', async () => {
 // postMessage
 it('Test postMessage', async () => {
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve({ status: 200 })));
+  global.fetch = jest.fn(() => Promise.resolve({ status: 200 }));
   service.postMessage('message', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   // Should return the data fetched
@@ -460,7 +460,7 @@ it('Test postMessage', async () => {
 it('Test verifyName', async () => {
   const mockResp = [{ id: 200, type: 'label', label: 'label' }];
   const cb = jest.fn();
-  global.fetch = jest.fn(() => (Promise.resolve(makeResponse(mockResp))));
+  global.fetch = jest.fn(() => Promise.resolve(makeResponse(mockResp)));
   service.verifyName('message', cb);
   await wait(() => expect(cb).toHaveBeenCalled());
   // Should return the data fetched
