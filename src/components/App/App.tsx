@@ -17,8 +17,6 @@ export const App = () => {
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const { tokens, renewTokens } = useIsAuthenticated();
 
-  console.log(tokens);
-
   useEffect(() => {
     const resetInactivityTimeout = () => {
       if (timeoutIdRef.current) {
