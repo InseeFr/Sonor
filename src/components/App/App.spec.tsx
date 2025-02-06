@@ -5,7 +5,7 @@ import { describe, it } from 'vitest';
 import D from '../../i18n';
 
 describe('Component display', () => {
-  it.only('Component is displayed ', async () => {
+  it('Component is displayed ', async () => {
     mockOidcForUser();
     render(<App />);
     await screen.findByText(D.surveyList);
