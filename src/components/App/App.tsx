@@ -71,6 +71,8 @@ export const App = () => {
     toast.error(D.cannotContactServer);
   }
 
+  console.log(data);
+
   return (
     <>
       {authenticated && tokens?.accessToken && data && (
