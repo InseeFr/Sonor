@@ -5,7 +5,7 @@ import { it, vi } from 'vitest';
 import D from '../../i18n';
 import { OIDC } from '../../utils/constants.json';
 
-vi.mock('../../useConfiguration', () => ({
+vi.mock('components/CustomHooks/useConfiguration', () => ({
   useConfiguration: () => ({
     AUTHENTICATION_MODE: OIDC,
   }),

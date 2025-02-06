@@ -11,9 +11,7 @@ export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [contactFailed, setContactFailed] = useState(false);
   const [data, setData] = useState(null);
-
   const configuration = useConfiguration();
-
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const { tokens, renewTokens } = useIsAuthenticated();
 
@@ -73,7 +71,7 @@ export const App = () => {
 
   return (
     <>
-      {authenticated && tokens?.accessToken && (
+      {authenticated && tokens?.accessToken && data && (
         <div className="App">
           <View token={tokens.accessToken} userData={data} />
         </div>
