@@ -342,6 +342,40 @@ class Service {
     });
   }
 
+  getInterviewersStateCountByCampaignId(campaignId, date, cb) {
+    return new Promise(resolve => {
+      fetch(
+        `${this.baseUrlPearlJam}/api/campaign/${campaignId}/interviewers/state-count?date=${date}`,
+        this.makeOptions()
+      )
+        .then(res => res.json())
+        .then(data => {
+          if (cb) {
+            // applatir les donnees comme precedemment
+            data = data.map(line => {
+              const { interviewer } = line;
+              return {
+                interviewer: { ...line.interviewer, survey: campaignId },
+                stateCount: line,
+                interviewerFirstName: interviewer.firstName,
+                interviewerLastName: interviewer.lastName,
+                interviewerId: interviewer.id,
+              };
+            });
+            cb(data);
+          }
+          resolve(data);
+        })
+        .catch(e => {
+          console.error(e);
+          if (cb) {
+            cb(null);
+          }
+          resolve(null);
+        });
+    });
+  }
+
   getStateCountByCampaign(date, cb) {
     return new Promise(resolve => {
       fetch(

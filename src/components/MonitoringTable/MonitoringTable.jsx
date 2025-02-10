@@ -73,7 +73,6 @@ class MonitoringTable extends React.Component {
       dataRetreiver.getDataForMonitoringTable(
         surveyToUse,
         new Date(dateToUse).getTime(),
-        paginationToUse,
         modeToUse,
         res => {
           const newData = {};
@@ -349,6 +348,7 @@ function getHeaderForExport(mode) {
   ].flat();
 }
 
+// need to export new colums too
 function getFooterForExport(data, mode) {
   const footer = [];
   if (mode === C.BY_INTERVIEWER_ONE_SURVEY) {

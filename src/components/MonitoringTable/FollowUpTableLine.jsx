@@ -28,7 +28,7 @@ function FollowUpTableLine({ data }) {
       <td className="ColFirstCol">{interviewerName || survey || site}</td>
       <td className="ColumnSpacing" />
       <td className="ColCompletionRate">
-        {Number.isNaN(completionRate) || <>{(completionRate * 100).toFixed(1)}%</>}
+        {Number.isNaN(completionRate) ? 'NaN' : <>{(completionRate * 100).toFixed(1)}%</>}
       </td>
       <td className="ColumnSpacing" />
       <td className="ColAllocated">{total}</td>

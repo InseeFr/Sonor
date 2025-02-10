@@ -433,7 +433,7 @@ class DataFormatter {
     });
   }
 
-  async getDataForMonitoringTable(survey, givenDate, pagination, mode, cb, campaigns) {
+  async getDataForMonitoringTable(survey, givenDate, mode, cb, campaigns) {
     // Adding 24h to take all states added before the next day into account
     const date = givenDate + 86400000;
     const interviewers = [];
@@ -460,20 +460,40 @@ class DataFormatter {
         site = (await this.service.getUser()).organizationUnit.label;
         p1 = new Promise(resolve => {
           if (mode === BY_INTERVIEWER_ONE_SURVEY) {
+            // lister les interviewers de la campagne
+            //
             const promises = surveysToGetInterviewersFrom.map(
               surv =>
-                new Promise(resolve2 => {
+                new Promise(() => {
                   this.service.getInterviewersByCampaign(surv.id, res => {
                     res.forEach(interviewer => {
                       Utils.addIfNotAlreadyPresent(interviewers, interviewer);
                     });
-                    this.getlinesDetails(surv, res, date).then(data => resolve2(data));
                   });
                 })
             );
             Promise.all(promises).then(data => {
               resolve(Utils.sumOn(data.flat(), 'interviewerId'));
             });
+
+            ////
+
+            // qppel qu endpoint pqr campagne
+            this.service.getInterviewersStateCountByCampaignId(survey.id, date, res => {
+              resolve(Utils.sumOn(res.flat(), 'interviewerId'));
+            });
+
+            // const promises = surveysToGetInterviewersFrom.map(
+            //   surv =>
+            //     new Promise(resolve2 => {
+            //       this.service.getInterviewersStateCountByCampaignId(surv.id, date, res => {
+            //         this.getlinesDetails(surv, res, date).then(data => resolve2(data));
+            //       });
+            //     })
+            // );
+            // Promise.all(promises).then(data => {
+            //   resolve(Utils.sumOn(data.flat(), 'interviewerId'));
+            // });
           } else if (mode === BY_SURVEY) {
             this.service.getStateCountByCampaign(date, res => {
               resolve(

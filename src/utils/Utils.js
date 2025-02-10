@@ -16,6 +16,7 @@ class Utils {
     }`;
   }
 
+  // TODO handle zero case here instead of return NaN
   static calculateCompletionRate(data) {
     return (data.tbrCount + data.finCount + data.cloCount) / data.total;
   }
@@ -344,7 +345,6 @@ class Utils {
             });
         }
       });
-
     const finalArray = Object.keys(result).map(key => {
       const formattedData = this.formatForMonitoringTable(result[key].stateCount);
       formattedData.interviewerFirstName = result[key].interviewerFirstName;

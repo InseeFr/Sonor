@@ -83,7 +83,7 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
 
 const mockGetDataForMainScreen = jest.fn(() => Promise.resolve(mainScreenData));
 
-const mockGetDataForMonitoringTable = jest.fn((survey, date, pagination, mode, cb) => {
+const mockGetDataForMonitoringTable = jest.fn((survey, date, mode, cb) => {
   switch (mode) {
     case C.BY_INTERVIEWER_ONE_SURVEY:
       cb(respModeByInterviewers1Survey);

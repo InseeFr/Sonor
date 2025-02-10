@@ -6,16 +6,16 @@ import C from '../../utils/constants.json';
 import D from '../../i18n';
 import './MonitoringTable.css';
 
+// TODO : better handling of NaN values
 function FollowUpTable({ data, sort, displayedLines, pagination, mode, handleSort }) {
-  console.log(data);
-  console.log(displayedLines);
-
   const totalDemRow = mode !== C.BY_INTERVIEWER_ONE_SURVEY || (
     <tr>
       <th className="ColFirstCol">{D.totalDEM}</th>
       <th className="ColumnSpacing" />
       <th className="YellowHeader ColCompletionRate">
-        {Number.isNaN(data.total.dem.completionRate) || (
+        {Number.isNaN(data.total.dem.completionRate) ? (
+          'sadness'
+        ) : (
           <>{(data.total.dem.completionRate * 100).toFixed(1)}%</>
         )}
       </th>
@@ -30,7 +30,7 @@ function FollowUpTable({ data, sort, displayedLines, pagination, mode, handleSor
       <th className="YellowHeader ColPreparingContact">{data.total.dem.preparingContact}</th>
       <th className="YellowHeader ColAtLeastOneContact">{data.total.dem.atLeastOneContact}</th>
       <th className="YellowHeader ColAppointmentTaken">{data.total.dem.appointmentTaken}</th>
-      <th className="YellowHeader ColInterviewStarted">{data.total.dem.reminderCounter}</th>
+      <th className="YellowHeader ColInterviewStarted">{data.total.dem.interviewStarted}</th>
       <th className="YellowHeader ColNoticeLetter">{data.total.dem.noticeLetter}</th>
       <th className="YellowHeader ColReminders">{data.total.dem.reminders}</th>
     </tr>
