@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { resolve } from 'node:url';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { viteEnvs } from 'vite-envs';
 
 export default defineConfig({
   server: {
@@ -26,5 +27,11 @@ export default defineConfig({
     outDir: 'build',
     target: 'esnext',
   },
-  plugins: [tsconfigPaths(), react()],
+  plugins: [
+    tsconfigPaths(),
+    react(),
+    viteEnvs({
+      declarationFile: '.env',
+    }),
+  ],
 });
