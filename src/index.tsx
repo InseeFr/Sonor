@@ -6,7 +6,6 @@ import 'whatwg-fetch';
 import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
 import { AppConfiguration } from 'components/App/AppConfiguration';
-import { App } from 'components/App/App';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
