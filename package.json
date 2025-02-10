@@ -92,7 +92,6 @@
   },
   "devDependencies": {
     "@originjs/vite-plugin-federation": "^1.2.1",
-    "@playwright/test": "^1.49.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^7.2.1",
