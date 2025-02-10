@@ -13,7 +13,7 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       reporter: ['text', 'lcov'],
-      exclude: ['node_modules/', 'src/setupTests.js', 'tests/', 'playwright-report/', 'build/'],
+      exclude: ['node_modules/', 'src/setupTests.js', 'tests/', 'build/'],
     },
   },
   resolve: {
