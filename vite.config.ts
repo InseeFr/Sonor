@@ -14,7 +14,7 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       reporter: ['text', 'lcov'],
-      exclude: ['node_modules/', 'src/setupTests.js', 'tests/', 'build/'],
+      exclude: ['node_modules/', 'src/setupTests.js', 'tests/', 'dist/'],
     },
   },
   resolve: {
