@@ -122,7 +122,7 @@ const val = [
     interviewer: {
       id: 'INTW6',
       interviewerFirstName: 'Jacques',
-      : 'Boulanger',
+      interviewerLastName: 'Boulanger',
     },
   },
   {

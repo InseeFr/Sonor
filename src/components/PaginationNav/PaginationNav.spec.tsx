@@ -1,12 +1,12 @@
-import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
+import { afterEach, vi, it, expect } from 'vitest';
 import PaginationNav from './PaginationNav';
 
 afterEach(cleanup);
 
 const pagination = { size: 5, page: 1 };
 
-const updateFunc = jest.fn();
+const updateFunc = vi.fn();
 
 it('Page selector display: 2 items / size = 5', async () => {
   const component = render(
