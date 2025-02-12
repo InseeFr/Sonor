@@ -460,8 +460,7 @@ class DataFormatter {
         site = (await this.service.getUser()).organizationUnit.label;
         p1 = new Promise(resolve => {
           if (mode === BY_INTERVIEWER_ONE_SURVEY) {
-            // lister les interviewers de la campagne
-            //
+            // Listing surveys interviews
             const promises = surveysToGetInterviewersFrom.map(
               surv =>
                 new Promise(() => {
@@ -475,25 +474,10 @@ class DataFormatter {
             Promise.all(promises).then(data => {
               resolve(Utils.sumOn(data.flat(), 'interviewerId'));
             });
-
-            ////
-
-            // qppel qu endpoint pqr campagne
+            // Calling endpoint for each campaign
             this.service.getInterviewersStateCountByCampaignId(survey.id, date, res => {
               resolve(Utils.sumOn(res.flat(), 'interviewerId'));
             });
-
-            // const promises = surveysToGetInterviewersFrom.map(
-            //   surv =>
-            //     new Promise(resolve2 => {
-            //       this.service.getInterviewersStateCountByCampaignId(surv.id, date, res => {
-            //         this.getlinesDetails(surv, res, date).then(data => resolve2(data));
-            //       });
-            //     })
-            // );
-            // Promise.all(promises).then(data => {
-            //   resolve(Utils.sumOn(data.flat(), 'interviewerId'));
-            // });
           } else if (mode === BY_SURVEY) {
             this.service.getStateCountByCampaign(date, res => {
               resolve(
