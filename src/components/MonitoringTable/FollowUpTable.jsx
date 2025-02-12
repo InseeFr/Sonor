@@ -14,7 +14,7 @@ function FollowUpTable({ data, sort, displayedLines, pagination, mode, handleSor
       <th className="ColumnSpacing" />
       <th className="YellowHeader ColCompletionRate">
         {Number.isNaN(data.total.dem.completionRate) ? (
-          'sadness'
+          'N/A'
         ) : (
           <>{(data.total.dem.completionRate * 100).toFixed(1)}%</>
         )}
