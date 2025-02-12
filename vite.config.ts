@@ -10,7 +10,7 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    include: ['src/**/*.spec.tsx'],
+    include: ['src/**/*.spec.tsx', 'src/**/*.spec.ts'],
     environment: 'jsdom',
     coverage: {
       reporter: ['text', 'lcov'],
