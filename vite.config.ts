@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { resolve } from 'node:url';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { viteEnvs } from 'vite-envs';
 
 export default defineConfig({
   server: {
@@ -9,11 +10,11 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    include: ['src/**/*.spec.*'],
+    include: ['src/**/*.spec.tsx', 'src/**/*.spec.ts'],
     environment: 'jsdom',
     coverage: {
       reporter: ['text', 'lcov'],
-      exclude: ['node_modules/', 'src/setupTests.js', 'tests/', 'playwright-report/', 'build/'],
+      exclude: ['node_modules/', 'src/setupTests.js', 'tests/', 'dist/'],
     },
   },
   resolve: {
@@ -23,8 +24,14 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     target: 'esnext',
   },
-  plugins: [tsconfigPaths(), react()],
+  plugins: [
+    tsconfigPaths(),
+    react(),
+    viteEnvs({
+      declarationFile: '.env',
+    }),
+  ],
 });

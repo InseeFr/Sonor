@@ -62,7 +62,7 @@ DataFormatter.mockImplementation(() => ({
   getDataForCampaignPortal: (a, cb) => cb(campaignPortalData),
   getDataForListSU: (a, cb) => cb(listSU),
   getUserInfo: cb => cb(userData),
-  getDataForMonitoringTable: (survey, date, pagination, mode, cb) => {
+  getDataForMonitoringTable: (survey, date, mode, cb) => {
     switch (mode) {
       case C.BY_INTERVIEWER_ONE_SURVEY:
         cb(respModeByInterviewers1Survey);

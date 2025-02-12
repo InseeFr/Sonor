@@ -1,4 +1,6 @@
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { fireEvent } from '@testing-library/dom';
+import { cleanup, render } from '@testing-library/react';
+import { afterEach, vi, it, expect } from 'vitest';
 import SearchField from './SearchField';
 
 afterEach(cleanup);
@@ -13,7 +15,7 @@ const data = [
   { campaignLabel: 'test abc', interviewer: 'Boulanger Jacques', idep: 'INTW6', id: '4818' },
 ];
 
-const updateFunc = jest.fn();
+const updateFunc = vi.fn();
 
 it('Filter by idep and campaignLabel', async () => {
   const component = render(

@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import { ANONYMOUS, OIDC } from '../../utils/constants.json';
-import DataFormatter from '../../utils/DataFormatter';
-import D from '../../i18n';
-import View from 'components/View/View';
-import { useIsAuthenticated } from 'components/CustomHooks/useAuth';
-import { toast } from 'react-toastify';
-import { useConfiguration } from 'components/CustomHooks/useConfiguration';
+import { useEffect, useRef, useState } from "react";
+import { ANONYMOUS, OIDC } from "../../utils/constants.json";
+import DataFormatter from "../../utils/DataFormatter";
+import D from "../../i18n";
+import View from "components/View/View";
+import { useIsAuthenticated } from "components/CustomHooks/useAuth";
+import { toast } from "react-toastify";
+import { useConfiguration } from "components/CustomHooks/useConfiguration";
 
 export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -23,9 +23,15 @@ export const App = () => {
       timeoutIdRef.current = setTimeout(() => renewTokens, 5 * 60 * 1000);
     };
 
-    const events = ['mousemove', 'mousedown', 'keypress', 'touchstart', 'click'];
+    const events = [
+      "mousemove",
+      "mousedown",
+      "keypress",
+      "touchstart",
+      "click",
+    ];
 
-    events.forEach(event => {
+    events.forEach((event) => {
       window.addEventListener(event, resetInactivityTimeout);
     });
 
@@ -35,7 +41,7 @@ export const App = () => {
       if (timeoutIdRef.current) {
         clearTimeout(timeoutIdRef.current);
       }
-      events.forEach(event => {
+      events.forEach((event) => {
         window.removeEventListener(event, resetInactivityTimeout);
       });
     };
@@ -44,7 +50,7 @@ export const App = () => {
   useEffect(() => {
     if (configuration.AUTHENTICATION_MODE === ANONYMOUS) {
       const dataRetreiver = new DataFormatter();
-      dataRetreiver.getUserInfo(data => {
+      dataRetreiver.getUserInfo((data) => {
         if (data.error) {
           setContactFailed(true);
         } else {
@@ -52,9 +58,15 @@ export const App = () => {
           setData(data);
         }
       });
-    } else if (configuration.AUTHENTICATION_MODE === OIDC && tokens?.accessToken) {
-      const dataRetreiver = new DataFormatter(tokens.accessToken, configuration);
-      dataRetreiver.getUserInfo(data => {
+    } else if (
+      configuration.AUTHENTICATION_MODE === OIDC &&
+      tokens?.accessToken
+    ) {
+      const dataRetreiver = new DataFormatter(
+        tokens.accessToken,
+        configuration
+      );
+      dataRetreiver.getUserInfo((data) => {
         setAuthenticated(data !== undefined);
         setData(data);
       });

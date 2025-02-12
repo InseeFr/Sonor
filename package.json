@@ -1,6 +1,6 @@
 {
   "name": "sonor",
-  "version": "0.8.0",
+  "version": "0.9.4",
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "4.0.5",
@@ -92,7 +92,6 @@
   },
   "devDependencies": {
     "@originjs/vite-plugin-federation": "^1.2.1",
-    "@playwright/test": "^1.49.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^7.2.1",
@@ -121,6 +120,7 @@
     "stylelint": "^16.11.0",
     "stylelint-config-standard": "^36.0.1",
     "vite": "^4.2.1",
+    "vite-envs": "^4.4.11",
     "vite-tsconfig-paths": "^3.6.0",
     "vitest": "^2.1.8"
   }
