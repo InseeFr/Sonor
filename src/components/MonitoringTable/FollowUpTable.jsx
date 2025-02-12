@@ -170,13 +170,19 @@ function FollowUpTable({ data, sort, displayedLines, pagination, mode, handleSor
             {D.interviewStarted}
             <SortIcon val="interviewStarted" sort={sort} />
           </th>
-          <th className="YellowHeader Clickable CenteredText">
+          <th
+            className="YellowHeader Clickable CenteredText"
+            onClick={handleSortFunct('noticeLetter')}
+          >
             {D.noticeLetter}
-            <SortIcon val="interviewStarted" sort={sort} />
+            <SortIcon val="noticeLetter" sort={sort} />
           </th>
-          <th className="YellowHeader Clickable CenteredText">
+          <th
+            className="YellowHeader Clickable CenteredText"
+            onClick={handleSortFunct('reminders')}
+          >
             {D.reminders}
-            <SortIcon val="interviewStarted" sort={sort} />
+            <SortIcon val="reminders" sort={sort} />
           </th>
         </tr>
       </thead>
