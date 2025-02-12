@@ -1,6 +1,6 @@
 {
   "name": "sonor",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "4.0.5",
