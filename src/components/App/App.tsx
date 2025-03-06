@@ -85,7 +85,7 @@ export const App = () => {
     <>
       {authenticated && tokens?.accessToken && data && (
         <div className="App">
-          <View token={tokens.accessToken} userData={data} />
+          <View token={tokens.accessToken} userData={data} configuration={configuration} />
         </div>
       )}
       {!authenticated && !tokens?.accessToken && D.cannotAuth}

@@ -5,9 +5,6 @@ function getMatchingLines(data, searchBy, str) {
   const s = str.toLowerCase().split(' ');
 
   const matchingLines = data.filter(line => {
-    if (line.interviewer && typeof line.interviewer === 'object') {
-      Object.values(line.interviewer).join(' ');
-    }
     const toSearch = searchBy.map(fieldName => {
       if (!line[fieldName]) {
         return '';
@@ -66,9 +63,14 @@ class SearchField extends React.Component {
           value={inputValue}
           onChange={e => this.updateInputValue(e)}
         />
-        <span id="ClearSearchInput" onClick={() => this.clearSearchFeild()}>
+        <button
+          id="ClearSearchInput"
+          type="button"
+          onClick={this.clearSearchFeild}
+          aria-label="Clear search input"
+        >
           &times;
-        </span>
+        </button>
       </div>
     );
   }
