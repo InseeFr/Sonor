@@ -401,6 +401,7 @@ a:hover {
 }
 
 #ClearSearchInput{
+  all: unset;
   cursor: pointer;
 }
 

@@ -14,7 +14,6 @@ import SortIcon from '../SortIcon/SortIcon';
 import Utils from '../../utils/Utils';
 import D from '../../i18n';
 import './Terminated.css';
-import { useConfiguration } from 'components/CustomHooks/useConfiguration';
 
 class TerminatedTable extends React.Component {
   constructor(props) {
@@ -30,10 +29,8 @@ class TerminatedTable extends React.Component {
       suToModifySelectedDisplayName: '',
       oldComment: '',
       newComment: '',
+      queenUrl: props.queenUrl,
     };
-
-    const configuration = useConfiguration();
-    this.queenUrl = configuration.QUEEN_URL_FRONT_END;
   }
 
   getMaxWidth() {
@@ -103,6 +100,8 @@ class TerminatedTable extends React.Component {
 
   surveyListLine(data, survey, handleShow) {
     const { dataRetreiver } = this.props;
+    const { queenUrl } = this.state;
+
     return (
       <tr key={data.id}>
         <td className="ColCampaign">{survey.label}</td>
@@ -123,7 +122,7 @@ class TerminatedTable extends React.Component {
                 dataRetreiver.getQuestionnaireModelIdForReviewLink([data.id], qmIds => {
                   const { questionnaireId } = qmIds[0];
                   window.open(
-                    `${this.queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${data.id}`
+                    `${queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${data.id}`
                   );
                 });
               }}

@@ -11,6 +11,7 @@ import SurveySelector from '../SurveySelector/SurveySelector';
 import TerminatedTable from './TerminatedTable';
 import Utils from '../../utils/Utils';
 import D from '../../i18n';
+import { useConfiguration } from 'components/CustomHooks/useConfiguration';
 
 function Terminated({ location, dataRetreiver, match }) {
   const { survey } = location;
@@ -19,6 +20,7 @@ function Terminated({ location, dataRetreiver, match }) {
   const [sort, setSort] = useState({ sortOn: 'finalizationDate', asc: true });
   const [redirect, setRedirect] = useState(!survey && id ? '/' : null);
   const [isLoading, setIsLoading] = useState(true);
+  const { QUEEN_URL_FRONT_END: queenUrl } = useConfiguration();
 
   const fetchData = useCallback(() => {
     setIsLoading(true);
@@ -91,6 +93,7 @@ function Terminated({ location, dataRetreiver, match }) {
             {data.length > 0 ? (
               <TerminatedTable
                 data={data}
+                queenUrl={queenUrl}
                 sort={sort}
                 survey={survey}
                 dataRetreiver={dataRetreiver}

@@ -186,7 +186,7 @@ it('Test getDataForReview', async () => {
   await vi.waitFor(() => expect(callBack).toHaveBeenCalled());
   // Should return properly formatted data
   expect(callBack.mock.calls[0][0].map(a => a.id).sort()).toEqual(
-    formattedReviewData.map(a => a.id).sort()
+    formattedReviewData.map(a => a.id).sort((a, b) => a.localeCompare(b))
   );
 });
 
@@ -281,7 +281,9 @@ it('Test finalizeSurveyUnits', async () => {
 it('Test getListSUToReview', async () => {
   const res = await dataRetreiver.getListSUToReview('simpsons2020x00', mainScreenData);
   // Should return properly formatted data
-  expect(res.map(a => a.id).sort()).toEqual(formattedLisSuToReviewSimpsons.map(a => a.id).sort());
+  expect(res.map(a => a.id).sort((a, b) => a.localeCompare(b))).toEqual(
+    formattedLisSuToReviewSimpsons.map(a => a.id).sort((a, b) => a.localeCompare(b))
+  );
 });
 
 // getInterviewers
