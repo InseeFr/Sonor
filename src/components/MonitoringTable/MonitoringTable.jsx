@@ -27,9 +27,11 @@ class MonitoringTable extends React.Component {
       survey,
       interviewer,
       mode,
-      redirect: ((mode === C.BY_INTERVIEWER_ONE_SURVEY || mode === C.BY_SITE) && !survey)
-        || (mode === C.BY_SURVEY_ONE_INTERVIEWER && !interviewer)
-        ? '/' : null,
+      redirect:
+        ((mode === C.BY_INTERVIEWER_ONE_SURVEY || mode === C.BY_SITE) && !survey) ||
+        (mode === C.BY_SURVEY_ONE_INTERVIEWER && !interviewer)
+          ? '/'
+          : null,
       loading: true,
     };
     this.componentIsMounted = false;
@@ -63,43 +65,49 @@ class MonitoringTable extends React.Component {
     if (interviewer) {
       surveyToUse = interviewer;
     } else if (modeToUse !== C.BY_INTERVIEWER_ONE_SURVEY && modeToUse !== C.BY_SITE) {
-      surveyToUse = await dataRetreiver.getFormattedCampaignsForMainScreen(null,null, campaigns);
+      surveyToUse = await dataRetreiver.getFormattedCampaignsForMainScreen(null, null, campaigns);
     } else {
       surveyToUse = survey;
     }
     if (surveyToUse) {
       dataRetreiver.getDataForMonitoringTable(
-        surveyToUse, new Date(dateToUse).getTime(), paginationToUse, modeToUse,
-        (res) => {
+        surveyToUse,
+        new Date(dateToUse).getTime(),
+        modeToUse,
+        res => {
           const newData = {};
           Object.assign(newData, res);
           newData.date = dateToUse;
           newData.pagination = paginationToUse;
           const lastDate = this.state.date;
           if (this.componentIsMounted && lastDate === dateToUse) {
-            this.setState({
-              date: dateToUse,
-              survey,
-              interviewer,
-              displayedLines: newData.linesDetails,
-              data: newData,
-              mode: modeToUse,
-              redirect: null,
-              loading: false,
-              sort: { sortOn: null, asc: null },
-            }, () => {
-              let firstColumnSortAttribute;
-              if (modeToUse === C.BY_SURVEY || modeToUse === C.BY_SURVEY_ONE_INTERVIEWER) {
-                firstColumnSortAttribute = 'survey';
-              } else if (modeToUse === C.BY_SITE) {
-                firstColumnSortAttribute = 'site';
-              } else {
-                firstColumnSortAttribute = 'CPinterviewer';
+            this.setState(
+              {
+                date: dateToUse,
+                survey,
+                interviewer,
+                displayedLines: newData.linesDetails,
+                data: newData,
+                mode: modeToUse,
+                redirect: null,
+                loading: false,
+                sort: { sortOn: null, asc: null },
+              },
+              () => {
+                let firstColumnSortAttribute;
+                if (modeToUse === C.BY_SURVEY || modeToUse === C.BY_SURVEY_ONE_INTERVIEWER) {
+                  firstColumnSortAttribute = 'survey';
+                } else if (modeToUse === C.BY_SITE) {
+                  firstColumnSortAttribute = 'site';
+                } else {
+                  firstColumnSortAttribute = 'CPinterviewer';
+                }
+                this.handleSort(firstColumnSortAttribute, true);
               }
-              this.handleSort(firstColumnSortAttribute, true);
-            });
+            );
           }
-        }, campaigns
+        },
+        campaigns
       );
     } else {
       this.setState({ redirect: '/' });
@@ -119,9 +127,7 @@ class MonitoringTable extends React.Component {
   }
 
   handleExport() {
-    const {
-      data, survey, mode, date, interviewer,
-    } = this.state;
+    const { data, survey, mode, date, interviewer } = this.state;
     let fileLabel;
     if (mode === C.BY_SURVEY) {
       fileLabel = `${data.site}_Avancement enquetes`;
@@ -134,9 +140,13 @@ class MonitoringTable extends React.Component {
     } else {
       fileLabel = `${data.site}_${survey.label}_Avancement enqueteurs`;
     }
-    const title = `${fileLabel}_${new Date(date).toLocaleDateString().replace(/\//g, '')}.csv`.replace(/ /g, '_');
+    const title =
+      `${fileLabel}_${new Date(date).toLocaleDateString().replace(/\//g, '')}.csv`.replace(
+        / /g,
+        '_'
+      );
     const table = makeTableForExport(data, mode);
-    const csvContent = `data:text/csv;charset=utf-8,\ufeff${table.map((e) => e.join(';')).join('\n')}`;
+    const csvContent = `data:text/csv;charset=utf-8,\ufeff${table.map(e => e.join(';')).join('\n')}`;
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
@@ -154,7 +164,16 @@ class MonitoringTable extends React.Component {
 
   render() {
     const {
-      survey, data, displayedLines, pagination, date, mode, redirect, sort, loading, interviewer,
+      survey,
+      data,
+      displayedLines,
+      pagination,
+      date,
+      mode,
+      redirect,
+      sort,
+      loading,
+      interviewer,
     } = this.state;
 
     if (redirect) {
@@ -164,33 +183,40 @@ class MonitoringTable extends React.Component {
     let tableTitle = false;
     let selector = false;
     if (!!interviewer && mode === C.BY_SURVEY_ONE_INTERVIEWER) {
-      tableTitle = (<div className="SurveyTitle">{`${interviewer.interviewerFirstName} ${interviewer.interviewerLastName}`}</div>);
+      tableTitle = (
+        <div className="SurveyTitle">{`${interviewer.interviewerFirstName} ${interviewer.interviewerLastName}`}</div>
+      );
       selector = (
         <InterviewerSelector
           interviewer={interviewer}
-          updateFunc={(newInterviewer) => this.setState({
-            interviewer: newInterviewer,
-            redirect: {
-              pathname: `/follow/campaigns/interviewer/${newInterviewer.id}`,
+          updateFunc={newInterviewer =>
+            this.setState({
               interviewer: newInterviewer,
-            },
-          })}
+              redirect: {
+                pathname: `/follow/campaigns/interviewer/${newInterviewer.id}`,
+                interviewer: newInterviewer,
+              },
+            })
+          }
         />
       );
     } else if (!!survey && (mode === C.BY_INTERVIEWER_ONE_SURVEY || mode === C.BY_SITE)) {
-      tableTitle = (<div className="SurveyTitle">{survey.label}</div>);
+      tableTitle = <div className="SurveyTitle">{survey.label}</div>;
       selector = (
         <SurveySelector
           survey={survey}
-          updateFunc={(newSurvey) => this.setState({
-            survey: newSurvey,
-            redirect: {
-              pathname: mode === C.BY_SITE
-                ? `/follow/sites/${newSurvey.id}`
-                : `/follow/campaign/${newSurvey.id}`,
+          updateFunc={newSurvey =>
+            this.setState({
               survey: newSurvey,
-            },
-          })}
+              redirect: {
+                pathname:
+                  mode === C.BY_SITE
+                    ? `/follow/sites/${newSurvey.id}`
+                    : `/follow/campaign/${newSurvey.id}`,
+                survey: newSurvey,
+              },
+            })
+          }
         />
       );
     }
@@ -210,15 +236,13 @@ class MonitoringTable extends React.Component {
           <Row>
             <Col>
               <Link to="/" className="ButtonLink ReturnButtonLink">
-                <Button className="ReturnButton" data-testid="return-button">{D.back}</Button>
+                <Button className="ReturnButton" data-testid="return-button">
+                  {D.back}
+                </Button>
               </Link>
             </Col>
-            <Col xs={6}>
-              {tableTitle}
-            </Col>
-            <Col>
-              {selector}
-            </Col>
+            <Col xs={6}>{tableTitle}</Col>
+            <Col>{selector}</Col>
           </Row>
         </Container>
         <Card className="ViewCard">
@@ -230,63 +254,65 @@ class MonitoringTable extends React.Component {
               className="DateDisplay"
               type="date"
               value={date}
-              onChange={(e) => this.setState({ date: e.target.value }, () => this.refreshData())}
+              onChange={e => this.setState({ date: e.target.value }, () => this.refreshData())}
             />
             {loading || (
-            <Button
-              className="ExportButton"
-              data-testid="export-button"
-              onClick={() => this.handleExport()}
-            >
-              Export
-            </Button>
+              <Button
+                className="ExportButton"
+                data-testid="export-button"
+                onClick={() => this.handleExport()}
+              >
+                Export
+              </Button>
             )}
           </Card.Title>
-          {loading
-            ? <Spinner className="loadingSpinner" animation="border" variant="primary" />
-            : (
-              <>
-                {
-                  data.linesDetails.length > 0
-                    ? (
-                      <>
-                        <Row>
-                          <Col xs="6">
-                            <PaginationNav.SizeSelector
-                              updateFunc={(newPagination) => { this.handlePageChange(newPagination); }}
-                            />
-                          </Col>
-                          <Col xs="6" className="text-right">
-                            <SearchField
-                              data={data.linesDetails}
-                              searchBy={fieldsToSearch}
-                              updateFunc={
-                                (matchingInterviewers) => this.updateInterviewers(matchingInterviewers)
-                              }
-                            />
-                          </Col>
-                        </Row>
-                        <FollowUpTable
-                          data={data}
-                          pagination={pagination}
-                          displayedLines={displayedLines}
-                          mode={mode}
-                          handleSort={(property) => this.handleSort(property)}
-                          sort={sort}
-                        />
-                        <div className="tableOptionsWrapper">
-                          <PaginationNav.PageSelector
-                            pagination={pagination}
-                            updateFunc={(newPagination) => { this.handlePageChange(newPagination); }}
-                            numberOfItems={displayedLines.length}
-                          />
-                        </div>
-                      </>
-                    )
-                    : <span>{D.nothingToDisplay}</span>
-              }
-              </>
-            )}
+          {loading ? (
+            <Spinner className="loadingSpinner" animation="border" variant="primary" />
+          ) : (
+            <>
+              {data.linesDetails.length > 0 ? (
+                <>
+                  <Row>
+                    <Col xs="6">
+                      <PaginationNav.SizeSelector
+                        updateFunc={newPagination => {
+                          this.handlePageChange(newPagination);
+                        }}
+                      />
+                    </Col>
+                    <Col xs="6" className="text-right">
+                      <SearchField
+                        data={data.linesDetails}
+                        searchBy={fieldsToSearch}
+                        updateFunc={matchingInterviewers =>
+                          this.updateInterviewers(matchingInterviewers)
+                        }
+                      />
+                    </Col>
+                  </Row>
+                  <FollowUpTable
+                    data={data}
+                    pagination={pagination}
+                    displayedLines={displayedLines}
+                    mode={mode}
+                    handleSort={property => this.handleSort(property)}
+                    sort={sort}
+                  />
+                  <div className="tableOptionsWrapper">
+                    <PaginationNav.PageSelector
+                      pagination={pagination}
+                      updateFunc={newPagination => {
+                        this.handlePageChange(newPagination);
+                      }}
+                      numberOfItems={displayedLines.length}
+                    />
+                  </div>
+                </>
+              ) : (
+                <span>{D.nothingToDisplay}</span>
+              )}
+            </>
+          )}
         </Card>
       </div>
     );
@@ -322,6 +348,7 @@ function getHeaderForExport(mode) {
   ].flat();
 }
 
+// need to export new colums too
 function getFooterForExport(data, mode) {
   const footer = [];
   if (mode === C.BY_INTERVIEWER_ONE_SURVEY) {
@@ -346,35 +373,37 @@ function getFooterForExport(data, mode) {
     ]);
   }
   if (mode === C.BY_INTERVIEWER_ONE_SURVEY || mode === C.BY_SITE) {
-    footer.push([
-      mode === C.BY_INTERVIEWER_ONE_SURVEY ? [D.totalFrance, '', ''] : D.totalFrance,
-      '',
-      `${(data.total.france.completionRate * 100).toFixed(1)}%`,
-      '',
-      data.total.france.total,
-      data.total.france.notStarted,
-      data.total.france.onGoing,
-      data.total.france.waitingForIntValidation,
-      data.total.france.intValidated,
-      data.total.france.demValidated,
-      '',
-      data.total.france.preparingContact,
-      data.total.france.atLeastOneContact,
-      data.total.france.appointmentTaken,
-      data.total.france.interviewStarted,
-    ].flat());
+    footer.push(
+      [
+        mode === C.BY_INTERVIEWER_ONE_SURVEY ? [D.totalFrance, '', ''] : D.totalFrance,
+        '',
+        `${(data.total.france.completionRate * 100).toFixed(1)}%`,
+        '',
+        data.total.france.total,
+        data.total.france.notStarted,
+        data.total.france.onGoing,
+        data.total.france.waitingForIntValidation,
+        data.total.france.intValidated,
+        data.total.france.demValidated,
+        '',
+        data.total.france.preparingContact,
+        data.total.france.atLeastOneContact,
+        data.total.france.appointmentTaken,
+        data.total.france.interviewStarted,
+      ].flat()
+    );
   }
   return footer;
 }
 
 function getBodyForExport(data) {
-  return data.map((elm) => (
+  return data.map(elm =>
     [
       (elm.interviewerLastName
         ? [elm.interviewerLastName, elm.interviewerFirstName, elm.interviewerId]
-        : null
-      )
-      || elm.survey || elm.site,
+        : null) ||
+        elm.survey ||
+        elm.site,
       '',
       `${(elm.completionRate * 100).toFixed(1)}%`,
       '',
@@ -390,7 +419,7 @@ function getBodyForExport(data) {
       elm.appointmentTaken,
       elm.interviewStarted,
     ].flat()
-  ));
+  );
 }
 
 function makeTableForExport(data, mode) {

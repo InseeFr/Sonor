@@ -1,16 +1,18 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useIsAuthenticated } from "../../Authentication/useAuth";
-import D from "../../i18n";
-import View from "../View/View";
+import { useEffect, useRef, useState } from "react";
+import { ANONYMOUS, OIDC } from "../../utils/constants.json";
 import DataFormatter from "../../utils/DataFormatter";
-import { OIDC, ANONYMOUS } from "../../utils/constants.json";
+import D from "../../i18n";
+import View from "components/View/View";
+import { useIsAuthenticated } from "components/CustomHooks/useAuth";
+import { toast } from "react-toastify";
+import { useConfiguration } from "components/CustomHooks/useConfiguration";
 
 export const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [contactFailed, setContactFailed] = useState(false);
   const [data, setData] = useState(null);
-  const timeoutIdRef = useRef(null);
-
+  const configuration = useConfiguration();
+  const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const { tokens, renewTokens } = useIsAuthenticated();
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export const App = () => {
       if (timeoutIdRef.current) {
         clearTimeout(timeoutIdRef.current);
       }
-      timeoutIdRef.current = setTimeout(renewTokens, 5 * 60 * 1000);
+      timeoutIdRef.current = setTimeout(() => renewTokens, 5 * 60 * 1000);
     };
 
     const events = [
@@ -46,7 +48,7 @@ export const App = () => {
   }, [renewTokens]);
 
   useEffect(() => {
-    if (window.localStorage.getItem("AUTHENTICATION_MODE") === ANONYMOUS) {
+    if (configuration.AUTHENTICATION_MODE === ANONYMOUS) {
       const dataRetreiver = new DataFormatter();
       dataRetreiver.getUserInfo((data) => {
         if (data.error) {
@@ -57,10 +59,13 @@ export const App = () => {
         }
       });
     } else if (
-      window.localStorage.getItem("AUTHENTICATION_MODE") === OIDC &&
+      configuration.AUTHENTICATION_MODE === OIDC &&
       tokens?.accessToken
     ) {
-      const dataRetreiver = new DataFormatter(tokens.accessToken);
+      const dataRetreiver = new DataFormatter(
+        tokens.accessToken,
+        configuration
+      );
       dataRetreiver.getUserInfo((data) => {
         setAuthenticated(data !== undefined);
         setData(data);
@@ -69,20 +74,21 @@ export const App = () => {
   }, [tokens]);
 
   if (!tokens?.accessToken) {
-    return <div>{D.initializationFailed}</div>;
-  }
-
-  if (authenticated && tokens?.accessToken && data) {
-    return (
-      <div className="App">
-        <View token={tokens.accessToken} userData={data} />
-      </div>
-    );
+    toast.error(D.cannotAuth);
   }
 
   if (contactFailed) {
-    return <div>{D.cannotContactServer}</div>;
+    toast.error(D.cannotContactServer);
   }
 
-  return <div>{D.initializing}</div>;
+  return (
+    <>
+      {authenticated && tokens?.accessToken && data && (
+        <div className="App">
+          <View token={tokens.accessToken} userData={data} configuration={configuration} />
+        </div>
+      )}
+      {!authenticated && !tokens?.accessToken && D.cannotAuth}
+    </>
+  );
 };

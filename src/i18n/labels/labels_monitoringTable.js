@@ -1,112 +1,120 @@
 const monitoringTable = {
   monitoringTableIntroductionSentence: {
     fr: "Avancement selon l'état des unités enquêtées en date du : ",
-    en: "Progression in regard of the state of survey units at the date : ",
+    en: 'Progression in regard of the state of survey units at the date : ',
   },
   completionRate: {
     fr: "Taux d'avancement",
-    en: "Completion rate",
+    en: 'Completion rate',
   },
   numberOfSurveyUnits: {
     fr: "Nombre d'unités enquêtées",
-    en: "Number of survey units",
+    en: 'Number of survey units',
   },
   inProgressInterviewer: {
-    fr: "En cours enquêteur",
-    en: "In progress by interviewer",
+    fr: 'En cours enquêteur',
+    en: 'In progress by interviewer',
   },
   suCollectionsOngoing: {
-    fr: "Unités enquêtées en cours de collecte",
-    en: "Survey units collections ongoing",
+    fr: 'Unités enquêtées en cours de collecte',
+    en: 'Survey units collections ongoing',
+  },
+  noticeLetter: {
+    fr: 'Lettre avis',
+    en: 'Notice letter',
+  },
+  reminders: {
+    fr: 'Relances',
+    en: 'Reminders',
   },
   notStarted: {
-    fr: "Non commencées",
-    en: "Not started",
+    fr: 'Non commencées',
+    en: 'Not started',
   },
   waitingForIntReview: {
-    fr: "En attente de transmission enquêteur",
-    en: "Waiting for interviewer review",
+    fr: 'En attente de transmission enquêteur',
+    en: 'Waiting for interviewer review',
   },
   reviewedByInterviewer: {
-    fr: "À lire",
-    en: "To review",
+    fr: 'À lire',
+    en: 'To review',
   },
   reviewedEnded: {
-    fr: "Validées terminées",
-    en: "Reviewed ended",
+    fr: 'Validées terminées',
+    en: 'Reviewed ended',
   },
   preparingContact: {
-    fr: "En préparation",
-    en: "Preparing contact",
+    fr: 'En préparation',
+    en: 'Preparing contact',
   },
   atLeastOneContact: {
-    fr: "Au moins un repérage ou un contact",
-    en: "At least one identification or contact",
+    fr: 'Au moins un repérage ou un contact',
+    en: 'At least one identification or contact',
   },
   appointmentTaken: {
-    fr: "RDV pris",
-    en: "Appointment taken",
+    fr: 'RDV pris',
+    en: 'Appointment taken',
   },
   interviewStarted: {
-    fr: "Questionnaire démarré",
-    en: "Interview started",
+    fr: 'Questionnaire démarré',
+    en: 'Interview started',
   },
   totalFrance: {
-    fr: "Total France",
-    en: "Total France",
+    fr: 'Total France',
+    en: 'Total France',
   },
   // Monitoring Table by Survey
   monitoringTableSurveyTitle: {
     fr: "Avancement des enquêtes selon l'état des unitées enquêtées (en %) en date du :",
-    en: "Progression of surveys in regard of the state of survey units (in %) at the date:",
+    en: 'Progression of surveys in regard of the state of survey units (in %) at the date:',
   },
   completed: {
-    fr: "Terminées",
-    en: "Completed",
+    fr: 'Terminées',
+    en: 'Completed',
   },
   started: {
-    fr: "Démarrées",
-    en: "Started",
+    fr: 'Démarrées',
+    en: 'Started',
   },
   contacted: {
-    fr: "Contactées",
-    en: "Contacted",
+    fr: 'Contactées',
+    en: 'Contacted',
   },
   interviewed: {
-    fr: "Enquêtées",
-    en: "Interviewed",
+    fr: 'Enquêtées',
+    en: 'Interviewed',
   },
   questionnaireFinalized: {
-    fr: "Questionnaires finalisés",
-    en: "Questionnaires finalized",
+    fr: 'Questionnaires finalisés',
+    en: 'Questionnaires finalized',
   },
   transmitted: {
-    fr: "Transmis",
-    en: "Transmitted",
+    fr: 'Transmis',
+    en: 'Transmitted',
   },
   synchronized: {
-    fr: "Synchronisés",
-    en: "Synchronized",
+    fr: 'Synchronisés',
+    en: 'Synchronized',
   },
   reviewed: {
-    fr: "Relus",
-    en: "Synchronized",
+    fr: 'Relus',
+    en: 'Synchronized',
   },
   site: {
-    fr: "Site",
-    en: "Site",
+    fr: 'Site',
+    en: 'Site',
   },
   firstName: {
-    fr: "Prénom",
-    en: "First name",
+    fr: 'Prénom',
+    en: 'First name',
   },
   lastName: {
-    fr: "Nom",
-    en: "Last name",
+    fr: 'Nom',
+    en: 'Last name',
   },
   nothingToDisplay: {
-    fr: "Aucun élément à afficher",
-    en: "There is no data to display",
+    fr: 'Aucun élément à afficher',
+    en: 'There is no data to display',
   },
 };
 

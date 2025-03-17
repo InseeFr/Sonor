@@ -1,19 +1,19 @@
-import React from "react";
-import Table from "react-bootstrap/Table";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-import displayStateHistoryTable from "./DisplayStateHistoryTable";
-import PaginationNav from "../PaginationNav/PaginationNav";
-import SearchField from "../SearchField/SearchField";
-import SortIcon from "../SortIcon/SortIcon";
-import Utils from "../../utils/Utils";
-import D from "../../i18n";
-import "./Terminated.css";
+import React from 'react';
+import Table from 'react-bootstrap/Table';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import displayStateHistoryTable from './DisplayStateHistoryTable';
+import PaginationNav from '../PaginationNav/PaginationNav';
+import SearchField from '../SearchField/SearchField';
+import SortIcon from '../SortIcon/SortIcon';
+import Utils from '../../utils/Utils';
+import D from '../../i18n';
+import './Terminated.css';
 
 class TerminatedTable extends React.Component {
   constructor(props) {
@@ -23,34 +23,33 @@ class TerminatedTable extends React.Component {
       displayData: props.data,
       toggleStateHistory: false,
       stateData: [],
-      stateId: "",
+      stateId: '',
       showComment: false,
-      suToModifySelected: "",
-      suToModifySelectedDisplayName: "",
-      oldComment: "",
-      newComment: "",
+      suToModifySelected: '',
+      suToModifySelectedDisplayName: '',
+      oldComment: '',
+      newComment: '',
+      queenUrl: props.queenUrl,
     };
-    this.queenUrl = `${window.localStorage.getItem("QUEEN_URL_FRONT_END")}`;
   }
 
   getMaxWidth() {
     return [
-      document.getElementById("stateHistoryDate").getBoundingClientRect().width,
-      document.getElementById("stateHistoryHour").getBoundingClientRect().width,
-      document.getElementById("stateHistoryState").getBoundingClientRect()
-        .width,
+      document.getElementById('stateHistoryDate').getBoundingClientRect().width,
+      document.getElementById('stateHistoryHour').getBoundingClientRect().width,
+      document.getElementById('stateHistoryState').getBoundingClientRect().width,
     ];
   }
 
   toggleStateHistoryTable(e, newStateTitle, displayName) {
     const { dataRetreiver } = this.props;
     e.stopPropagation();
-    dataRetreiver.getStatesSurvey(newStateTitle, (data) => {
+    dataRetreiver.getStatesSurvey(newStateTitle, data => {
       this.setState({
         toggleStateHistory: true,
         stateId: newStateTitle,
         stateData: data,
-        displayName:displayName
+        displayName: displayName,
       });
     });
   }
@@ -64,16 +63,20 @@ class TerminatedTable extends React.Component {
   }
 
   handleShowComment(line) {
-    this.setState({ showComment: true, suToModifySelected: line.id, suToModifySelectedDisplayName: line.displayName });
+    this.setState({
+      showComment: true,
+      suToModifySelected: line.id,
+      suToModifySelectedDisplayName: line.displayName,
+    });
     if (line.comments != null) {
-      let comToSet = "";
-      const comment = line.comments.find((c) => c.type === "MANAGEMENT");
+      let comToSet = '';
+      const comment = line.comments.find(c => c.type === 'MANAGEMENT');
       if (comment) {
         comToSet = comment.value;
       }
       this.setState({ oldComment: comToSet });
     } else {
-      this.setState({ oldComment: "" });
+      this.setState({ oldComment: '' });
     }
   }
 
@@ -97,6 +100,8 @@ class TerminatedTable extends React.Component {
 
   surveyListLine(data, survey, handleShow) {
     const { dataRetreiver } = this.props;
+    const { queenUrl } = this.state;
+
     return (
       <tr key={data.id}>
         <td className="ColCampaign">{survey.label}</td>
@@ -108,32 +113,23 @@ class TerminatedTable extends React.Component {
         <td className="ColContactOutcome">{D[data.contactOutcome?.type]}</td>
         <td className="ColReading">{data.reading ? D.yes : D.no}</td>
         <td className="ColAction">
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>{D.questionnaire}</Tooltip>}
-          >
+          <OverlayTrigger placement="top" overlay={<Tooltip>{D.questionnaire}</Tooltip>}>
             <i
               className="fa fa-calendar EditLink Clickable"
               aria-hidden="true"
               //ici la modification de l'URL vers queen
               onClick={() => {
-                dataRetreiver.getQuestionnaireModelIdForReviewLink(
-                  [data.id],
-                  (qmIds) => {
-                    const { questionnaireId } = qmIds[0];
-                    window.open(
-                      `${this.queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${data.id}`
-                    );
-                  }
-                );
+                dataRetreiver.getQuestionnaireModelIdForReviewLink([data.id], qmIds => {
+                  const { questionnaireId } = qmIds[0];
+                  window.open(
+                    `${queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${data.id}`
+                  );
+                });
               }}
             />
           </OverlayTrigger>
           <span />
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>{D.comment}</Tooltip>}
-          >
+          <OverlayTrigger placement="top" overlay={<Tooltip>{D.comment}</Tooltip>}>
             <i
               className="fa fa-pencil EditCommentSurveyIcon Clickable"
               aria-hidden="true"
@@ -141,14 +137,11 @@ class TerminatedTable extends React.Component {
             />
           </OverlayTrigger>
           <span />
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>{D.history}</Tooltip>}
-          >
+          <OverlayTrigger placement="top" overlay={<Tooltip>{D.history}</Tooltip>}>
             <i
               className="fa fa-history HistoryDisplayIcon Clickable"
               aria-hidden="true"
-              onClick={(e) => {
+              onClick={e => {
                 this.toggleStateHistoryTable(e, data.id, data.displayName);
               }}
             />
@@ -170,15 +163,11 @@ class TerminatedTable extends React.Component {
       oldComment,
     } = this.state;
     const { data, survey, handleSort, sort } = this.props;
-    const fieldsToSearch = [
-      "interviewerFirstName",
-      "interviewerLastName",
-      "displayName",
-    ];
+    const fieldsToSearch = ['interviewerFirstName', 'interviewerLastName', 'displayName'];
     const handleCloseComment = () => {
       this.handleCloseComment();
     };
-    const handleShowComment = (id) => {
+    const handleShowComment = id => {
       this.handleShowComment(id);
     };
     function handleSortFunct(property) {
@@ -191,16 +180,14 @@ class TerminatedTable extends React.Component {
         <Row>
           <Col xs="6">
             <PaginationNav.SizeSelector
-              updateFunc={(newPagination) =>
-                this.handlePageChange(newPagination)
-              }
+              updateFunc={newPagination => this.handlePageChange(newPagination)}
             />
           </Col>
           <Col xs="6" className="text-right">
             <SearchField
               data={data}
               searchBy={fieldsToSearch}
-              updateFunc={(matchinglines) => this.updateLines(matchinglines)}
+              updateFunc={matchinglines => this.updateLines(matchinglines)}
             />
           </Col>
         </Row>
@@ -219,7 +206,7 @@ class TerminatedTable extends React.Component {
                 <th
                   id="stateHistoryHour"
                   rowSpan="2"
-                  onClick={handleSortFunct("campaignLabel")}
+                  onClick={handleSortFunct('campaignLabel')}
                   className="Clickable ColCampaign"
                 >
                   <SortIcon val="campaignLabel" sort={sort} />
@@ -229,7 +216,7 @@ class TerminatedTable extends React.Component {
                   id="stateHistoryDate"
                   data-testid="TableHeader_id_terminated"
                   rowSpan="2"
-                  onClick={handleSortFunct("displayName")}
+                  onClick={handleSortFunct('displayName')}
                   className="Clickable ColId"
                 >
                   <SortIcon val="displayName" sort={sort} />
@@ -238,7 +225,7 @@ class TerminatedTable extends React.Component {
                 <th
                   id="stateHistoryState"
                   rowSpan="2"
-                  onClick={handleSortFunct("interviewer_terminated")}
+                  onClick={handleSortFunct('interviewer_terminated')}
                   className="Clickable ColInterviewer"
                 >
                   <SortIcon val="interviewer_terminated" sort={sort} />
@@ -246,7 +233,7 @@ class TerminatedTable extends React.Component {
                 </th>
                 <th
                   rowSpan="2"
-                  onClick={handleSortFunct("finalizationDate")}
+                  onClick={handleSortFunct('finalizationDate')}
                   className="Clickable ColFinalizationDate"
                 >
                   <SortIcon val="finalizationDate" sort={sort} />
@@ -254,7 +241,7 @@ class TerminatedTable extends React.Component {
                 </th>
                 <th
                   rowSpan="2"
-                  onClick={handleSortFunct("contactOutcomeType")}
+                  onClick={handleSortFunct('contactOutcomeType')}
                   className="Clickable ColContactOutcome"
                 >
                   <SortIcon val="contactOutcomeType" sort={sort} />
@@ -277,22 +264,13 @@ class TerminatedTable extends React.Component {
               {displayData
                 .slice(
                   (pagination.page - 1) * pagination.size,
-                  Math.min(
-                    pagination.page * pagination.size,
-                    displayData.length
-                  )
+                  Math.min(pagination.page * pagination.size, displayData.length)
                 )
-                .map((line) =>
-                  this.surveyListLine(line, survey, () =>
-                    handleShowComment(line)
-                  )
-                )}
+                .map(line => this.surveyListLine(line, survey, () => handleShowComment(line)))}
             </tbody>
             <Modal show={showComment} onHide={() => handleCloseComment()}>
               <Modal.Header closeButton>
-                <Modal.Title>
-                  {D.modifiedCommentSu + suToModifySelectedDisplayName}
-                </Modal.Title>
+                <Modal.Title>{D.modifiedCommentSu + suToModifySelectedDisplayName}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Form.Group as={Col} controlId="formGridState">
@@ -301,9 +279,7 @@ class TerminatedTable extends React.Component {
                     type="text"
                     as="textarea"
                     defaultValue={oldComment}
-                    onChange={(e) =>
-                      this.setState({ newComment: e.target.value })
-                    }
+                    onChange={e => this.setState({ newComment: e.target.value })}
                   />
                   <Form.Text id="passwordHelpBlock" muted>
                     {D.modifyCommentSuHelpText}
@@ -334,7 +310,7 @@ class TerminatedTable extends React.Component {
           <div className="tableOptionsWrapper">
             <PaginationNav.PageSelector
               pagination={pagination}
-              updateFunc={(newPagination) => {
+              updateFunc={newPagination => {
                 this.handlePageChange(newPagination);
               }}
               numberOfItems={displayData.length}

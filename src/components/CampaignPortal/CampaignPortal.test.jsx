@@ -1,25 +1,28 @@
-// Link.react.test.js
 import React from 'react';
-import {
-  render, screen, fireEvent, cleanup,
-} from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import DataFormatter from '../../utils/DataFormatter';
 import CampaignPortal from './CampaignPortal';
 import mocks from '../../tests/mocks';
 
-
 const history = createMemoryHistory();
 
 const toLocaleDateString = Date.prototype.toLocaleString;
-Date.prototype.toLocaleDateString = function() {
-  return toLocaleDateString.call(this, 'en-EN', { timeZone: 'UTC',year: "numeric", month: "numeric", day: "numeric" });
+Date.prototype.toLocaleDateString = function () {
+  return toLocaleDateString.call(this, 'en-EN', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
 };
 const OriginalDate = global.Date;
 jest
   .spyOn(global, 'Date')
-  .mockImplementation((a) => (a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')));
+  .mockImplementation(a =>
+    a ? new OriginalDate(a) : new OriginalDate('2020-08-20T11:01:58.135Z')
+  );
 
 Date.now = jest.fn(() => 1597916474000);
 
@@ -41,10 +44,16 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
       <Route path="/portal/vqs2021x00" render={() => <ComponentWithRedirection />} />
       <Route
         path="*"
-        component={(routeProps) => (
+        component={routeProps => (
           <div>
-            <div data-testid="Redirect-url">{JSON.stringify(routeProps.history.location.pathname)}</div>
-            <div data-testid="Redirect-surveyInfos">{!routeProps.history.location || !routeProps.history.location.surveyInfos || JSON.stringify(routeProps.history.location.surveyInfos)}</div>
+            <div data-testid="Redirect-url">
+              {JSON.stringify(routeProps.history.location.pathname)}
+            </div>
+            <div data-testid="Redirect-surveyInfos">
+              {!routeProps.history.location ||
+                !routeProps.history.location.surveyInfos ||
+                JSON.stringify(routeProps.history.location.surveyInfos)}
+            </div>
           </div>
         )}
       />
@@ -53,7 +62,7 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
 );
 
 DataFormatter.mockImplementation(() => ({
-  getDataForCampaignPortal: (id, cb) => (cb(resp)),
+  getDataForCampaignPortal: (id, cb) => cb(resp),
 }));
 
 const mockDataRetreiver = new DataFormatter();
@@ -65,7 +74,7 @@ it('Component is correctly displayed', async () => {
         location={{ surveyInfos: { survey, surveyInfo } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   // Should match snapshot (rows displayed)
@@ -79,7 +88,7 @@ it('TimeLine Phase initial allocation', async () => {
         location={{ surveyInfos: { survey, surveyInfo: surveyInfoPhaseIni } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   // Should match snapshot (class currentPhase is well placed)
@@ -93,7 +102,7 @@ it('TimeLine Phase ongoing', async () => {
         location={{ surveyInfos: { survey, surveyInfo: surveyInfoPhaseOngoing } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   // Should match snapshot (class currentPhase is well placed)
@@ -107,7 +116,7 @@ it('Sort SUs by interviewer name', async () => {
         location={{ surveyInfos: { survey, surveyInfo } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   screen.getByTestId('TableHeader_interviewer_name_portal').click();
@@ -122,7 +131,7 @@ it('Change page', async () => {
         location={{ surveyInfos: { survey, surveyInfo } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   screen.getByTestId('pagination-nav').lastChild.firstChild.click();
@@ -138,7 +147,7 @@ it('Change pagination size', async () => {
         location={{ surveyInfos: { survey, surveyInfo } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   fireEvent.change(component.getByTestId('pagination-size-selector'), { target: { value: '20' } });
@@ -148,22 +157,21 @@ it('Change pagination size', async () => {
 });
 
 it('Select another survey', async () => {
-
   const redirectUrl = '/portal/simpsons2020x00';
   const component = render(
     <TestingRouter
-      ComponentWithRedirection={
-        () => (
-          <CampaignPortal
-            location={{ surveyInfos: { survey, surveyInfo } }}
-            dataRetreiver={mockDataRetreiver}
-          />
-        )
-      }
-    />,
+      ComponentWithRedirection={() => (
+        <CampaignPortal
+          location={{ surveyInfos: { survey, surveyInfo } }}
+          dataRetreiver={mockDataRetreiver}
+        />
+      )}
+    />
   );
 
-  fireEvent.change(component.getByTestId('Survey_selector'), { target: { value: 'simpsons2020x00' } });
+  fireEvent.change(component.getByTestId('Survey_selector'), {
+    target: { value: 'simpsons2020x00' },
+  });
 
   // Should redirect to '/listSU/simpsons2020x00'
   expect(screen.getByTestId('Redirect-url').innerHTML).toEqual(`\"${redirectUrl}\"`);
@@ -178,15 +186,10 @@ it('Reloading the page with no survey set (F5)', async () => {
   const redirectUrl = '/';
   render(
     <TestingRouter
-      ComponentWithRedirection={
-        () => (
-          <CampaignPortal
-            location={{ pathname }}
-            dataRetreiver={mockDataRetreiver}
-          />
-        )
-      }
-    />,
+      ComponentWithRedirection={() => (
+        <CampaignPortal location={{ pathname }} dataRetreiver={mockDataRetreiver} />
+      )}
+    />
   );
 
   // Should redirect to '/'
@@ -200,15 +203,17 @@ it('Export table', async () => {
         location={{ surveyInfos: { survey, surveyInfo } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   const realRemoveFunc = HTMLAnchorElement.prototype.remove;
   const removeElmMock = jest.fn();
   HTMLAnchorElement.prototype.remove = removeElmMock;
 
-  const fileTitle = 'National_organizational_unit_Everyday_life_and_health_survey_2021_Repartition_enqueteurs_8202020.csv';
-  const fileContent = 'data:text/csv;charset=utf-8,%EF%BB%BFInterviewer;Idep;SU%0ABoulanger%20Emilie;INTW9;55%0ABoulanger%20Jacques;INTW6;55%0ADelmarre%20Alphonse;INTW11;55%0ADupont%20Chlo%C3%A9;INTW5;84%0ADupont%20Ren%C3%A9e;INTW10;84%0AFabres%20Thierry;INTW7;76%0ARenard%20Bertrand;INTW8;84%0AUnassigned;%20;14%0AAbandoned;%20;%0ATotal%20organizational%20unit;%20;208';
+  const fileTitle =
+    'National_organizational_unit_Everyday_life_and_health_survey_2021_Repartition_enqueteurs_8202020.csv';
+  const fileContent =
+    'data:text/csv;charset=utf-8,%EF%BB%BFInterviewer;Idep;SU%0ABoulanger%20Emilie;INTW9;55%0ABoulanger%20Jacques;INTW6;55%0ADelmarre%20Alphonse;INTW11;55%0ADupont%20Chlo%C3%A9;INTW5;84%0ADupont%20Ren%C3%A9e;INTW10;84%0AFabres%20Thierry;INTW7;76%0ARenard%20Bertrand;INTW8;84%0AUnassigned;%20;14%0AAbandoned;%20;%0ATotal%20organizational%20unit;%20;208';
   screen.getByText('Export').click();
   const downnloadLink = component.baseElement.querySelector('a[download]');
 
@@ -232,7 +237,7 @@ it('Send mail', async () => {
         location={{ surveyInfos: { survey, surveyInfo } }}
         dataRetreiver={mockDataRetreiver}
       />
-    </Router>,
+    </Router>
   );
 
   Object.defineProperty(window.location, 'assign', {
