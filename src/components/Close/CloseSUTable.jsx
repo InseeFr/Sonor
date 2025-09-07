@@ -72,12 +72,12 @@ class CloseSUTable extends React.Component {
   }
 
   handlePageChange(pagination) {
-    const checkAll = Utils.getCheckAllValue(
-      this.state.checkboxArray,
-      pagination
-    );
-    this.setState({ pagination, checkAll });
+    this.setState(prevState => {
+      const checkAll = Utils.getCheckAllValue(prevState.checkboxArray, pagination);
+      return { pagination, checkAll };
+    });
   }
+
 
   handleCheckAll(e) {
     const { checkboxArray, displayedLines, pagination } = this.state;

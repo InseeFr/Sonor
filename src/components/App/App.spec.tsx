@@ -1,4 +1,4 @@
-import { screen, render, act } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import { App } from "./App";
 import { mockOidcForUser, mockOidcFailed } from "../CustomHooks/useAuth";
 import { it, vi } from "vitest";
