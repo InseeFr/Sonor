@@ -29,10 +29,12 @@ class ReviewTable extends React.Component {
     };
   }
 
-  handlePageChange(pagination) {
-    const checkAll = Utils.getCheckAllValue(this.state.checkboxArray, pagination)
-    this.setState({ pagination , checkAll});
-  }
+  handlePageChange = (pagination) => {
+    this.setState((prevState) => ({
+      pagination,
+      checkAll: Utils.getCheckAllValue(prevState.checkboxArray, pagination),
+    }));
+  };
 
   updateLines(matchingLines) {
     const { pagination, checkboxArray } = this.state;

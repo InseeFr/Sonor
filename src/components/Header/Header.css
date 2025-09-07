@@ -118,6 +118,35 @@ button.selectedSubeMenu{
   color: #575453;
 }
 
+#logo_and_app_name {
+  display: flex;
+  align-items: center;
+  gap:1em;
+  padding-left: 1em;
+  flex-shrink:1;
+}
+
+#header_app_first_part {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  color: #0A192E;
+  font-weight: 600;
+}
+
+#header_app_second_part {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  color: #ca0a34;
+  font-weight: 600;
+}
+
+.row {
+  margin-left:0;
+  margin-right: 0;
+}
+
 .ButtonActive, .HeaderFocusableButton:focus, .HeaderFocusableButton:hover{
   background-color: #f0c42e !important;
   color: #007bfe !important;

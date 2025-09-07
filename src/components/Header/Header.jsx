@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { Link, useLocation } from 'react-router-dom';
-import logo from './logo_com_externe_semi_bold.png';
-import UserZone from './UserZone';
 import HeaderFollowSubMenu from './HeaderFollowSubMenu';
 import HeaderReviewSubMenu from './HeaderReviewSubMenu';
 import HeaderUsefulInfosSubMenu from './HeaderUsefulInfosSubMenu';
+import UserZone from './UserZone';
 
 import ModalSelection from '../ModalSelection/ModalSelection';
 
-import D from '../../i18n';
 import { version } from '../../../package.json';
+import D from '../../i18n';
 import './Header.css';
 
 function Header({
@@ -44,18 +43,35 @@ function Header({
     <header id="App-header" className="shadow">
       <Container fluid>
         <Row>
-          <Col id="logoCol" md="auto">
-            <Link to="/" className="ButtonLink">
-              <img
-                src={logo}
-                id="InseeLogo"
-                alt="logo"
-              />
-              <div id="appVersion">
-                {version}
-              </div>
+          <Row id="logo_and_app_name">
+            <Link to="/">
+              <h1>
+                <img
+                  width={150}
+                  height={50}
+                  src="/static/images/Insee_logo_header.webp"
+                  alt="Logo Insee"
+                  style={{ display: 'block' }}
+                />
+              </h1>
             </Link>
-          </Col>
+
+            <Col>
+              <Row >
+
+                <span id="header_app_first_part">
+                  Sabiane
+                </span>
+                <span id="header_app_second_part">
+                  Gestion
+                </span>
+              </Row>
+              <span id="appVersion">
+                V.{version}
+              </span>
+            </Col>
+          </Row>
+
           <Col>
             <div className="d-inline-flex classTest" id="headerButtonContainer">
               <li className="dropdown" id="BtnSuivreParent">
