@@ -273,22 +273,6 @@ class DataFormatter {
     });
   }
 
-  /**
-   * @param {string[]} suIds - array of survey-units ids.
-   * @param {function} cb what to do whith returned result
-   *
-   * internally processed type
-   *
-   * { "surveyUnitOK" : [ { "id" : "string", "questionnaireId" : "string" , {...} } ] ,
-   *
-   *  "surveyUnitNOK" : [ { ... currentlyUnused } ] }
-   */
-  getQuestionnaireModelIdForReviewLink(suIds, cb) {
-    this.service.getSurveyUnitsQuestionnaireId(suIds, suOkNok => {
-      cb(suOkNok.surveyUnitOK);
-    });
-  }
-
   getlinesDetails(survey, interviewers, date) {
     return new Promise(resolve => {
       const promises = interviewers.map(

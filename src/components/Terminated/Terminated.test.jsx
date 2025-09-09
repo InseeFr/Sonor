@@ -73,7 +73,6 @@ const TestingRouter = ({ ComponentWithRedirection }) => (
 DataFormatter.mockImplementation(() => ({
   getListSuTerminated: (id, cb) => cb(resp),
   getStatesSurvey: (id, cb) => cb(stateHistory),
-  getQuestionnaireModelIdForReviewLink: (ids, cb) => cb('QUESTIONNAIRE'),
 }));
 
 const mockDataRetreiver = new DataFormatter();

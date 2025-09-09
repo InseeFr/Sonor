@@ -119,12 +119,7 @@ class TerminatedTable extends React.Component {
               aria-hidden="true"
               //ici la modification de l'URL vers queen
               onClick={() => {
-                dataRetreiver.getQuestionnaireModelIdForReviewLink([data.id], qmIds => {
-                  const { questionnaireId } = qmIds[0];
-                  window.open(
-                    `${queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${data.id}`
-                  );
-                });
+                window.open(`${queenUrl}/queen/review/interrogations/${id}`);
               }}
             />
           </OverlayTrigger>
