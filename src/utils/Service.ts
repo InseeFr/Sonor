@@ -47,23 +47,6 @@ class Service {
     });
   }
 
-  async getSurveyUnitsQuestionnaireId(listSurveyUnitIds, cb) {
-    return fetch(`${this.baseUrlQueen}/api/survey-units/questionnaire-model-id`, {
-      ...this.makeOptions(),
-      method: 'POST',
-      body: JSON.stringify(listSurveyUnitIds),
-    })
-      .then(res => {
-        if (!res.ok) return [];
-        return res.json();
-      })
-      .then(data => cb(data))
-      .catch(e => {
-        console.error(e);
-        toast.error(`${D.cannotRetreiveData} ${D.verifyInternetCo}`);
-      });
-  }
-
   getSurveyUnitsClosable(cb) {
     fetch(`${this.baseUrlPearlJam}/api/survey-units/closable`, this.makeOptions())
       .then(res => res.json())

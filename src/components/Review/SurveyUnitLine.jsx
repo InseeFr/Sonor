@@ -23,12 +23,7 @@ function SurveyUnitLine({ lineData, isChecked, updateFunc, handleShow, view, dat
             aria-hidden="true"
             onClick={() => {
               view(lineData);
-              dataRetreiver.getQuestionnaireModelIdForReviewLink([id], qmIds => {
-                const { questionnaireId } = qmIds[0];
-                window.open(
-                  `${queenUrl}/queen/readonly/questionnaire/${questionnaireId}/survey-unit/${id}`
-                );
-              });
+              window.open(`${queenUrl}/review/interrogations/${id}`);
             }}
           />
         </OverlayTrigger>

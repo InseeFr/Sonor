@@ -90,9 +90,6 @@ Service.mockImplementation(() => ({
       resolve(pearlJamMocks.stateCountByInterv);
     });
   }),
-  getSurveyUnitsQuestionnaireIdByCampaign: vi.fn((campaignId, cb) =>
-    cb(pearlJamMocks.surveyUnitsQuestionnaireId)
-  ),
 }));
 
 const dataRetreiver = new DataFormatter();

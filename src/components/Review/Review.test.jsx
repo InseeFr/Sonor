@@ -48,15 +48,11 @@ const mockGetDataForReview = jest.fn((s, cb) => {
     cb(respAllSurvey);
   }
 });
-const mockGetQuestionnaireModelIdForReviewLink = jest.fn((suIds, cb) => {
-  cb(['questionnaireId']);
-});
 
 const mockDataFormatter = DataFormatter.mockImplementation(() => ({
   getDataForReview: mockGetDataForReview,
   finalizeSurveyUnits: mockFinalizeSurveyUnits,
   updateSurveyUnitViewed: jest.fn(() => ({ status: 200 })),
-  getQuestionnaireModelIdForReviewLink: mockGetQuestionnaireModelIdForReviewLink,
 }));
 
 const mockSuccess = jest.fn();
