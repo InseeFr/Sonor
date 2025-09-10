@@ -119,7 +119,7 @@
     "start-server-and-test": "^1.11.3",
     "stylelint": "^16.11.0",
     "stylelint-config-standard": "^36.0.1",
-    "vite": "^4.2.1",
+    "vite": "^5.4.20",
     "vite-envs": "^4.4.11",
     "vite-tsconfig-paths": "^3.6.0",
     "vitest": "^2.1.8"
