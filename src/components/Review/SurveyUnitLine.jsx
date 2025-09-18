@@ -23,7 +23,7 @@ function SurveyUnitLine({ lineData, isChecked, updateFunc, handleShow, view, dat
             aria-hidden="true"
             onClick={() => {
               view(lineData);
-              window.open(`${queenUrl}/review/interrogations/${id}`);
+              window.open(`${queenUrl}/queen/review/interrogations/${id}`);
             }}
           />
         </OverlayTrigger>
