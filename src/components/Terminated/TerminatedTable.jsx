@@ -99,7 +99,6 @@ class TerminatedTable extends React.Component {
   }
 
   surveyListLine(data, survey, handleShow) {
-    const { dataRetreiver } = this.props;
     const { queenUrl } = this.state;
 
     return (
@@ -119,7 +118,7 @@ class TerminatedTable extends React.Component {
               aria-hidden="true"
               //ici la modification de l'URL vers queen
               onClick={() => {
-                window.open(`${queenUrl}/queen/review/interrogations/${id}`);
+                window.open(`${queenUrl}/queen/review/interrogations/${data.id}`);
               }}
             />
           </OverlayTrigger>
