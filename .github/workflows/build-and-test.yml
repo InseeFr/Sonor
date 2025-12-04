@@ -9,14 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 18
-      - name: install
-        run: yarn --frozen-lockfile
+          version: 10
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: test & coverage
-        run: yarn run test
-      - run: yarn test --coverage
+        run: pnpm test --coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5.3.1
         env:
