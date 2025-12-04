@@ -33,7 +33,7 @@
     "test": "vitest",
     "prepare": "husky",
     "typecheck": "tsc --noEmit",
-    "pre-push": "yarn test  --watch=false"
+    "pre-push": "pnpm test  --watch=false"
   },
   "eslintConfig": {
     "extends": [
