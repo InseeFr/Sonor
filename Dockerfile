@@ -4,9 +4,12 @@ FROM node:latest AS builder
 
 WORKDIR /sonor
 
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
 COPY ./ ./
 
-RUN yarn && yarn build
+RUN pnpm build
 
 ### EXECUTION STEP ###
 
