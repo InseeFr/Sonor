@@ -20,7 +20,11 @@ export const App = () => {
       if (timeoutIdRef.current) {
         clearTimeout(timeoutIdRef.current);
       }
-      timeoutIdRef.current = setTimeout(() => renewTokens, 5 * 60 * 1000);
+        timeoutIdRef.current = setTimeout(() => {
+        if (renewTokens) {
+          renewTokens();
+        }
+      }, 5 * 60 * 1000);
     };
 
     const events = [
