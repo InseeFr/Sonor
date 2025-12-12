@@ -36,6 +36,10 @@ class View extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (this.props.token !== prevProps.token) {
+      toast.info(D.refreshToken);
+      this.dataRetreiver = new DataFormatter(this.props.token, this.props.configuration);
+    }
     if (
       !this.state.campaigns.every(element => prevState.campaigns.includes(element)) ||
       !prevState.campaigns.every(element => this.state.campaigns.includes(element))

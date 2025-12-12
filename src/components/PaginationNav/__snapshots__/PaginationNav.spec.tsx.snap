@@ -16,11 +16,6 @@ exports[`Page selector display: 2 items / size = 5 1`] = `
             class="page-link"
           >
             1
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
       </ul>
@@ -38,11 +33,6 @@ exports[`Page selector display: 2 items / size = 5 1`] = `
           class="page-link"
         >
           1
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
     </ul>
@@ -117,11 +107,6 @@ exports[`Page selector display: 8 items / size = 5 1`] = `
             class="page-link"
           >
             1
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
         <li
@@ -151,11 +136,6 @@ exports[`Page selector display: 8 items / size = 5 1`] = `
           class="page-link"
         >
           1
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
       <li
@@ -242,11 +222,6 @@ exports[`Page selector display: 16 items / size = 5 1`] = `
             class="page-link"
           >
             1
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
         <li
@@ -300,11 +275,6 @@ exports[`Page selector display: 16 items / size = 5 1`] = `
           class="page-link"
         >
           1
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
       <li
@@ -415,11 +385,6 @@ exports[`Page selector display: 22 items / size = 5 1`] = `
             class="page-link"
           >
             1
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
         <li
@@ -485,11 +450,6 @@ exports[`Page selector display: 22 items / size = 5 1`] = `
           class="page-link"
         >
           1
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
       <li
@@ -612,11 +572,6 @@ exports[`Page selector display: 28 items / size = 5 1`] = `
             class="page-link"
           >
             1
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
         <li
@@ -694,11 +649,6 @@ exports[`Page selector display: 28 items / size = 5 1`] = `
           class="page-link"
         >
           1
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
       <li
@@ -833,11 +783,6 @@ exports[`Page selector display: 105 items / size = 5 1`] = `
             class="page-link"
           >
             1
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
         <li
@@ -927,11 +872,6 @@ exports[`Page selector display: 105 items / size = 5 1`] = `
           class="page-link"
         >
           1
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
       <li
@@ -1114,11 +1054,6 @@ exports[`Page selector display: 105 items / size = 5 on page 10 1`] = `
             class="page-link"
           >
             10
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
         <li
@@ -1208,11 +1143,6 @@ exports[`Page selector display: 105 items / size = 5 on page 10 1`] = `
           class="page-link"
         >
           10
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
       <li
@@ -1383,11 +1313,6 @@ exports[`Page selector display: 105 items / size = 5 on page 20 1`] = `
             class="page-link"
           >
             20
-            <span
-              class="visually-hidden"
-            >
-              (current)
-            </span>
           </span>
         </li>
         <li
@@ -1477,11 +1402,6 @@ exports[`Page selector display: 105 items / size = 5 on page 20 1`] = `
           class="page-link"
         >
           20
-          <span
-            class="visually-hidden"
-          >
-            (current)
-          </span>
         </span>
       </li>
       <li

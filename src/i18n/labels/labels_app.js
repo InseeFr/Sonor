@@ -1,20 +1,16 @@
 const app = {
   // Keycloak
   cannotAuth: {
-    fr: 'Autentification impossible',
+    fr: 'Authentification impossible',
     en: 'Unable to authenticate',
   },
   cannotContactServer: {
     fr: 'Impossible de contacter le serveur',
     en: 'Could not contact server',
   },
-  initializingKeycloak: {
-    fr: 'Initialisation de Keycloak',
-    en: 'Initializing Keycloak',
-  },
-  configLoadFailed: {
-    fr: 'Le chargement de la configuration a échoué.',
-    en: 'Could not load settings',
+  refreshToken:{
+    fr: "Authentification mise à jour",
+    en: "Authentication token refreshed"
   },
   // Common buttons
   back: {
