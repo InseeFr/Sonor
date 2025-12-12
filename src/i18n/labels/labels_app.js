@@ -9,8 +9,8 @@ const app = {
     en: 'Could not contact server',
   },
   refreshToken:{
-    fr: "Authentication mise à jour",
-    en: "AUthentication token refreshed"
+    fr: "Authentification mise à jour",
+    en: "Authentication token refreshed"
   },
   // Common buttons
   back: {
