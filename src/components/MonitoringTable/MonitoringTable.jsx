@@ -345,6 +345,8 @@ function getHeaderForExport(mode) {
     D.atLeastOneContact,
     D.appointmentTaken,
     D.interviewStarted,
+    D.noticeLetter,
+    D.reminders
   ].flat();
 }
 
@@ -370,6 +372,8 @@ function getFooterForExport(data, mode) {
       data.total.dem.atLeastOneContact,
       data.total.dem.appointmentTaken,
       data.total.dem.interviewStarted,
+      data.total.dem.noticeLetter,
+      data.total.dem.reminders,
     ]);
   }
   if (mode === C.BY_INTERVIEWER_ONE_SURVEY || mode === C.BY_SITE) {
@@ -390,6 +394,8 @@ function getFooterForExport(data, mode) {
         data.total.france.atLeastOneContact,
         data.total.france.appointmentTaken,
         data.total.france.interviewStarted,
+        data.total.france.noticeLetter,
+        data.total.france.reminders,
       ].flat()
     );
   }
@@ -418,6 +424,8 @@ function getBodyForExport(data) {
       elm.atLeastOneContact,
       elm.appointmentTaken,
       elm.interviewStarted,
+      elm.noticeLetter,
+      elm.reminders
     ].flat()
   );
 }

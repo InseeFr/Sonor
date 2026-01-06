@@ -1,6 +1,6 @@
 {
   "name": "sonor",
-  "version": "2.2.1",
+  "version": "2.4.0",
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "4.0.5",
@@ -27,13 +27,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && copy-and-watch configuration/configuration.json build",
+    "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write .",
     "test": "vitest",
     "prepare": "husky",
     "typecheck": "tsc --noEmit",
-    "pre-push": "yarn test  --watch=false"
+    "pre-push": "pnpm test  --watch=false"
   },
   "eslintConfig": {
     "extends": [

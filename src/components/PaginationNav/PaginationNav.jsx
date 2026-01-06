@@ -8,6 +8,7 @@ function makePaginationItem(pageNumber, activePage, paginationSize, updateFunc) 
     <Pagination.Item
       key={pageNumber}
       active={activePage === pageNumber}
+      activeLabel=""
       onClick={() => updateFunc({ size: paginationSize, page: pageNumber })}
     >
       {pageNumber}
