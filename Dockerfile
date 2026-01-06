@@ -1,18 +1,3 @@
-### BUILD STEP ###
-
-FROM node:latest AS builder
-
-WORKDIR /sonor
-
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
-COPY ./ ./
-
-RUN pnpm build
-
-### EXECUTION STEP ###
-
 FROM nginxinc/nginx-unprivileged:mainline-alpine
 
 # Non root user
@@ -24,11 +9,11 @@ ENV NGINX_GROUP=nginx
 USER $NGINX_USER_ID
 
 # Add build to nginx root webapp
-COPY --from=builder --chown=$NGINX_USER:$NGINX_GROUP /sonor/build /usr/share/nginx/html
+COPY --chown=$NGINX_USER:$NGINX_GROUP /dist /usr/share/nginx/html
 
 # Copy nginx configuration
 RUN rm /etc/nginx/conf.d/default.conf
-COPY --from=builder --chown=$NGINX_USER:$NGINX_GROUP /sonor/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY  --chown=$NGINX_USER:$NGINX_GROUP /nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # Add entrypoint and start nginx server
 RUN chmod 755 /usr/share/nginx/html/vite-envs.sh
